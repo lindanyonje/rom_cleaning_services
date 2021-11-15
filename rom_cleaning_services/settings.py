@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'ROM.apps.ShopConfig', #Registering your app
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
