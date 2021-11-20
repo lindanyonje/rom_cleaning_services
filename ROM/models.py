@@ -23,7 +23,7 @@ class Service(models.Model):
     name=models.CharField(max_length=100, null=False, blank=False)
     description=models.TextField(null=False, blank=False)
     image=models.FileField(upload_to='images')
-    rating=models.IntegerField(default=0, blank=True)
+    rating=models.IntegerField(null=True, blank=True)
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at= models.DateTimeField(auto_now_add=True)
 
@@ -55,8 +55,8 @@ class Order(models.Model):
 class GiftCard(models.Model):
     service_id= models.ForeignKey('service',on_delete=models.CASCADE,blank=True,null=True)  
     giftcard_amount=models.IntegerField(null=False, blank=False) 
-    start_date=models.DateTimeField(null=False, blank=False)
-    end_date=models.DateTimeField(null=False, blank=False)
+    start_date=models.DateTimeField()
+    end_date=models.DateTimeField()
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at= models.DateTimeField(auto_now_add=True)     
 
@@ -65,7 +65,7 @@ class Payment(models.Model):
     order_id= models.ForeignKey('order',on_delete=models.CASCADE,blank=True,null=True)
     amount=models.IntegerField(null= True, blank= True)
     description=models.TextField(null=True, blank=True)
-    invoice_number=models.CharField(max_length=100, null=False, blank=True)
+    invoice_number=models.CharField(max_length=50, null=False, blank=True)
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at= models.DateTimeField(auto_now_add=True)
 
