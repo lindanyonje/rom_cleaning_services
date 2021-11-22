@@ -10,14 +10,6 @@ class Customer(User):
         return self.name
 
 
-class CustomerAddress(User):
-    customer_id=models.ForeignKey('Customer',on_delete=models.CASCADE,blank=True,null=True)
-    address=models.TextField(null=False, blank=False)
-    pin=models.CharField(max_length=100, null=True, blank=True)
-    created_at=models.DateTimeField(auto_now_add=True)
-    updated_at=models.DateTimeField(auto_now_add=True)
-
-
 
 class Service(models.Model):
     name=models.CharField(max_length=100, null=False, blank=False)
@@ -25,7 +17,7 @@ class Service(models.Model):
     image=models.FileField(upload_to='images')
     rating=models.IntegerField(null=True, blank=True)
     created_at=models.DateTimeField(auto_now_add=True)
-    updated_at= models.DateTimeField(auto_now_add=True)
+    updated_at= models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.name
@@ -36,7 +28,7 @@ class Review(models.Model):
     customer_id=models.ForeignKey('customer',on_delete=models.CASCADE,blank=True,null=True)
     service_id=models.ForeignKey('service',on_delete=models.CASCADE,blank=True,null=True)
     created_at=models.DateTimeField(auto_now_add=True)
-    updated_at= models.DateTimeField(auto_now_add=True) 
+    updated_at= models.DateTimeField(auto_now=True) 
 
 
 class Order(models.Model):
@@ -45,7 +37,7 @@ class Order(models.Model):
     order_number=models.CharField(max_length=100, null=False, blank=False)
     customer_id=models.ForeignKey('customer',on_delete=models.CASCADE,blank=True,null=True)
     created_at=models.DateTimeField(auto_now_add=True)
-    updated_at= models.DateTimeField(auto_now_add=True)
+    updated_at= models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.order_number
@@ -58,7 +50,7 @@ class GiftCard(models.Model):
     start_date=models.DateTimeField()
     end_date=models.DateTimeField()
     created_at=models.DateTimeField(auto_now_add=True)
-    updated_at= models.DateTimeField(auto_now_add=True)     
+    updated_at= models.DateTimeField(auto_now=True)     
 
 
 class Payment(models.Model):
@@ -67,7 +59,7 @@ class Payment(models.Model):
     description=models.TextField(null=True, blank=True)
     invoice_number=models.CharField(max_length=50, null=False, blank=True)
     created_at=models.DateTimeField(auto_now_add=True)
-    updated_at= models.DateTimeField(auto_now_add=True)
+    updated_at= models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.invoice_number  
