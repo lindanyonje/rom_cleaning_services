@@ -1,0 +1,39 @@
+<nav id="sidebar " class="bg-dark">
+    <div class="sidebar-header">
+        <h3>ROM</h3>
+    </div>
+
+    <ul class="list-unstyled components">
+
+        <li>
+            <a href="{% url 'dashboard' %}"><i class="fa fa-tachometer mr-2"></i>Dashboard</a>
+        </li>
+        <li>
+            <a href="{% url 'Service_List' %}"><i class="fa fa-tag mr-2"></i>Service</a>
+        </li>
+        <li>
+            <a href="{% url 'Customer' %}"><i class="fa fa-users mr-2"></i>Customers</a>
+        </li>
+        
+        <li>
+            <a href="{% url 'payments' %}"><i class="fa fa-credit-card-alt mr-2"></i>Payments</a>
+        </li>
+        
+        <li>
+            <a href="{% url 'GiftCard' %}"><i class="fa fa-gift mr-2"></i>GiftCard</a>
+        </li> 
+
+        <li>
+            <a href="{% url 'Offer' %}"><i class="fa fa-flash mr-2"></i>Offers</a>
+        </li>
+        
+        <li>
+            <a href="{% url 'Order' %}"><i class="fa fa-bars mr-2"></i>Orders</a>
+        </li>
+        <li>
+            <a href="{% url 'Review' %}"><i class="fa fa-users mr-2"></i>Reviews</a>
+        </li>
+       
+        
+    </ul>
+</nav>
