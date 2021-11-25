@@ -5,7 +5,7 @@ from django.shortcuts import render
 
 def home(request):
 
-   pass
+   return render(request, 'ROM/frontend/home.html')
 
 
 def adminDashboard(request):
@@ -13,4 +13,6 @@ def adminDashboard(request):
     ##Declaring a dictionary used to package the data we shall
     ##send to the frontend html template for display.
 
-   pass
+   return render(request, 'ROM/admin/dashboard.html')
+
+
