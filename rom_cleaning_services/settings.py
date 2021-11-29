@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'ROM.apps.RomConfig', #Registering your app
+    'widget_tweaks',
     
 ]
 
