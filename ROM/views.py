@@ -16,3 +16,19 @@ def adminDashboard(request):
    return render(request, 'ROM/admin/dashboard.html')
 
 
+def customer(request):
+
+   return render(request, 'ROM/admin/customer.html')   
+
+
+def service(request):
+
+   return render(request, 'ROM/admin/service.html')
+
+
+
+def review(request):
+
+   return render(request, 'ROM/admin/review.html')      
+
+
