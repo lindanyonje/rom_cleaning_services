@@ -1,13 +1,16 @@
 from django.db import models
-from django.contrib.auth.models import User
+
 
 # Create your models here.
 
-class Customer(User):
+class Customer(models.Model):
+    name=models.CharField(max_length=100, null=False, blank=False)
+    email=models.CharField(max_length=100, null=False, blank=False)
     phone_number=models.IntegerField(null= True, blank= True)
+    created_at=models.DateTimeField(auto_now_add=True)
     
     def __str__(self):
-        return self.customer
+        return self.name
 
 
 
@@ -34,7 +37,7 @@ class Review(models.Model):
     rating= models.IntegerField(null=False, blank=False) 
     review=models.TextField( null=True, blank=True)
     customer_id=models.ForeignKey('customer',on_delete=models.CASCADE, blank=True,null=True)
-    service_id=models.ForeignKey('service',on_delete=models.CASCADE, blank=True,null=True)
+    order_id= models.ForeignKey('order',on_delete=models.CASCADE,blank=True,null=True)
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at= models.DateTimeField(auto_now=True) 
 
@@ -60,7 +63,7 @@ class Order(models.Model):
 
 
 class GiftCard(models.Model):
-    service_id= models.ForeignKey('service',on_delete=models.CASCADE,blank=True,null=True)  
+    order_id= models.ForeignKey('order',on_delete=models.CASCADE,blank=True,null=True)  
     giftcard_amount=models.IntegerField(null=False, blank=False) 
     start_date=models.DateTimeField()
     end_date=models.DateTimeField()
