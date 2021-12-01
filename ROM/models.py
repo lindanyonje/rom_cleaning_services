@@ -50,8 +50,8 @@ class Order(models.Model):
     )
 
     customer_id=models.ForeignKey('customer',on_delete=models.CASCADE,blank=True,null=True)
+    service_id=models.ForeignKey('service',on_delete=models.CASCADE,blank=True,null=True)
     status=models.CharField(max_length=100, null=False, blank=False, choices=STATUS)
-    order_number=models.CharField(max_length=100, null=False, blank=False)
     total=models.FloatField(null= False, blank= True)
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at= models.DateTimeField(auto_now=True)
