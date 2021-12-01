@@ -21,17 +21,16 @@ class Service(models.Model):
         ('commercial', 'commercial'),
         ('personalized','personalized'),
     )
-
-    name=models.CharField(max_length=100, null=False, blank=False)
-    description=models.TextField(null=False, blank=False)
+    
     category=models.CharField(max_length=100, null=False, blank=False,choices=CATEGORY, default='regular')
-    image=models.FileField(upload_to='images')
+    description=models.TextField(null=False, blank=False)
+    customer_id=models.ForeignKey('customer',on_delete=models.CASCADE, blank=True,null=True)
+    # image=models.FileField(upload_to='images')
     rating=models.IntegerField(null=True, blank=True)
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at= models.DateTimeField(auto_now=True)
 
-    def __str__(self):
-        return self.name
+   
 
 class Review(models.Model):
     rating= models.IntegerField(null=False, blank=False) 
@@ -50,10 +49,10 @@ class Order(models.Model):
         ('completed','completed'),
     )
 
-    total=models.FloatField(null= False, blank= True)
+    customer_id=models.ForeignKey('customer',on_delete=models.CASCADE,blank=True,null=True)
     status=models.CharField(max_length=100, null=False, blank=False, choices=STATUS)
     order_number=models.CharField(max_length=100, null=False, blank=False)
-    customer_id=models.ForeignKey('customer',on_delete=models.CASCADE,blank=True,null=True)
+    total=models.FloatField(null= False, blank= True)
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at= models.DateTimeField(auto_now=True)
 

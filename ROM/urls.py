@@ -9,4 +9,5 @@ from ROM.views import *
 urlpatterns=[
     path('', views.home, name="home"),
     path('dashboard/',views.adminDashboard,name="dashboard"),
+    path('service/',views.service, name="service")
 ]

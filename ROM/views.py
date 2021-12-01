@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import*
 
 # Create your views here.
 
@@ -23,7 +24,9 @@ def customer(request):
 
 def service(request):
 
-   return render(request, 'ROM/admin/service.html')
+   service = Service.objects.all()
+
+   return render(request, 'ROM/admin/service.html', {'service': service})
 
 
 

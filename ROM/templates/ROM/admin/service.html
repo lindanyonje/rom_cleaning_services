@@ -1,0 +1,71 @@
+{% extends 'ROM/admin/layouts/admin_master.html' %}
+
+{% block content %}
+
+<br>
+
+<div class= "container mt-3">
+
+
+        <div class= "row">
+            <div class= "col-md">
+                
+
+                <div class= "card card-body">
+                    <h5>Service: </h5>
+                    <hr>
+                    
+                </div>
+
+            </div>
+
+        </div>  
+
+
+        <div class="row">
+
+            <div class="col">
+
+                <div class="card card-body">
+
+                    <table class= "table table-sm">
+
+                        <tr>
+
+                            <th>Category</th>
+                            <th>Customer_id</th>
+                            <th>Created_at</th>
+                            <!-- <th>Update</th>
+                            <th>Remove</th> -->
+
+                        </tr>
+
+                        {% for object in service %}
+
+                            <tr>
+
+                                <td>{{object.category}}</td>
+                                <td>{{object.customer_id}}</td>
+                                <td>{{object.created_at}}</td>
+                            </tr>
+
+                        
+                        
+                        {% endfor %}
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+
+</div>
+
+
+
+
+{% endblock %}
+
+
