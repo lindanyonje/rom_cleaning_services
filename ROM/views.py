@@ -12,14 +12,18 @@ def home(request):
 def adminDashboard(request):
 
    orders= Order.objects.all()
+   
    customers= Customer.objects.all()
 
-   total_customers= customers.count()
-   total_orders= orders.count()
-   completed= orders.filter(status='Completed').count()
-   pending= orders.filter(status='Pending').count()
+   total_customers = customers.count()
 
-   context={'orders': orders, 'customers': customers, 'total_orders': total_orders, 
+   total_orders = orders.count()
+
+   completed = orders.filter(status='Completed').count()
+
+   pending = orders.filter(status='Pending').count()
+
+   context = {'orders': orders, 'customers': customers, 'total_orders': total_orders, 
    'completed': completed, 'pending':pending }
 
     ##Declaring a dictionary used to package the data we shall
@@ -28,9 +32,15 @@ def adminDashboard(request):
    return render(request, 'ROM/admin/dashboard.html', context)
 
 
-def customer(request):
+def customer(request, id):
 
-   return render(request, 'ROM/admin/customer.html')   
+   customers = Customer.objects.get(id=id)
+
+   # orders = Customer.order_set.all()
+
+   context = {'customer':customers}
+
+   return render(request, 'ROM/admin/customer.html', context)   
 
 
 def service(request):
