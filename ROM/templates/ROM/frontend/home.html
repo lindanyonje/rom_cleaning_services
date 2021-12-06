@@ -3,54 +3,138 @@
 
 {% load static %}
 
+{% load widget_tweaks %}
+
 {% block content %}
 
-   <div class="row justify-content-center">
+<div class="container mt-1">
 
-     <div class="col-md-12">
 
-      <p class="text-dark text-center"> We Offer Commercial Services! <a class="text-dark" href="#">Learn More</a></p>
+      <div class="row  bg-light">
 
-     </div>
+        <div class=" col-sm-12">
 
-   </div>
+        <p class="text-dark text-center"> We Offer Commercial Services! <a class="text-dark" href="#">Learn More</a></p>
 
-   <div class= "row">
+        </div>
 
-    <p class="text-dark text-center">LET'S CLEAN YOUR MESS</p>
-
-    <div class="col-md-12 text-center">
-
-      <button type="button" class="btn btn-primary">Active Primary</button>
-      <button type="button" class="btn btn-primary">Disabled Primary</button> 
-
-     </div>
-
-    
-   </div>
-
-   <div class= "row justify-content-center">
-
-    <div class="col-md-7"></div>
-
-    <div class="col-md-5"></div>
-
-   </div>
-
-  <div class= "row">
-
-    <div class="card">
-      <div class="card-header">
-        <h2><u>WHY CHOOSE US? </u></h2>
       </div>
 
-      <img src="cleaning.jpg" alt="cleaning" style="width:100%;">
-      
-      
-      <div class="centered">Centered</div>
-    </div>
 
-  </div> 
+            
+      <div class= "row justify-content-center">
+
+        <div class="col-sm-12 text-center">
+
+          <p class="text-dark text-center">LET'S CLEAN YOUR MESS</p>
+
+          <button class="button">GET A QUOTE</button>
+          <button class="button">BOOK ONLINE</button> 
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class= "row justify-content-center ">
+
+        <div class="col-md-7">
+          <img class="img-fluid" src="{% static 'cleaning.jpg' %}" style="width:100%;" alt="Image">
+
+        </div>
+
+        <div class="col-md-5">
+
+          <p>Eco-Friendly Maid Service is a GREEN cleaning alternative for residential & commercial spaces.
+             Our goal is to offer our clients the best service possible while maintaining our core values:
+              Health, Growth, & Sustainability.
+            
+            </p>
+
+        </div>
+
+      </div>
+
+      <div class= "row justify-content-center">
+
+        <div class="bg-image">
+
+          <img class="img-fluid" src="{% static 'cleaning.jpg' %}" style="width:100%;" alt="Image">
+
+        </div>
+
+
+        
+        <div class="card w-75">
+
+
+          <h1 class="text-center"><u>WHY CHOOSE US? </u></h1>
+
+          
+          <div class="col-lg-4 col-md-4 col-md-12">
+
+            <p>Affordable <br> Reasonable prices & <br> Always customizable</p>
+
+          </div>
+
+          <div class="col-lg-4 col-md-4 col-md-12">
+
+            <p>Affordable <br> Reasonable prices & <br> Always customizable</p>
+
+          </div>
+
+          <div class="col-lg-4 col-md-4 col-md-12">
+
+            <p>Affordable <br> Reasonable prices & <br> Always customizable</p>
+            
+          </div>
+
+        
+        </div>
+
+
+      </div> 
+
+      <div class="row">
+
+        <div class= "col-lg-4 col-md-4 col-sm-12">
+          <img class="img-fluid" src="{% static 'cleaning.jpg' %}" style="width:100%;" alt="Image">
+        </div>
+
+        <div class= "col-lg-4 col-md-4 col-sm-12">
+          <h2>Our Locations</h2>
+          <p>SERVING THE GREATER ATLANTA AREA <br>nit ghhyjy </p>
+          
+
+         
+        </div>
+        
+        <div class= "col-lg-4 col-md-4 col-sm-12">
+
+            <form action="action_page.php">
+          
+              <label for="fname">First Name</label>
+              <input type="text" id="fname" name="firstname" placeholder="Your name..">
+          
+              <label for="lname">Last Name</label>
+              <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+          
+          
+              <label for="subject">Subject</label>
+              <textarea id="subject" name="subject" placeholder="Message" style="height:200px"></textarea>
+          
+              <input type="submit" value="Send">
+          
+            </form>
+          
+        </div>
+      </div>
+
+
+</div>
+
+  
 
 
 
@@ -141,3 +225,12 @@
     </div>
 
 </div> -->
+
+
+
+
+<!-- 
+<img src="cleaning.jpg" alt="cleaning" style="width:100%;">
+            
+            
+<div class="centered">Centered</div> -->
