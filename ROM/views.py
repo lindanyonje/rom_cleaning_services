@@ -1,4 +1,6 @@
 from django.shortcuts import render,redirect
+from django .http import HttpResponse
+from django .forms import inlineformset_factory
 from .models import*
 from .forms import OrderForm
 
@@ -33,9 +35,9 @@ def adminDashboard(request):
    return render(request, 'ROM/admin/dashboard.html', context)
 
 
-def customer(request, id):
+def customer(request, pk):
 
-   customers = Customer.objects.get(id=id)
+   customers = Customer.objects.get(id=pk)
 
    # orders = Customer.order_set.all()
 
@@ -51,19 +53,24 @@ def service(request):
    return render(request, 'ROM/admin/service.html', {'service': service})
 
 
-def createOrder(request):
+def createOrder(request, pk):
 
-   form= OrderForm()
+   OrderFormSet = inlineformset_factory(Customer, Order, fields=('service_id','status'))
 
+   customers = Customer.objects.get(id=pk)
+
+   formset= OrderFormSet(instance=customer)
+   # form= OrderForm(initial={'customer': customer})
    if request.method == 'POST':
       # print('POST:',request.POST)
-      form=OrderForm(request.POST)
-      if form.is_valid():
-         form.save()
+      # form=OrderForm(request.POST)
+      formset= OrderFormSet(request.POST, instance=customer)
+      if formset.is_valid():
+         formset.save()
          return redirect('/dashboard')
 
 
-   context= {'form':form}
+   context= {'formset':formset}
 
    return render(request, 'ROM/admin/order_form.html', context)      
 
@@ -83,6 +90,19 @@ def updateOrder(request, pk):
    context= {'form':form}
 
    return render(request, 'ROM/admin/order_form.html', context)         
+
+
+
+def deleteOrder(request, pk):
+
+   order= Order.objects.get(id=pk)
+
+   if request.method == 'POST':
+      order.delete()
+      return redirect('/dashboard')
+   context= {'item': order}
+
+   return render(request, 'ROM/admin/delete.html', context)         
 
 
 

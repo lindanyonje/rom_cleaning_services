@@ -30,6 +30,10 @@ class Service(models.Model):
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at= models.DateTimeField(auto_now=True)
 
+    def __str__(self):
+        return self.category
+
+
    
 
 class Review(models.Model):
@@ -56,8 +60,8 @@ class Order(models.Model):
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at= models.DateTimeField(auto_now=True)
 
-    def __str__(self):
-        return self.order_number
+    # def __str__(self):
+    #     return self.service.name
 
 
 

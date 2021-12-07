@@ -4,8 +4,6 @@
 
 {% block content %}
 
-
-
 <br>
 
 <div class= "row">
@@ -14,29 +12,19 @@
 
             <p>Are you sure you want to delete "{{item}}" ?</p>
 
-                    
-            <form action="" method="POST">
+            <form action="{% url 'delete_order' %}" method="POST">
 
                 {% csrf_token %}
 
-                {% for form in formset %}
+                <a class= "btn btn-warning" href="{% url 'dashboard'%}">Cancel</a>
 
-                {{form}}
-
-                <hr>
-
-                {% end for %}
-
-                <input type= "submit" name="submit">
+                <input class= "btn btn-danger" type= "submit" name="Confirm">
 
             </form>
-
-
 
         </div>
     </div>
 </div>
-
 
 
 
