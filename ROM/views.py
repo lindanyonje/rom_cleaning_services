@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .models import*
+from .forms import OrderForm
 
 # Create your views here.
 
@@ -50,9 +51,45 @@ def service(request):
    return render(request, 'ROM/admin/service.html', {'service': service})
 
 
+def createOrder(request):
+
+   form= OrderForm()
+
+   if request.method == 'POST':
+      # print('POST:',request.POST)
+      form=OrderForm(request.POST)
+      if form.is_valid():
+         form.save()
+         return redirect('/dashboard')
+
+
+   context= {'form':form}
+
+   return render(request, 'ROM/admin/order_form.html', context)      
+
+
+def updateOrder(request, pk):
+
+   order= Order.objects.get(id=pk)
+   form= OrderForm(instance=order)
+
+   if request.method == 'POST':
+  
+      form=OrderForm(request.POST, instance=order)
+      if form.is_valid():
+         form.save()
+         return redirect('/dashboard')
+
+   context= {'form':form}
+
+   return render(request, 'ROM/admin/order_form.html', context)         
+
+
 
 def review(request):
 
    return render(request, 'ROM/admin/review.html')      
+
+
 
 
