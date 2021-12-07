@@ -3,6 +3,7 @@ from django .http import HttpResponse
 from django .forms import inlineformset_factory
 from .models import*
 from .forms import OrderForm
+from django.views.generic.edit import CreateView
 
 # Create your views here.
 
@@ -52,18 +53,24 @@ def service(request):
 
    return render(request, 'ROM/admin/service.html', {'service': service})
 
+class CreateOrder(CreateView):
+   model = Order
+   fields = '__all__'
+   template_name = 'ROM/admin/order_form.html'
+   success_url = '/dashboard'
+
 
 def createOrder(request, pk):
 
-   OrderFormSet = inlineformset_factory(Customer, Order, fields=('service_id','status'))
+   OrderFormSet = inlineformset_factory(Customer, Order, fields=('service_id','status'), extra=5)
 
-   customers = Customer.objects.get(id=pk)
+   customer = Customer.objects.get(id=pk)
 
-   formset= OrderFormSet(instance=customer)
-   # form= OrderForm(initial={'customer': customer})
+   formset= OrderFormSet(queryset=Order.objects.none(),instance=customer)
+   form= OrderForm(initial={'customer': customer})
    if request.method == 'POST':
       # print('POST:',request.POST)
-      # form=OrderForm(request.POST)
+      # form=OrderForm(request.POST)   
       formset= OrderFormSet(request.POST, instance=customer)
       if formset.is_valid():
          formset.save()
