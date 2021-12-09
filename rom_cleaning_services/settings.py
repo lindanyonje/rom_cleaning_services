@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'ROM.apps.RomConfig', #Registering your app
     'widget_tweaks',
-    
+    'django_filters',
 ]
 
 MIDDLEWARE = [
