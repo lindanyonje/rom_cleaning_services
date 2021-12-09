@@ -4,15 +4,13 @@
 
 {% block content %}
 
-
-
 <br>
 
-<div class= "row">
-    <div class = "col-md-6">
-        <div class= "card-body">
+<div class= "row ">
 
-            <p>Are you sure you want to delete "{{item}}" ?</p>
+    <div class = "col-md-6">
+
+        <div class= " card card-body bg-light">
 
                     
             <form action="" method="POST">
@@ -21,7 +19,7 @@
 
                 {% for form in formset %}
 
-                {{form}}
+                  {{form}}
 
                 <hr>
 

@@ -40,9 +40,12 @@ def customer(request, pk):
 
    customers = Customer.objects.get(id=pk)
 
+   orders= Order.objects.all()
+   total_orders = orders.count()
+
    # orders = Customer.order_set.all()
 
-   context = {'customer':customers}
+   context = {'customer':customers,'orders': orders,'total_orders': total_orders}
 
    return render(request, 'ROM/admin/customer.html', context)   
 
@@ -62,12 +65,12 @@ class CreateOrder(CreateView):
 
 def createOrder(request, pk):
 
-   OrderFormSet = inlineformset_factory(Customer, Order, fields=('service_id','status'), extra=5)
-
    customer = Customer.objects.get(id=pk)
 
+   OrderFormSet = inlineformset_factory(Customer, Order, fields=('customer_id','service_id','status'), extra=5)
+
    formset= OrderFormSet(queryset=Order.objects.none(),instance=customer)
-   form= OrderForm(initial={'customer': customer})
+   # form= OrderForm(initial={'customer': customer})
    if request.method == 'POST':
       # print('POST:',request.POST)
       # form=OrderForm(request.POST)   
@@ -75,7 +78,6 @@ def createOrder(request, pk):
       if formset.is_valid():
          formset.save()
          return redirect('/dashboard')
-
 
    context= {'formset':formset}
 
@@ -107,6 +109,7 @@ def deleteOrder(request, pk):
    if request.method == 'POST':
       order.delete()
       return redirect('/dashboard')
+
    context= {'item': order}
 
    return render(request, 'ROM/admin/delete.html', context)         

@@ -42,7 +42,7 @@
         <div class= "card card-body">
             <h5>Total Orders </h5>
             <hr>
-           <h1 style="text-align: center;padding: 10px;">{{orders.count}}</h1>
+           <h1 style="text-align: center;padding: 10px;">{{total_orders}}</h1>
             
         </div>
 
@@ -56,7 +56,7 @@
     <div class="col">
         <div class="card card-body">
             <form method="get">
-                <button class="btn-primary" type="submit">Search</button>
+                <button class="btn-info" type="submit">Search</button>
             </form>
         </div>
     </div>
@@ -71,9 +71,8 @@
         <div class="card card-body">
             <table class= "table table-sm">
                 <tr>
-                    <th></th>
-                    <th>customer id</th>
-                    <th>service id</th>
+                    <th>customer</th>
+                    <th>service</th>
                     <th>Status</th>
                     <th>Date ordered</th>
                     <th>Update</th>

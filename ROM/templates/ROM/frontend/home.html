@@ -113,14 +113,14 @@
 
       </div> 
 
-      <div class="row">
+      <div class="row mt-2">
 
-        <div class= "col-lg-4 col-md-4 col-sm-12">
+        <div class= "col-lg-4 col-md-4 col-sm-12 ">
           <img class="img-fluid" src="{% static 'images/cleaning.jpg' %}" style="width:100%;" alt="Image">
         </div>
 
-        <div class= "col-lg-4 col-md-4 col-sm-12">
-          <h2>Our Locations</h2>
+        <div class= "col-lg-4 col-md-4 col-sm-12 bg-light text-center">
+          <h2 class="mt-5">Our Locations</h2>
           <p>SERVING THE GREATER ATLANTA AREA <br>nit ghhyjy </p>
           
 
@@ -129,21 +129,31 @@
         
         <div class= "col-lg-4 col-md-4 col-sm-12">
 
+          <div class="card card-body">
+
             <form action="action_page.php">
           
+              
               <label for="fname">First Name</label>
-              <input type="text" id="fname" name="firstname" placeholder="Your name..">
+              <input type="text" id="fname" name="firstname" class="form-control"  placeholder="Your name..">
+  
+              
+              <label for="email">Email address:</label>
+              <input type="email" class="form-control" id="email" placeholder="email">
+             
           
               <label for="lname">Last Name</label>
-              <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+              <input type="text" id="lname" name="lastname" class="form-control"  placeholder="Your last name..">
           
           
               <label for="subject">Subject</label>
-              <textarea id="subject" name="subject" placeholder="Message" style="height:200px"></textarea>
+              <textarea id="subject" name="subject" placeholder="Message" class="form-control"  style="height:200px"></textarea>
           
-              <input type="submit" value="Send">
+              <input type="button"  value="Send">
           
             </form>
+
+          </div>
           
         </div>
       </div>

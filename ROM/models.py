@@ -24,7 +24,7 @@ class Service(models.Model):
     
     category=models.CharField(max_length=100, null=False, blank=False,choices=CATEGORY, default='regular')
     description=models.TextField(null=False, blank=False)
-    customer_id=models.ForeignKey('customer',on_delete=models.CASCADE, blank=True,null=True)
+    customer_id=models.ForeignKey('Customer',on_delete=models.CASCADE, blank=True,null=True)
     # image=models.FileField(upload_to='images')
     rating=models.IntegerField(null=True, blank=True)
     created_at=models.DateTimeField(auto_now_add=True)
@@ -39,8 +39,8 @@ class Service(models.Model):
 class Review(models.Model):
     rating= models.IntegerField(null=False, blank=False) 
     review=models.TextField( null=True, blank=True)
-    customer_id=models.ForeignKey('customer',on_delete=models.CASCADE, blank=True,null=True)
-    order_id= models.ForeignKey('order',on_delete=models.CASCADE,blank=True,null=True)
+    customer_id=models.ForeignKey('Customer',on_delete=models.CASCADE, blank=True,null=True)
+    order_id= models.ForeignKey('Order',on_delete=models.CASCADE,blank=True,null=True)
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at= models.DateTimeField(auto_now=True) 
 
@@ -53,20 +53,20 @@ class Order(models.Model):
         ('completed','completed'),
     )
 
-    customer_id=models.ForeignKey('customer',on_delete=models.CASCADE,blank=True,null=True)
-    service_id=models.ForeignKey('service',on_delete=models.CASCADE,blank=True,null=True)
+    customer_id=models.ForeignKey('Customer',on_delete=models.CASCADE,blank=True,null=True)
+    service_id=models.ForeignKey('Service',on_delete=models.CASCADE,blank=True,null=True)
     status=models.CharField(max_length=100, null=False, blank=False, choices=STATUS)
     total=models.FloatField(null= False, blank= True)
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at= models.DateTimeField(auto_now=True)
 
-    # def __str__(self):
-    #     return self.service.name
+    def __str__(self):
+        return self.service_id.category
 
 
 
 class GiftCard(models.Model):
-    order_id= models.ForeignKey('order',on_delete=models.CASCADE,blank=True,null=True)  
+    order_id= models.ForeignKey('Order',on_delete=models.CASCADE,blank=True,null=True)  
     giftcard_amount=models.IntegerField(null=False, blank=False) 
     start_date=models.DateTimeField()
     end_date=models.DateTimeField()
@@ -75,7 +75,7 @@ class GiftCard(models.Model):
 
 
 class Payment(models.Model):
-    order_id= models.ForeignKey('order',on_delete=models.CASCADE,blank=True,null=True)
+    order_id= models.ForeignKey('Order',on_delete=models.CASCADE,blank=True,null=True)
     amount=models.FloatField(null= True, blank= True)
     description=models.TextField(null=True, blank=True)
     invoice_number=models.CharField(max_length=50, null=False, blank=True)
