@@ -119,4 +119,10 @@ def review(request):
 
 
 
+def createPayment(request):
+
+   return render(request, 'ROM/admin/payment.html')   
+
+
+
 

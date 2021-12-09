@@ -10,62 +10,163 @@
 
 <div class = "row mt-3 " >
     <div class= "col-md-5">
-        <h5>CUSTOMERS:</h5>
         <br>
-        <div class= "card card-body">
-            <a class= "btn btn-primary btn-sm btn-block" href="">Create customer</a>
-            <table class= "table table-sm">
-                <tr>
-                    <th></th>
-                    <th>Customer</th>
-                    <th>phone</th>
-                </tr>
+        <div class="card">
 
-                {% for customer in customers %}
+            <div class="card-header">
+                <div class="row">
+                    <h4>CUSTOMERS</h4>
+                    <a href="" class="btn btn-info ml-auto">
+                        All Customers<i class="fa fa-arrow-circle-right"></i>
+                    </a>
+                </div>
+            </div>
 
-                <tr>
-                    <td><a class="btn btn-sm btn-outline-info" href= "{% url 'customer' customer.id %}">View</a></td>
-                    <td>{{customer.name}}</td>
-                    <td>{{customer.phone_number}}</td>
-                </tr>
-            
-            {% endfor %}
-            </table>
+            <div class= "card card-body">
+                <table class= "table table-sm">
+                    <tr>
+                        <th></th>
+                        <th>Customer</th>
+                        <th>phone</th>
+                    </tr>
+    
+                    {% for customer in customers %}
+    
+                    <tr>
+                        <td><a class="btn btn-sm btn-outline-info" href= "{% url 'customer' customer.id %}">View</a></td>
+                        <td>{{customer.name}}</td>
+                        <td>{{customer.phone_number}}</td>
+                    </tr>
+                
+                {% endfor %}
+                </table>
+            </div>
+
         </div>
+       
 
     </div>
 
     <div class= "col-md-7">
-        <h5>LAST 5 ORDERS</h5>
         <br>
-        <div class= "card card-body">
+        <div class="card">
+
+            <div class="card-header">
+                <div class="row">
+                    <h4>Last 5 Orders</h4>
+                    <a href="" class="btn btn-info ml-auto">
+                        All Orders<i class="fa fa-arrow-circle-right"></i>
+                    </a>
+                </div>
+            </div>
+            <!--card header ends-->
+
+            <div class= "card-body">
            
-            <table class= "table table-sm">
-                <tr>
-                    <th>Service</th>
-                    <th>Date ordered</th>
-                    <th>Status</th>
-                    <th>Update</th>
-                    <th>Remove</th>
-                </tr>
+                <table class= "table table-sm">
 
-                {% for order in orders %}
+                    <thead>
 
-                <tr>
-                    <td>{{order.service_id}}</td>
-                    <td>{{order.status}}</td>
-                    <td>{{order.created_at}}</td>
-                    <td><a class="btn btn-sm btn-outline-info" href="{% url 'update_order' order.id %}"><i class="fa fa-pencil" aria-hidden="true"></i>Update </a></td>
-                    <td><a class="btn btn-sm btn-outline-danger" href="{% url 'delete_order' order.id %}"><i class="fa fa-trash " aria-hidden="true"></i>Delete</a></td>
+                        <tr>
+                            <th>Service</th>
+                            <th>Date ordered</th>
+                            <th>Status</th>
+                            <th>Update</th>
+                            <th>Remove</th>
+                        </tr>
 
-                </tr>
-            
-              {% endfor %}
-                
-            </table>
+                    </thead>
+                   
+    
+                    {% for order in orders %}
+
+                    <tbody>
+
+                        <tr>
+                            <td>{{order.service_id}}</td>
+                            <td>{{order.status}}</td>
+                            <td>{{order.created_at}}</td>
+                            <td><a class="btn btn-sm btn-outline-info" href="{% url 'update_order' order.id %}"><i class="fa fa-pencil" aria-hidden="true"></i>Update </a></td>
+                            <td><a class="btn btn-sm btn-outline-danger" href="{% url 'delete_order' order.id %}"><i class="fa fa-trash " aria-hidden="true"></i>Delete</a></td>
+        
+                        </tr>
+
+                    </tbody>
+
+                  {% endfor %}
+                    
+                </table>
+            </div>
+    
         </div>
-
+        
     </div>
+
+
+ <!-- recent payments -->
+
+    <div class="row justify-content-center my-5">
+
+        <div class="col-lg-12 col-md-12 col-sm-12">
+
+            <div class="card">
+
+                <div class="card-header">
+                    <div class="row">
+                        <h4>Recent Payments</h4>
+                        <a href="{% url 'create_payment' %}" class="btn btn-info ml-auto">
+                            All Payments<i class="fa fa-arrow-circle-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <!--card header ends-->
+
+                <!--card body starts-->
+
+                <div class="card-body">
+
+                    <table class="table table-hover table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Invoice Number</th>
+                                <th>Order Number</th>
+                                <th>Amount</th>
+                                <th>created_at</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {% for payment in payments %}
+                            <tr>
+                                <td>{{payment.id}}</td>
+                                <td>{{payment.invoice_number}}</td>
+                                <td>{{payment.order_id}}</td>
+                                <td>{{payment.amount}}</td>
+                                <td>{{payment.created_at}}</td>
+                                <td>
+                                    <a href="#" class="btn btn-dark btn-sm">
+                                        <i class="fa fa-edit"></i>
+                                    </a>
+                                    <a href="#" class="btn btn-danger btn-sm">
+                                        <i class="fa fa-trash"></i>
+                                    </a>
+                                </td>
+                                
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+
+                </div>
+
+                <!--card body ends-->
+
+            </div>
+        </div>
+    </div>
+
 </div>
 
 

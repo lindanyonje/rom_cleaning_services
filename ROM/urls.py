@@ -15,6 +15,7 @@ urlpatterns=[
     path('create_order/<pk>', views.createOrder, name="order"),
     path('update_order/<pk>/', views.updateOrder, name="update_order"),
     path('delete_order/<pk>/', views.deleteOrder, name="delete_order"),
+    path('create_payment/',views.createPayment, name= 'create_payment'),
 ]
 
 if settings.DEBUG:
