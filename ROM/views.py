@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from django .http import HttpResponse
 from django .forms import inlineformset_factory
 from .models import*
-from .forms import OrderForm
+from .forms import OrderForm, CustomerForm
 from django.views.generic.edit import CreateView
 from .filters import OrderFilter
 
@@ -37,6 +37,13 @@ def adminDashboard(request):
    return render(request, 'ROM/admin/dashboard.html', context)
 
 
+class CreateCustomer(CreateView):
+   model = Customer
+   fields = '__all__'
+   template_name = 'ROM/admin/customer_form.html'
+   success_url = '/dashboard'
+
+
 def customer(request, pk):
 
    customers = Customer.objects.get(id=pk)
@@ -52,6 +59,39 @@ def customer(request, pk):
    context = {'customer':customers,'orders': orders,'total_orders': total_orders, 'myFilter': myFilter}
 
    return render(request, 'ROM/admin/customer.html', context)   
+
+
+def updateCustomer(request, pk):
+
+   customer = Customer.objects.get(id=pk)
+   form=CustomerForm(instance=customer)
+
+   if request.method == 'POST':
+  
+      form=CustomerForm(request.POST, instance=customer)
+      if form.is_valid():
+         form.save()
+         return redirect('/dashboard')
+
+   context= {'form':form}
+
+   return render(request, 'ROM/admin/customer_form.html', context)   
+
+
+def deleteCustomer(request, pk):
+
+   customer = Customer.objects.get(id=pk)
+
+   if request.method == 'POST':
+      customer.delete()
+      return redirect('/dashboard')
+
+   context= {'item': customer}
+
+   return render(request, 'ROM/admin/delete.html', context)         
+
+
+
 
 
 def service(request):
