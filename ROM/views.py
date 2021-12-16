@@ -163,7 +163,19 @@ def deleteOrder(request, pk):
 
 def review(request):
 
-   return render(request, 'ROM/admin/review.html')      
+   orders= Order.objects.all()
+   
+   customers= Customer.objects.all()
+
+   total_orders = orders.count()
+
+   completed = orders.filter(status='Completed').count()
+
+   context = {'orders': orders, 'customers': customers, 'total_orders': total_orders, 
+   'completed': completed}
+
+
+   return render(request, 'ROM/admin/review.html', context)      
 
 
 

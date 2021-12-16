@@ -7,19 +7,16 @@
 <div class= "container mt-3">
 
 
-        <div class= "row">
-            <div class= "col-md">
-                
+        
+    <div class="row my-5">
+        <h5 class="text-dark">Service</h5>
+        <button class="btn btn-dark ml-auto" data-toggle="modal"
+        data-target="#paymentModal">
+        <i class ="fa fa-plus" aria-hidden="true"> New Service </i>
+        </button>
+            
+    </div>
 
-                <div class= "card card-body">
-                    <h5>Service: </h5>
-                    <hr>
-                    
-                </div>
-
-            </div>
-
-        </div>  
 
 
         <div class="row">
@@ -61,6 +58,46 @@
 
         </div>
 
+</div>
+
+
+
+<!-- Modals -->
+<div class="modal fade" id="paymentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title title" id="exampleModalLabel">New service</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="post" action="" enctype="multipart/form-data">
+                <!-- @method('POST') -->
+                <!-- @csrf -->
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Payment Mode</label>
+                        <input type="text" class="form-control" placeholder="Name" name="name">
+                    </div>
+                    <div class="form-group">
+                        <label>Enter the description (optional)</label>
+                        <input type="text" class="form-control" placeholder="Description" name="description">
+                    </div>
+                    <div class="form-group">
+                        <label>Parent Payment</label>
+                        <select class="form-control input-sm" name="Payment_id">
+                            <option value="">--select--</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+<!--                        <button type="button" class="btn btn-outline-primary" data-dismiss="modal"><i class="fa fa-times mr-2"></i>Close</button>--}} -->
+                    <button type="submit" class="btn btn-dark"><i class="fa fa-plus-circle mr-2"></i>Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 
 
