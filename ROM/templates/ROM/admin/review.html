@@ -1,0 +1,119 @@
+{% extends 'ROM/admin/layouts/admin_master.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="review-container">
+    <h2>Reviews</h2>
+    <div class= "row mt-4">
+        
+        <div class= "col-md-3">
+            
+                <div class= "card-header">
+                    <h5 class="card-title">Rating</h5>
+                </div>
+                <div class= "card-body">
+                    <h5 class="card-title"></h5>
+                </div>
+            
+        </div>
+    
+        <div class= "col-md-3">
+            
+                <div class= "card-header">
+                    <h5 class="card-title">Review</h5>
+                </div>
+                <div class= "card-body">
+                    <h5 class="card-title"></h5>
+                </div>
+            
+        </div>
+    
+        <div class= "col-md-3">
+            
+            <div class= "card-header">
+                <h5 class="card-title">customers</h5>
+            </div>
+            <div class= "card-body">
+                <h5 class="card-title"></h5>
+            </div>
+        
+       </div>
+
+       <div class= "col-md-3">
+            
+        <div class= "card-header">
+            <h5 class="card-title">Orders delivered</h5>
+        </div>
+        <div class= "card-body">
+            <h5 class="card-title"></h5>
+        </div>
+    
+</div>
+    </div>
+    
+    
+    
+    <div class="cards">
+      <div class="card">
+        <div class="card-top">
+          <div class="name">
+            <div class="img one" alt="">NF</div>
+             <p>Full Name</p>
+             <span>13 Feb, 2021</span>
+          </div>
+          <div class="rate">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half"></i>
+          </div>
+        </div>
+        
+        <div class="card-content">
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem consequuntur, impedit ullam provident deserunt repellendus fuga totam exercitationem minima molestias?</p>
+        </div>
+        
+        <div class="card-action">
+          
+          <button class="btn">
+            <i class="fas fa-external-link-alt"></i>
+            Share
+          </button>
+        </div>
+        
+      </div>
+       <div class="card">
+        <div class="card-top">
+          <div class="name">
+            <div class="img">FN</div>
+             <p>Full Name</p>
+             <span>13 Feb, 2021</span>
+          </div>
+          <div class="rate">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half"></i>
+          </div>
+        </div>
+        
+        <div class="card-content">
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem consequuntur, impedit ullam provident deserunt repellendus fuga totam exercitationem minima molestias?</p>
+        </div>
+        
+        <div class="card-action">
+          
+          <button class="btn">
+            <i class="fas fa-external-link-alt"></i>
+            Share
+          </button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

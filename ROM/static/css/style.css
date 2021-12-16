@@ -1,5 +1,6 @@
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 
+
 .wrapper {
   display: flex;
   width: 100%;
@@ -7,7 +8,7 @@
 }
 #sidebar {
   /* don't forget to add all the previously mentioned styles here too */
-  background: #7386D5;
+  background: #7abecc;
   color: #fff;
   transition: all 0.3s;
   min-width: 250px;
@@ -19,7 +20,7 @@
 }
 #sidebar .sidebar-header {
   padding: 20px;
-  background: #6d7fcc;
+  background: #7abecc;
 }
 #sidebar ul.components {
   padding: 20px 0;
@@ -35,17 +36,17 @@
   display: block;
 }
 #sidebar ul li a:hover {
-  color: #7386D5;
+  color: #4cb4c7;
   background: #fff;
 }
 #sidebar ul li.active > a, a[aria-expanded="true"] {
   color: #fff;
-  background: #6d7fcc;
+  background: #7abecc;
 }
 ul ul a {
   font-size: 0.9em !important;
   padding-left: 30px !important;
-  background: #6d7fcc;
+  background: #7abecc;
 }
 a, a:hover, a:focus {
   color: inherit;
@@ -70,6 +71,7 @@ a[data-toggle="collapse"] {
   right: 20px;
   transform: translateY(-50%);
 }
+
 
 body{
     background: color #ebeff5;;
@@ -104,4 +106,157 @@ body{
 
 .button:hover {
   background-color: #f1f1f1;
+}
+
+/* review */
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-shadow: border-box;
+}
+body {
+  min-height: 100vh;
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgb(29, 28, 44);
+}
+
+.review-container {
+  width: 40%;
+  background: rgb(33, 32, 50);
+  color: #fff;
+  margin: 2rem;
+  box-shadow: 1px 3px 2px rgba(0, 0, 0, 0.2);
+  padding: 2.5rem;
+}
+h2 {
+  margin-bottom: 3rem;
+}
+.input-field {
+  background: rgb(38, 37, 55);
+  width: 100%;
+  border: 1px solid #6f6c7c;
+  padding: 0.85rem;
+  border-radius: 5px;
+}
+.input-field input {
+  border: none;
+  background: transparent;
+  outline: none;
+  color: #8c8c9f;
+  width: calc(100% - 3.2rem);
+}
+.input-field i,
+.input-field input::placeholder {
+  color: #6f6c7c;
+}
+.suggest {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.suggest span {
+  background: #1f1e2f;
+  padding: 0.65rem 1.3rem;
+  border-radius: 5px;
+  font-size: 0.65rem;
+  color: #8c8c9f;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+.suggest span:hover,
+.suggest span:active {
+  background: #8383ed;
+  color: #fff;
+}
+
+.cards {
+  margin-top: 2.5rem;
+}
+.cards .card {
+  width: 100%;
+  margin-bottom: 0.7rem;
+  background: rgb(45, 43, 64);
+  border-radius: 5px;
+}
+.card > * {
+  padding: 1rem 1.2rem;
+}
+.card-top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+.img {
+  width: 50px;
+  height: 50px;
+  background: purple;
+  border-radius: 50%;
+  outline: none;
+}
+.name .one {
+  background: orange;
+}
+.name,
+.name .img {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.name .img {
+  justify-content: center;
+}
+.rate i {
+  color: yellow;
+}
+.card-content {
+  margin: 0;
+  padding-top: 0;
+}
+.card-content p {
+  font-size: 0.8rem;
+  color: rgb(152, 152, 165);
+}
+.card-action {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.card-action span {
+  font-size: 0.8rem;
+  color: RGB(101, 101, 114);
+}
+.card-action .btn {
+  padding: 0.3rem 0.7rem;
+  background: transparent;
+  border: 1px solid #000;
+  border-radius: 2px;
+  color: #8c8c9f;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+.btn:hover {
+  background: #000;
+  color: #fff;
+}
+
+@media screen and (max-width: 750px) {
+  body {
+    padding: 0rem;
+    margin: 0;
+  }
+  .review-container {
+    /*     padding:0; */
+    margin: 1rem 0;
+    width: 75%;
+  }
 }

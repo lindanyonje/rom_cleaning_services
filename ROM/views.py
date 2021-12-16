@@ -107,6 +107,7 @@ class CreateOrder(CreateView):
    success_url = '/dashboard'
 
 
+
 def createOrder(request, pk):
 
    customer = Customer.objects.get(id=pk)
@@ -166,7 +167,7 @@ def review(request):
 
 
 
-def createPayment(request):
+def Payment(request):
 
    return render(request, 'ROM/admin/payment.html')   
 
