@@ -10,9 +10,9 @@
         <div class= "card card-body">
             <h5>Customer: </h5>
             <hr>
-            <a class= "btn btn-outline-info btn-sm btn-block" href="{% url 'update_customer' customer.id %}">Update Customer</a>
-            <a class= "btn btn-outline-info btn-sm btn-block" href="{% url 'order' customer.id %}">New Order</a>
-            <a class= "btn btn-outline-danger btn-sm btn-block" href="{% url 'delete_customer' customer.id %}">Delete Customer</a>
+            <a class= "btn btn-outline-info btn-sm btn-block" href="#">Update Customer</a>
+            <a class= "btn btn-outline-info btn-sm btn-block" href="#">New Order</a>
+            <a class= "btn btn-outline-danger btn-sm btn-block" href="#">Delete Customer</a>
             
         </div>
 
@@ -89,8 +89,8 @@
                     <td>{{order.service_id}}</td>
                     <td>{{order.status}}</td>
                     <td>{{order.created_at}}</td>
-                    <td><a class="btn btn-sm btn-outline-info" href="{% url 'update_order' order.id %}"><i class="fa fa-pencil" aria-hidden="true"></i>Update </a></td>
-                    <td><a class="btn btn-sm btn-outline-danger" href="{% url 'delete_customer' customer.id %}"><i class="fa fa-trash " aria-hidden="true"></i>Delete </a></td>
+                    <td><a class="btn btn-sm btn-outline-info" href="#"><i class="fa fa-pencil" aria-hidden="true"></i>Update </a></td>
+                    <td><a class="btn btn-sm btn-outline-danger" href="#"><i class="fa fa-trash " aria-hidden="true"></i>Delete </a></td>
                 </tr>
                 
                 {% endfor %}

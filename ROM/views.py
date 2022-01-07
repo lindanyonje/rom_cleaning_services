@@ -44,9 +44,9 @@ class CreateCustomer(CreateView):
    success_url = '/dashboard'
 
 
-def customer(request, pk):
+def customer(request):
 
-   customers = Customer.objects.get(id=pk)
+   customers = Customer.objects.all()
 
    orders= Order.objects.all()
    total_orders = orders.count()
@@ -107,7 +107,7 @@ class CreateOrder(CreateView):
    success_url = '/dashboard'
 
 
-def order(request):
+def getOrders(request):
 
    order = Order.objects.all()
 
