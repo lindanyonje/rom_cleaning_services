@@ -24,9 +24,9 @@ def adminDashboard(request):
 
    total_orders = orders.count()
 
-   completed = orders.filter(status='Completed').count()
+   completed = orders.filter(status='completed').count()
 
-   pending = orders.filter(status='Pending').count()
+   pending = orders.filter(status='pending').count()
 
    context = {'orders': orders, 'customers': customers, 'total_orders': total_orders, 
    'completed': completed, 'pending':pending }
@@ -56,7 +56,7 @@ def customer(request, pk):
 
    orders= myFilter.qs
 
-   context = {'customer':customers,'orders': orders,'total_orders': total_orders, 'myFilter': myFilter}
+   context = {'customers':customers,'orders': orders,'total_orders': total_orders, 'myFilter': myFilter}
 
    return render(request, 'ROM/admin/customer.html', context)   
 
@@ -106,6 +106,12 @@ class CreateOrder(CreateView):
    template_name = 'ROM/admin/order_form.html'
    success_url = '/dashboard'
 
+
+def order(request):
+
+   order = Order.objects.all()
+
+   return render(request, 'ROM/admin/order.html', {'order': order})
 
 
 def createOrder(request, pk):
