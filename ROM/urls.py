@@ -19,6 +19,7 @@ urlpatterns=[
     path('delete_order/<pk>/', views.deleteOrder, name="delete_order"),
     path('payment/',views.Payment, name= 'payment'),
     path('review/',views.review, name= 'review'),
+    path('offer/',views.getOffers, name= 'offers'),
 ]
 
 if settings.DEBUG:

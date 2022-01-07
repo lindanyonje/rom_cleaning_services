@@ -190,5 +190,11 @@ def Payment(request):
    return render(request, 'ROM/admin/payment.html')   
 
 
+def getOffers(request):
+
+   return render(request, 'ROM/admin/offer.html',)      
+
+
+
 
 
