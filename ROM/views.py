@@ -192,14 +192,22 @@ def Payment(request):
    return render(request, 'ROM/admin/payment.html')   
 
 
+def getOfferList(request):
+
+   return render(request, 'ROM/admin/offer_list.html')     
+
 def getOffers(request):
 
-   return render(request, 'ROM/admin/offer_list.html',)      
+   return render(request, 'ROM/admin/offer.html')     
 
 
 def getGifts(request):
 
-   return render(request, 'ROM/admin/gifts.html',)      
+   return render(request, 'ROM/admin/gifts.html') 
+
+def getGiftCards(request) :
+
+   return render(request, 'ROM/admin/gift_card.html') 
 
 
 class CustomerList(ListView):

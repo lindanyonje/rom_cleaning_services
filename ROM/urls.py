@@ -22,7 +22,9 @@ urlpatterns=[
     path('payment/',views.Payment, name= 'payment'),
     path('review/',views.review, name= 'review'),
     path('offer/',views.getOffers, name= 'offers'),
+    path('offer_list/',views.getOfferList, name= 'offer_list'),
     path('gifts/',views.getGifts, name= 'gifts'),
+    path('gift_card/',views.getGiftCards, name= 'gift_card'),
 ]
 
 if settings.DEBUG:
