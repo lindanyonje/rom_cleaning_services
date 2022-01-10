@@ -198,7 +198,7 @@ def getOfferList(request):
 
 def getOffers(request):
 
-   return render(request, 'ROM/admin/offer.html')     
+   return render(request, 'ROM/frontend/offer.html')     
 
 
 def getGifts(request):
@@ -207,7 +207,7 @@ def getGifts(request):
 
 def getGiftCards(request) :
 
-   return render(request, 'ROM/admin/gift_card.html') 
+   return render(request, 'ROM/frontend/gift_card.html') 
 
 
 class CustomerList(ListView):
