@@ -3,6 +3,8 @@ from django .http import HttpResponse
 from django .forms import inlineformset_factory
 from .models import*
 from .forms import OrderForm, CustomerForm
+from django.views.generic import ListView
+from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView
 from .filters import OrderFilter
 
@@ -192,9 +194,38 @@ def Payment(request):
 
 def getOffers(request):
 
-   return render(request, 'ROM/admin/offer.html',)      
+   return render(request, 'ROM/admin/offer_list.html',)      
+
+
+def getGifts(request):
+
+   return render(request, 'ROM/admin/gifts.html',)      
+
+
+class CustomerList(ListView):
+
+    login_required= True
+    model = Customer
+    template_name= "ROM/admin/customer_list.html"
+
+
+class CustomerDetail(DetailView):
+
+    login_required= True
+    model =  Customer
+    template_name= "ROM/admin/customer_details.html"
 
 
 
 
+# class OrderList(ListView):
 
+#     login_required= True
+#     model =Order
+#     template_name= "ROM/admin/order_list.html"
+
+class OrderDetail(DetailView):
+
+    login_required= True
+    model = Order
+    template_name= "ROM/admin/order_details.html"

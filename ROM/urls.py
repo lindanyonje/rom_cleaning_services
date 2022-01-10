@@ -11,15 +11,18 @@ urlpatterns=[
     path('dashboard/', views.adminDashboard,name="dashboard"),
     path('service/', views.service, name="service"),
     path('customer/', views.customer, name="customer"),
+    path('customer/detail/<pk>',CustomerDetail.as_view(),name= 'Customer_detail'),
     path('update_customer/<pk>/', views.updateCustomer, name="update_customer"),
     path('delete_customer/<pk>/', views.deleteCustomer, name="delete_customer"),
     path('orders/', views.getOrders, name="order_list"),
+    path('order/detail/<pk>', OrderDetail.as_view(),name= 'Order_detail'),
     path('create_order/<pk>', views.createOrder, name="order"),
     path('update_order/<pk>/', views.updateOrder, name="update_order"),
     path('delete_order/<pk>/', views.deleteOrder, name="delete_order"),
     path('payment/',views.Payment, name= 'payment'),
     path('review/',views.review, name= 'review'),
     path('offer/',views.getOffers, name= 'offers'),
+    path('gifts/',views.getGifts, name= 'gifts'),
 ]
 
 if settings.DEBUG:

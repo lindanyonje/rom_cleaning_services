@@ -1,0 +1,21 @@
+
+{% extends 'shop/admin/layouts/admin_master.html' %}
+
+
+{% block content %}
+
+<form method="post">
+
+    {% csrf_token %}
+    
+    <p>Are you sure you want to delete"{{object}}"?</p>
+
+    <!-- <input  type = "submit"  value = "confirm" class="btn btn-danger"> -->
+
+    <button type="submit" class="btn btn-danger">
+        <i class="fa fa-trash-o mr-2"></i>Delete</button>
+</form>
+
+
+
+{% endblock content %}

@@ -3,25 +3,25 @@
 {% block content %}
 
 <div class="container">
+    
 
     <div class="row my-5">
-
-        <a href="#" class="btn btn-dark ml-auto" >
-            <i class ="fa fa-plus" aria-hidden="true"> New Order </i>
-        </a>
-                
+        <h5 class="text-dark">Offers</h5>
+        <button class="btn btn-dark ml-auto" data-toggle="modal"
+        data-target="#paymentModal">
+        <i class ="fa fa-plus" aria-hidden="true"> New Offer </i>
     </button>
             
     </div>
 
     <div class="row justify-content-center my-5">
 
-        <div class="col-lg-12">
+        <div class="col-lg-8">
 
             <div class="card">
 
                 <div class="card-header">
-                    <h4 class="card-title">All orders</h4>
+                    <h4 class="card-title">All Offers</h4>
         
                 </div>
     
@@ -35,24 +35,20 @@
                         <thead>
                             <tr>
                                 <th>Id</th>
-                                <th>Customer_id</th>
-                                <th>Status</th>
-                                <th>Total</th>
-                                <th>Shipping cost</th>
-                                <th>Order_number</th>
+                                <th>Order_id</th>
+                                <th>Amount</th>
+                                <th>Invoice</th>
                                 <th>Created At</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {% for object in order %}
+                            {% for object in object_list %}
                                <tr>
                                    <td>{{object.id}}</td>
-                                   <td>{{object.customer_id}}</td>
-                                   <th>{{object.status}}</th>
-                                   <td>{{object.total}}</td>
-                                   <td>{{object.shipping_cost}}</td>
-                                   <td>{{object.order_number}}</td>
+                                   <td>{{object.order_id}}</td>
+                                   <td>{{object.amount}}</td>
+                                   <td>{{object.invoice_number}}</td>
                                    <td>{{object.created_at}}</td>
                                    <td>
                                        
@@ -88,11 +84,11 @@
 </div>
 
 <!-- Modals -->
-<div class="modal fade" id="orderModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="paymentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title title" id="exampleModalLabel">order</h5>
+                <h5 class="modal-title title" id="exampleModalLabel">New Offer</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -102,7 +98,7 @@
                 <!-- @csrf -->
                 <div class="modal-body">
                     <div class="form-group">
-                        <label>Enter the Order </label>
+                        <label>Payment Mode</label>
                         <input type="text" class="form-control" placeholder="Name" name="name">
                     </div>
                     <div class="form-group">
@@ -110,8 +106,8 @@
                         <input type="text" class="form-control" placeholder="Description" name="description">
                     </div>
                     <div class="form-group">
-                        <label>Parent Order</label>
-                        <select class="form-control input-sm" name="order_id">
+                        <label>Parent Payment</label>
+                        <select class="form-control input-sm" name="Payment_id">
                             <option value="">--select--</option>
                         </select>
                     </div>
@@ -124,11 +120,6 @@
         </div>
     </div>
 </div>
-
-
-{% endblock %}
-
-{% block scripts %}
 
 
 {% endblock %}

@@ -30,29 +30,38 @@
                     <!--This is where we add our table-->
                     <!--Table begins-->
     
-                    <table class="table table-hover table-bordered table-striped">
+                    <table class="table table-striped table-hover">
     
                         <thead>
                             <tr>
                                 <th>Id</th>
-                                <th>Customer_id</th>
-                                <th>Status</th>
                                 <th>Total</th>
+                                <th>Status</th>
                                 <th>Shipping cost</th>
                                 <th>Order_number</th>
+                                <th>Customer_id</th>
                                 <th>Created At</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {% for object in order %}
+                            {% for object in object_list %}
                                <tr>
                                    <td>{{object.id}}</td>
-                                   <td>{{object.customer_id}}</td>
-                                   <th>{{object.status}}</th>
                                    <td>{{object.total}}</td>
+                                   <td id="status_{{object.id}}">{{object.status}}
+                                       {% if object.status == "Pending" %}
+
+                                     <button class="btn btn-outline-dark btn-sm" id="btn_complete_{{object.id}}" onclick="markAsComplete('{{object.id}}')" tooltiptext="Mark as complete"><i class="fa fa-check"></i> 
+                                        <span class="tooltiptext">Mark as complete</span>
+                                     </button>
+
+                                         
+                                        {% endif %}
+                                   </td>
                                    <td>{{object.shipping_cost}}</td>
                                    <td>{{object.order_number}}</td>
+                                   <td>{{object.customer_id}}</td>
                                    <td>{{object.created_at}}</td>
                                    <td>
                                        
@@ -129,6 +138,56 @@
 {% endblock %}
 
 {% block scripts %}
+<!-- 
+<script>
+ 
+ $(document).ready(function(){
+    
+
+    $.ajaxSetup({
+        headers:{
+            'X-CSRFToken': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    
+
+});
+
+function markAsComplete(order_id){
+
+
+
+$.ajax({
+    type: "POST",
+    url: "{% url 'mark_as_complete' %}",
+    dataType: "json",
+    data:{
+        'order_id':order_id,
+        
+    },
+    success:function(data){
+    //     Changes order from pending to complete
+
+    button = "#btn_complete_"+order_id
+    status = "#status_"+order_id
+    // $(button).addClass("d-none");
+    $(status).html("Completed")
+    // Notiflix.Notify.Success('order completed');
+
+    },
+    error: function(data){
+
+        console.log(data);
+        
+        // Notiflix.Notify.Failure('Something went wrong.');
+
+    }
+
+});
+}
+
+</script> -->
 
 
 {% endblock %}
