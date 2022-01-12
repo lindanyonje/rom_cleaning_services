@@ -16,7 +16,7 @@
             <div class="card-header">
                 <div class="row">
                     <h4>CUSTOMERS</h4>
-                    <a href= "" class="btn btn-info ml-auto">
+                    <a href= "{% url 'customer' %}" class="btn btn-info ml-auto">
                         All Customers<i class="fa fa-arrow-circle-right"></i>
                     </a>
                 </div>
@@ -54,7 +54,7 @@
             <div class="card-header">
                 <div class="row">
                     <h4>Last 5 Orders</h4>
-                    <a href="" class="btn btn-info ml-auto">
+                    <a href="{% url 'order_list' %}" class="btn btn-info ml-auto">
                         All Orders<i class="fa fa-arrow-circle-right"></i>
                     </a>
                 </div>
