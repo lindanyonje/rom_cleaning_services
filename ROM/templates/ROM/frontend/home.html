@@ -18,14 +18,14 @@
 
 {% block content %}
 
-<div class="container mt-1">
+<div class="container-fluid mt-1">
 
 
       <div class="row  bg-light">
 
-        <div class=" col-sm-12">
+        <div class=" col-sm-12 p-0">
 
-        <p class="text-dark text-center"> We Offer Commercial Services! <a class="text-dark" href="#">Learn More</a></p>
+         <p class="text-dark text-center"> We Offer Commercial Services! <a class="text-dark" href="#">Learn More</a></p>
 
         </div>
 
@@ -42,7 +42,7 @@
           <button class="button">GET A QUOTE</button>
           <button class="button">BOOK ONLINE</button> 
 
-          </div>
+          
 
         </div>
 
@@ -111,10 +111,15 @@
 
         <div class= "col-lg-4 col-md-4 col-sm-12 bg-light text-center">
           <h2 class="mt-5">Our Locations</h2>
-          <p>SERVING THE GREATER ATLANTA AREA <br>nit ghhyjy </p>
-          <div class="container">
+          <p>SERVING THE GREATER ATLANTA AREA <br> </p>
+
+          <div id="content" class="container-fluid">
+
             {% include 'ROM/frontend/map.html' %}
+      
           </div>
+      
+          
         </div>
         
         <div class= "col-lg-4 col-md-4 col-sm-12">
