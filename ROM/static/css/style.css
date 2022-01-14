@@ -1,6 +1,11 @@
 @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
-
-
+/* 
+.navbar{
+	text-align: center;
+}
+.ul.navbar{
+	text-align: center;
+} */
 .wrapper {
   display: flex;
   width: 100%;
@@ -68,7 +73,7 @@ a[data-toggle="collapse"] {
   display: block;
   position: absolute;
   top: 50%;
-  right: 20px;
+  right: 0px;
   transform: translateY(-50%);
 }
 
@@ -1378,4 +1383,12 @@ input{
 	0% { transform: translateX(70%);opacity: 0; }
 	56% { transform: translateX(70%);opacity: 0; }
 	71% { transform: translateX(0);opacity: 1; }
+}
+
+
+.border{
+	border-style: 2px solid;
+	border-radius: 5px;
+	position :absolute
+	
 }
