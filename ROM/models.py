@@ -97,3 +97,12 @@ class Payment(models.Model):
 
 
 
+class Quote(models.Model):
+    customer_id=models.ForeignKey('Customer',on_delete=models.CASCADE, blank=True,null=True)
+    service_id= models.ForeignKey('Service',on_delete=models.CASCADE,blank=True,null=True)  
+    start_date=models.DateTimeField()
+    end_date=models.DateTimeField()
+    created_at=models.DateTimeField(auto_now_add=True)
+    updated_at= models.DateTimeField(auto_now=True)     
+
+

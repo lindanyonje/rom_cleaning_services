@@ -12,5 +12,7 @@ admin.site.register(Order)
 admin.site.register(Payment)
 admin.site.register(GiftCard)
 admin.site.register(Offer)
+admin.site.register(Quote)
+
 
 

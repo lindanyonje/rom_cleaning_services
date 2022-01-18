@@ -209,6 +209,10 @@ def getGiftCards(request) :
 
    return render(request, 'ROM/frontend/gift_card.html') 
 
+def getQuoteForm(request) :
+
+   return render(request, 'ROM/frontend/quote_form.html')    
+
 
 class CustomerList(ListView):
 

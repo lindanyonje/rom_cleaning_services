@@ -25,6 +25,7 @@ urlpatterns=[
     path('offer_list/',views.getOfferList, name= 'offer_list'),
     path('gifts/',views.getGifts, name= 'gifts'),
     path('gift_card/',views.getGiftCards, name= 'gift_card'),
+    path('quote_form/',views.getQuoteForm, name= 'quote'),
 ]
 
 if settings.DEBUG:
