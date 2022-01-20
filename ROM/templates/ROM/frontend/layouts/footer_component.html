@@ -1,137 +1,144 @@
-<footer  class="footer mt-5 bg-dark">
 
-    
-        
+<div>
+    <a href="#" id="toTopBtn" class="cd-top text-replace js-cd-top cd-top--is-visible cd-top--fade-out" data-abc="true"></a>
 
-        
+</div>
 
-            <!-- <a href= " https://www.facebook.com">
-              <i class="fa fa-facebook-square fa-3x  text-chocolate mx-3 hover-transform"></i>
-            </a>
+<script>
+    $(document).ready(function() {
+    $(window).scroll(function() {
+    if ($(this).scrollTop() > 20) {
+    $('#toTopBtn').fadeIn();
+    } else {
+    $('#toTopBtn').fadeOut();
+    }
+    });
+
+    $('#toTopBtn').click(function() {
+    $("html, body").animate({
+    scrollTop: 0
+    }, 1000);
+    return false;
+    });
+    });
+</script>
+<footer  class="footer mt-5">
+
             
-            <a href= "https://www.twitter.com">
-                <i class="fa fa-twitter-square fa-3x  text-chocolate mx-3 hover-transform"></i>
-            </a>
-                
-            <a href= " https://www.fa-instagram.com">
-                <i class="fa fa-instagram fa-3x  text-chocolate mx-3 hover-transform"></i>{% load static %} 
-            </a>     -->
+    <div class="container-fluid bg-light">
 
-                <footer  class="footer mt-5">
+        <div class="row justify-content-center pt-2">
+
+            <div class= "col-lg-3 col-md-3 col-sm-12 mt-2 ">
+
+                <h5>LET US CLEAN YOUR MESS</h5>
+
+                <ul class="rss">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Get a quote</a></li>
+                    <li><a href="#">Book online</a></li>
+                    <li><a href="#">Gift cards</a></li>
+                    <li><a href="#">Careers</a></li>
+    
+                </ul>
+
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-12 mt-2">
                 
-                    <div class="container-fluid bg-light">
-                
-                        <div class="row justify-content-center pt-2">
-                
-                            <div class= "col-lg-3 col-md-3 col-sm-12 mt-2 ">
-                
-                                <h5>LET US CLEAN YOUR MESS</h5>
-                
-                                <ul class="rss">
-                                    <li><a href="#">Home</a></li>
-                                    <li><a href="#">Get a quote</a></li>
-                                    <li><a href="#">Book online</a></li>
-                                    <li><a href="#">Gift cards</a></li>
-                                    <li><a href="#">Careers</a></li>
+                <h5>About us</h5> 
+
+                <ul class="rss">
+                    <li><a href="#">Our Story</a></li>
+                    <li><a href="#">Our Cleaning Products</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Terms of Service
+
+                    </a></li>
                     
-                                </ul>
-                
-                            </div>
-                
-                            <div class="col-lg-3 col-md-3 col-sm-12 mt-2">
-                                
-                                <h5>About us</h5> 
-                
-                                <ul class="rss">
-                                    <li><a href="#">Our Story</a></li>
-                                    <li><a href="#">Our Cleaning Products</a></li>
-                                    <li><a href="#">FAQ</a></li>
-                                    <li><a href="#">Terms of Service
+                </ul>
 
-                                    </a></li>
-                                    
-                                </ul>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-12 mt-2 ">
+
+                <h5>GET TO KNOW US</h5>
+
                 
-                            </div>
-                
-                            <div class="col-lg-3 col-md-3 col-sm-12 mt-2 ">
-                
-                                <h5>GET TO KNOW US</h5>
-                
-                                
-                                <ul class="rss">
-                
-                                    <li><a href="#">Careers</a></li>
-                                    <li><a href="#">About Us</a></li>
-                                    <li><a href="#">Terms and Conditions</a></li>
-                                    <li><a href="#">Privacy & Cookie Notice</a></li>
+                <ul class="rss">
+
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Terms and Conditions</a></li>
+                    <li><a href="#">Privacy & Cookie Notice</a></li>
+        
+                </ul>
+
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-12 mt-2">
+
+                <h5>JOIN US</h5>
+
+                <a href= " https://www.facebook.com">
+                    <i class="fa fa-facebook-square fa-3x  text-chocolate mx-3 hover-transform"></i>
+                    </a>
+                    
+                    <a href= "https://www.twitter.com">
+                        <i class="fa fa-twitter-square fa-3x  text-chocolate mx-3 hover-transform"></i>
+                    </a>
                         
-                                </ul>
+                    <a href= " https://www.fa-instagram.com">
+                        <i class="fa fa-instagram fa-3x  text-chocolate mx-3 hover-transform"></i>
+                    </a>
+
                 
-                            </div>
+                <h5> PAYMENT METHODS & DELIVERY</h5> 
+
+                <a href= " #">
+                <i class="fa fa-cc-visa" aria-hidden="true" ></i>
+                </a>
                 
-                            <div class="col-lg-3 col-md-3 col-sm-12 mt-2">
-                
-                                <h5>JOIN US</h5>
-                
-                                <a href= " https://www.facebook.com">
-                                    <i class="fa fa-facebook-square fa-3x  text-chocolate mx-3 hover-transform"></i>
-                                  </a>
-                                  
-                                  <a href= "https://www.twitter.com">
-                                      <i class="fa fa-twitter-square fa-3x  text-chocolate mx-3 hover-transform"></i>
-                                  </a>
-                                      
-                                  <a href= " https://www.fa-instagram.com">
-                                      <i class="fa fa-instagram fa-3x  text-chocolate mx-3 hover-transform"></i>
-                                  </a>
-                
-                               
-                               <h5> PAYMENT METHODS & DELIVERY</h5> 
-                
-                               <a href= " #">
-                                <i class="fa fa-cc-visa" aria-hidden="true" ></i>
-                              </a>
-                              
-                              <a href= "#">
-                                <i class="fa fa-paypal" aria-hidden="true"></i>
-                              </a>
-                                  
-                              <a href= " #">
-                                <i class="fa fa-cc-mastercard" aria-hidden="true"></i>
-                              </a>
-                
-                              <a href= " #">
-                                <i class="fa fa-google-wallet" aria-hidden="true"></i>
-                              </a>
-                
-                
-                
-                            </div>
-                
-                            
-                            
-                        </div>
-                
-                        
-                
-                    </div>
-                
-                    <div class="container-fluid bg-light">
-                
-                
-                        <div class="row justify-content-center bg-dwhite text-dark py-1">
-                
-                            © 2021 Copyright:
-                            <a class="text-dark" >ROM, All rights reserved</a>
-                
-                        </div>
-                
-                    </div>
-                
-                
-                </footer>
-                  
+                <a href= "#">
+                <i class="fa fa-paypal" aria-hidden="true"></i>
+                </a>
+                    
+                <a href= " #">
+                <i class="fa fa-cc-mastercard" aria-hidden="true"></i>
+                </a>
+
+                <a href= " #">
+                <i class="fa fa-google-wallet" aria-hidden="true"></i>
+                </a>
+
+
+
+            </div>
+
+            
+            
+        </div>
+
+        
+
+    </div>
+
+    <div class="container-fluid bg-light">
+
+
+        <div class="row justify-content-center bg-dwhite text-dark py-1">
+
+            © 2021 Copyright:
+            <a class="text-dark" >ROM, All rights reserved</a>
+
+        </div>
+
+    </div>
+
+
+</footer>
+
+
                    
         
             
@@ -142,5 +149,5 @@
     
 
 
-   </footer>
+ 
   

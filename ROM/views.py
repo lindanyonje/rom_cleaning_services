@@ -213,6 +213,11 @@ def getQuoteForm(request) :
 
    return render(request, 'ROM/frontend/quote_form.html')    
 
+def getService(request) :
+
+   return render(request, 'ROM/frontend/service.html')    
+
+
 
 class CustomerList(ListView):
 
