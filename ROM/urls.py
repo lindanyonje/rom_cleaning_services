@@ -27,6 +27,8 @@ urlpatterns=[
     path('gift_card/',views.getGiftCards, name= 'gift_card'),
     path('quote_form/',views.getQuoteForm, name= 'quote'),
     path('services/',views.getService, name= 'services'),
+    path('quotte_form/',views.getQuote, name= 'quotte'),
+
 
 ]
 

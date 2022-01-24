@@ -215,7 +215,11 @@ def getQuoteForm(request) :
 
 def getService(request) :
 
-   return render(request, 'ROM/frontend/service.html')    
+   return render(request, 'ROM/frontend/service.html')   
+
+def getQuote(request) :
+
+   return render(request, 'ROM/frontend/quotte_form.html')       
 
 
 
