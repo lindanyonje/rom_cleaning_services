@@ -2,27 +2,26 @@
 
 
 <nav class="navbar navbar-expand-md navbar-light bg-light  text-dark my-auto mx-auto">
-    <a class="navbar-brand" href="#">ROM</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  
+    <a class="navbar-brand" href="#">ROM
+
+    </a>
+    
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="/">Home </a>
+          <a class="nav-link" href="/">HOME </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">BOOK ONLINE</a>
+          <a class="nav-link" href="{% url 'quote' %}">BOOK ONLINE</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{% url 'quote' %}">GET A QUOTE</a>
+            <a class="nav-link" href="{% url 'quotte' %}">GET A QUOTE</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{% url 'offers' %}">OFFERS</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="{% url 'services' %}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             SERVICES
           </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -37,7 +36,8 @@
           <a class="nav-link " href="#">ABOUT US</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">CONTACT </a>
+            <a class="nav-link bg-info"  data-toggle="modal" data-target="#exampleModal" data-whatever="@ROM">CONTACT US
+            </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="tel:5554280940"><i class="fa fa-phone" aria-hidden="true"></i>0725163354</a>
