@@ -19,6 +19,12 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
   
+  
+  <style>
+    body{
+        background-color: aliceblue;
+    }
+  </style>
 
   {% block css %}
 
@@ -37,8 +43,11 @@
     <!--End navigation Bar-->
 
 
+    <!-- {% include 'ROM/frontend/layouts/learn_more.html' %} -->
+
+
     <div class="container-fluid mb-5 content">
-      {% block content%}
+      {% block content %}
 
 
       {% endblock content %}
@@ -145,6 +154,20 @@
     });
 
         
+  </script>
+
+  <script>
+
+        function toggleMenu(id) {
+            console.log(id);
+            let nav = document.getElementById("main-nav");
+            if (id === 1) {
+              nav.style.left = "0%";
+            } else {
+              nav.style.left = "-100%";
+            }
+        }
+
   </script>
 
   {% block scripts %}

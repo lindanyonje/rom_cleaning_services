@@ -20,20 +20,62 @@
         <li class="nav-item">
           <a class="nav-link" href="{% url 'offers' %}">OFFERS</a>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="{% url 'services' %}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            SERVICES
+                
+        <li class="nav-item">
+          <a href="{% url 'services' %}" class="nav-link">
+            SERVICES <i class="fa fa-caret-down"></i>
           </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Regular</a>
-              <a class="dropdown-item" href="#">Commercial Services</a>
-              <a class="dropdown-item" href="#">Personalized Services</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="{% url 'gift_card' %}">Gift Cards</a>
-            </div>
+          <ul class="dp-menu level-1">
+            <li class="dp-item">
+              <a href="#!" class="dp-link">
+                Regular Service
+              </a>
+              
+            </li>
+            <li class="dp-item">
+              <a href="#!" class="dp-link">
+                Commercial Service 
+              </a>
+              
+            </li>
+            <li class="dp-item">
+              <a href="#!" class="dp-link">Personalized services</a>
+            </li>
+
+            <li class="dp-item ">
+              <a href="{% url 'gift_card' %}" class="dp-link ">Gift Cards</a>
+            </li>
+            
+          </ul>
+
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="#">ABOUT US</a>
+          <a href="#!" class="nav-link">
+            ABOUT US <i class="fa fa-caret-down"></i>
+          </a>
+          <ul class="dp-menu level-1">
+            <li class="dp-item">
+              <a href="#!" class="dp-link">
+                Reviews
+              </a>
+              
+            </li>
+            <li class="dp-item">
+              <a href="{% url 'story' %}" class="dp-link">
+                Our Story
+              </a>
+              
+            </li>
+            <li class="dp-item">
+              <a href="#!" class="dp-link">Our Cleaning Products</a>
+            </li>
+
+            <li class="dp-item ">
+              <a href="{% url 'gift_card' %}" class="dp-link ">FAQ</a>
+            </li>
+            
+          </ul>
+
         </li>
         <li class="nav-item">
             <a class="nav-link bg-info"  data-toggle="modal" data-target="#exampleModal" data-whatever="@ROM">CONTACT US

@@ -1,0 +1,194 @@
+{% extends 'ROM/frontend/layouts/master.html' %}
+
+
+{% load static %}
+
+{% load widget_tweaks %}
+
+{% block css %}
+
+<style>
+    body{
+        background-color: aliceblue;
+    }
+    .list {
+  list-style: none;
+}
+
+.list li::before {
+  content: "\2022";
+  color: #17A2B8;
+  font-weight: bold;
+  display: inline-block; 
+  width: 1em;
+  margin-left: -1em;
+}
+    </style>
+
+  {% endblock css %}
+
+{% block content %}
+
+<div class="container-fluid">
+
+  <div class="row justify-content-center mt-5">
+
+    <div class="col text-center">
+      <h1 class="text-info font-weight-bold">Services</h1>
+    <h6 class="font-weight-bold text-muted">What we offer</h1>
+    </div>
+  </div>
+
+  <div class="row justify-content-center mt-5">
+    <div class="col-lg-5 d-flex flex-column justify-content-center">
+
+      <h3 class="text-info font-weight-bold">Regular service with Eco-Friendly Maid Service includes</h3>
+      <p>
+        a surface cleaning of all areas of your homes which
+includes sanitation of counter tops, scrubbing of bathrooms
+and kitchens, vacuum/dusting, and mopping of floors.
+Our friendly and professional staff will also do light
+staging of the home for a nice fresh feeling.
+We base our regular cleanings off a weekly, bi-weekly,
+and monthly rotation and can also do as needed cleaning.
+Scheduling is quick and easy once clients have received their quote!
+      </p>
+
+    </div>
+
+    <div class="col-lg-5">
+
+      <img class="img-fluid rounded" style="object-fit: cover; height: 400px;"
+       src="https://images.unsplash.com/photo-1552242718-c5360894aecd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8aG91c2UlMjBjbGVhbmluZ3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"/>
+      
+    </div>
+  </div>
+
+  <div class="row justify-content-center mt-5">
+
+
+    <div class="col-lg-5">
+
+      <img class="img-fluid rounded" style="object-fit: cover; height: 400px;"
+       src="https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8aG91c2UlMjBjbGVhbmluZ3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"/>
+      
+    </div>
+
+    <div class="col-lg-5 d-flex flex-column justify-content-center">
+
+      <h3 class="text-info font-weight-bold">Commercial Services</h3>
+      <p>
+        a surface cleaning of all areas of your homes.These areas
+        include sanitation of counter tops, scrubbing of bathrooms
+        and kitchens, vacuum/dusting, and mopping of floors.
+        Our friendly and professional staff will also do light
+        staging of the home for a nice fresh feeling.
+        We base our regular cleanings off a weekly, bi-weekly,
+        and monthly rotation and can also do as needed cleaning.
+        Scheduling is quick and easy once clients have received their quote!
+      </p>
+
+    </div>
+  </div>
+
+  <div class="row justify-content-center mt-5">
+    <div class="col-lg-5 d-flex flex-column justify-content-center">
+
+      <h3 class="text-info font-weight-bold">Sometimes our lives get crowded.
+        Let us help you make some room!</h3>
+      <p>We are excited to announce a new offering from Eco-Friendly Maid Service:
+        Personalized Services!
+        Our team can tailor their skills to assist with all kinds of projects to make your life a little easier,
+        giving you back time to spend on the stuff that really matters.
+        We can help with things like...
+        
+        Washing and Drying Laundry
+        Organizing Closets
+        Personal Organizing
+        Dog Walking & Pet Visits
+        Grocery Shopping & Errands
+        Special Requests
+        *Personalized services are separate from regular cleaning services*
+      </p>
+
+    </div>
+
+    <div class="col-lg-5">
+
+      <img class="img-fluid rounded" style="object-fit: cover; height: 400px;"
+       src="https://media.istockphoto.com/photos/making-chores-more-joyful-picture-id1309052664?b=1&k=20&m=1309052664&s=170667a&w=0&h=z6p8JwHbEav4OZG_D3OxpMyoMPO1S9kwjhw8gcYS1S4="/>
+      
+    </div>
+  </div>
+
+  <div class="row justify-content-center mt-5">
+    <div class="col-lg-5 d-flex flex-column justify-content-center">
+
+      <div class="card">
+
+        <div class="card-body">
+
+          <h3>Need Something Custom?</h3>
+          <hr>
+
+          <form   action="">
+  
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" placeholder="Your Name">
+
+            <label for="email" class="mt-2">Email</label>
+            <input type="email" class="form-control" id="email" placeholder="email">
+           
+            <label for="subject" class="mt-2">Subject</label>
+            <textarea id="subject" name="subject" placeholder="What can we help with?" class="form-control"  style="height:200px"></textarea>
+        
+            <input type="button" class="btn btn-info btn-lg btn-block mt-3"  value="Hit Us Up">
+        
+          </form>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- <div class="col-lg-5">
+
+      <h3 class="text-info font-weight-bold">Add On Services</h3>
+      <p>Here are some awesome add on services you consider blablabla</p>
+
+      <div class="row justify-content-center">
+        <div class="col">
+          <ul class="list">
+            <li>Deep Cleaning</li>
+            <li>Deep Cleaning</li>
+            <li>Deep Cleaning</li>
+            <li>Deep Cleaning</li>
+            <li>Deep Cleaning</li>
+            <li>Deep Cleaning</li>
+            <li>Deep Cleaning</li>
+                    
+          </ul>
+        </div>
+      <div class="col">
+        <ul class="list">
+          <li>Deep Cleaning</li>
+          <li>Deep Cleaning</li>
+          <li>Deep Cleaning</li>
+          <li>Deep Cleaning</li>
+          <li>Deep Cleaning</li>
+          <li>Deep Cleaning</li>
+          <li>Deep Cleaning</li>
+                  
+        </ul>
+      </div>
+      </div>
+      
+    </div> -->
+  </div>
+</div>
+
+
+
+
+
+
+{% endblock %}

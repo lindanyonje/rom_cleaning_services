@@ -215,12 +215,15 @@ def getQuoteForm(request) :
 
 def getService(request) :
 
-   return render(request, 'ROM/frontend/service.html')   
+   return render(request, 'ROM/frontend/myservices.html')   
 
 def getQuote(request) :
 
-   return render(request, 'ROM/frontend/quotte_form.html')       
+   return render(request, 'ROM/frontend/quotte_form.html')   
 
+def getOurStory(request):
+
+   return render(request, 'ROM/frontend/Our_story.html')  
 
 
 class CustomerList(ListView):

@@ -28,6 +28,7 @@ urlpatterns=[
     path('quote_form/',views.getQuoteForm, name= 'quote'),
     path('services/',views.getService, name= 'services'),
     path('quotte_form/',views.getQuote, name= 'quotte'),
+    path('story/',views.getOurStory, name= 'story'),
 
 
 ]
