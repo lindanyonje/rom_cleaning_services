@@ -22,11 +22,16 @@
 	display: none;
   }
   .navbar {
-	position: fixed;  
+
+	position: fixed;
+	top: 0;
+	width: 100%; 
+	text-align: center;
 	list-style: none;
-	padding: 0;
+	padding: 14px 16px;
 	display: flex;
 	background-color: #77ACF1;
+
   }
   .nav .fa {
 	margin-left: 5px;
@@ -46,6 +51,21 @@
   .nav-item:hover,
   .nav-item .active {
 	background-color: #3EDBF0;
+  }
+
+  /* Responsive navigation menu - display links on top of each other instead of next to each other (for mobile devices) */
+	@media screen and (max-width: 600px) {
+		.navbar, .navbar-right {
+		float: none;
+		display: block;
+		}
+  
+	.topnav-centered a {
+	  position: relative;
+	  top: 0;
+	  left: 0;
+	  transform: none;
+	}
   }
   
   /* Dropdown Menu */
@@ -69,14 +89,7 @@
 	background-color:#77ACF1;
 	width: 150px;
   }
-  .level-2 {
-	display: none;
-	width: 200px;
-	top: 0px;
-	left: 100%;
-	font-size: 0.9rem;
-	background-color: #77ACF1;
-  }
+
   
   .nav-item:hover > .level-1 {
 	display: block;
@@ -363,7 +376,7 @@ h2 {
   outline: none;
 }
 .name .one {
-  background: orange;
+  background: #04009A;
 }
 .name,
 .name .img {
@@ -375,7 +388,7 @@ h2 {
   justify-content: center;
 }
 .rate i {
-  color: yellow;
+  color:#04009A;
 }
 .card-content {
   margin: 0;
@@ -1549,7 +1562,16 @@ input{
 
 /* footer topscroll */
 
-
+.footer {
+    
+    height: 100px;
+	left: 0;
+    bottom: 0;
+    width: 100%;
+	bottom: 0;
+	width: 100%;
+	text-align: center;
+	}
 
 .scroll {
     color: #fff;
@@ -1562,7 +1584,7 @@ input{
     right: 39px;
     z-index: 98;
     padding: 21px;
-    background-color: hsla(5, 76%, 62%, .8)
+    background-color: #3EDBF0
 }
 
 .js .cd-top--fade-out {
@@ -1849,7 +1871,7 @@ pre {
 
   #link {
     position: fixed;
-    background-color: #22a8d1;
+    background-color: #3EDBF0;
     padding: 23px 40px;
     left: -79px;
     border-radius: 25px;
