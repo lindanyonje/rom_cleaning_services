@@ -1739,7 +1739,7 @@ pre {
 	box-sizing: border-box;
   }
   
-  .body {
+  /* .body {
 	width: 100vw;
 	height: 100vh;
 	background: #322a70;
@@ -1747,7 +1747,7 @@ pre {
 	justify-content: center;
 	align-items: center;
   }
-  
+   */
   .container {
 	display: flex;
   }
