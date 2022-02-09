@@ -226,6 +226,11 @@ def getOurStory(request):
    return render(request, 'ROM/frontend/Our_story.html')  
 
 
+def getFaq(request):
+
+   return render(request, 'ROM/frontend/FAQ.html')     
+
+
 class CustomerList(ListView):
 
     login_required= True
