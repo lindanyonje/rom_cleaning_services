@@ -5,250 +5,141 @@
 
 {% block css %}
 
-  <style>
-
-   
-    .bg-image{
-
-      background-image: url("https://images.unsplash.com/photo-1527515673510-8aa78ce21f9b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGhvdXNlJTIwY2xlYW5pbmd8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60");
-      min-height: 70vh;
-      /* background: linear-gradient(0deg, rgba(255, 0, 150, 0.3), rgba(255, 0, 150, 0.3)),; */
-      background-repeat: no-repeat;
-      background-size: cover;
-      color: white;
-      font-family: Roboto;
-      font-size: 16px;
-      border-radius: 15px;
-
+<style>
+  @phone: 640px;
+@lap: 1240px;
+body{
+  margin: 0;
+  padding: 0;
+  font-family: Futura,sans-serif;
+}
+.head-banner{
+  background: url('https://media.istockphoto.com/photos/maid-working-at-a-hotel-wearing-a-protective-face-mask-while-and-picture-id1298333940?b=1&k=20&m=1298333940&s=170667a&w=0&h=ANJ6qIR5TG3VG8vPzWL99ofjqyDmdZNclCBSSqndyCw=') no-repeat center right;
+  background-size: cover;
+  height: 620px;
+  @media(min-width: @phone) and (max-width:@lap){
+      height: 400px;
+  }
+  @media(max-width: @phone){
+     height: 300px;
+  }
+}
+.story{
+ 
+  margin: 0px auto 100px;
+  opacity: 0;
+  transition: all 0.4s ease-in 0s;
+ 
+  @media(min-width: @lap){
+    padding: 0 10px;
+  }
+  @media(max-width: @lap){
+     width: 90%;
+  }
+}
+.quotes-and-bag{
+  
+  margin: -150px auto 100px;
+  font-size: 0;
+  position: relative;
+  @media(max-width: @phone){
+    width: 90%;
+    margin: 70px auto 70px;
+  }
+  @media(min-width: @phone) and (max-width:@lap){
+    width: 90%;
+    margin: 100px auto 70px;
+    &::after{
+      content: ".";
+      visibility: hidden;
+      display: block;
+      height: 0;
+      clear: both;
     }
-    .bg1-image{
-      background-image: url("https://cdn.pixabay.com/photo/2018/01/23/06/58/modern-minimalist-lounge-3100785__340.jpg");
-      /* Full height */
-      min-height: 15vh; 
-        
-        /* Center and scale the image nicely */
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
-  </style>
-  {% endblock css %}
+  }
+ 
+  }
 
+.pline{
+  columns: 3;
+  column-rule: solid 2px #3EDBF0;
+}  
+  .quotes{
+    position: relative;
+    display: inline-block;
+    vertical-align: bottom;
+    width: 60%;
+    transition: all 0.4s ease-in 0.5s;
+    opacity: 0;
+    transform: translateY(100%);
+    @media(min-width: @phone) and (max-width:@lap){
+      width: 50%;
+      float: right;
+    }
+    @media(max-width: @phone){
+      width: 80%;
+      display: block;
+      margin: 0 auto;
+    }
+  
+    
+  }
+.footer-banner{
+  background: url(https://media.istockphoto.com/photos/floor-washing-picture-id1314308369?b=1&k=20&m=1314308369&s=170667a&w=0&h=0g7bbNFlamqkct07gwNyAITlGOYMgfXz0R_nD99OaxE=) no-repeat center;
+  background-size: cover;
+  height: 620px;
+ 
+  }
+  
+  
+</style>
+
+{% endblock css %}
 
 {% block content %}
 
-<div class="container-fluid">
-    <div class="row justify-content-md-center bg-info">
-        <h3 class="text-center">GET TO KNOW US</h3>
-    </div>
-
-    <div class="row">
-        <div class="col-md-5 pl-0 ">
-            <img class="img-fluid" src="{% static 'images/dinning.jpg' %}" style="width:100%;" alt="Image">
+<div class="head-banner"></div>
+<div class="quotes-and-bag">
   
-        </div>
-  
-        <div class="col-md-7">
-  
-            <p>At ROM cleaning Service, 
-                we give a spotless and sound workplace through a blend of profoundly prepared staff and extraordinary client benefit understanding.
-                ROM cleaning Service, Inc. has been providing cleaning and grounds maintenance services to our clients since 1996. 
-                We set ourselves apart by customizing a quality control approach for each customer.<br>
-            </p>
+  <h1 style="font-size: 5rem;text-align: center;" class="font-weight-bold mt-0 ">ROM</h1>
 
-            <p> ROM cleaning Service, is committed to using the most up-to-date and most effective frameworks available to clean 
-                and purify the work environments where you spend a significant amount of your time. 
-                Using the most sophisticated Cleaning System and environmentally friendly cleaning products.<br>
-
-
-            </p>
-
-            <p> We not only provide clean homes for our clients, but we also do our share to keep the environment clean.
-                We focus on using environmentally friendly cleaning materials that are durable and easy to maintain.
-                 We are one of only a few cleaning administrations in the United States to do so.<br>
-               
-            </p>
-
-            <P>
-                We have fantastic client reviews.
-                 Our customers trust us and prescribe us to their companions and friends and family. 
-                 We make associations with our clients, producing devotion and trust.
-            </P>
-  
-        </div> 
-    </div>
-
-    
-
-        <div class= "row py-5 justify-content-md-center align-items-start" style="text-align: center; ">
-
-
-            <h2  style="letter-spacing:0.05em; text-align: center;">
-
-                <span style="font-size: 48px;"></span>
-                <span style="letter-spacing:0.05em;">OUR CORE VALUES</span>
-    
-            </h2>
-
-        
-              <p class="text-dark" >We are concerned about your family's and your home's safety.
+  <img  src="https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y2xlYW5pbmd8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60">
+  <div >
+    <div >
+             <p >We are concerned about your family's and your home's safety.
                 This drives us to ensure that our cleaners' honesty and moral conduct are never a source of concern for you.
                 
                 Furthermore, we carefully vet our cleaners to ensure we provide the right person and we have kept our prices very affordable.
               </p>
   
+    </div>
+    <h4>ROM Cleaning Services</h4>
+  </div>  
+</div>
+  <div >
+            <p class="pline">At ROM cleaning Service, 
+                we give a spotless and sound workplace through a blend of profoundly prepared staff and extraordinary client benefit understanding.<br>
+                ROM cleaning Service, Inc. has been providing cleaning and grounds maintenance services to our clients since 1996. <br>
+                We set ourselves apart by customizing a quality control approach for each customer.<br>
+                ROM cleaning Service, is committed to using the most up-to-date and most effective frameworks available to clean 
+                and purify the work environments where you spend a significant amount of your time. 
+                Using the most sophisticated Cleaning System and environmentally friendly cleaning products.<br>
+                We not only provide clean homes for our clients, but we also do our share to keep the environment clean.<br>
+                We focus on using environmentally friendly cleaning materials that are durable and easy to maintain.
+                We are one of only a few cleaning administrations in the United States to do so.<br>
+                We have fantastic client reviews.
+                Our customers trust us and prescribe us to their companions and friends and family. 
+                We make associations with our clients, producing devotion and trust.
+            </p>
 
             
-            <div class="col-lg-3">
-              <div class="icon-wrap">
-                <img 
-                src="https://cdn-icons.flaticon.com/png/128/2058/premium/2058432.png?token=exp=1643887282~hmac=6c66dd7d66bce0d1e7f7dc443212b35c"/>
-                
-
-              </div>
-              <h3>YOUR TRUST AND SECURITY IS OUR PRIORITY</h3>
-              <p class="text-dark">We are concerned about your family's and your home's safety. 
-                This drives us to ensure that our cleaners' honesty and moral conduct are never a source of concern for you.
-              </p>
-            </div>
-            
-            <div class="col-lg-3">
-              <div class="icon-wrap">
-                <img 
-                src="https://cdn-icons.flaticon.com/png/128/2058/premium/2058432.png?token=exp=1643887282~hmac=6c66dd7d66bce0d1e7f7dc443212b35c"/>
-                
-
-              </div>
-              <h3>YOUR TRUST AND SECURITY IS OUR PRIORITY</h3>
-              <p class="text-dark">We are concerned about your family's and your home's safety. 
-                This drives us to ensure that our cleaners' honesty and moral conduct are never a source of concern for you.
-              </p>
-            </div>
-
-            <div class="col-lg-3">
-              <div class="icon-wrap">
-                <img class="img-fluid " style="max-width: 100; vertical-align: middle; border: 0;" 
-                src="https://cdn-icons.flaticon.com/png/128/2058/premium/2058432.png?token=exp=1643887282~hmac=6c66dd7d66bce0d1e7f7dc443212b35c"/>
-                
-
-              </div>
-              <h3>YOUR TRUST AND SECURITY IS OUR PRIORITY</h3>
-              <p class="text-dark">We are concerned about your family's and your home's safety. 
-                This drives us to ensure that our cleaners' honesty and moral conduct are never a source of concern for you.
-              </p>
-            </div>
-
-            <div class="col-lg-3">
-              <div class="icon-wrap">
-                <img 
-                src="https://img.icons8.com/wired/2x/ffffff/security.png"/>
-                
-
-              </div>
-              <h3>YOUR TRUST AND SECURITY IS OUR PRIORITY</h3>
-              <p class="text-dark">We are concerned about your family's and your home's safety. 
-                This drives us to ensure that our cleaners' honesty and moral conduct are never a source of concern for you.
-              </p>
-            </div>
-
-      
-      </div> 
-    <div class="  bg1-image row justify-content-md-center p-0 bg-info">
-
-        <h2 class="mt-5" style="letter-spacing:0.05em; text-align: center;">
-
-            <span style="font-size: 48px;"></span>
-            <span style="letter-spacing:0.05em; text-align: center;">OUR CODE OF ETHICS</span>
-
-        </h2>
-
-    </div>
-
-    
-    <div class="row justify-content-center h-100">
-
-        
-
-        <div id="ethic1" class="col-md-4 ">
-
-            <p>
-                Your time is limited, so don't waste it living someone else's life. 
-                Don't be trapped by dogma - which is living with the results of other people's thinking. 
-                Don't let the noise of others' opinions drown out your own inner voice. 
-                And most important, have the courage to follow your heart and intuition.
-            </p>
-
-            <p>
-                Your time is limited, so don't waste it living someone else's life. 
-                Don't be trapped by dogma - which is living with the results of other people's thinking. 
-                Don't let the noise of others' opinions drown out your own inner voice. 
-                And most important, have the courage to follow your heart and intuition.
-            </p>
-
-            <p>
-                Your time is limited, so don't waste it living someone else's life. 
-                Don't be trapped by dogma - which is living with the results of other people's thinking. 
-                Don't let the noise of others' opinions drown out your own inner voice. 
-                And most important, have the courage to follow your heart and intuition.
-            </p>
+  </div>
+<div class="footer-banner">
+  <div class="text-over">
+    <img src="http://cdn.ventmere.com/ventray/sharkboro/skb_logo.png">
+    <h2>Happiness is a freshly cleaned space</h2>
+  </div>
   
-        </div>
-
-        <div id="ethic2" class="col-md-4 ">
-
-
-            <p>
-                Your time is limited, so don't waste it living someone else's life. 
-                Don't be trapped by dogma - which is living with the results of other people's thinking. 
-                Don't let the noise of others' opinions drown out your own inner voice. 
-                And most important, have the courage to follow your heart and intuition.
-            </p>
-            <p>
-                Your time is limited, so don't waste it living someone else's life. 
-                Don't be trapped by dogma - which is living with the results of other people's thinking. 
-                Don't let the noise of others' opinions drown out your own inner voice. 
-                And most important, have the courage to follow your heart and intuition.
-            </p>
-            <p>
-                Your time is limited, so don't waste it living someone else's life. 
-                Don't be trapped by dogma - which is living with the results of other people's thinking. 
-                Don't let the noise of others' opinions drown out your own inner voice. 
-                And most important, have the courage to follow your heart and intuition.
-            </p>
-  
-        </div>
-
-        <div id="ethic3" class="col-md-4 ">
-
-       
-
-            <p>
-                Your time is limited, so don't waste it living someone else's life. 
-                Don't be trapped by dogma - which is living with the results of other people's thinking. 
-                Don't let the noise of others' opinions drown out your own inner voice. 
-                And most important, have the courage to follow your heart and intuition.
-            </p>
-
-            <p>
-                Your time is limited, so don't waste it living someone else's life. 
-                Don't be trapped by dogma - which is living with the results of other people's thinking. 
-                Don't let the noise of others' opinions drown out your own inner voice. 
-                And most important, have the courage to follow your heart and intuition.
-            </p>
-
-            <p>
-                Your time is limited, so don't waste it living someone else's life. 
-                Don't be trapped by dogma - which is living with the results of other people's thinking. 
-                Don't let the noise of others' opinions drown out your own inner voice. 
-                And most important, have the courage to follow your heart and intuition.
-            </p>
-  
-        </div>
-
-    </div>
-
-
-
 </div>
 
 

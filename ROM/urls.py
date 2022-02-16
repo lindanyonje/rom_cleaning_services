@@ -30,6 +30,7 @@ urlpatterns=[
     path('quotte_form/',views.getQuote, name= 'quotte'),
     path('story/',views.getOurStory, name= 'story'),
     path('FAQ/',views.getFaq, name= 'FAQ'),
+    path('TOS/',views.getTos, name= 'TOS'),
 
 
 ]

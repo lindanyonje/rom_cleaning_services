@@ -1,13 +1,16 @@
 {% load static %}
 
 
-<nav class="navbar navbar-expand-md navbar-light py-4 text-dark mx-auto" style="background-color: #e3f2fd;">
-    <a class="navbar-brand" href="#">ROM
+
+
+<nav class="navbar navbar-expand-md navbar-light text-dark mx-auto " style="background-color: #e3f2fd; align-content: center;">
+    <a class="navbar-brand" href="#"><img src="{% static 'images/ROM.png' %}" style="border-radius: 20px;" height="70px">
 
     </a>
     
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
+    
+      <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
           <a class="nav-link" href="/">HOME </a>
         </li>
@@ -27,22 +30,22 @@
           </a>
           <ul class="dp-menu level-1">
             <li class="dp-item">
-              <a href="#!" class="dp-link">
+              <a href="{% url 'services' %}#regular" class="dp-link page-scroll">
                 Regular Service
               </a>
               
             </li>
             <li class="dp-item">
-              <a href="#!" class="dp-link">
+              <a href="{% url 'services' %}#commercial" class="dp-link page-scroll">
                 Commercial Service 
               </a>
               
             </li>
             <li class="dp-item">
-              <a href="#!" class="dp-link">Personalized services</a>
+              <a href="{% url 'services' %}#personalized" class="dp-link  page-scroll">Personalized services</a>
             </li>
 
-            <li class="dp-item ">
+            <li class="dp-item  ">
               <a href="{% url 'gift_card' %}" class="dp-link ">Gift Cards/Offers</a>
             </li>
             
@@ -71,19 +74,50 @@
             <li class="dp-item ">
               <a href="{% url 'FAQ' %}" class="dp-link ">FAQ</a>
             </li>
+
+            <li class="dp-item ">
+              <a href="{% url 'TOS' %}" class="dp-link ">Terms of Service</a>
+            </li>
             
           </ul>
+
+        
 
         </li>
         <li class="nav-item">
             <a class="nav-link "  data-toggle="modal" data-target="#exampleModal" data-whatever="@ROM">CONTACT US
             </a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" style="background: aqua;" href="tel:5554280940"><i class="fa fa-phone" aria-hidden="true"></i>CALL US NOW</a>
-        </li>
+        
 
-      </ul>
+      <!-- </ul> -->
+
+      <!-- <ul class="navbar-nav ml-auto"> -->
+        <li class="nav-item">
+          <a class=" btn btn-info btn-lg" style="border-radius: 10px !important;" href="tel:5554280940"><i class="fa fa-phone mr-2" aria-hidden="true"></i>CALL US NOW</a>
+      </li>
+        </ul>
       
     </div>
   </nav>
+
+  <script>
+        $('a.page-scroll').bind('click', function(event) {
+      var $anchor = $(this);
+      $('html, body').stop().animate({
+        scrollTop: $($anchor.attr('href')).offset().top,
+      }, 500, 'linear');
+      event.preventDefault();
+    });
+
+    var mn = $(".main-nav")
+
+    $(window).scroll(function() {
+      if( $(this).scrollTop() > 250 ) {
+        mn.addClass("main-nav-scrolled");
+      }
+        else {
+          mn.removeClass("main-nav-scrolled");
+        }
+    });
+  </script>

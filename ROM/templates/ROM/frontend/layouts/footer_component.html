@@ -16,10 +16,10 @@
                 <h5>LET US CLEAN YOUR MESS</h5>
 
                 <ul class="rss">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Get a quote</a></li>
-                    <li><a href="#">Book online</a></li>
-                    <li><a href="#">Gift cards/Offers</a></li>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="{% url 'quotte' %}">Get a quote</a></li>
+                    <li><a href="{% url 'quote' %}">Book online</a></li>
+                    <li><a href="{% url 'gift_card' %}">Gift cards/Offers</a></li>
                     <li><a href="#">Careers</a></li>
     
                 </ul>
@@ -31,10 +31,10 @@
                 <h5>About us</h5> 
 
                 <ul class="rss">
-                    <li><a href="#">Our Story</a></li>
+                    <li><a href="{% url 'gift_card' %}">Our Story</a></li>
                     <li><a href="#">Our Cleaning Products</a></li>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">Terms of Service
+                    <li><a href="{% url 'FAQ' %}">FAQ</a></li>
+                    <li><a href="{% url 'TOS' %}">Terms of Service
 
                     </a></li>
                     

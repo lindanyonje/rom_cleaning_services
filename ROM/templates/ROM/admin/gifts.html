@@ -8,7 +8,7 @@
     <div class="row my-5">
         <h5 class="text-dark">Gifts</h5>
         <button class="btn btn-dark ml-auto" data-toggle="modal"
-        data-target="#paymentModal">
+        data-target="#giftModal">
         <i class ="fa fa-plus" aria-hidden="true"> New Gifts </i>
     </button>
             
@@ -84,11 +84,11 @@
 </div>
 
 <!-- Modals -->
-<div class="modal fade" id="paymentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="giftModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title title" id="exampleModalLabel">New Offer</h5>
+                <h5 class="modal-title title" id="exampleModalLabel">New Gift</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -98,15 +98,15 @@
                 <!-- @csrf -->
                 <div class="modal-body">
                     <div class="form-group">
-                        <label>Payment Mode</label>
+                        <label>Customer</label>
                         <input type="text" class="form-control" placeholder="Name" name="name">
                     </div>
                     <div class="form-group">
-                        <label>Enter the description (optional)</label>
-                        <input type="text" class="form-control" placeholder="Description" name="description">
+                        <label>Enter Amount</label>
+                        <input type="text" class="form-control" placeholder="Amount" name="Amount">
                     </div>
                     <div class="form-group">
-                        <label>Parent Payment</label>
+                        <label>Code</label>
                         <select class="form-control input-sm" name="Payment_id">
                             <option value="">--select--</option>
                         </select>

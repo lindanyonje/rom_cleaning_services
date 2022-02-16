@@ -228,7 +228,12 @@ def getOurStory(request):
 
 def getFaq(request):
 
-   return render(request, 'ROM/frontend/FAQ.html')     
+   return render(request, 'ROM/frontend/FAQ.html')    
+
+
+def getTos(request):
+
+   return render(request, 'ROM/frontend/terms_of_service.html')        
 
 
 class CustomerList(ListView):
