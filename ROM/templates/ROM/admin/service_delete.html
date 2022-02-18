@@ -1,10 +1,10 @@
-
 {% extends 'ROM/admin/layouts/admin_master.html' %}
 
+{% load static %}
 
 {% block content %}
 
-
+<br>
 
 <div class= "row">
     <div class = "col-md-6">
@@ -12,7 +12,7 @@
 
             <p>Are you sure you want to delete "{{item}}" ?</p>
 
-            <form action="{% url 'delete_customer' item.id %}" method="POST">
+            <form action="{% url 'delete_service' item.id %}" method="POST">
 
                 {% csrf_token %}
 
@@ -30,5 +30,4 @@
 
 
 
-
-{% endblock content %}
+{% endblock %}

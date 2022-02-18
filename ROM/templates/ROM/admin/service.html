@@ -2,17 +2,10 @@
 
 {% block content %}
 
-<br>
+<div class= "container ">
 
-<div class= "container mt-3">
-
-
-       
-    <div class="row   my-5">
-        <h4 class="text-dark">Service</h4>
-            
+    <div class="row  justify-content-end my-5">
         <div class="row my-5">
-            <h5 class="text-dark">Services</h5>
             <button class="btn btn-dark ml-auto" data-toggle="modal"
                 data-target="#paymentModal">
                 <i class ="fa fa-plus" aria-hidden="true"> New Service </i>
@@ -43,19 +36,34 @@
                             <th>Customer_id</th>
                             <th>Status</th>
                             <th>Created_at</th>
-                            <!-- <th>Update</th>
-                            <th>Remove</th> -->
+                            <th>Actions</th>
+                            
 
                         </tr>
 
-                        {% for object in service %}
+                        {% for service in service %}
 
                             <tr>
 
-                                <td>{{object.category}}</td>
-                                <td>{{object.customer_id}}</td>
-                                <td>{{object.status}}</td>
-                                <td>{{object.created_at}}</td>
+                                <td>{{service.category}}</td>
+                                <td>{{service.customer_id}}</td>
+                                <td>{{service.status}}</td>
+                                <td>{{service.created_at}}</td>
+                                <td>
+                                       
+                                    <a href="{% url 'update_service' service.id %}"
+                                     class="btn btn-dark btn-sm">
+                                      <i class="fa fa-edit"></i>
+                                    </a>
+
+                                    <a href="#"
+                                    class="btn btn-danger btn-sm">
+                                     <i class="fa fa-trash"></i>
+                                   </a>
+
+                                </td>  
+                                
+                                
                             </tr>
 
                         

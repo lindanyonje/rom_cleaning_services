@@ -94,7 +94,7 @@
                     <td>{{order.status}}</td>
                     <td>{{order.created_at}}</td>
                     <td><a class="btn btn-sm btn-outline-info" href="#"><i class="fa fa-pencil" aria-hidden="true"></i>Update </a></td>
-                    <td><a class="btn btn-sm btn-outline-danger" href="#"><i class="fa fa-trash " aria-hidden="true"></i>Delete </a></td>
+                    <td><a class="btn btn-sm btn-outline-danger" href="{% url 'delete_customer' 1 %}"><i class="fa fa-trash " aria-hidden="true"></i>Delete </a></td>
                 </tr>
                 
                 {% endfor %}

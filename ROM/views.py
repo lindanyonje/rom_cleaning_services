@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from django .http import HttpResponse
 from django .forms import inlineformset_factory
 from .models import*
-from .forms import OrderForm, CustomerForm
+from .forms import OrderForm, CustomerForm,ServiceForm,PaymentForm,GiftForm
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView
@@ -95,12 +95,39 @@ def deleteCustomer(request, pk):
 
 
 
+class CreateService(CreateView):
+   model = Service
+   fields = '__all__'
+   template_name = 'ROM/admin/service_form.html'
+   success_url = '/dashboard'
+
 
 def service(request):
 
    service = Service.objects.all()
 
-   return render(request, 'ROM/admin/service.html', {'service': service})
+   context={'service': service}
+
+   return render(request, 'ROM/admin/service.html', context)
+
+
+
+def updateService(request, pk):
+
+   service = Service.objects.get(id=pk)
+   form=ServiceForm(instance=service)
+
+   if request.method == 'POST':
+  
+      form=ServiceForm(request.POST, instance=service)
+      if form.is_valid():
+         form.save()
+         return redirect('/service')
+
+   context= {'form':form}
+
+   return render(request, 'ROM/admin/service_form.html', context)   
+
 
 class CreateOrder(CreateView):
    model = Order
@@ -165,7 +192,7 @@ def deleteOrder(request, pk):
 
    context= {'item': order}
 
-   return render(request, 'ROM/admin/delete.html', context)         
+   return render(request, 'ROM/admin/order_delete.html')         
 
 
 

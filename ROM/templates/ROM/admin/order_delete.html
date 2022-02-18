@@ -1,18 +1,35 @@
 
-{% extends 'shop/admin/layouts/admin_master.html' %}
+{% extends 'ROM/admin/layouts/admin_master.html' %}
 
 
 {% block content %}
 
-<form method="post">
 
-    {% csrf_token %}
 
-    <p>Are you sure you want to delete"{{object}}"?</p>
-    
-    <input  type = "submit"  value = "confirm" class="btn btn-danger">
+<div class= "row">
+    <div class = "col-md-6">
+        <div class= " card card-body">
 
-</form>
+            <p>Are you sure you want to delete "{{order.id}}" ?</p>
+
+                        
+            <form method="post">
+
+                {% csrf_token %}
+
+                <a class= "btn btn-warning" href="{% url 'order_list' %}">Cancel</a>
+
+               
+                
+                <input  type = "submit"  value = "confirm" class="btn btn-danger">
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
 
 
 

@@ -17,12 +17,12 @@
 
             <div class="card">
                 <div class="card-header"> 
-                    <h5 class="card-title">Update Order</h5>
+                    <h5 class="card-title">Update Service</h5>
     
                 </div>
                 <div class="card-body">
     
-                    <form action="{% url 'update_order' 1%}" method="POST" enctype="multipart/form-data">
+                    <form action="{% url 'update_service' 1 %}" method="POST" enctype="multipart/form-data">
                         <!-- Security token -->
     
                         {% csrf_token %}

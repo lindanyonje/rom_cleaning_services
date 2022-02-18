@@ -61,7 +61,7 @@ class Order(models.Model):
     updated_at= models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.service_id.category
+        return self.service_id.status
 
 
 
