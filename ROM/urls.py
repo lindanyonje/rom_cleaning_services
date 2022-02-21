@@ -12,6 +12,7 @@ urlpatterns=[
 
     path('service/', views.service, name="service"),
     path('update_service/<pk>/', views.updateService, name="update_service"),
+    path('delete_service/<pk>/', views.deleteService, name="delete_service"),
 
     path('customer/', views.customer, name="customer"),
     path('customer/detail/<pk>',CustomerDetail.as_view(),name= 'Customer_detail'),
@@ -25,7 +26,7 @@ urlpatterns=[
     path('delete_order/<pk>/', views.deleteOrder, name="delete_order"),
 
 
-    path('payment/',views.Payment, name= 'payment'),
+    path('payment/',views.getPayment, name= 'payment'),
 
     path('review/',views.review, name= 'review'),
 

@@ -2,39 +2,57 @@
 
 {% load static %}
 
-{% block content %}
+{% load widget_tweaks %}
 
 <br>
 
-<div class= "row ">
 
-    <div class = "col-md-6">
+{% block content %}
 
-        <div class= " card card-body bg-light">
+<div class="container">
 
-                    
-            <form action="" method="POST">
+    <div class="row justify justify-content-center my-5">
 
-                {% csrf_token %}
+        <div class="col-lg-8">
 
-                  {{form}}
+            <div class="card">
+                <div class="card-header"> 
+                    <h5 class="card-title">Update Customer</h5>
+    
+                </div>
+                <div class="card-body">
+    
+                    <form action="{% url 'update_customer' 1 %}" method="POST" enctype="multipart/form-data">
+                        <!-- Security token -->
+    
+                        {% csrf_token %}
+    
+                        <!-- Using the formset -->
+    
+                        {% for field in form.visible_fields %}
+    
+                        <div class="form-group">
+                            {{field.label_tag}}
+                            {% render_field field class="form-control" %}
 
-                <hr>
+                        </div>
 
+                        {% endfor %}
 
-                <input type= "submit" name="submit">
-
-            </form>
-
-
+                        <button type="submit" class="btn btn-dark">Submit</button>
+    
+                        
+                    </form>
+    
+                </div>
+            </div>
+            
 
         </div>
+
     </div>
+
 </div>
-
-
-
-
 
 
 {% endblock %}

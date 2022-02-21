@@ -33,8 +33,8 @@
                         <tr>
 
                             <th>Category</th>
-                            <th>Customer_id</th>
-                            <th>Status</th>
+                            <th>Customer</th>
+                            <th>Rating</th>
                             <th>Created_at</th>
                             <th>Actions</th>
                             
@@ -47,7 +47,7 @@
 
                                 <td>{{service.category}}</td>
                                 <td>{{service.customer_id}}</td>
-                                <td>{{service.status}}</td>
+                                <td>{{service.rating}}</td>
                                 <td>{{service.created_at}}</td>
                                 <td>
                                        
@@ -56,7 +56,7 @@
                                       <i class="fa fa-edit"></i>
                                     </a>
 
-                                    <a href="#"
+                                    <a href="{% url 'delete_service' service.id %}"
                                     class="btn btn-danger btn-sm">
                                      <i class="fa fa-trash"></i>
                                    </a>

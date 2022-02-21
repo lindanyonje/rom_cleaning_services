@@ -7,12 +7,9 @@
 
     <div class="row justify content-end my-5">
             
-        <button class="btn btn-dark ml-auto" data-toggle="modal"data-target="#offerModal">
-            
-            <a href="#" class="btn btn-dark ml-auto" >
-                <i class ="fa fa-plus" aria-hidden="true"> New Offer </i>
-            </a>
-        </button>
+        <a href="#" class="btn btn-dark ml-auto" >
+            <i class ="fa fa-plus" aria-hidden="true"> New Offer </i>
+        </a>
             
     </div>
 
@@ -37,20 +34,18 @@
                         <thead>
                             <tr>
                                 <th>Id</th>
-                                <th>Order_id</th>
+                                <th>Service</th>
                                 <th>Amount</th>
-                                <th>Invoice</th>
                                 <th>Created At</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {% for object in object_list %}
+                            {% for object in offers %}
                                <tr>
                                    <td>{{object.id}}</td>
-                                   <td>{{object.order_id}}</td>
-                                   <td>{{object.amount}}</td>
-                                   <td>{{object.invoice_number}}</td>
+                                   <td>{{object.service_id.category}}</td>
+                                   <td>{{object.offer_amount}}</td>
                                    <td>{{object.created_at}}</td>
                                    <td>
                                        

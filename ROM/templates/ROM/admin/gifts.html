@@ -6,7 +6,7 @@
     
 
     <div class="row my-5">
-        <h5 class="text-dark">Gifts</h5>
+       
         <button class="btn btn-dark ml-auto" data-toggle="modal"
         data-target="#giftModal">
         <i class ="fa fa-plus" aria-hidden="true"> New Gifts </i>
@@ -35,20 +35,20 @@
                         <thead>
                             <tr>
                                 <th>Id</th>
-                                <th>Order_id</th>
+                                <th>Service Id</th>
                                 <th>Amount</th>
-                                <th>Invoice</th>
+                                <th>Code</th>
                                 <th>Created At</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {% for object in object_list %}
+                            {% for object in gifts %}
                                <tr>
                                    <td>{{object.id}}</td>
-                                   <td>{{object.order_id}}</td>
-                                   <td>{{object.amount}}</td>
-                                   <td>{{object.invoice_number}}</td>
+                                   <td>{{object.service_id.category}}</td>
+                                   <td>{{object.giftcard_amount}}</td>
+                                   <td>{{object.code}}</td>
                                    <td>{{object.created_at}}</td>
                                    <td>
                                        

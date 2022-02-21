@@ -1,3 +1,4 @@
+from unicodedata import category
 from django.shortcuts import render,redirect
 from django .http import HttpResponse
 from django .forms import inlineformset_factory
@@ -24,6 +25,14 @@ def adminDashboard(request):
 
    total_customers = customers.count()
 
+   payment = Payment.objects.all()
+
+   service= Service.objects.all()
+
+   offers= Offer.objects.all()
+
+   gifts= GiftCard.objects.all()
+
    total_orders = orders.count()
 
    completed = orders.filter(status='completed').count()
@@ -31,7 +40,7 @@ def adminDashboard(request):
    pending = orders.filter(status='pending').count()
 
    context = {'orders': orders, 'customers': customers, 'total_orders': total_orders, 
-   'completed': completed, 'pending':pending }
+   'completed': completed, 'pending':pending, 'payment':payment, 'service':service, 'offers':offers, 'gifts':gifts }
 
     ##Declaring a dictionary used to package the data we shall
     ##send to the frontend html template for display.
@@ -73,11 +82,13 @@ def updateCustomer(request, pk):
       form=CustomerForm(request.POST, instance=customer)
       if form.is_valid():
          form.save()
-         return redirect('/dashboard')
+         return redirect('/customer')
 
    context= {'form':form}
 
    return render(request, 'ROM/admin/customer_form.html', context)   
+
+ 
 
 
 def deleteCustomer(request, pk):
@@ -86,11 +97,11 @@ def deleteCustomer(request, pk):
 
    if request.method == 'POST':
       customer.delete()
-      return redirect('/dashboard')
+      return redirect('/customer')
 
    context= {'item': customer}
 
-   return render(request, 'ROM/admin/delete.html', context)         
+   return render(request, 'ROM/admin/customer_delete.html', context)         
 
 
 
@@ -127,6 +138,26 @@ def updateService(request, pk):
    context= {'form':form}
 
    return render(request, 'ROM/admin/service_form.html', context)   
+
+
+
+
+
+def deleteService(request, pk):
+
+   service= Service.objects.get(id=pk)
+   
+
+   if request.method == 'POST':
+      service.delete()
+      return redirect('/service')
+
+   context= {'item': service}
+
+   return render(request, 'ROM/admin/service_delete.html', context)         
+
+
+
 
 
 class CreateOrder(CreateView):
@@ -192,7 +223,7 @@ def deleteOrder(request, pk):
 
    context= {'item': order}
 
-   return render(request, 'ROM/admin/order_delete.html')         
+   return render(request, 'ROM/admin/order_delete.html', context)         
 
 
 
@@ -214,23 +245,27 @@ def review(request):
 
 
 
-def Payment(request):
+def getPayment(request):
+   payment= Payment.objects.all()
 
-   return render(request, 'ROM/admin/payment.html')   
+   return render(request, 'ROM/admin/payment.html', {'payment':payment})   
 
 
 def getOfferList(request):
+   offers= Offer.objects.all()
 
-   return render(request, 'ROM/admin/offer_list.html')     
+   return render(request, 'ROM/admin/offer_list.html', {'offers': offers})     
 
 def getOffers(request):
+   
 
    return render(request, 'ROM/frontend/offer.html')     
 
 
 def getGifts(request):
+   gifts= GiftCard.objects.all()
 
-   return render(request, 'ROM/admin/gifts.html') 
+   return render(request, 'ROM/admin/gifts.html', {'gifts':gifts}) 
 
 def getGiftCards(request) :
 

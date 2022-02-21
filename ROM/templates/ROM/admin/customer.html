@@ -10,9 +10,9 @@
         <div class= "card card-body">
             <h5>Customer: </h5>
             <hr>
-            <a class= "btn btn-outline-info btn-sm btn-block" href="#">Update Customer</a>
+            <a class= "btn btn-outline-info btn-sm btn-block" href="{% url 'update_customer' 1 %}">Update Customer</a>
             <a class= "btn btn-outline-info btn-sm btn-block" href="#">New Order</a>
-            <a class= "btn btn-outline-danger btn-sm btn-block" href="#">Delete Customer</a>
+            <a class= "btn btn-outline-danger btn-sm btn-block" href="{% url 'delete_customer' 1 %}">Delete Customer</a>
             
         </div>
 
@@ -25,6 +25,7 @@
         <div class= "card card-body">
             <h5>Contact Information  </h5>
             <hr>
+            
             <p>Name: {{customer.name}}</p>
             <p>Email: {{customer.email}}</p>
             <p>Phone: {{customer.phone_number}}</p>
@@ -77,27 +78,38 @@
         </div>
         <div class="card card-body">
             <table class= "table table-hover table-bordered table-striped">
-                <tr>
-                    <th>customer</th>
-                    <th>service</th>
-                    <th>Status</th>
-                    <th>Date ordered</th>
-                    <th>Update</th>
-                    <th>Remove</th>
-                </tr>
+                <thead>
 
-                {% for order in orders %}
+                    <tr>
+                        <th>customer</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Date ordered</th>
+                        <th>Update</th>
+                        <th>Remove</th>
+                    </tr>
 
-                <tr>
-                    <td>{{order.customer_id}}</td>
-                    <td>{{order.service_id}}</td>
-                    <td>{{order.status}}</td>
-                    <td>{{order.created_at}}</td>
-                    <td><a class="btn btn-sm btn-outline-info" href="#"><i class="fa fa-pencil" aria-hidden="true"></i>Update </a></td>
-                    <td><a class="btn btn-sm btn-outline-danger" href="{% url 'delete_customer' 1 %}"><i class="fa fa-trash " aria-hidden="true"></i>Delete </a></td>
-                </tr>
-                
-                {% endfor %}
+                </thead>
+
+                <tbody>
+
+                            
+                        {% for customer in customers %}
+
+                        <tr>
+                            <td>{{customer.name}}</td>
+                            <td>{{customer.email}}</td>
+                            <td>{{customer.phone_number}}</td>
+                            <td>{{customer.created_at}}</td>
+                            <td><a class="btn btn-sm btn-outline-info" href="{% url 'update_customer' customer.id %}"><i class="fa fa-pencil" aria-hidden="true"></i>Update </a></td>
+                            <td><a class="btn btn-sm btn-outline-danger" href="{% url 'delete_customer' customer.id %}"><i class="fa fa-trash " aria-hidden="true"></i>Delete </a></td>
+                        </tr>
+                    
+                    {% endfor %}
+
+                </tbody>
+               
+
             </table>
         </div>
     </div>

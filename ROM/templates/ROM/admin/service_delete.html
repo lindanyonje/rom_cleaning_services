@@ -10,13 +10,13 @@
     <div class = "col-md-6">
         <div class= " card card-body">
 
-            <p>Are you sure you want to delete "{{item}}" ?</p>
+            <p>Are you sure you want to delete "{{item.id}}" ?</p>
 
             <form action="{% url 'delete_service' item.id %}" method="POST">
 
                 {% csrf_token %}
 
-                <a class= "btn btn-warning" href="{% url 'dashboard' %}">Cancel</a>
+                <a class= "btn btn-warning" href="{% url 'service' %}">Cancel</a>
 
                 <input class= "btn btn-danger" type= "submit" name= "Confirm">
 

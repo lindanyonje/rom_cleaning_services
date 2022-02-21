@@ -16,7 +16,7 @@
 
     <div class="row justify-content-center my-5">
 
-        <div class="col-lg-8">
+        <div class="col-lg-12">
 
             <div class="card">
 
@@ -37,26 +37,24 @@
                                 <th>Id</th>
                                 <th>Order_id</th>
                                 <th>Amount</th>
-                                <th>Invoice</th>
                                 <th>Created At</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {% for object in object_list %}
+                            {% for payment in payment %}
                                <tr>
-                                   <td>{{object.id}}</td>
-                                   <td>{{object.order_id}}</td>
-                                   <td>{{object.amount}}</td>
-                                   <td>{{object.invoice_number}}</td>
-                                   <td>{{object.created_at}}</td>
+                                   <td>{{payment.id}}</td>
+                                   <td>{{payment.order_id}}</td>
+                                   <td>{{payment.amount}}</td>
+                                   <td>{{payment.created_at}}</td>
                                    <td>
                                        
-                                       <a href="{% url 'payment_update' object.id %}"
+                                       <a href="#"
                                         class="btn btn-dark btn-sm">
                                          <i class="fa fa-edit"></i>
                                        </a>
-                                       <a href="{% url 'Payment_delete' object.id %}"
+                                       <a href="#"
                                         class="btn btn-danger btn-sm">
                                          <i class="fa fa-trash"></i>
                                        </a>
@@ -108,7 +106,10 @@
                     <div class="form-group">
                         <label>Parent Payment</label>
                         <select class="form-control input-sm" name="Payment_id">
-                            <option value="">--select--</option>
+                            <option value="Mpesa">Mpesa</option>
+                            <option value="Cash app">Cash app</option>
+                            <option value="paypal"> paypal</option>
+                            <option value="credit card"> credit card</option>
                         </select>
                     </div>
                 </div>

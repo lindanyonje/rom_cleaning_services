@@ -61,12 +61,12 @@ class Order(models.Model):
     updated_at= models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.service_id.status
+        return self.status
 
 
 
 class GiftCard(models.Model):
-    customer_id=models.ForeignKey('Customer',on_delete=models.CASCADE,blank=True,null=True)
+    service_id=models.ForeignKey('Service',on_delete=models.CASCADE,blank=True,null=True)
     giftcard_amount=models.IntegerField(null=False, blank=False) 
     code=models.CharField(max_length=50, null=False, blank=True)
     start_date=models.DateTimeField()
