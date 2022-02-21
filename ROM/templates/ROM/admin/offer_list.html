@@ -49,11 +49,11 @@
                                    <td>{{object.created_at}}</td>
                                    <td>
                                        
-                                       <a href="#"
+                                       <a href="{% url 'update_offer' object.id %}"
                                         class="btn btn-dark btn-sm">
                                          <i class="fa fa-edit"></i>
                                        </a>
-                                       <a href="#"
+                                       <a href="{% url 'delete_offer' object.id %}"
                                         class="btn btn-danger btn-sm">
                                          <i class="fa fa-trash"></i>
                                        </a>

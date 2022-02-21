@@ -35,7 +35,8 @@
                         <thead>
                             <tr>
                                 <th>Id</th>
-                                <th>Order_id</th>
+                                <th>Customer</th>
+                                <th>status</th>
                                 <th>Amount</th>
                                 <th>Created At</th>
                                 <th>Actions</th>
@@ -45,16 +46,17 @@
                             {% for payment in payment %}
                                <tr>
                                    <td>{{payment.id}}</td>
+                                   <td>{{payment.customer_id}}</td>
                                    <td>{{payment.order_id}}</td>
                                    <td>{{payment.amount}}</td>
                                    <td>{{payment.created_at}}</td>
                                    <td>
                                        
-                                       <a href="#"
+                                       <a href="{% url 'update_payment' payment.id %}"
                                         class="btn btn-dark btn-sm">
                                          <i class="fa fa-edit"></i>
                                        </a>
-                                       <a href="#"
+                                       <a href="{% url 'delete_payment' payment.id %}"
                                         class="btn btn-danger btn-sm">
                                          <i class="fa fa-trash"></i>
                                        </a>

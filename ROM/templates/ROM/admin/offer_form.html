@@ -17,12 +17,12 @@
 
             <div class="card">
                 <div class="card-header"> 
-                    <h5 class="card-title">Update Payment</h5>
+                    <h5 class="card-title">Update Offer</h5>
     
                 </div>
                 <div class="card-body">
     
-                    <form action="{% url 'update_payment' 1 %}" method="POST" enctype="multipart/form-data">
+                    <form action="{% url 'update_offer' 1 %}" method="POST" enctype="multipart/form-data">
                         <!-- Security token -->
     
                         {% csrf_token %}
@@ -40,6 +40,7 @@
                         {% endfor %}
 
                         <button type="submit" class="btn btn-dark">Submit</button>
+                        <a class= "btn btn-danger" href="{% url 'offer_list' %}">Cancel</a>
     
                         
                     </form>

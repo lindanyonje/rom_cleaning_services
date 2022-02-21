@@ -3,7 +3,7 @@ from django.shortcuts import render,redirect
 from django .http import HttpResponse
 from django .forms import inlineformset_factory
 from .models import*
-from .forms import OrderForm, CustomerForm,ServiceForm,PaymentForm,GiftForm
+from .forms import OfferForm, OrderForm, CustomerForm,ServiceForm,PaymentForm,GiftForm
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView
@@ -251,21 +251,119 @@ def getPayment(request):
    return render(request, 'ROM/admin/payment.html', {'payment':payment})   
 
 
+def updatePayment(request, pk):
+
+   payment= Payment.objects.get(id=pk)
+   form= PaymentForm(instance=payment)
+
+   if request.method == 'POST':
+  
+      form=OrderForm(request.POST, instance=payment)
+      if form.is_valid():
+         form.save()
+         return redirect('/payment')
+
+   context= {'form':form}
+
+   return render(request, 'ROM/admin/payment_form.html', context)         
+
+
+
+def deletePayment(request, pk):
+
+   payment= Payment.objects.get(id=pk)
+
+   if request.method == 'POST':
+      payment.delete()
+      return redirect('/payment')
+
+   context= {'item': payment}
+
+   return render(request, 'ROM/admin/payment_delete.html', context)     
+
+
 def getOfferList(request):
    offers= Offer.objects.all()
 
-   return render(request, 'ROM/admin/offer_list.html', {'offers': offers})     
+   return render(request, 'ROM/admin/offer_list.html', {'offers': offers})    
+
+
+
+
+def updateOffer(request, pk):
+
+   offer= Offer.objects.get(id=pk)
+   form= OfferForm(instance=offer)
+
+   if request.method == 'POST':
+  
+      form=OfferForm(request.POST, instance=offer)
+      if form.is_valid():
+         form.save()
+         return redirect('/offers')
+
+   context= {'form':form}
+
+   return render(request, 'ROM/admin/offer_form.html', context)         
+
+
+
+def deleteOffer(request, pk):
+
+   offer= Offer.objects.get(id=pk)
+
+   if request.method == 'POST':
+      offer.delete()
+      return redirect('/gift')
+
+   context= {'item': offer}
+
+   return render(request, 'ROM/admin/offer_delete.html', context)     
+
 
 def getOffers(request):
    
 
-   return render(request, 'ROM/frontend/offer.html')     
+   return render(request, 'ROM/frontend/offer.html')    
 
 
 def getGifts(request):
    gifts= GiftCard.objects.all()
 
    return render(request, 'ROM/admin/gifts.html', {'gifts':gifts}) 
+
+
+def updateGift(request, pk):
+
+   gift= GiftCard.objects.get(id=pk)
+   form= GiftForm(instance=gift)
+
+   if request.method == 'POST':
+  
+      form=OrderForm(request.POST, instance=gift)
+      if form.is_valid():
+         form.save()
+         return redirect('/gift')
+
+   context= {'form':form}
+
+   return render(request, 'ROM/admin/gift_form.html', context)         
+
+
+
+def deleteGift(request, pk):
+
+   gift= GiftCard.objects.get(id=pk)
+
+   if request.method == 'POST':
+      gift.delete()
+      return redirect('/gift')
+
+   context= {'item': gift}
+
+   return render(request, 'ROM/admin/gift_delete.html', context)     
+
+
 
 def getGiftCards(request) :
 

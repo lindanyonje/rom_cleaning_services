@@ -85,6 +85,7 @@ class Offer(models.Model):
 
 
 class Payment(models.Model):
+    customer_id= models.ForeignKey('Customer',on_delete=models.CASCADE,blank=True,null=True)
     order_id= models.ForeignKey('Order',on_delete=models.CASCADE,blank=True,null=True)
     amount=models.FloatField(null= True, blank= True)
     description=models.TextField(null=True, blank=True)
