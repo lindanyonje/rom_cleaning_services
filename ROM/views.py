@@ -1,3 +1,4 @@
+from multiprocessing import context
 from unicodedata import category
 from django.shortcuts import render,redirect
 from django .http import HttpResponse
@@ -14,7 +15,13 @@ from .filters import OrderFilter
 
 def home(request):
 
-   return render(request, 'ROM/frontend/home.html')
+   reviews = Review.objects.all()
+
+   context = {
+      'reviews' : reviews
+   }
+
+   return render(request, 'ROM/frontend/home.html', context)
 
 
 def adminDashboard(request):
@@ -229,19 +236,30 @@ def deleteOrder(request, pk):
 
 def review(request):
 
-   orders= Order.objects.all()
-   
-   customers= Customer.objects.all()
+   reviews= Review.objects.all()
 
-   total_orders = orders.count()
-
-   completed = orders.filter(status='Completed').count()
-
-   context = {'orders': orders, 'customers': customers, 'total_orders': total_orders, 
-   'completed': completed}
+   context = {
+      'reviews' : reviews
+   }
 
 
-   return render(request, 'ROM/admin/review.html', context)      
+   return render(request, 'ROM/admin/review.html', context)   
+
+
+def deletereview(request, pk):
+
+   review= Review.objects.get(id=pk)
+
+   if request.method == 'POST':
+      review.delete()
+      return redirect('/review')
+
+   context= {'item': review}
+
+   return render(request, 'ROM/admin/review_delete.html', context)     
+
+
+     
 
 
 
@@ -314,7 +332,7 @@ def deleteOffer(request, pk):
 
    if request.method == 'POST':
       offer.delete()
-      return redirect('/gift')
+      return redirect('/offers')
 
    context= {'item': offer}
 

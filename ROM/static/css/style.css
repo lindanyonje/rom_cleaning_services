@@ -10,6 +10,7 @@
 	box-sizing: border-box;
   }
   
+
   .container {
 	max-width: 80%;
 	margin: 0 auto;
@@ -23,7 +24,7 @@
   }
   .navbar {
 
-	position: fixed;
+	position:fixed;
 	top: 0;
 	width: 100%; 
 	text-align: center;
@@ -31,11 +32,11 @@
 	padding: 14px 16px;
 	display:flex;
 	background-color: #77ACF1;
+  justify-content: space-between;
+
  
-  
-
-
   }
+  
   .nav .fa {
 	margin-left: 5px;
   }

@@ -53,15 +53,18 @@
 </div>
     
     
-    <div class="cards">
-      <div class="card">
+    <div class="cards d-flex flex-column w-100">
+      
+      {% for review in reviews %}
+
+      <div class="card w-100">
         <div class="card-top">
           <div class="name">
             <div class="img one" alt="">NF</div>
-             <p>Full Name</p>
+             <p>{{review.customer_id.name}}</p>
              
           </div>
-          <div class="rate">
+          <div class="rate">            
             <i class="fa fa-star"></i>
             <i class="fa fa-star"></i>
             <i class="fa fa-star"></i>
@@ -71,12 +74,11 @@
         </div>
         
         <div class="card-content">
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem consequuntur, 
-            impedit ullam provident deserunt repellendus fuga totam exercitationem minima molestias?</p>
+          <p>{{review.review}}</p>
         </div>
         
         <div class="card-action">
-          <span>13 Feb, 2021</span>
+          <span>{{review.created_at}}</span>
           <button class="btn">
             <i class="fa fa-share-alt" aria-hidden="true"></i>
             Share
@@ -85,44 +87,20 @@
             <i class="fa fa-trash-o" aria-hidden="true"></i>
             Delete
           </button>
+
+          <!-- <button id = "remove" onclick="myFunction()"> <i class="fa fa-trash-o" aria-hidden="true"></i>Delete</button> -->
         </div>
         
       </div>
-       <div class="card">
-        <div class="card-top">
-          <div class="name">
-            <div class="img">FN</div>
-             <p>Full Name</p>
-             
-          </div>
-          <div class="rate">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star-half"></i>
-          </div>
-        </div>
-        
-        <div class="card-content">
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem consequuntur, 
-            impedit ullam provident deserunt repellendus fuga totam exercitationem minima molestias?</p>
-        </div>
-        
-        <div class="card-action">
-          <span>13 Feb, 2021</span>
-          <button class="btn">
-            <i class="fa fa-share-alt" aria-hidden="true"></i>
-            Share
-          </button>
-          <button class="btn">
-            <i class="fa fa-trash-o" aria-hidden="true"></i>
-            Delete
-          </button>
-        </div>
-        
-      </div>
+      {% endfor %}
     </div>
   </div>
 
 {% endblock %}
+
+<!-- 
+<script>
+  function myFunction() {
+    document.getElementById("remove").remove ();
+  }
+</script> -->

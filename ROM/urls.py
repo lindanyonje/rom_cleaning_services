@@ -33,6 +33,7 @@ urlpatterns=[
 
 
     path('review/',views.review, name= 'review'),
+    path('delete_review/<pk>/', views.deletereview, name="delete_review"),
 
     path('offer/',views.getOffers, name= 'offers'),
     path('update_offer/<pk>/', views.updateOffer, name="update_offer"),
