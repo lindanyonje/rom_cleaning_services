@@ -3,7 +3,7 @@
 
 
 
-<nav class="navbar navbar-expand-md navbar-light text-dark mx-auto " style="background-color: #e3f2fd; align-content: center;">
+<nav class="navbar navbar-expand-md navbar-light text-dark mx-auto " style="background-color: #e3f2fd; align-content: center;" id="box">
     <a class="navbar-brand" href="#"><img src="{% static 'images/ROM.png' %}" style="border-radius: 20px;" height="70px">
 
     </a>
@@ -58,7 +58,7 @@
           </a>
           <ul class="dp-menu level-1">
             <li class="dp-item">
-              <a href="#!" class="dp-link">
+              <a href="{% url 'home' %}#review" class="dp-link">
                 Reviews
               </a>
             </li>

@@ -253,3 +253,156 @@
 
 
 {% endblock %}
+
+
+<!-- reviews -->
+
+
+<div class="row justify-content-center mt-5  h-100">
+
+  <div class="col-md-3 d-flex flex-column justify-content-center">
+
+    <figure class="bg-light pl-1 p-4" style="border-left: .35rem solid #5cb0de; border-top: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+      <i class="fa fa-quote-left fa-2x mb-4" style="color: #5cb0de;"></i>
+      <blockquote class="blockquote pb-2">
+        <p>
+          Your time is limited, so don't waste it living someone else's life. 
+          Don't be trapped by dogma - which is living with the results of other people's thinking. 
+          Don't let the noise of others' opinions drown out your own inner voice. 
+          And most important, have the courage to follow your heart and intuition.
+        </p>
+      </blockquote>
+      <figcaption class="blockquote-footer mb-0">
+        {{customer.name}}
+      </figcaption>
+    </figure>
+
+  </div>
+
+
+  <div class="col-md-3 d-flex flex-column justify-content-center ">
+
+    <figure class="bg-light pl-1 p-4" style="border-left: .35rem solid #5cb0de; border-top: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+      <i class="fa fa-quote-left fa-2x mb-4" style="color: #5cb0de;"></i>
+      <blockquote class="blockquote pb-2">
+        <p>
+          Your time is limited, so don't waste it living someone else's life. 
+          Don't be trapped by dogma - which is living with the results of other people's thinking. 
+          Don't let the noise of others' opinions drown out your own inner voice. 
+          And most important, have the courage to follow your heart and intuition.
+        </p>
+      </blockquote>
+      <figcaption class="blockquote-footer mb-0">
+        Travis
+      </figcaption>
+    </figure>
+
+  </div>
+
+
+
+  <div class="col-md-3 d-flex flex-column justify-content-center ">
+
+    <figure class="bg-light pl-1 p-4" style="border-left: .35rem solid #5cb0de; border-top: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+      <i class="fa fa-quote-left fa-2x mb-4" style="color: #5cb0de;"></i>
+      <blockquote class="blockquote pb-2">
+        <p>
+          Your time is limited, so don't waste it living someone else's life. 
+          Don't be trapped by dogma - which is living with the results of other people's thinking. 
+          Don't let the noise of others' opinions drown out your own inner voice. 
+          And most important, have the courage to follow your heart and intuition.
+        </p>
+      </blockquote>
+      <figcaption class="blockquote-footer mb-0">
+        {{customer.name}} 
+      </figcaption>
+    </figure>
+
+  </div>
+</div>
+
+      <div class="row justify-content-center mt-5  h-100">
+
+        <div class="col-md-3 d-flex flex-column justify-content-center">
+  
+          <figure class="bg-light pl-1 p-4" style="border-left: .35rem solid #5cb0de; border-top: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+            <i class="fa fa-quote-left fa-2x mb-4" style="color: #5cb0de;"></i>
+            <blockquote class="blockquote pb-2">
+              <p>
+                Your time is limited, so don't waste it living someone else's life. 
+                Don't be trapped by dogma - which is living with the results of other people's thinking. 
+                Don't let the noise of others' opinions drown out your own inner voice. 
+                And most important, have the courage to follow your heart and intuition.
+              </p>
+            </blockquote>
+            <figcaption class="blockquote-footer mb-0">
+              {{customer.name}}
+            </figcaption>
+          </figure>
+  
+        </div>
+
+
+        <div class="col-md-3 d-flex flex-column justify-content-center ">
+  
+          <figure class="bg-light pl-1 p-4" style="border-left: .35rem solid #5cb0de; border-top: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+            <i class="fa fa-quote-left fa-2x mb-4" style="color: #5cb0de;"></i>
+            <blockquote class="blockquote pb-2">
+              <p>
+                Your time is limited, so don't waste it living someone else's life. 
+                Don't be trapped by dogma - which is living with the results of other people's thinking. 
+                Don't let the noise of others' opinions drown out your own inner voice. 
+                And most important, have the courage to follow your heart and intuition.
+              </p>
+            </blockquote>
+            <figcaption class="blockquote-footer mb-0">
+              Travis
+            </figcaption>
+          </figure>
+  
+        </div>
+
+
+
+        <div class="col-md-3 d-flex flex-column justify-content-center ">
+  
+          <figure class="bg-light pl-1 p-4" style="border-left: .35rem solid #5cb0de; border-top: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+            <i class="fa fa-quote-left fa-2x mb-4" style="color: #5cb0de;"></i>
+            <blockquote class="blockquote pb-2">
+              <p>
+                Your time is limited, so don't waste it living someone else's life. 
+                Don't be trapped by dogma - which is living with the results of other people's thinking. 
+                Don't let the noise of others' opinions drown out your own inner voice. 
+                And most important, have the courage to follow your heart and intuition.
+              </p>
+            </blockquote>
+            <figcaption class="blockquote-footer mb-0">
+              {{customer.name}} 
+            </figcaption>
+          </figure>
+  
+        </div>
+      </div>
+
+
+
+      <div class="success-box">
+        <div class="clearfix"></div>
+      
+        <div class="text-message"><span>Thanks! You rated this 3 stars.</span></div>
+        <div class="clearfix"></div>
+      </div>
+
+      <div class="success-box">
+        <div class="clearfix"></div>
+      
+        <div class="text-message"><span>Thanks! You rated this 4 stars.</span></div>
+        <div class="clearfix"></div>
+      </div>
+
+      <div class="success-box">
+        <div class="clearfix"></div>
+      
+        <div class="text-message"><span>Thanks! You rated this 5 stars.</span></div>
+        <div class="clearfix"></div>
+      </div>
