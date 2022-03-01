@@ -13,6 +13,7 @@ admin.site.register(Payment)
 admin.site.register(GiftCard)
 admin.site.register(Offer)
 admin.site.register(Quote)
+admin.site.register(Inquiry)
 
 
 

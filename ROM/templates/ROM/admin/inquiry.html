@@ -1,0 +1,56 @@
+{% extends 'ROM/admin/layouts/admin_master.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="review-container">
+    
+    
+    
+    <div class="cards d-flex flex-column w-100">
+      
+      {% for inquiry in inquirys %}
+
+      <div class="card w-100">
+        <div class="card-top">
+          <div class="name">
+            <div class="img one" alt="">NF</div>
+             <p>{{inquiry.name}}</p>
+            
+          </div>
+         
+        </div>
+        
+        <div class="card-content">
+          <p>{{inquiry.inquiry}}</p>
+        </div>
+        
+        <div class="card-action">
+          <span>{{inquiry.created_at}}</span>
+          <button class="btn">
+            <i class="fa fa-share-alt" aria-hidden="true"></i>
+            Share
+          </button>
+          <button class="btn">
+            <i class="fa fa-trash-o" aria-hidden="true"></i>
+            Delete
+          </button>
+
+          <!-- <button id = "remove" onclick="myFunction()"> <i class="fa fa-trash-o" aria-hidden="true"></i>Delete</button> -->
+        </div>
+        
+      </div>
+      
+      {% endfor %}
+    </div>
+  </div>
+
+{% endblock %}
+
+<!-- 
+<script>
+  function myFunction() {
+    document.getElementById("remove").remove ();
+  }
+</script> -->

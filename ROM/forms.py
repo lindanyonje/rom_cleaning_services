@@ -1,6 +1,6 @@
 from django.forms import ModelForm
 
-from .models import GiftCard, Order,Customer,Service,Payment,GiftCard, Offer
+from .models import GiftCard, Order,Customer,Service,Payment,GiftCard, Offer, Inquiry
 
 class OrderForm(ModelForm):
     class Meta:
@@ -34,4 +34,8 @@ class OfferForm(ModelForm):
         fields= '__all__'
 
         
-                                              
+class InquiryForm(ModelForm):
+
+    class Meta:
+        model = Inquiry
+        fields= '__all__'                                           

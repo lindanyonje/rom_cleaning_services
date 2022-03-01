@@ -55,6 +55,50 @@ def adminDashboard(request):
    return render(request, 'ROM/admin/dashboard.html', context)
 
 
+class CreateInquiry(CreateView):
+   model = Inquiry
+   fields = '__all__'
+   template_name = 'ROM/admin/inquiry.html'
+   success_url = '/dashboard'
+
+
+def inquiry(request):
+   
+   inquiry = Inquiry.objects.all()
+  
+
+   context = {
+      'inquiry' : inquiry
+   }
+
+
+   return render(request, 'ROM/admin/inquiry.html', context)        
+
+
+
+def createInquiry(request, pk):
+
+   inquiry = Inquiry.objects.all()
+  
+
+   InquiryFormSet = inlineformset_factory(Customer, Order, fields=('customer_id','service_id','status'), extra=5)
+
+   formset=  InquiryFormSet(queryset=Order.objects.none(),instance=customer)
+   # form= OrderForm(initial={'customer': customer})
+   if request.method == 'POST':
+      # print('POST:',request.POST)
+      # form=OrderForm(request.POST)   
+      formset=  InquiryFormSet(request.POST, instance=customer)
+      if formset.is_valid():
+         formset.save()
+         return redirect('/dashboard')
+
+   context= {'formset':formset}
+
+   return render(request, 'ROM/admin/inquiry_form.html', context)      
+
+
+
 class CreateCustomer(CreateView):
    model = Customer
    fields = '__all__'
