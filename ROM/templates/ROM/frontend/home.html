@@ -208,7 +208,7 @@ transition: all 0.5s ease 0s;
 .item .icon {
 font-size: 40px;
 margin-bottom:25px;
-color: #3EDBF0;   
+color: #17a2b8;   
 width: 90px;
 height: 90px;
 line-height: 96px;
@@ -316,7 +316,10 @@ border-radius: 30px;
 .box{
     z-index: index -2;
   }
+
 </style>
+
+<link rel="stylesheet" href="{% static 'css/testimonial.css' %}">
 {% endblock css %}
 
 
@@ -427,9 +430,13 @@ border-radius: 30px;
   
 
       <div class="row justify-content-center  ">
-        <div class= "col-lg-6  d-flex flex-column justify-content-center" >
-          <h2 class="mt-5 text-center">Our Service Area</h2>
-          <!-- <p class="text-center">SERVING THE GREATER ATLANTA AREA <br> </p> -->
+
+        <div class="col-lg-12 section-head">
+          <h4 class="text-center"><span>Our Service</span> Areas</h4>
+          <p class="text-center">Serving the great Atlanta area <br> </p>
+        </div>
+        <div class= "col-lg-6  d-flex flex-column text-center justify-content-center" >
+            
 
           <div id="content" class="container-fluid">
 
@@ -439,34 +446,39 @@ border-radius: 30px;
     
         </div>
 
-        <div class="col-lg-5  d-flex flex-column justify-content-center">
+        <div class="col-lg-3  d-flex flex-column justify-content-center">
+          <h5 class="mt-5 text-center">Address</h2>
+            <p class="text-center">SERVING THE GREATER ATLANTA AREA <br> </p>
+            <p class="text-center">110 laver De ave. Unit G&I,</p>
+            <p class="text-center">Atlanta, GA 30306</p>
 
-          <h2 class="mt-5 text-center">Our Locations</h2>
-          <p class="text-center">SERVING THE GREATER ATLANTA AREA <br> </p>
-          <p class="text-center">110 laver De ave. Unit G&I,</p>
-          <p class="text-center">Atlanta, GA 30306</p>
+            <a href="tel:600.765.3459" class="text-center btn btn-outline-info border-0"><i class="fa fa-phone fa-lg mr-2"></i>600.765.3459</a>
 
-          <br>
+          </div>
+        <div class="col-lg-3  d-flex flex-column justify-content-center">
+
+          
+
+          <h5 class="mt-5 text-center">Working Times</h2>
 
           <p class="text-center">Open Monday through Saturday </p>
           <p class="text-center">8:30 AM - 5:30 PM</p>
 
           <br>
 
-          <p class="text-center">600.765.3459</p>
 
           <div class="row justify-content-md-center">
 
             <a href= " https://www.facebook.com">
-              <i class="fa fa-facebook-square fa-3x  mx-3 hover-transform"></i>
+              <i class="fa fa-facebook-square fa-2x  mx-3 hover-transform"></i>
             </a>
               
             <a href= "https://www.twitter.com">
-                <i class="fa fa-twitter-square fa-3x  mx-3 hover-transform"></i>
+                <i class="fa fa-twitter-square fa-2x  mx-3 hover-transform"></i>
             </a>
                   
             <a href= " https://www.fa-instagram.com">
-                <i class="fa fa-instagram fa-3x   mx-3 hover-transform"></i>
+                <i class="fa fa-instagram fa-2x   mx-3 hover-transform"></i>
             </a>
   
 
@@ -480,55 +492,44 @@ border-radius: 30px;
         
 
       <!-- Testimonials -->
-      
-      <div class="row">
 
-        <div class="row justify-content-md-center">
-          <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#form" data-whatever="@Review"> Add Review</button>
-          
-        </div>
-
-
-          <div class="owl-carousel" id="review">
-
-            {% for review in reviews %}
-  
-            <a href="#" class="h-100">
-              <div class="card h-100 d-flex flex-column">
-  
-                <div class="card-body h-100">
-    
-                  <div class="card-top">
-                    <div class="name">
-                      <div class="img one" alt=""><i class="fa fa-user text-light"></i></div>
-                       <p>{{review.customer_id.name}}</p>
-                       
-                    </div>
-                    <div class="rate">            
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star"></i>
-                      <i class="fa fa-star-half"></i>
-                    </div>
-                  </div>
-                  
-                  <div class="card-content h-100">
-                    <p>{{review.review}}</p>
-                  </div>
-                </div>
-              </div>
-            </a>
-            {% endfor %}
-
-        
-            
-          </div>
+      <div class="col-lg-12 section-head mt-5">
+        <h4 class="text-center"><span>Our</span> Reviews</h4>
+        <p class="text-center">Hear what our customers have to say <br> </p>
 
       </div>
+    
+
+      <div class="row">
+        <div class="col-md-12">
+          <div id="testimonial-slider" class="owl-carousel">
+
+            {% for review in reviews %}
+            <div class="testimonial">
+              <div class="pic">
+                <img src="h">
+              </div>
+              <p class="description">
+                {{review.review}}
+              </p>
+              <p class="description">
+                {{review.customer_id}}
+              </p>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      
+      <button type="button" class="btn btn-info ml-auto" data-toggle="modal" data-target="#form" data-whatever="@Review"> Add Review</button>
+
 
       
  
+      <div class="col-lg-12 section-head mt-5">
+        <h4 class="text-center"><span>Send us a</span> message</h4>
+        <p class="text-center">Make inquiries and comments here<br> </p>
+      </div>
     
   
       <div class="row justify-content-center mt-0">
@@ -541,27 +542,42 @@ border-radius: 30px;
 
         <div class= "col-lg-5 d-flex flex-column justify-content-center">
 
-          <div class="card card-body">
+          <div class="card  border-0">
 
-            <form action="#">
-          
-              
-              <label for="fname">First Name</label>
-              <input type="text" id="fname" name="firstname" class="form-control"  placeholder="Your name..">
+            <div class="card-body">
 
-              <label for="lname">Last Name</label>
-              <input type="text" id="lname" name="lastname" class="form-control"  placeholder="Your last name..">
+              <form action="{% url 'create.inquiry' %}" method="post">
+
+                {% csrf_token %}
+                <h4 class="mb-4 mt-2 text-center">Talk to us. Here to serve you :)</h4>
+
+                <div class="form-group">
+                  <label for="fname">Full Name</label>
+                  <input required type="text" id="fname" name="firstname" class="form-control"  placeholder="Your name..">
+                </div>
+
+                <div class="form-group">
+                  <label for="lname">Phone Number</label>
+                  <input type="number" id="lname" name="phone_number" class="form-control"  placeholder="Your phone number..">
+                </div>
+
+                <div class="form-group">
+                  <label for="email">Email address:</label>
+                  <input required type="email" name="email" class="form-control" id="email" placeholder="email">
+                </div>
+
+                <div class="form-group">
+
+                  <label for="subject">Subject</label>
+                  <textarea required id="subject" name="subject" placeholder="Message" class="form-control"  style="height:200px"></textarea>
+
+                </div>
+            
+                <button type="submit" class="btn btn-info btn-lg btn-block w-50 mx-auto">Submit</button>
+            
+              </form>
   
-              <label for="email">Email address:</label>
-              <input type="email" class="form-control" id="email" placeholder="email">
-             
-              <label for="subject">Subject</label>
-              <textarea id="subject" name="subject" placeholder="Message" class="form-control"  style="height:200px"></textarea>
-          
-              <input type="button" class="btn btn-info btn-lg btn-block"  value="Submit">
-          
-            </form>
-
+            </div>
           </div>
           
         </div>
@@ -576,7 +592,6 @@ border-radius: 30px;
 
 <!-- review modal -->
 
-<button type="button" class="btn btn-info" data-toggle="modal" data-target="#form" data-whatever="@Review"> Add Review</button>
 
 <div class="modal fade" id="form" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -631,7 +646,7 @@ border-radius: 30px;
 
 
 
-                <form action="{% url 'inquiry' %}" method="POST">
+                <form action="{% url 'create.inquiry' %}" method="POST">
                           
                             <input type="text" id="fname" name="firstname" class="form-control"  placeholder="Full Nmaes">
               
@@ -664,5 +679,25 @@ border-radius: 30px;
 <!-- end review modal -->
 
 
+
+{% endblock %}
+
+{% block scripts %}
+
+<script>
+  $(document).ready(function() {
+    $("#testimonial-slider").owlCarousel({
+      items: 2,
+      itemsDesktop: [1000, 2],
+      itemsDesktopSmall: [990, 2],
+      itemsTablet: [768, 1],
+      pagination: true,
+      navigation: false,
+      navigationText: ["", ""],
+      slideSpeed: 1000,
+      autoPlay: true
+    });
+  });
+</script>
 
 {% endblock %}

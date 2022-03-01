@@ -4,11 +4,10 @@
 
 {% block content %}
 
-<div class="review-container">
-    <h2>Reviews</h2>
+<div class="container">
     <div class= "row mt-4">
         
-        <div class= "col-md-3">
+        <!-- <div class= "col-md-3">
             
                 <div class= "card-header">
                     <h5 class="card-title">Rating</h5>
@@ -50,50 +49,57 @@
             <h5 class="card-title"></h5>
         </div>
     
-</div>
-    
-    
-    <div class="cards d-flex flex-column w-100">
-      
-      {% for review in reviews %}
-
-      <div class="card w-100">
-        <div class="card-top">
-          <div class="name">
-            <div class="img one" alt="">NF</div>
-             <p>{{review.customer_id.name}}</p>
-             
-          </div>
-          <div class="rate">            
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-          </div>
-        </div>
-        
-        <div class="card-content">
-          <p>{{review.review}}</p>
-        </div>
-        
-        <div class="card-action">
-          <span>{{review.created_at}}</span>
-          <button class="btn">
-            <i class="fa fa-share-alt" aria-hidden="true"></i>
-            Share
-          </button>
-          <button class="btn">
-            <i class="fa fa-trash-o" aria-hidden="true"></i>
-            Delete
-          </button>
-
-          <!-- <button id = "remove" onclick="myFunction()"> <i class="fa fa-trash-o" aria-hidden="true"></i>Delete</button> -->
-        </div>
-        
       </div>
-      {% endfor %}
-    </div>
+     -->
+     <div class="col-lg-12">
+      <h2>Reviews</h2>
+
+      <div class="cards d-flex flex-column w-100">
+        
+        {% for review in reviews %}
+  
+        <div class="card w-100">
+          <div class="card-top">
+            <div class="name">
+              <div class="img one text-light" alt=""><i class="fa fa-user"></i></div>
+               <h6 class="font-weight-bold">{{review.customer_id.name}}</p>
+               
+            </div>
+            <div class="rate">            
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+            </div>
+          </div>
+          
+          <div class="card-content">
+            <h6>{{review.review}}</p>
+          </div>
+          
+          <div class="card-action">
+            <span>{{review.created_at}}</span>
+            
+            <div class="d-flex flex-row">
+              <button class="btn btn-outline-info btn-sm">
+                <i class="fa fa-trash-o" aria-hidden="true"></i>
+                Delete
+              </button>
+
+              <button class="btn btn-info btn-sm mx-2">
+                <i class="fa fa-share-alt" aria-hidden="true"></i>
+                Share
+              </button>
+            </div>
+  
+            <!-- <button id = "remove" onclick="myFunction()"> <i class="fa fa-trash-o" aria-hidden="true"></i>Delete</button> -->
+          </div>
+          
+        </div>
+        {% endfor %}
+      </div>
+     </div>
   </div>
 
 {% endblock %}

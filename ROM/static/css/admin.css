@@ -196,11 +196,12 @@
 }
 #sidebar .sidebar-header {
   padding: 20px;
-  background: #7abecc;
+  /* background: #7abecc; */
 }
 #sidebar ul.components {
   padding: 20px 0;
-  border-bottom: 1px solid #47748b;
+  border-bottom: 2px solid #f9fdff;
+  border-radius: 2px;
 }
 #sidebar ul p {
   color: #fff;
@@ -216,8 +217,8 @@
   background: #fff;
 }
 #sidebar ul li.active > a, a[aria-expanded="true"] {
-  color: #fff;
-  background: #7abecc;
+  color: #7abecc;
+  background: white;
 }
 ul ul a {
   font-size: 0.9em !important;
@@ -395,7 +396,7 @@ h2 {
 .cards .card {
   width: 100%;
   margin-bottom: 0.7rem;
-  background: rgb(45, 43, 64);
+  /* background: rgb(45, 43, 64); */
   border-radius: 5px;
 }
 .card > * {
@@ -416,7 +417,7 @@ h2 {
   outline: none;
 }
 .name .one {
-  background: #04009A;
+  background: #7abecc;
 }
 .name,
 .name .img {
@@ -428,7 +429,7 @@ h2 {
   justify-content: center;
 }
 .rate i {
-  color:#04009A;
+  color: orange;
 }
 .card-content {
   margin: 0;
@@ -447,7 +448,7 @@ h2 {
   font-size: 0.8rem;
   color: RGB(101, 101, 114);
 }
-.card-action .btn {
+/* .card-action .btn {
   padding: 0.3rem 0.7rem;
   background: transparent;
   border: 1px solid #000;
@@ -459,7 +460,7 @@ h2 {
 .btn:hover {
   background: lightgray;
   color: #fff;
-}
+} */
 
 @media screen and (max-width: 750px) {
   body {

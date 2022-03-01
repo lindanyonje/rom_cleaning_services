@@ -38,7 +38,7 @@ class Inquiry(models.Model):
     name=models.CharField(max_length=100, null=False, blank=False)
     email=models.CharField(max_length=100, null=False, blank=False)
     phone_number=models.IntegerField(null= True, blank= True)
-    message =models.TextField(null=False, blank=False, default='Typehere...')
+    message=models.TextField(null=False, blank=False)
     created_at=models.DateTimeField(auto_now_add=True)
     
     def __str__(self):

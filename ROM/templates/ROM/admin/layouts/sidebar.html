@@ -1,40 +1,42 @@
 <nav id="sidebar">
     
-    <div class="sidebar-header ">
-        <h3>ROM</h3>
+    <div class="sidebar-header py-5 bg-light text-info">
+        <h3 class="text-center mb-0">
+            <a href="/" class="font-weight-bold ">ROM</a>
+        </h3>
     </div>
 
-    <ul class="list-unstyled components">
+    <ul class="list-unstyled components mt-0 pt-0">
 
-        <li>
+        <li class="{% if 'dashboard' in request.path %} active {% endif %}">
             <a href="{% url 'dashboard' %}"><i class="fa fa-tachometer mr-2"></i>Dashboard</a>
         </li>
-        <li>
+        <li class="{% if 'messages' in request.path %} active {% endif %}">
             <a href="{% url 'inquiry' %}"><i class="fa fa-comments-o mr-2"></i>Inbox</a>
         </li>
-        <li>
+        <li class="{% if 'service' in request.path %} active {% endif %}">
             <a href="{% url 'service' %}"><i class="fa fa-tag mr-2"></i>Service</a>
         </li>
-        <li>
+        <li class="{% if 'customer' in request.path %} active {% endif %}">
             <a href="{% url 'customer' %}"><i class="fa fa-users mr-2"></i>Customers</a>
         </li>
         
-        <li>
+        <li class="{% if 'payment' in request.path %} active {% endif %}">
             <a href="{% url 'payment' %}"><i class="fa fa-credit-card-alt mr-2"></i>Payments</a>
         </li>
         
-        <li>
+        <li class="{% if 'gifts' in request.path %} active {% endif %}">
             <a href="{% url 'gifts' %}"><i class="fa fa-gift mr-2"></i>GiftCard</a>
         </li> 
 
-        <li>
+        <li class="{% if 'offer_list' in request.path %} active {% endif %}">
             <a href="{% url 'offer_list' %}"><i class="fa fa-flash mr-2"></i>Offers</a>
         </li>
         
-        <li>
+        <li class="{% if 'orders' in request.path %} active {% endif %}">
             <a href="{% url 'order_list'  %}"><i class="fa fa-bars mr-2"></i>Orders</a>
         </li>
-        <li>
+        <li class="{% if 'review' in request.path %} active {% endif %}">
             <a href="{% url 'review' %}"><i class="fa fa-users mr-2"></i>Reviews</a>
         </li>
        

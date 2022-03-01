@@ -1,3 +1,4 @@
+from email import message
 from multiprocessing import context
 from unicodedata import category
 from django.shortcuts import render,redirect
@@ -68,7 +69,7 @@ def inquiry(request):
   
 
    context = {
-      'inquiry' : inquiry
+      'inquiries' : inquiry
    }
 
 
@@ -76,26 +77,25 @@ def inquiry(request):
 
 
 
-def createInquiry(request, pk):
+def createInquiry(request):
 
-   inquiry = Inquiry.objects.all()
-  
+   f_name = request.POST.get("firstname")
+   number = request.POST.get("phone_number")
+   email = request.POST.get("email")
+   subject = request.POST.get("subject")
 
-   InquiryFormSet = inlineformset_factory(Customer, Order, fields=('customer_id','service_id','status'), extra=5)
+   Inquiry.objects.create(
+      name = f_name,
+      email = email,
+      phone_number = number,
+      message = subject
+   )
 
-   formset=  InquiryFormSet(queryset=Order.objects.none(),instance=customer)
-   # form= OrderForm(initial={'customer': customer})
-   if request.method == 'POST':
-      # print('POST:',request.POST)
-      # form=OrderForm(request.POST)   
-      formset=  InquiryFormSet(request.POST, instance=customer)
-      if formset.is_valid():
-         formset.save()
-         return redirect('/dashboard')
+   context = {
+      
+   }
 
-   context= {'formset':formset}
-
-   return render(request, 'ROM/admin/inquiry_form.html', context)      
+   return render(request, 'ROM/frontend/inquiry_success.html', context)      
 
 
 
@@ -220,9 +220,9 @@ class CreateOrder(CreateView):
 
 def getOrders(request):
 
-   order = Order.objects.all()
+   orders = Order.objects.all()
 
-   return render(request, 'ROM/admin/order.html', {'order': order})
+   return render(request, 'ROM/admin/order.html', {'orders': orders})
 
 
 def createOrder(request, pk):

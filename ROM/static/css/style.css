@@ -433,7 +433,7 @@ h2 {
   justify-content: center;
 }
 .rate i {
-  color:#04009A;
+  color:orange;
 }
 .card-content {
   margin: 0;
@@ -970,11 +970,6 @@ pre {
 	background-color: #3EDBF0;
 }
 
-/* star rating */
-
-.rate{
-  background-color: #FFCC36;
-}
 
 
 
