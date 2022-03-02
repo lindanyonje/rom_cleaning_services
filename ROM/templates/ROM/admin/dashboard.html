@@ -54,19 +54,17 @@
         <br>
         <div class="card">
 
-            <div class="card-header">
-                <div class="row">
-                    <h4>Last 5 Orders</h4>
+
+            <div class= "card-body">
+
+                <div class="d-flex flex-row mb-3 ">
+                    <h4>Orders</h4>
                     <a href="{% url 'order_list' %}" class="btn btn-info ml-auto">
                         All Orders <i class="fa fa-arrow-circle-right ml-2"></i>
                     </a>
                 </div>
-            </div>
-            <!--card header ends-->
-
-            <div class= "card-body">
            
-                <table class="table table-hover table-bordered table-striped">
+                <table class="table table-hover table-responsive-sm table-striped">
 
                     <thead>
 
@@ -118,59 +116,81 @@
 
     <div class="col-lg-5 ">
 
-        <div class=" card card-header">
+        <div class="card">
 
-            <h4 class="card-title">All Services</h4>
+            <div class="card-body">
+
+                <div class="d-flex flex-row mb-3">
+                    <h4 class="card-title">All Services</h4>
+                    <a href= "{% url 'service' %}" class="btn btn-info ml-auto">
+                        All Services<i class="fa fa-arrow-circle-right ml-2"></i>
+                    </a>
+                </div>
+
+                
+    
+                <table  class="table table-hover table-responsive-sm table-striped">
+
+                    <thead>
+
+                        <tr>
+    
+                            <th>Category</th>
+                            <th>Customer</th>
+                            <th>Rating</th>
+                            <th>Created_at</th>
+                            <th>Actions</th>
+                            
+        
+                        </tr>
+
+                    </thead>
+    
+                  
+    
+                    {% for service in service %}
+
+                    <tbody>
+
+                        <tr>
+    
+                            <td>{{service.category}}</td>
+                            <td>{{service.customer_id}}</td>
+                            <td>{{service.rating}}</td>
+                            <td>{{service.created_at}}</td>
+                            <td>
+                                   
+                                <a href="{% url 'update_service' service.id %}"
+                                 class="btn btn-dark btn-sm">
+                                  <i class="fa fa-edit"></i>
+                                </a>
+    
+                                <a href="{% url 'delete_service' service.id %}"
+                                class="btn btn-danger btn-sm">
+                                 <i class="fa fa-trash"></i>
+                               </a>
+    
+                            </td>  
+                            
+                            
+                        </tr>
+
+                        
+
+                    </tbody>
+    
+                     
+                    {% endfor %}
+    
+                </table>
+    
+            </div>
+
+          
 
         </div>
 
-        <div class="card card-body d-flex">
-
-            <table  class="table table-hover table-bordered table-striped">
-
-                <tr>
-
-                    <th>Category</th>
-                    <th>Customer</th>
-                    <th>Rating</th>
-                    <th>Created_at</th>
-                    <th>Actions</th>
-                    
-
-                </tr>
-
-                {% for service in service %}
-
-                    <tr>
-
-                        <td>{{service.category}}</td>
-                        <td>{{service.customer_id}}</td>
-                        <td>{{service.rating}}</td>
-                        <td>{{service.created_at}}</td>
-                        <td>
-                               
-                            <a href="{% url 'update_service' service.id %}"
-                             class="btn btn-dark btn-sm">
-                              <i class="fa fa-edit"></i>
-                            </a>
-
-                            <a href="{% url 'delete_service' service.id %}"
-                            class="btn btn-danger btn-sm">
-                             <i class="fa fa-trash"></i>
-                           </a>
-
-                        </td>  
-                        
-                        
-                    </tr>
-
-                
-                
-                {% endfor %}
-
-            </table>
-
-        </div>
+        
 
     </div>
 
@@ -178,21 +198,18 @@
 
         <div class="card">
 
-            <div class="card-header">
-                <div class="row">
-                    <h4>Recent Payments</h4>
-                    <a href="{% url 'payment' %}" class="btn btn-info ml-auto">
-                        All Payments<i class="fa fa-arrow-circle-right"></i>
-                    </a>
-                </div>
-            </div>
-            <!--card header ends-->
-
             <!--card body starts-->
 
             <div class="card-body">
 
-                <table class="table table-hover table-bordered table-striped">
+                <div class="d-flex flex-row mb-3">
+                    <h4>Recent Payments</h4>
+                    <a href="{% url 'payment' %}" class="btn btn-info ml-auto">
+                        All Payments<i class="fa fa-arrow-circle-right ml-2"></i>
+                    </a>
+                </div>
+
+                <table class="table table-hover table-responsive-sm  table-striped">
                     <thead>
                         <tr>
                             <th>Id</th>
@@ -244,17 +261,19 @@
 
         <div class="card">
 
-            <div class="card-header">
-                <h4 class="card-title">All Offers</h4>
-    
-            </div>
-
             <div class="card-body">
+
+                <div class="d-flex flex-row mb-3">
+                    <h4> Offers</h4>
+                    <a href="{% url 'offers' %}" class="btn btn-info ml-auto">
+                        All Offers<i class="fa fa-arrow-circle-right ml-2"></i>
+                    </a>
+                </div>
 
                 <!--This is where we add our table-->
                 <!--Table begins-->
 
-                <table class="table table-hover table-bordered table-striped">
+                <table class="table table-hover table-responsive-sm  table-striped">
 
                     <thead>
                         <tr>
@@ -303,17 +322,19 @@
 
         <div class="card">
 
-            <div class="card-header">
-                <h4 class="card-title">All Gifts</h4>
-    
-            </div>
-
             <div class="card-body">
+
+                <div class="d-flex flex-row mb-3">
+                    <h4> Gifts</h4>
+                    <a href="{% url 'gifts' %}" class="btn btn-info ml-auto">
+                        All Gifts<i class="fa fa-arrow-circle-right ml-2"></i>
+                    </a>
+                </div>
 
                 <!--This is where we add our table-->
                 <!--Table begins-->
 
-                <table class="table table-hover table-bordered table-striped">
+                <table class="table table-hover table-responsive-sm  table-striped">
 
                     <thead>
                         <tr>
