@@ -34,6 +34,7 @@ urlpatterns=[
 
     path('review/',views.review, name= 'review'),
     path('delete_review/<pk>/', views.deletereview, name="delete_review"),
+    path('create/review/',views.createReview, name= "create.review"),
 
     path('messages/',views.inquiry, name= 'inquiry'),
     path('create/inquiry/',views.createInquiry, name= 'create.inquiry'),

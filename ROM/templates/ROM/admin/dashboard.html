@@ -139,7 +139,8 @@
                             <th>Customer</th>
                             <th>Rating</th>
                             <th>Created_at</th>
-                            <th>Actions</th>
+                            <th>Update</th>
+                            <th>Delete</th>
                             
         
                         </tr>
@@ -158,19 +159,8 @@
                             <td>{{service.customer_id}}</td>
                             <td>{{service.rating}}</td>
                             <td>{{service.created_at}}</td>
-                            <td>
-                                   
-                                <a href="{% url 'update_service' service.id %}"
-                                 class="btn btn-dark btn-sm">
-                                  <i class="fa fa-edit"></i>
-                                </a>
-    
-                                <a href="{% url 'delete_service' service.id %}"
-                                class="btn btn-danger btn-sm">
-                                 <i class="fa fa-trash"></i>
-                               </a>
-    
-                            </td>  
+                            <td><a class="btn btn-sm btn-outline-info" href="{% url 'update_service' service.id %}"><i class="fa fa-pencil" aria-hidden="true"></i>Update </a></td>
+                            <td><a class="btn btn-sm btn-outline-danger" href="{% url 'delete_service' service.id %}"><i class="fa fa-trash " aria-hidden="true"></i>Delete</a></td>
                             
                             
                         </tr>
@@ -216,7 +206,8 @@
                             <th>Order_id</th>
                             <th>Amount</th>
                             <th>Created At</th>
-                            <th>Actions</th>
+                            <th>Update</th>
+                            <th>Delete</th>
                         </tr>
                     </thead>
 
@@ -229,14 +220,9 @@
                                     <td>{{payment.order_id}}</td>
                                     <td>{{payment.amount}}</td>
                                     <td>{{payment.created_at}}</td>
-                                    <td>
-                                        <a href="{% url 'update_payment' payment.id %}" class="btn btn-dark btn-sm">
-                                            <i class="fa fa-edit"></i>
-                                        </a>
-                                        <a href="{% url 'delete_payment' payment.id %}" class="btn btn-danger btn-sm">
-                                            <i class="fa fa-trash"></i>
-                                        </a>
-                                    </td>
+                                    <td><a class="btn btn-sm btn-outline-info" href="{% url 'update_payment' payment.id %}"><i class="fa fa-pencil" aria-hidden="true"></i>Update </a></td>
+                                    <td><a class="btn btn-sm btn-outline-danger" href="{% url 'delete_payment' payment.id %}"><i class="fa fa-trash " aria-hidden="true"></i>Delete</a></td>
+                                   
                                     
                                 </tr>
                         
@@ -281,7 +267,8 @@
                             <th>Service</th>
                             <th>Amount</th>
                             <th>Created At</th>
-                            <th>Actions</th>
+                            <th>Update</th>
+                            <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -291,18 +278,9 @@
                                <td>{{object.service_id.category}}</td>
                                <td>{{object.offer_amount}}</td>
                                <td>{{object.created_at}}</td>
-                               <td>
-                                   
-                                   <a href="{% url 'update_offer' object.id %}"
-                                    class="btn btn-dark btn-sm">
-                                     <i class="fa fa-edit"></i>
-                                   </a>
-                                   <a href="{% url 'delete_offer' object.id %}"
-                                    class="btn btn-danger btn-sm">
-                                     <i class="fa fa-trash"></i>
-                                   </a>
-
-                               </td>  
+                               <td><a class="btn btn-sm btn-outline-info" href="{% url 'update_offer' object.id %}"><i class="fa fa-pencil" aria-hidden="true"></i>Update </a></td>
+                               <td><a class="btn btn-sm btn-outline-danger" href="{% url 'delete_offer' object.id %}"><i class="fa fa-trash " aria-hidden="true"></i>Delete</a></td>
+                               
                            </tr>
                         {% endfor %}   
                     </tbody>
@@ -343,7 +321,8 @@
                             <th>Amount</th>
                             <th>Code</th>
                             <th>Created At</th>
-                            <th>Actions</th>
+                            <th>Update</th>
+                            <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -354,18 +333,9 @@
                                <td>{{object.giftcard_amount}}</td>
                                <td>{{object.code}}</td>
                                <td>{{object.created_at}}</td>
-                               <td>
-                                   
-                                   <a href="{% url 'update_gift' object.id %}"
-                                    class="btn btn-dark btn-sm">
-                                     <i class="fa fa-edit"></i>
-                                   </a>
-                                   <a href="{% url 'delete_gift' object.id %}"
-                                    class="btn btn-danger btn-sm">
-                                     <i class="fa fa-trash"></i>
-                                   </a>
-
-                               </td>  
+                               <td><a class="btn btn-sm btn-outline-info" href="{% url 'update_gift' object.id %}"><i class="fa fa-pencil" aria-hidden="true"></i>Update </a></td>
+                               <td><a class="btn btn-sm btn-outline-danger" href="{% url 'delete_gift' object.id %}"><i class="fa fa-trash " aria-hidden="true"></i>Delete</a></td>
+                               
                            </tr>
                         {% endfor %}   
                     </tbody>

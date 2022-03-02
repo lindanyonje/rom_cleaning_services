@@ -1,4 +1,5 @@
 from email import message
+from logging.handlers import RotatingFileHandler
 from multiprocessing import context
 from unicodedata import category
 from django.shortcuts import render,redirect
@@ -287,7 +288,32 @@ def review(request):
    }
 
 
-   return render(request, 'ROM/admin/review.html', context)   
+   return render(request, 'ROM/admin/review.html', context)  
+
+
+def createReview(request):
+
+   rating=request.POST.get("rating-stars")
+   f_name = request.POST.get("fullname")
+   number = request.POST.get("phone_number")
+   email = request.POST.get("email")
+   subject = request.POST.get("subject")
+
+   customer = Customer.objects.filter(email = email).first()
+
+   Review.objects.create(
+     
+      customer_id = customer,
+      rating = rating,
+      review= review,
+
+   )
+
+   context = {
+      
+   }
+
+   return render(request, 'ROM/frontend/review_success.html', context)          
 
 
 def deletereview(request, pk):

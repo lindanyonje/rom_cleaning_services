@@ -549,7 +549,7 @@ border-radius: 30px;
               <form action="{% url 'create.inquiry' %}" method="post">
 
                 {% csrf_token %}
-                <h4 class="mb-4 mt-2 text-center">Talk to us. Here to serve you :)</h4>
+                <h4 class="mb-4 mt-2 text-center">Talk to us. Here to serve you &#x1F60a; </h4>
 
                 <div class="form-group">
                   <label for="fname">Full Name</label>
@@ -609,60 +609,63 @@ border-radius: 30px;
              
               <div class="card-body text-center"> <img src=" https://i.imgur.com/d2dKtI7.png" height="100" width="100">
 
-                    <h4>Rate us</h4>
+                <h4>Rate us</h4>
+
+                <form action="{% url 'create.review' %}" method="POST">
 
                   
-                  <!-- Rating Stars Box -->
-                  <div class='rating-stars text-center'>
-                    <ul id='stars'>
-                      <li class='star' title='Poor' data-value='1'>
-                        <i class='fa fa-star fa-fw'></i>
-                      </li>
-                      <li class='star' title='Fair' data-value='2'>
-                        <i class='fa fa-star fa-fw'></i>
-                      </li>
-                      <li class='star' title='Good' data-value='3'>
-                        <i class='fa fa-star fa-fw'></i>
-                      </li>
-                      <li class='star' title='Excellent' data-value='4'>
-                        <i class='fa fa-star fa-fw'></i>
-                      </li>
-                      <li class='star' title='WOW!!!' data-value='5'>
-                        <i class='fa fa-star fa-fw'></i>
-                      </li>
-                    </ul>
-                  </div>
-                  
-                  <div class='success-box'>
-                    <div class='clearfix'></div>
-                  
-                    <div class='text-message'>
-                      <span>We will improve ourselves. You rated this 1 stars.</span>
-                  
+                    {% csrf_token %}
+
+                   
+                    <!-- Rating Stars Box -->
+                    <div class='rating-stars text-center'>
+                      <ul id='stars'>
+                        <li class='star' title='Poor' data-value='1'>
+                          <i class='fa fa-star fa-fw'></i>
+                        </li>
+                        <li class='star' title='Fair' data-value='2'>
+                          <i class='fa fa-star fa-fw'></i>
+                        </li>
+                        <li class='star' title='Good' data-value='3'>
+                          <i class='fa fa-star fa-fw'></i>
+                        </li>
+                        <li class='star' title='Excellent' data-value='4'>
+                          <i class='fa fa-star fa-fw'></i>
+                        </li>
+                        <li class='star' title='WOW!!!' data-value='5'>
+                          <i class='fa fa-star fa-fw'></i>
+                        </li>
+                      </ul>
                     </div>
-
-                    <div class='clearfix'></div>
-                  </div>
-
-
-
-                <form action="{% url 'create.inquiry' %}" method="POST">
+                    
+                    <div class='success-box'>
+                      <div class='clearfix'></div>
+                    
+                      <div class='text-message'>
+                        <span>We will improve ourselves. You rated this 1 stars.</span>
+                    
+                      </div>
+  
+                      <div class='clearfix'></div>
+                    </div>
+  
+  
                           
-                            <input type="text" id="fname" name="firstname" class="form-control"  placeholder="Full Nmaes">
-              
-                            <div class="form-row mt-1">
-                              <div class="form-group col-md-6">
-                                
-                                <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
-                              </div>
-                              <div class="form-group col-md-6">
-                               
-                                <input type="phone" class="form-control" id="inputPhone" placeholder="Phone">
-                              </div>
-                            </div>
-                    <div class="comment-area"> <textarea class="form-control" placeholder="what is your view?" rows="4"></textarea> </div>
-                    <div class="text-center mt-4"> <button class="btn btn-info send px-5">Send message <i class="fa fa-long-arrow-right ml-1"></i></button> </div>
-                </div>
+                    <input type="text" id="fname" name="fullname" class="form-control"  placeholder="Full Nmaes">
+      
+                    <div class="form-row mt-1">
+                      <div class="form-group col-md-6">
+                        <input type="email" name="email" class="form-control" id="inputEmail4" placeholder="Email">
+                      </div>
+
+                      <div class="form-group col-md-6">
+                        <input type="phone" name="phone_number" class="form-control" id="inputPhone" placeholder="Phone">
+                      </div>
+
+                    </div>
+                    <div class="form-group comment-area"> <textarea class="form-control" name="subject" placeholder="what is your view?" rows="4"></textarea> </div>
+                    <div class="text-center mt-4"> <button class="btn btn-info send px-5">Submit<i class="fa fa-long-arrow-right ml-1"></i></button> </div>
+                
 
                 </form>
                   

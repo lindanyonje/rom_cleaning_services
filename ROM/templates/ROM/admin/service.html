@@ -40,7 +40,8 @@
                                 <th>Customer</th>
                                 <th>Rating</th>
                                 <th>Created_at</th>
-                                <th>Actions</th>
+                                <th>Update</th>
+                                <th>Delete</th>
                                 
 
                             </tr>
@@ -58,20 +59,11 @@
                                 <td>{{service.customer_id}}</td>
                                 <td>{{service.rating}}</td>
                                 <td>{{service.created_at}}</td>
-                                <td>
-                                        
-                                    <a class="btn btn-sm btn-outline-info" href="{% url 'update_service' service.id %}" aria-hidden="true" >
-                                       
-                                        <i class="fa fa-edit"></i>
-                                    </a>
 
-                                    <a  class="btn btn-sm btn-outline-danger" href="{% url 'delete_service' service.id %}" aria-hidden="true">
-                                    
-                                        <i class="fa fa-trash"></i>
-                                    </a>
+                                <td><a class="btn btn-sm btn-outline-info"  href="{% url 'update_service' service.id %}"><i class="fa fa-pencil" aria-hidden="true"></i>Update </a></td>
+                                <td><a class="btn btn-sm btn-outline-danger" href="{% url 'delete_service' service.id %}"><i class="fa fa-trash" aria-hidden="true"></i>Delete</a></td>
 
-                                </td>  
-                                
+                               
                                 
                             </tr>
 

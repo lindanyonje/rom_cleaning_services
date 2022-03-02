@@ -39,7 +39,8 @@
                                 <th>status</th>
                                 <th>Amount</th>
                                 <th>Created At</th>
-                                <th>Actions</th>
+                                <th>Update</th>
+                                <th>Delete</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -50,18 +51,11 @@
                                    <td>{{payment.order_id}}</td>
                                    <td>{{payment.amount}}</td>
                                    <td>{{payment.created_at}}</td>
-                                   <td>
-                                       
-                                       <a href="{% url 'update_payment' payment.id %}"
-                                        class="btn btn-dark btn-sm">
-                                         <i class="fa fa-edit"></i>
-                                       </a>
-                                       <a href="{% url 'delete_payment' payment.id %}"
-                                        class="btn btn-danger btn-sm">
-                                         <i class="fa fa-trash"></i>
-                                       </a>
 
-                                   </td>  
+                                   <td><a class="btn btn-sm btn-outline-info"  href="{% url 'update_payment' payment.id %}"><i class="fa fa-pencil" aria-hidden="true"></i>Update </a></td>
+                                   <td><a class="btn btn-sm btn-outline-danger" href="{% url 'delete_payment' payment.id %}"><i class="fa fa-trash" aria-hidden="true"></i>Delete</a></td>
+                                   
+                                   
                                </tr>
                             {% endfor %}   
                         </tbody>

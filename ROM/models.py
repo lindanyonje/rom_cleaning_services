@@ -49,7 +49,6 @@ class Review(models.Model):
     rating= models.IntegerField(null=False, blank=False) 
     review=models.TextField( null=True, blank=True)
     customer_id=models.ForeignKey('Customer',on_delete=models.CASCADE, blank=True,null=True)
-    order_id= models.ForeignKey('Order',on_delete=models.CASCADE,blank=True,null=True)
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at= models.DateTimeField(auto_now=True) 
 
