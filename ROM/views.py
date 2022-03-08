@@ -11,6 +11,9 @@ from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView
 from .filters import OrderFilter
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 
 # Create your views here.
 
@@ -25,7 +28,7 @@ def home(request):
 
    return render(request, 'ROM/frontend/home.html', context)
 
-
+@login_required
 def adminDashboard(request):
 
    orders= Order.objects.all()
@@ -57,13 +60,14 @@ def adminDashboard(request):
    return render(request, 'ROM/admin/dashboard.html', context)
 
 
-class CreateInquiry(CreateView):
+class CreateInquiry(LoginRequiredMixin, CreateView):
    model = Inquiry
    fields = '__all__'
    template_name = 'ROM/admin/inquiry.html'
    success_url = '/dashboard'
 
 
+@login_required
 def inquiry(request):
    
    inquiry = Inquiry.objects.all()
@@ -99,8 +103,8 @@ def createInquiry(request):
    return render(request, 'ROM/frontend/inquiry_success.html', context)      
 
 
-
-class CreateCustomer(CreateView):
+@login_required
+class CreateCustomer(LoginRequiredMixin,CreateView):
    model = Customer
    fields = '__all__'
    template_name = 'ROM/admin/customer_form.html'
@@ -123,7 +127,7 @@ def customer(request):
 
    return render(request, 'ROM/admin/customer.html', context)   
 
-
+@login_required
 def updateCustomer(request, pk):
 
    customer = Customer.objects.get(id=pk)
@@ -142,7 +146,7 @@ def updateCustomer(request, pk):
 
  
 
-
+@login_required
 def deleteCustomer(request, pk):
 
    customer = Customer.objects.get(id=pk)
@@ -158,13 +162,13 @@ def deleteCustomer(request, pk):
 
 
 
-class CreateService(CreateView):
+class CreateService(LoginRequiredMixin, CreateView):
    model = Service
    fields = '__all__'
    template_name = 'ROM/admin/service_form.html'
    success_url = '/dashboard'
 
-
+@login_required
 def service(request):
 
    service = Service.objects.all()
@@ -174,7 +178,7 @@ def service(request):
    return render(request, 'ROM/admin/service.html', context)
 
 
-
+@login_required
 def updateService(request, pk):
 
    service = Service.objects.get(id=pk)
@@ -194,7 +198,7 @@ def updateService(request, pk):
 
 
 
-
+@login_required
 def deleteService(request, pk):
 
    service= Service.objects.get(id=pk)
@@ -212,20 +216,20 @@ def deleteService(request, pk):
 
 
 
-class CreateOrder(CreateView):
+class CreateOrder(LoginRequiredMixin, CreateView):
    model = Order
    fields = '__all__'
    template_name = 'ROM/admin/order_form.html'
    success_url = '/dashboard'
 
-
+@login_required
 def getOrders(request):
 
    orders = Order.objects.all()
 
    return render(request, 'ROM/admin/order.html', {'orders': orders})
 
-
+@login_required
 def createOrder(request, pk):
 
    customer = Customer.objects.get(id=pk)
@@ -246,7 +250,7 @@ def createOrder(request, pk):
 
    return render(request, 'ROM/admin/order_form.html', context)      
 
-
+@login_required
 def updateOrder(request, pk):
 
    order= Order.objects.get(id=pk)
@@ -264,7 +268,7 @@ def updateOrder(request, pk):
    return render(request, 'ROM/admin/order_form.html', context)         
 
 
-
+@login_required
 def deleteOrder(request, pk):
 
    order= Order.objects.get(id=pk)
@@ -279,7 +283,7 @@ def deleteOrder(request, pk):
 
 # def rating(request):
 
-
+@login_required
 def review(request):
 
    reviews= Review.objects.all()
@@ -318,7 +322,7 @@ def createReview(request):
 
    return render(request, 'ROM/frontend/review_success.html', context)          
 
-
+@login_required
 def deletereview(request, pk):
 
    review= Review.objects.get(id=pk)
@@ -335,13 +339,13 @@ def deletereview(request, pk):
      
 
 
-
+@login_required
 def getPayment(request):
    payment= Payment.objects.all()
 
    return render(request, 'ROM/admin/payment.html', {'payment':payment})   
 
-
+@login_required
 def updatePayment(request, pk):
 
    payment= Payment.objects.get(id=pk)
@@ -359,7 +363,7 @@ def updatePayment(request, pk):
    return render(request, 'ROM/admin/payment_form.html', context)         
 
 
-
+@login_required
 def deletePayment(request, pk):
 
    payment= Payment.objects.get(id=pk)
@@ -372,7 +376,7 @@ def deletePayment(request, pk):
 
    return render(request, 'ROM/admin/payment_delete.html', context)     
 
-
+@login_required
 def getOfferList(request):
    offers= Offer.objects.all()
 
@@ -380,7 +384,7 @@ def getOfferList(request):
 
 
 
-
+@login_required
 def updateOffer(request, pk):
 
    offer= Offer.objects.get(id=pk)
@@ -398,7 +402,7 @@ def updateOffer(request, pk):
    return render(request, 'ROM/admin/offer_form.html', context)         
 
 
-
+@login_required
 def deleteOffer(request, pk):
 
    offer= Offer.objects.get(id=pk)
@@ -417,13 +421,13 @@ def getOffers(request):
 
    return render(request, 'ROM/frontend/offer.html')    
 
-
+@login_required
 def getGifts(request):
    gifts= GiftCard.objects.all()
 
    return render(request, 'ROM/admin/gifts.html', {'gifts':gifts}) 
 
-
+@login_required
 def updateGift(request, pk):
 
    gift= GiftCard.objects.get(id=pk)
@@ -441,7 +445,7 @@ def updateGift(request, pk):
    return render(request, 'ROM/admin/gift_form.html', context)         
 
 
-
+@login_required
 def deleteGift(request, pk):
 
    gift= GiftCard.objects.get(id=pk)
@@ -487,14 +491,14 @@ def getTos(request):
    return render(request, 'ROM/frontend/terms_of_service.html')        
 
 
-class CustomerList(ListView):
+class CustomerList(LoginRequiredMixin, ListView):
 
     login_required= True
     model = Customer
     template_name= "ROM/admin/customer_list.html"
 
 
-class CustomerDetail(DetailView):
+class CustomerDetail(LoginRequiredMixin, DetailView):
 
     login_required= True
     model =  Customer
@@ -509,7 +513,7 @@ class CustomerDetail(DetailView):
 #     model =Order
 #     template_name= "ROM/admin/order_list.html"
 
-class OrderDetail(DetailView):
+class OrderDetail(LoginRequiredMixin, DetailView):
 
     login_required= True
     model = Order
