@@ -313,6 +313,10 @@ padding: 3px 7px;
 border-radius: 30px;
 }
 
+.review{
+  transition: 0.7s;
+}
+
 .box{
     z-index: index -2;
   }
@@ -494,34 +498,33 @@ border-radius: 30px;
       <!-- Testimonials -->
 
       <div class="col-lg-12 section-head mt-5">
-        <h4 class="text-center"><span>Our</span> Reviews</h4>
+        <h4 class="text-center mt-5"><span>Our</span> Reviews</h4>
         <p class="text-center">Hear what our customers have to say <br> </p>
 
-      </div>
-    
+        <div class="d-flex flex-row justify-content-center">
+          <a href="{% url 'quote' %}" class="btn btn-outline-info mx-2">Make Order</a>
+          <button type="button" class="btn btn-info" data-toggle="modal" data-target="#form" data-whatever="@Review"> Add Review</button>
 
-      <div class="row">
-        <div class="col-md-12">
-          <div id="testimonial-slider" class="owl-carousel">
-
-            {% for review in reviews %}
-            <div class="testimonial">
-              <div class="pic">
-                <img src="h">
-              </div>
-              <p class="description">
-                {{review.review}}
-              </p>
-              <p class="description">
-                {{review.customer_id}}
-              </p>
-            </div>
-            {% endfor %}
-          </div>
         </div>
+
       </div>
+
+        {% for review in reviews %}
+        <div class="col-lg-4 d-flex flex-column h-100 my-2" >
+
+          <div class="card border-0 shadow-sm h-100 review" id="review_card_{{review.id}}" onmouseover="cardActive('{{review.id}}')" onmouseout="cardInactive('{{review.id}}')">
+            <div class="card-body h-100">
+
+              <h6 id="review_short_{{review.id}}"><i class="fa fa-quote-left fa-lg text-info mr-3"></i>{{review.review |truncatewords:20}}</h5>
+              <h6 id="review_long_{{review.id}}" class="d-none"><i class="fa fa-quote-left fa-lg mr-3"></i>{{review.review}}</h5>
+              <small>{{review.customer_id}}</small>
+            </div>
+          </div>
+
+        </div>
+        {% endfor %}
+
       
-      <button type="button" class="btn btn-info ml-auto" data-toggle="modal" data-target="#form" data-whatever="@Review"> Add Review</button>
 
 
       
@@ -550,6 +553,7 @@ border-radius: 30px;
 
                 {% csrf_token %}
                 <h4 class="mb-4 mt-2 text-center">Talk to us. Here to serve you &#x1F60a; </h4>
+
 
                 <div class="form-group">
                   <label for="fname">Full Name</label>
@@ -642,7 +646,7 @@ border-radius: 30px;
                       <div class='clearfix'></div>
                     
                       <div class='text-message'>
-                        <span>We will improve ourselves. You rated this 1 stars.</span>
+                        <span>We will improve ourselves. You rated this 2 stars.</span>
                     
                       </div>
   
@@ -650,7 +654,8 @@ border-radius: 30px;
                     </div>
   
   
-                          
+                    <input id="ratingInput" type="hidden" name="rating">
+
                     <input type="text" id="fname" name="fullname" class="form-control"  placeholder="Full Nmaes">
       
                     <div class="form-row mt-1">
@@ -700,7 +705,29 @@ border-radius: 30px;
       slideSpeed: 1000,
       autoPlay: true
     });
+
+    
   });
+
+  function cardActive(id){
+      card = "#review_card_"+id
+      short = "#review_short_"+id
+      long = "#review_long_"+id
+
+      $(card).addClass("bg-info text-white")
+      $(short).addClass("d-none")
+      $(long).removeClass("d-none")
+    }
+
+    function cardInactive(id){
+      card = "#review_card_"+id
+      short = "#review_short_"+id
+      long = "#review_long_"+id
+
+      $(card).removeClass("bg-info text-white")
+      $(short).removeClass("d-none")
+      $(long).addClass("d-none")
+    }
 </script>
 
 {% endblock %}

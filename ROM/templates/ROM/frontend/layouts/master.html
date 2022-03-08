@@ -49,9 +49,8 @@
     <!-- {% include 'ROM/frontend/layouts/learn_more.html' %} -->
 
     
-       
-
-    <div class="container-fluid mb-5 content">
+      <div style="margin-top: 100px;"></div>
+    <div class="container-fluid my-5 content">
       {% block content %}
 
 
@@ -115,7 +114,7 @@
   
   <!--End Footer content-->
 
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <script src="{% static 'owlcarousel/owl.carousel.min.js' %}"></script>
@@ -277,6 +276,9 @@
             msg = "We will improve ourselves. You rated this " + ratingValue + " stars.";
         }
         responseMessage(msg);
+
+        $("#ratingInput").val(ratingValue)
+
         
       });
       
@@ -285,11 +287,34 @@
 
 
     function responseMessage(msg) {
-      $('.success-box').fadeIn(200);  
+      // $('.success-box').fadeIn(200);  
       $('.success-box div.text-message').html("<span>" + msg + "</span>");
     }
  </script>
 
+<script>
+
+  $(document).ready(function(){
+    $('a.page-scroll').bind('click', function(event) {
+      var $anchor = $(this);
+      $('html, body').stop().animate({
+        scrollTop: $($anchor.attr('href')).offset().top,
+      }, 500, 'linear');
+      event.preventDefault();
+      });
+
+      var mn = $(".main-nav")
+
+      $(window).scroll(function() {
+      if( $(this).scrollTop() > 250 ) {
+        mn.addClass("main-nav-scrolled");
+      }
+        else {
+          mn.removeClass("main-nav-scrolled");
+        }
+    });
+  });
+</script>
   
 
   {% block scripts %}

@@ -14,6 +14,7 @@ admin.site.register(GiftCard)
 admin.site.register(Offer)
 admin.site.register(Quote)
 admin.site.register(Inquiry)
+admin.site.register(Rating)
 
 
 

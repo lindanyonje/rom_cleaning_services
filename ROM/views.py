@@ -17,7 +17,7 @@ from .filters import OrderFilter
 
 def home(request):
 
-   reviews = Review.objects.all()
+   reviews = Review.objects.all()[:6]
 
    context = {
       'reviews' : reviews
@@ -277,6 +277,7 @@ def deleteOrder(request, pk):
 
    return render(request, 'ROM/admin/order_delete.html', context)         
 
+# def rating(request):
 
 
 def review(request):
@@ -293,7 +294,7 @@ def review(request):
 
 def createReview(request):
 
-   rating=request.POST.get("rating-stars")
+   rating=request.POST.get("rating")
    f_name = request.POST.get("fullname")
    number = request.POST.get("phone_number")
    email = request.POST.get("email")
@@ -301,13 +302,15 @@ def createReview(request):
 
    customer = Customer.objects.filter(email = email).first()
 
-   Review.objects.create(
-     
-      customer_id = customer,
-      rating = rating,
-      review= review,
+   if customer:
 
-   )
+      Review.objects.create(
+
+         customer_id = customer,
+         rating = rating,
+         review= subject,
+
+      )
 
    context = {
       
