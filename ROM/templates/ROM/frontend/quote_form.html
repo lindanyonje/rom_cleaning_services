@@ -176,507 +176,449 @@ button:hover {
 {% endblock css %}
 
 
-<!-- {% include 'ROM/frontend/layouts/sidebar.html' %} -->
+
 
 {% block content %}
 
- 
+<div class="container-fluid">
 
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="card">
+        <div class="card-body">
 
-<div class=" next row justify-content-md-center">
-
-  <div class="col-75">
-
-    <div class="container-fluid">
-
-         
-          
-          <form>
-            
-            <h1 class="text-info font-weight-bold mt-5 text-center">BOOK ONLINE</h1>
-
-           
-            <div class="col">
-
-                <div class="card">
-
-                  <div class="card-body">
-
-
-                          
-                        <div class="row  mt-2">
-                          <label for="fname">Full Name</label>
-                                <input type="text" id="fname" name="firstname" class="form-control"  placeholder="Your name..">
-                        </div>
-                      
-                        <div class="row mt-2">
-                            <div class="col">
-                                <label for="inputEmail4">Email*</label>
-                              <input type="text" class="form-control" placeholder="Email">
-                            </div>
-                            <div class="col">
-                                <label for="inputEmail4">phone*</label>
-                              <input type="text" class="form-control" placeholder="Phone">
-                            </div>
-                        </div>
-                      
-                        <div class="form-group">
-                            <label for="inputAddress">Address*</label>
-                            <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-                          </div>
-                          <div class="form-row">
-                            <div class="form-group col-md-6">
-                              <label for="inputCity">City</label>
-                              <input type="text" class="form-control" id="inputCity">
-                            </div>
-                            <div class="form-group col-md-4">
-                              <label for="inputState">State</label>
-                              <select id="inputState" class="form-control">
-                                <option selected>Choose...</option>
-                                <option>...</option>
-                              </select>
-                            </div>
-                            <div class="form-group col-md-2">
-                              <label for="inputZip">Zip</label>
-                              <input type="text" class="form-control" id="inputZip">
-                            </div>
-                          </div>
-                  
-                            <p><b>How did you hear about us</b></p>
-                        
-                            <div class="row">
-                              <div class="col ">
-                                <div class="form-check">
-                                  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                                  <label class="form-check-label" for="exampleRadios2">
-                                  Brochure or Business card
-                                  </label>
-                                </div>
-                                <div class="form-check">
-                                  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                                  <label class="form-check-label" for="exampleRadios2">
-                                  out door sign
-                                  </label>
-                                </div>
-                                <div class="form-check">
-                                  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3" >
-                                  <label class="form-check-label" for="exampleRadios3">
-                                    Friend or Family
-                                  </label>
-                                </div>
-                          
-                              </div>
-                        
-                              <div class="col">
-                                      <div class="form-check">
-                                          <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-                                          <label class="form-check-label" for="exampleRadios1">
-                                              Facebook
-                                          </label>
-                                      </div>
-                                      <div class="form-check">
-                                          <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                                          <label class="form-check-label" for="exampleRadios2">
-                                          google search
-                                          </label>
-                                          </div>
-                                      <div class="form-check ">
-                                          <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3" >
-                                          <label class="form-check-label" for="exampleRadios3">
-                                        other
-                                          </label>
-                                      </div>
-                                
-                              </div>
-                          </div>
-                        
-                          <div class="row">
-                              <div class="col">
-                                  <label for="hometype">Type of Home</label>
-                                  <select class="custom-select" multiple>
-                                      <option value="1">Duplex</option>
-                                      <option value="2">Condo</option>
-                                      <option value="3">Loft</option>
-                                      <option value="4">Apartment</option>
-                                      <option value="5">Townhouse</option>
-                                      <option value="6">Commercial</option>
-                                      <option value="7">Office</option>
-                                      <option value="8">Penthouse</option>
-                                      <option value="9">Other</option>
-                                  </select>
-                              </div>
-                              <div class="col">
-                                <label for="building">Building or Complex Name if applicable</label>
-                                <input type="text" class="form-control" >
-                              </div>
-                          </div>
-                        
-                          <div class="row">
-                              <div class="col">
-                                <label for="bedroom">Number of Bedrooms</label>
-                                <select class="custom-select" multiple>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
-                                <option value="10">10</option>
-                                </select>
-                              </div>
-                              <div class="col">
-                                <label for="squarefoot">Square Footage</label>
-                                <input type="text" class="form-control" >
-                              </div>
-                          </div>
-                        
-                          <div class="row">
-                              <div class="col-md-4">
-                                <label for="bathroom">Number of Bathrooms</label>
-                                <select class="custom-select" multiple>
-                                  <option value="1">1</option>
-                                  <option value="2">2</option>
-                                  <option value="3">3</option>
-                                  <option value="4">4</option>
-                                  <option value="5">5</option>
-                                  <option value="6">6</option>
-                                  <option value="7">7</option>
-                                  <option value="8">8</option>
-                                  <option value="9">9</option>
-                                  <option value="10">10</option>
-                                </select>
-                              </div>
-                              <div class="col-md-4">
-                                  <label for="levels">Number of levels in home</label>
-                                  <select class="custom-select" multiple>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
-                                    <option value="9">9</option>
-                                    <option value="10">10</option>
-                                  </select>
-                              </div>
-                              <div class="col-md-4">
-                                  <label for="people">People living in the Home</label>
-                                  <select class="custom-select" multiple>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
-                                    <option value="9">9</option>
-                                    <option value="10">10</option>
-                                  </select>
-                              </div>
-                          </div>
-                        
-                        
-                          <p><b>Other rooms to be cleaned</b></p>
-                          <div class="row">
-                              
-                              <div class="col">
-                                  <div class="form-check">
-                                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                      <label class="form-check-label" for="defaultCheck1">
-                                        office
-                                      </label>
-                                  </div>
-                                  <div class="form-check">
-                                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                      <label class="form-check-label" for="defaultCheck1">
-                                        play room
-                                      </label>
-                                  </div>
-                        
-                                  <div class="form-check disabled">
-                                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                      <label class="form-check-label" for="defaultCheck1">
-                                        Basement
-                                      </label>
-                                  </div>
-                            
-                              </div>
-                        
-                              
-                              <div class="col">
-                                  <div class="form-check">
-                                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                      <label class="form-check-label" for="defaultCheck1">
-                                        Family room
-                                      </label>
-                                  </div>
-                                  <div class="form-check">
-                                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                      <label class="form-check-label" for="defaultCheck1">
-                                        Dinning room
-                                      </label>
-                                  </div>
-                                  <div class="form-check disabled">
-                                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                      <label class="form-check-label" for="defaultCheck1">
-                                        other
-                                      </label>
-                                  </div>
-                                
-                              </div>
-                        
-                          </div>
-
-                          
-                          <div class="form-row">
-                            <div class="col">
-                                <label class="form-check-label" for="exampleRadios1">
-                                    Do you have any pets?
-                                  </label>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-                                    <label class="form-check-label" for="exampleRadios1">
-                                      Yes
-                                    </label>
-                                  </div>
-                                  <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                                    <label class="form-check-label" for="exampleRadios2">
-                                    NO
-                                    </label>
-                                  </div>
-                                  
-                            </div>
-                            <div class="col">
-                                <label class="form-check-label" for="exampleRadios1">
-                                    If Yes,what type and how many?
-                                  </label>
-                              <input type="text" class="form-control" >
-                            </div>
-                        </div>
-                      
-                        <!-- <h4>Home Keeping Services</h4>
-                      
-                        <div class="form-group">
-                            <label for="Select">Condition of Home</label>
-                            <select id="Select" class="form-control">
-                              <option>Disabled select</option>
-                              <option>Disabled select</option>
-                              <option>Disabled select</option>
-                            </select>
-                        </div>
-                      -->
-                        <h4>What Services are you interested in?</h4>
-                        <div class="row">
-                            
-                            <div class="col">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                    <label class="form-check-label" for="defaultCheck1">
-                                      Regular Service
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                    <label class="form-check-label" for="defaultCheck1">
-                                      Move-In Deep Cleaning (Minimal to No Furniture)
-                                    </label>
-                                </div>
-                      
-                                <div class="form-check disabled">
-                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                    <label class="form-check-label" for="defaultCheck1">
-                                      ($20 ea) Patio Cleaning
-                                    </label>
-                                </div>
-                          
-                            </div>
-                      
-                            
-                            <div class="col">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                    <label class="form-check-label" for="defaultCheck1">
-                                      ($40) Interior Oven Cleaning
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                    <label class="form-check-label" for="defaultCheck1">
-                                      ($45) Interior Refrigerator Cleaning, excludes Freezer
-                                    </label>
-                                </div>
-                                <div class="form-check disabled">
-                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                    <label class="form-check-label" for="defaultCheck1">
-                                      One-time Deep Clean
-                                    </label>
-                                </div>
-                              
-                            </div>
-                      
-                        </div>
-                      
-                      
-                        <div class="form-row">
-                            <div class="col">
-                                  <label class="form-check-label" for="exampleRadios1">
-                                    What Frequency of Service Works for You?
-                                  </label>
-                                  <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-                                    <label class="form-check-label" for="exampleRadios1">
-                                      Weekly
-                                    </label>
-                                  </div>
-                                  <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                                    <label class="form-check-label" for="exampleRadios2">
-                                    Bi-Weekly
-                                    </label>
-                                  </div>
-                                  <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                                    <label class="form-check-label" for="exampleRadios2">
-                                    Monthly
-                                    </label>
-                                  </div>
-                                  <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                                    <label class="form-check-label" for="exampleRadios2">
-                                    One- Time
-                                    </label>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                                        <label class="form-check-label" for="exampleRadios2">
-                                        Other
-                                        </label>
-                                      </div>
-                                  </div>
-                                  
-                            </div>
-                            <div class="col">
-                                <label class="form-check-label" for="exampleRadios1">
-                                  Preffered Day
-                                </label>
-                                <input type="date" id="scheduled" name="scheduled">
-                            </div>
-                        </div>
-                      
-                        <div class="form-group">
-                            <label for="exampleFormControlTextarea1">Are there any problem areas you would like us to focus on <br>
-                                and/or anything else we should know about your home?</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                          
-                        </div>
-
-                        <div class="payment-container">
-                          
-                          <div class="row justify-content-md-center">
-                            
-                            <div >
-                              <div class="payment-method">
-                                <h2>Payment Method</h2>
-                                <div class="radio-container">
-                                  <input id="card" name="payment-type" type="radio" checked>
-                                  <label for="card">Card</label>
-                                  <input id="paypal" name="payment-type" type="radio">
-                                  <label for="paypal">PayPal</label>
-                                </div>
-                                <div >
-                                  <i class="fa fa-cc-visa" style="color:navy;"></i>
-                                  <i class="fa fa-cc-amex" style="color:blue;"></i>
-                                  <i class="fa fa-cc-mastercard" style="color:red;"></i>
-                                  <i class="fa fa-cc-discover" style="color:orange;"></i>
-                                    </div>
-                              </div>
-                              <form id="payment-form">
-                                <div class="card-info-container">
-                                  <div class="card-info">
-                                    <label>Card Number
-                                      <input class="full-width" id="card-num" type="text" placeholder="1234 5678 9012 3456">
-                                    </label>
-                                    <label>Name on Card
-                                      <input class="full-width" id="name" type="text" placeholder="Steve Rogers">
-                                    </label>
-                                    <div class="expire-ccv">
-                                      <label>Expires
-                                        <span class="expire-date">
-                                          <input id="month" type="text" size="2" maxlength="2" placeholder="MM">
-                                          <span>/</span>
-                                          <input id="year" type="text" size="2" maxlength="2" placeholder="YY">
-                                        </span>
-                                      </label>
-                                      <label>CCV
-                                        <input id="ccv" type="text" size="3" maxlength="3" placeholder="123">
-                                      </label>
-                                    </div>
-                                  </div>
-                                </div>
-                                <label class="save-card-info">
-                                  <input type="checkbox">
-                                  Save card for faster checkout
-                                </label>
-                              </form>
-                            
-                              <button class="button btn-block mb-1 " style="text-align: center;"onclick="document.getElementById('payment-form').reset()">CONFIRM PAYMENT</button>
-
-                              <br>
-                            </div>
-                          </div>
-                        </div>
-                        </div>
-
-              
-                    
-                    </div>
-                
-
-                  </div>
-                
-
-                </div>
-                
+          <div class="row  mt-2">
+            <label for="fname">Full Name</label>
+                  <input type="text" id="fname" name="firstname" class="form-control"  placeholder="Your name..">
+          </div>
+        
+          <div class="row mt-2">
+              <div class="col">
+                  <label for="inputEmail4">Email*</label>
+                <input type="text" class="form-control" placeholder="Email">
               </div>
-
+              <div class="col">
+                  <label for="inputEmail4">phone*</label>
+                <input type="text" class="form-control" placeholder="Phone">
+              </div>
+          </div>
+        
+          <div class="form-group">
+              <label for="inputAddress">Address*</label>
+              <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputCity">City</label>
+              <input type="text" class="form-control" id="inputCity">
+            </div>
+            <div class="form-group col-md-4">
+              <label for="inputState">State</label>
+              <select id="inputState" class="form-control">
+                <option selected>Choose...</option>
+                <option>...</option>
+              </select>
+            </div>
+            <div class="form-group col-md-2">
+              <label for="inputZip">Zip</label>
+              <input type="text" class="form-control" id="inputZip">
+            </div>
+          </div>
+  
+            <p><b>How did you hear about us</b></p>
+          
+          <div class="row">
+            <div class="col ">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                <label class="form-check-label" for="exampleRadios2">
+                Brochure or Business card
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                <label class="form-check-label" for="exampleRadios2">
+                out door sign
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3" >
+                <label class="form-check-label" for="exampleRadios3">
+                  Friend or Family
+                </label>
+              </div>
+        
+            </div>
+      
+            <div class="col">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                        <label class="form-check-label" for="exampleRadios1">
+                            Facebook
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                        <label class="form-check-label" for="exampleRadios2">
+                        google search
+                        </label>
+                        </div>
+                    <div class="form-check ">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3" >
+                        <label class="form-check-label" for="exampleRadios3">
+                      other
+                        </label>
+                    </div>
+              
+            </div>
+          </div>
+          
+          <div class="row">
+              <div class="col">
+                  <label for="hometype">Type of Home</label>
+                  <select class="custom-select" multiple>
+                      <option value="1">Duplex</option>
+                      <option value="2">Condo</option>
+                      <option value="3">Loft</option>
+                      <option value="4">Apartment</option>
+                      <option value="5">Townhouse</option>
+                      <option value="6">Commercial</option>
+                      <option value="7">Office</option>
+                      <option value="8">Penthouse</option>
+                      <option value="9">Other</option>
+                  </select>
+              </div>
+              <div class="col">
+                <label for="building">Building or Complex Name if applicable</label>
+                <input type="text" class="form-control" >
+              </div>
+          </div>
+          
+            <div class="row">
+                <div class="col">
+                  <label for="bedroom">Number of Bedrooms</label>
+                  <select class="custom-select" multiple>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                  </select>
+                </div>
+                <div class="col">
+                  <label for="squarefoot">Square Footage</label>
+                  <input type="text" class="form-control" >
+                </div>
+            </div>
+          
+            <div class="row">
+                <div class="col-md-4">
+                  <label for="bathroom">Number of Bathrooms</label>
+                  <select class="custom-select" multiple>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                  </select>
+                </div>
+                <div class="col-md-4">
+                    <label for="levels">Number of levels in home</label>
+                    <select class="custom-select" multiple>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                      <option value="8">8</option>
+                      <option value="9">9</option>
+                      <option value="10">10</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label for="people">People living in the Home</label>
+                    <select class="custom-select" multiple>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                      <option value="8">8</option>
+                      <option value="9">9</option>
+                      <option value="10">10</option>
+                    </select>
+                </div>
+            </div>
+          
+          
+            <p><b>Other rooms to be cleaned</b></p>
+            <div class="row">
+                
+                <div class="col">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1">
+                          office
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1">
+                          play room
+                        </label>
+                    </div>
+          
+                    <div class="form-check disabled">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1">
+                          Basement
+                        </label>
+                    </div>
+              
+                </div>
+          
+                
+                <div class="col">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1">
+                          Family room
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1">
+                          Dinning room
+                        </label>
+                    </div>
+                    <div class="form-check disabled">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1">
+                          other
+                        </label>
+                    </div>
+                  
+                </div>
+          
             </div>
 
-      </form>
+            
+            <div class="form-row">
+              <div class="col">
+                  <label class="form-check-label" for="exampleRadios1">
+                      Do you have any pets?
+                    </label>
+                  <div class="form-check">
+                      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                      <label class="form-check-label" for="exampleRadios1">
+                        Yes
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                      <label class="form-check-label" for="exampleRadios2">
+                      NO
+                      </label>
+                    </div>
+                    
+              </div>
+              <div class="col">
+                  <label class="form-check-label" for="exampleRadios1">
+                      If Yes,what type and how many?
+                    </label>
+                <input type="text" class="form-control" >
+              </div>
+          </div>
+        
+          <!-- <h4>Home Keeping Services</h4>
+        
+          <div class="form-group">
+              <label for="Select">Condition of Home</label>
+              <select id="Select" class="form-control">
+                <option>Disabled select</option>
+                <option>Disabled select</option>
+                <option>Disabled select</option>
+              </select>
+          </div>
+        -->
+          <h4>What Services are you interested in?</h4>
+          <div class="row">
+              
+              <div class="col">
+                  <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                      <label class="form-check-label" for="defaultCheck1">
+                        Regular Service
+                      </label>
+                  </div>
+                  <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                      <label class="form-check-label" for="defaultCheck1">
+                        Move-In Deep Cleaning (Minimal to No Furniture)
+                      </label>
+                  </div>
+        
+                  <div class="form-check disabled">
+                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                      <label class="form-check-label" for="defaultCheck1">
+                        ($20 ea) Patio Cleaning
+                      </label>
+                  </div>
+            
+              </div>
+        
+              
+              <div class="col">
+                  <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                      <label class="form-check-label" for="defaultCheck1">
+                        ($40) Interior Oven Cleaning
+                      </label>
+                  </div>
+                  <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                      <label class="form-check-label" for="defaultCheck1">
+                        ($45) Interior Refrigerator Cleaning, excludes Freezer
+                      </label>
+                  </div>
+                  <div class="form-check disabled">
+                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                      <label class="form-check-label" for="defaultCheck1">
+                        One-time Deep Clean
+                      </label>
+                  </div>
+                
+              </div>
+        
+          </div>
+        
+        
+          <div class="form-row">
+              <div class="col">
+                    <label class="form-check-label" for="exampleRadios1">
+                      What Frequency of Service Works for You?
+                    </label>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                      <label class="form-check-label" for="exampleRadios1">
+                        Weekly
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                      <label class="form-check-label" for="exampleRadios2">
+                      Bi-Weekly
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                      <label class="form-check-label" for="exampleRadios2">
+                      Monthly
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                      <label class="form-check-label" for="exampleRadios2">
+                      One- Time
+                      </label>
+                      <div class="form-check">
+                          <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                          <label class="form-check-label" for="exampleRadios2">
+                          Other
+                          </label>
+                        </div>
+                    </div>
+                    
+              </div>
+              <div class="col">
+                  <label class="form-check-label" for="exampleRadios1">
+                    Preffered Day
+                  </label>
+                  <input type="date" id="scheduled" name="scheduled">
+              </div>
+          </div>
+        
+          <div class="form-group">
+              <label for="exampleFormControlTextarea1">Are there any problem areas you would like us to focus on <br>
+                  and/or anything else we should know about your home?</label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            
+          </div>
 
+          <div class="payment-container">
+            
+            <div class="row justify-content-md-center">
+              
+              <div >
+                <div class="payment-method">
+                  <h2>Payment Method</h2>
+                  <div class="radio-container">
+                    <input id="card" name="payment-type" type="radio" checked>
+                    <label for="card">Card</label>
+                    <input id="paypal" name="payment-type" type="radio">
+                    <label for="paypal">PayPal</label>
+                  </div>
+                  <div >
+                    <i class="fa fa-cc-visa" style="color:navy;"></i>
+                    <i class="fa fa-cc-amex" style="color:blue;"></i>
+                    <i class="fa fa-cc-mastercard" style="color:red;"></i>
+                    <i class="fa fa-cc-discover" style="color:orange;"></i>
+                      </div>
+                </div>
+                <form id="payment-form">
+                  <div class="card-info-container">
+                    <div class="card-info">
+                      <label>Card Number
+                        <input class="full-width" id="card-num" type="text" placeholder="1234 5678 9012 3456">
+                      </label>
+                      <label>Name on Card
+                        <input class="full-width" id="name" type="text" placeholder="Steve Rogers">
+                      </label>
+                      <div class="expire-ccv">
+                        <label>Expires
+                          <span class="expire-date">
+                            <input id="month" type="text" size="2" maxlength="2" placeholder="MM">
+                            <span>/</span>
+                            <input id="year" type="text" size="2" maxlength="2" placeholder="YY">
+                          </span>
+                        </label>
+                        <label>CCV
+                          <input id="ccv" type="text" size="3" maxlength="3" placeholder="123">
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <label class="save-card-info">
+                    <input type="checkbox">
+                    Save card for faster checkout
+                  </label>
+                </form>
+              
+                <button class="button btn-block mb-1 " style="text-align: center;"onclick="document.getElementById('payment-form').reset()">CONFIRM PAYMENT</button>
+
+                <br>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-
-
   </div>
-
-  <!-- <div class="col-25 mt-5">
-    <div class="container-fluid">
-      <h4> BOOKING SUMMARY
-        <span class="price" style="color:black">
-          <i class="fa fa-shopping-cart"></i>
-          <b>4</b>
-        </span>
-      </h4>
-      
-    </div>
-  
-    <div>
-      <i class="fa fa-shopping-cart"></i>
-      <i class="fa fa-shopping-cart"></i>
-      <i class="fa fa-shopping-cart"></i>
-      <i class="fa fa-shopping-cart"></i>
-      <hr>
-      <p>Total <span class="price" style="color:black"><b>$30</b></span></p>
-    </div>
-  </div>
-
-</div> -->
-
+</div>
 
 
 
