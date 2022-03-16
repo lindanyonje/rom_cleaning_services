@@ -44,10 +44,12 @@ urlpatterns=[
     path('update_offer/<pk>/', views.updateOffer, name="update_offer"),
     path('delete_offer/<pk>/', views.deleteOffer, name="delete_offer"),
     path('offer_list/',views.getOfferList, name= 'offer_list'),
+    
 
     path('gifts/',views.getGifts, name= 'gifts'),
     path('update_gift/<pk>/', views.updateGift, name="update_gift"),
     path('delete_gift/<pk>/', views.deleteGift, name="delete_gift"),
+    path('create/GiftCard/',views.createGiftCard, name= 'create.gift'),
 
     path('gift_card/',views.getGiftCards, name= 'gift_card'),
 

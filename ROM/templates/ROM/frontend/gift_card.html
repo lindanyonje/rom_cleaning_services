@@ -1022,15 +1022,44 @@
 		<div class="card">
 		  <div class="back">
 			<section class="detail">
-			  <div class="list">
-				<p class="title">Your order will be shipped to:</p>
-				<p></p>
-				<p class="name">Nick Chuan</p>
-				<p class="addr">255 King St, Apt 338</p>
-				<p class="addr">San Francisco, CA 94107</p>
-				<p></p>
-				<p class="tip">Available to ship: 1 business day</p>
-			  </div>
+				<h2>Your order will be shipped to:</h2>
+
+				<form action="{% url 'create.gift' %}" method="post">
+
+					{% csrf_token %}
+					
+	
+	
+					<div class="form-group">
+				
+					  <input required type="text" id="fname" name="firstname" class="form-control"  placeholder="Name..">
+					</div>
+	
+					<div class="form-group">
+				
+					  <input type="number" id="lname" name="phone_number" class="form-control"  placeholder="Phone number">
+					</div>
+	
+					<div class="form-group">
+					  
+					  <input required type="email" name="email" class="form-control" id="email" placeholder="Email">
+					</div>
+	
+					<!-- <div class="form-group">
+	
+					  <label for="subject">Subject</label>
+					  <textarea required id="subject" name="subject" placeholder="Message" class="form-control"  style="height:200px"></textarea>
+	
+					</div>
+				 -->
+					<!-- <button type="submit" class="btn btn-info btn-lg btn-block w-50 mx-auto">Submit</button> -->
+				
+				  </form>
+				<!-- <address>
+					<input type="email" name="" id="" placeholder="Email" />    
+				     
+				</address> -->
+				<div class="subtext">Available to ship: 1 business day</div>  
 			</section>
 			<section class="operation">
 			  <div class="gift">
@@ -1043,7 +1072,7 @@
 			  </div>
 			  <input class="msg" placeholder="Enter a gift message" />
 			  <div class="checkout">
-				<button id="checkout">Checkout</button>
+				<button  type="submit" id="checkout">Send</button>
 			  </div>
 			</section>
 		  </div>
@@ -1060,7 +1089,7 @@
 			<section class="info">
 			  <div class="list">
 				<p class="title">Gift Card</p>
-				<input class="msg" placeholder="Enter amount"/>
+				<input class="msg" placeholder="Enter amount "/>
 				<!-- <p class="price">$25.00</p> -->
 			  </div>
 			  <div class="buy">

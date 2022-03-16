@@ -86,11 +86,13 @@ class Order(models.Model):
 
 
 class GiftCard(models.Model):
-    service_id=models.ForeignKey('Service',on_delete=models.CASCADE,blank=True,null=True)
+   
     giftcard_amount=models.IntegerField(null=False, blank=False) 
+    name=models.CharField(max_length=100, null=False, blank=False,default="Some String")
+    email=models.CharField(max_length=100, null=False, blank=False, default="Some String")
+    phone_number=models.IntegerField(null= True, blank= True)
+    message=models.TextField(null=False, blank=False, default="Some String")
     code=models.CharField(max_length=50, null=False, blank=True)
-    start_date=models.DateTimeField()
-    end_date=models.DateTimeField()
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at= models.DateTimeField(auto_now=True)     
 
@@ -98,6 +100,7 @@ class GiftCard(models.Model):
 class Offer(models.Model):
     service_id= models.ForeignKey('Service',on_delete=models.CASCADE,blank=True,null=True)  
     offer_amount=models.IntegerField(null=False, blank=False) 
+    code=models.CharField(max_length=50, null=False, blank=True)
     start_date=models.DateTimeField()
     end_date=models.DateTimeField()
     created_at=models.DateTimeField(auto_now_add=True)

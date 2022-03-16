@@ -103,6 +103,27 @@ def createInquiry(request):
    return render(request, 'ROM/frontend/inquiry_success.html', context)      
 
 
+def createGiftCard(request):
+
+   f_name = request.POST.get("firstname")
+   number = request.POST.get("phone_number")
+   email = request.POST.get("email")
+   subject = request.POST.get("subject")
+
+   GiftCard.objects.create(
+      name = f_name,
+      email = email,
+      phone_number = number,
+      message = subject
+   )
+
+   context = {
+      
+   }
+
+   return render(request, 'ROM/frontend/inquiry_success.html', context)         
+
+
 @login_required
 class CreateCustomer(LoginRequiredMixin,CreateView):
    model = Customer

@@ -544,7 +544,7 @@ border-radius: 30px;
       </div>
 
         {% for review in reviews %}
-        <div class="col-lg-4 d-flex flex-column h-100 my-2" >
+        <div class="col-lg-4 d-flex flex-column h-100 my-2" id="review" >
 
           <div class="card border-0 shadow-sm h-100 review" id="review_card_{{review.id}}" onmouseover="cardActive('{{review.id}}')" onmouseout="cardInactive('{{review.id}}')">
             <div class="card-body h-100">
