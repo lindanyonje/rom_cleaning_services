@@ -68,11 +68,9 @@
                
             </div>
             <div class="rate">            
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
+              {% for star in review.getRatingRange %}
+                <i class="fa fa-star"></i>
+                {% endfor %}
             </div>
           </div>
           

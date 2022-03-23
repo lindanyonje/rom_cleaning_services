@@ -14,54 +14,54 @@
             <div class="cards d-flex flex-column w-100">
       
                 {% for gift in gifts %}
-          
-                <div class="card w-100">
-                  <div class="card-top">
-                    <div class="name">
-                      <div class="img one text-light" alt=""><i class="fa fa-user"></i></div>
-                       <h6 class="font-weight-bold my-auto">{{gift.name}}</p>
-                      
+            
+                  <div class="card w-100">
+                    <div class="card-top">
+                      <div class="name">
+                        <div class="img one text-light" alt=""><i class="fa fa-user"></i></div>
+                        <h6 class="font-weight-bold my-auto">{{gift.name}}</p>
+                        
+                      </div>
+                    
                     </div>
-                   
-                  </div>
 
-                  <div class="card-content">
-                    <h6>{{gift.id}}</p>
-                  </div>
+                    <div class="card-content">
+                      <h6>{{gift.id}}</p>
+                    </div>
 
-                  <div class="card-content">
-                    <h6>{{gift.email}}</p>
-                  </div>
+                    <div class="card-content">
+                      <h6>{{gift.email}}</p>
+                    </div>
 
-                  <div class="card-content">
-                    <h6> {{gift.code}}</p>
-                  </div>
+                    <div class="card-content">
+                      <h6> {{gift.code}}</p>
+                    </div>
 
-                  
-                  <div class="card-content">
-                    <h6>{{gift.giftcard_amount}}</p>
-                  </div>
-                   
-                  <div class="card-action">
-                    <span>{{gift.created_at}}</span>
-
-                    <div class="d-flex flex-row">
-                          <button class="btn btn-outline-info btn-sm">
-                            <i class="fa fa-trash-o" aria-hidden="true"></i>
-                            Delete
-                          </button>
-                          <button class="btn btn-info btn-sm mx-2">
-                            <i class="fa fa-send" aria-hidden="true"></i>
-                            Send
-                          </button>
+                    
+                    <div class="card-content">
+                      <h6>{{gift.giftcard_amount}}</p>
                     </div>
                     
-          
-                    <!-- <button id = "remove" onclick="myFunction()"> <i class="fa fa-trash-o" aria-hidden="true"></i>Delete</button> -->
+                    <div class="card-action">
+                      <span>{{gift.created_at}}</span>
+
+                      <div class="d-flex flex-row">
+                            <button class="btn btn-outline-info btn-sm">
+                              <i class="fa fa-trash-o" aria-hidden="true"></i>
+                              Delete
+                            </button>
+                            <button class="btn btn-info btn-sm mx-2">
+                              <i class="fa fa-send" aria-hidden="true"></i>
+                              Send
+                            </button>
+                      </div>
+                      
+            
+                      <!-- <button id = "remove" onclick="myFunction()"> <i class="fa fa-trash-o" aria-hidden="true"></i>Delete</button> -->
+                    </div>
+                    
                   </div>
                   
-                </div>
-                
                 {% endfor %}
               </div>
         </div>

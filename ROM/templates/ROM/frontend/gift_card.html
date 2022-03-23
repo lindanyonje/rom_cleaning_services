@@ -1018,15 +1018,15 @@
 
 <div class="wrapper">
 
+	<form action="{% url 'create.gift' %}" method="post">
+
+		{% csrf_token %}
+
 	<div class="giftcard">
 		<div class="card">
 		  <div class="back">
 			<section class="detail">
 				<h2>Your order will be shipped to:</h2>
-
-				<form action="{% url 'create.gift' %}" method="post">
-
-					{% csrf_token %}
 					
 	
 	
@@ -1054,7 +1054,7 @@
 				 -->
 					<!-- <button type="submit" class="btn btn-info btn-lg btn-block w-50 mx-auto">Submit</button> -->
 				
-				  </form>
+				  
 				<!-- <address>
 					<input type="email" name="" id="" placeholder="Email" />    
 				     
@@ -1070,9 +1070,9 @@
 				  <!-- <div class="knot"></div> -->
 				</div>
 			  </div>
-			  <input class="msg" placeholder="Enter a gift message" />
+			  <input class="msg" name="subject" placeholder="Enter a gift message" />
 			  <div class="checkout">
-				<button  type="submit" id="checkout">Send</button>
+				<button  type="submit" id="">Send</button>
 			  </div>
 			</section>
 		  </div>
@@ -1089,7 +1089,7 @@
 			<section class="info">
 			  <div class="list">
 				<p class="title">Gift Card</p>
-				<input class="msg" placeholder="Enter amount "/>
+				<input class="msg" placeholder="Enter amount" name="amount"/>
 				<!-- <p class="price">$25.00</p> -->
 			  </div>
 			  <div class="buy">
@@ -1114,7 +1114,9 @@
 		  </div>
 		</div>
 	  </div>
-	</div>
+
+	</form>
+</div>
 
 
 <section id="labels">

@@ -20,7 +20,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 def home(request):
 
-   reviews = Review.objects.all()[:6]
+   reviews = Review.objects.filter(status = "approved")[:6]
 
    context = {
       'reviews' : reviews
@@ -109,12 +109,14 @@ def createGiftCard(request):
    number = request.POST.get("phone_number")
    email = request.POST.get("email")
    subject = request.POST.get("subject")
+   amount = request.POST.get("amount")
 
    GiftCard.objects.create(
       name = f_name,
       email = email,
       phone_number = number,
-      message = subject
+      message = subject,
+      giftcard_amount = amount
    )
 
    context = {

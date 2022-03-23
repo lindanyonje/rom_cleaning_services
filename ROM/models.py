@@ -58,11 +58,21 @@ class Rating(models.Model):
 
 
 class Review(models.Model):
+
+    STATUS=(
+        ('pending', 'pending'),
+        ('approved', 'approved'),
+    )
     rating= models.IntegerField(null=False, blank=False) 
     review=models.TextField( null=True, blank=True)
     customer_id=models.ForeignKey('Customer',on_delete=models.CASCADE, blank=True,null=True)
+    status=models.CharField(max_length=100, default="pending", choices=STATUS)
     created_at=models.DateTimeField(auto_now_add=True)
-    updated_at= models.DateTimeField(auto_now=True) 
+    updated_at= models.DateTimeField(auto_now=True)
+
+    def getRatingRange(self):
+
+        return range(self.rating) 
 
 
 class Order(models.Model):
