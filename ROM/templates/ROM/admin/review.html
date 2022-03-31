@@ -82,15 +82,15 @@
             <span>{{review.created_at}}</span>
             
             <div class="d-flex flex-row">
-              <button class="btn btn-outline-info btn-sm">
-                <i class="fa fa-trash-o" aria-hidden="true"></i>
-                Delete
-              </button>
+              <a class="btn btn-sm btn-outline-danger" href="{% url 'delete_review' review.id %}"><i class="fa fa-trash-o " aria-hidden="true"></i>Delete </a>
+             
 
-              <button class="btn btn-info btn-sm mx-2">
+              <a class="btn btn-info btn-sm mx-2" href="{% url 'review'  %}"> <i class="fa fa-share-alt" aria-hidden="true"></i> Share </a>
+
+              <!-- <button class="btn btn-info btn-sm mx-2">
                 <i class="fa fa-share-alt" aria-hidden="true"></i>
                 Share
-              </button>
+              </button> -->
             </div>
   
             <!-- <button id = "remove" onclick="myFunction()"> <i class="fa fa-trash-o" aria-hidden="true"></i>Delete</button> -->

@@ -140,3 +140,26 @@ class Quote(models.Model):
     updated_at= models.DateTimeField(auto_now=True)     
 
 
+
+class Cart(models.Model):
+    order_id= models.ForeignKey('order',on_delete=models.CASCADE,blank=True,null=True, related_name='carts')
+    service_id=models.ForeignKey('service',on_delete=models.CASCADE,blank=True,null=True)
+    quantity=models.IntegerField(null= False, blank= False) 
+    created_at=models.DateTimeField(auto_now_add=True)
+    updated_at= models.DateTimeField(auto_now_add=True) 
+
+class Checkout(models.Model):
+     customer = models.ForeignKey('customer', on_delete=models.CASCADE)
+     phonenumber = models.CharField(max_length=20, null=False)
+     total = models.FloatField(default=0)
+     amount_paid = models.FloatField(default=0, )
+     address = models.CharField(max_length=300, null=True, blank=True)
+     created_at = models.DateTimeField(auto_now_add=True)
+     updated_at = models.DateTimeField(auto_now=True)
+     
+     CHECKOUT_STATUS = (
+         ('PENDING', 'Pending'),
+         ('PAID', 'Paid'),
+     )
+     status = models.CharField(choices=CHECKOUT_STATUS, max_length=100, default='PENDING')  
+

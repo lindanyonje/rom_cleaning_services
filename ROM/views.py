@@ -1,6 +1,7 @@
 from email import message
 from logging.handlers import RotatingFileHandler
 from multiprocessing import context
+from django.http.response import JsonResponse
 from unicodedata import category
 from django.shortcuts import render,redirect
 from django .http import HttpResponse
@@ -66,6 +67,68 @@ class CreateInquiry(LoginRequiredMixin, CreateView):
    template_name = 'ROM/admin/inquiry.html'
    success_url = '/dashboard'
 
+
+def get_cart(request):
+    cart_items = Cart.objects.filter(order_id__isnull = True)
+    
+    return render(request, 'ROM/frontend/cart.html', {'cart': cart_items})    
+
+
+def deleteCart(request):
+
+    cart_id = request.POST.get('cart_id')
+    cart_item= Cart.objects.get(pk = cart_id)
+    cart_item.delete()
+    
+
+    data ={}
+
+    return JsonResponse(data)
+
+def checkoutDetails(request, total):
+
+    context = {
+            'total' : total,
+        }
+    return render(request, 'ROM/frontend/checkout.html', context)
+
+
+def finalizeCheckout(request):
+    if request.method == "GET":
+
+        return render(request, 'shop/frontend/cart.html', context={})
+
+    else:
+        name=request.POST.get('name')
+        email=request.POST.get('email')
+        total=request.POST.get('total')
+        order_number= "BURA_123_56"
+        address=request.POST.get('address')
+        delivery_method = request.POST.get("delivery_method")
+        payment_mode = request.POST.get("paymentMode")
+        
+        customer = Customer.objects.filter(email= email).first()
+        if customer is None:
+            customer = Customer.objects.create(
+                name = name,
+                email = email,
+                password = email,
+            )
+        order = Order.objects.create(
+            total = total,
+            order_number = order_number,
+            status = "Pending",
+            customer_id = customer
+
+        )
+
+        cart_items = Cart.objects.filter(order_id__isnull = True).update(order_id = order.id)
+
+        context = {
+            'order' : order.id,
+        }
+
+        return JsonResponse(context)
 
 @login_required
 def inquiry(request):
