@@ -1032,8 +1032,13 @@
 	
 					<div class="form-group">
 				
-					  <input required type="text" id="fname" name="firstname" class="form-control"  placeholder="Name..">
+					  <input required type="text" id="fname" name="firstname" class="form-control"  placeholder="your Name..">
 					</div>
+
+					<div class="form-group">
+				
+						<input required type="text" id="fname" name="firstname" class="form-control"  placeholder="Recipient Name..">
+					  </div>
 	
 					<div class="form-group">
 				
@@ -1042,7 +1047,7 @@
 	
 					<div class="form-group">
 					  
-					  <input required type="email" name="email" class="form-control" id="email" placeholder="Email">
+					  <input required type="email" name="email" class="form-control" id="email" placeholder="Recipients Email">
 					</div>
 	
 					<!-- <div class="form-group">
@@ -1072,7 +1077,8 @@
 			  </div>
 			  <input class="msg" name="subject" placeholder="Enter a gift message" />
 			  <div class="checkout">
-				<button  type="submit" id="">Send</button>
+				<!-- <button  type="submit" id="">Send</button> -->
+				<a href="{% url 'checkout_details' 1 %}" class="btn btn-info btn-lg mx-2">Send</a>
 			  </div>
 			</section>
 		  </div>
