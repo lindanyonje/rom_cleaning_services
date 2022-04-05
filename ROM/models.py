@@ -99,7 +99,9 @@ class GiftCard(models.Model):
    
     giftcard_amount=models.IntegerField(null=False, blank=False) 
     name=models.CharField(max_length=100, null=False, blank=False,default="Some String")
+    recipient_name=models.CharField(max_length=100, null=True, blank=True)
     email=models.CharField(max_length=100, null=False, blank=False, default="Some String")
+    recipient_email=models.CharField(max_length=100, null=True, blank=True)
     phone_number=models.IntegerField(null= True, blank= True)
     message=models.TextField(null=False, blank=False, default="Some String")
     code=models.CharField(max_length=50, null=False, blank=True)

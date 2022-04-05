@@ -5,6 +5,11 @@
 {% block content %}
 
 <div class="container">
+      {% if messages %}
+        {% for message in messages %}
+            <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}" role="alert">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
     <div class= "row mt-4">
 
    
@@ -85,7 +90,11 @@
               <a class="btn btn-sm btn-outline-danger" href="{% url 'delete_review' review.id %}"><i class="fa fa-trash-o " aria-hidden="true"></i>Delete </a>
              
 
-              <a class="btn btn-info btn-sm mx-2" href="{% url 'review'  %}"> <i class="fa fa-share-alt" aria-hidden="true"></i> Share </a>
+              {% if "pending" in review.status %}
+              <a class="btn btn-info btn-sm mx-2" href="{% url 'update_review' review.id  %}"> <i class="fa fa-thumbs-up mr-2" aria-hidden="true"></i>Approve</a>
+              {% else %}
+              <a class="btn btn-danger btn-sm mx-2" href="{% url 'update_review' review.id  %}"> <i class="fa fa-thumbs-down mr-2" aria-hidden="true"></i>Disapprove</a>
+              {% endif %}
 
               <!-- <button class="btn btn-info btn-sm mx-2">
                 <i class="fa fa-share-alt" aria-hidden="true"></i>

@@ -4,7 +4,7 @@ from multiprocessing import context
 from django.http.response import JsonResponse
 from unicodedata import category
 from django.shortcuts import render,redirect
-from django .http import HttpResponse
+from django .http import HttpResponse, HttpResponseRedirect
 from django .forms import inlineformset_factory
 from .models import*
 from .forms import OfferForm, OrderForm, CustomerForm,ServiceForm,PaymentForm,GiftForm
@@ -14,6 +14,8 @@ from django.views.generic.edit import CreateView
 from .filters import OrderFilter
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib import messages
+
 
 
 # Create your views here.
@@ -382,6 +384,7 @@ def review(request):
    return render(request, 'ROM/admin/review.html', context)  
 
 
+
 def createReview(request):
 
    rating=request.POST.get("rating")
@@ -406,7 +409,26 @@ def createReview(request):
       
    }
 
-   return render(request, 'ROM/frontend/review_success.html', context)          
+   return render(request, 'ROM/frontend/review_success.html', context)    
+
+
+@login_required      
+def updateReviewStatus(request, pk):
+
+   ##Using get can give a 404 error: Use try except
+   review= Review.objects.get(id=pk)
+
+   if "pending" in review.status:
+      review.status = "approved"
+   else:
+      review.status = "pending"
+
+   review.save()
+
+   messages.success(request, 'Review updated successfully.')
+
+   return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+
 
 @login_required
 def deletereview(request, pk):
