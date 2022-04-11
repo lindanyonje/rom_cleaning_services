@@ -212,12 +212,12 @@ button:hover {
           
             <div class="form-group">
                 <label for="inputAddress">Address*</label>
-                <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                <input type="text" class="form-control"  name="Address" id="inputAddress" placeholder="1234 Main St">
             </div>
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="inputCity">City</label>
-                <input type="text" class="form-control" id="inputCity">
+                <input type="text" class="form-control" name="City" id="inputCity">
               </div>
               <div class="form-group col-md-4">
                 <label for="inputState">State</label>
@@ -228,7 +228,7 @@ button:hover {
               </div>
               <div class="form-group col-md-2">
                 <label for="inputZip">Zip</label>
-                <input type="text" class="form-control" id="inputZip">
+                <input type="text"  class="form-control"  name="zip" id="inputZip">
               </div>
             </div>
           </div>
@@ -396,20 +396,20 @@ button:hover {
             
             <div class="col">
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                    <input class="form-check-input" name="formcheck" type="checkbox" value="" id="defaultCheck1">
                     <label class="form-check-label" for="defaultCheck1">
                       office
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                    <input class="form-check-input"  name="formcheck" type="checkbox" value="" id="defaultCheck1">
                     <label class="form-check-label" for="defaultCheck1">
                       play room
                     </label>
                 </div>
-      
-                <div class="form-check disabled">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+       
+                <div class="form-check">
+                    <input class="form-check-input" name="formcheck" type="checkbox" value="" id="defaultCheck1">
                     <label class="form-check-label" for="defaultCheck1">
                       Basement
                     </label>
@@ -420,19 +420,19 @@ button:hover {
             
             <div class="col">
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                    <input class="form-check-input" name="formcheck" type="checkbox" value="" id="defaultCheck1">
                     <label class="form-check-label" for="defaultCheck1">
                       Family room
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                    <input class="form-check-input" name="formcheck" type="checkbox" value="" id="defaultCheck1">
                     <label class="form-check-label" for="defaultCheck1">
                       Dinning room
                     </label>
                 </div>
                 <div class="form-check disabled">
-                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                    <input class="form-check-input"  name="formcheck" type="checkbox" value="" id="defaultCheck1">
                     <label class="form-check-label" for="defaultCheck1">
                       other
                     </label>
@@ -491,20 +491,20 @@ button:hover {
               
               <div class="col">
                   <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                      <input class="form-check-input" name="formcheck" type="checkbox" value="" id="defaultCheck1">
                       <label class="form-check-label" for="defaultCheck1">
                         Regular Service
                       </label>
                   </div>
                   <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                      <input class="form-check-input" name="formcheck" type="checkbox" value="" id="defaultCheck1">
                       <label class="form-check-label" for="defaultCheck1">
                         Move-In Deep Cleaning (Minimal to No Furniture)
                       </label>
                   </div>
         
                   <div class="form-check disabled">
-                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                      <input class="form-check-input" name="formcheck" type="checkbox" value="" id="defaultCheck1">
                       <label class="form-check-label" for="defaultCheck1">
                         ($20 ea) Patio Cleaning
                       </label>
@@ -515,19 +515,19 @@ button:hover {
               
               <div class="col">
                   <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                      <input class="form-check-input" name="formcheck" type="checkbox" value="" id="defaultCheck1">
                       <label class="form-check-label" for="defaultCheck1">
                         ($40) Interior Oven Cleaning
                       </label>
                   </div>
                   <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                      <input class="form-check-input"  name="formcheck" type="checkbox" value="" id="defaultCheck1">
                       <label class="form-check-label" for="defaultCheck1">
                         ($45) Interior Refrigerator Cleaning, excludes Freezer
                       </label>
                   </div>
                   <div class="form-check disabled">
-                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                      <input class="form-check-input" name="formcheck" type="checkbox" value="" id="defaultCheck1">
                       <label class="form-check-label" for="defaultCheck1">
                         One-time Deep Clean
                       </label>
@@ -618,21 +618,21 @@ button:hover {
               <div class="card-info-container">
                 <div class="card-info">
                   <label>Card Number
-                    <input class="full-width" id="card-num" type="text" placeholder="1234 5678 9012 3456">
+                    <input class="full-width" id="card-num" type="text" name="card-number" placeholder="1234 5678 9012 3456">
                   </label>
                   <label>Name on Card
-                    <input class="full-width" id="name" type="text" placeholder="Steve Rogers">
+                    <input class="full-width" id="name" type="text"  name="card-name" placeholder="Steve Rogers">
                   </label>
                   <div class="expire-ccv">
                     <label>Expires
                       <span class="expire-date">
-                        <input id="month" type="text" size="2" maxlength="2" placeholder="MM">
+                        <input id="month" type="text" size="2" maxlength="2"  name="valid" placeholder="MM">
                         <span>/</span>
-                        <input id="year" type="text" size="2" maxlength="2" placeholder="YY">
+                        <input id="year" type="text" size="2" maxlength="2" name="valid" placeholder="YY">
                       </span>
                     </label>
                     <label>CCV
-                      <input id="ccv" type="text" size="3" maxlength="3" placeholder="123">
+                      <input id="ccv" type="text" size="3" maxlength="3" name="ccv"placeholder="123">
                     </label>
                   </div>
                 </div>
@@ -643,7 +643,7 @@ button:hover {
               </label>
             </form>
           
-            <button class="btn btn-info btn-lg mb-1 " style="text-align: center;"onclick="document.getElementById('payment-form').reset()">CONFIRM PAYMENT</button>
+            <button class="btn btn-info btn-lg mb-1 " style="text-align: center;" onclick="document.getElementById('payment-form').reset()">CONFIRM PAYMENT</button>
 
             <br>
           </div>

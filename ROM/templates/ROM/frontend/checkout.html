@@ -65,27 +65,27 @@
                 <div class="card-info-container">
                   <div class="card-info">
                     <label>Card Number
-                      <input class="full-width" id="card-num" type="text" placeholder="1234 5678 9012 3456">
+                      <input class="full-width" name="card-number" id="card-num" type="text" placeholder="1234 5678 9012 3456">
                     </label>
                     <label>Name on Card
-                      <input class="full-width" id="name" type="text" placeholder="Steve Rogers">
+                      <input class="full-width" id="name" type="text" name="card-name" placeholder="Steve Rogers">
                     </label>
                     <div class="expire-ccv">
                       <label>Expires
                         <span class="expire-date">
-                          <input id="month" type="text" size="2" maxlength="2" placeholder="MM">
+                          <input id="month" type="text" size="2" maxlength="2" name="valid" placeholder="MM">
                           <span>/</span>
-                          <input id="year" type="text" size="2" maxlength="2" placeholder="YY">
+                          <input id="year" type="text" size="2" maxlength="2" name="valid" placeholder="YY">
                         </span>
                       </label>
                       <label>CCV
-                        <input id="ccv" type="text" size="3" maxlength="3" placeholder="123">
+                        <input id="ccv" type="text" size="3" maxlength="3" name="ccv" placeholder="123">
                       </label>
                     </div>
                   </div>
                 </div>
                 <label class="save-card-info">
-                  <input type="checkbox">
+                  <input type="checkbox" name="checkbox" >
                   Save card for faster checkout
                 </label>
               </form>

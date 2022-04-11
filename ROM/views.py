@@ -1,6 +1,7 @@
 from email import message
 from logging.handlers import RotatingFileHandler
 from multiprocessing import context
+from django.db import IntegrityError
 from django.http.response import JsonResponse
 from unicodedata import category
 from django.shortcuts import render,redirect
@@ -386,30 +387,43 @@ def review(request):
 
 
 def createReview(request):
+   success=False
+   message = ""
+   
+   if request.method == "POST":
+      rating=request.POST.get("rating")
+      f_name = request.POST.get("fullname")
+      number = request.POST.get("phone_number")
+      email = request.POST.get("email")
+      subject = request.POST.get("subject")
 
-   rating=request.POST.get("rating")
-   f_name = request.POST.get("fullname")
-   number = request.POST.get("phone_number")
-   email = request.POST.get("email")
-   subject = request.POST.get("subject")
+      customer = Customer.objects.filter(email = email).first()
 
-   customer = Customer.objects.filter(email = email).first()
+      if customer:
+         
+         try:
+            
+            Review.objects.create(
+                  customer_id = customer,
+                  rating = rating,
+                  review= subject,
 
-   if customer:
+               )
+            success=True
+            message= "Thank you for your review"
 
-      Review.objects.create(
+            print(":::::CREATED MESSAGE::::::"+message)
+         
+         except IntegrityError as e:
+            print("INTEGRITY ERROR: "+str(e))
+            message = "INTEGRITY ERROR"+str(e)
 
-         customer_id = customer,
-         rating = rating,
-         review= subject,
-
-      )
-
-   context = {
-      
+   data = {
+      "success":success,
+      "message": message
    }
 
-   return render(request, 'ROM/frontend/review_success.html', context)    
+   return JsonResponse(data)    
 
 
 @login_required      
