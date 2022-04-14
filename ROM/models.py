@@ -163,5 +163,63 @@ class Checkout(models.Model):
          ('PENDING', 'Pending'),
          ('PAID', 'Paid'),
      )
-     status = models.CharField(choices=CHECKOUT_STATUS, max_length=100, default='PENDING')  
+     status = models.CharField(choices=CHECKOUT_STATUS, max_length=100, default='PENDING')
 
+
+class OrderDetails(models.Model):
+    order= models.ForeignKey('Order',on_delete=models.CASCADE,blank=True,null=True)
+    email=models.CharField(max_length=100, null=False, blank=False)
+    phone_number=models.IntegerField(null= True, blank= True)
+    address=models.CharField(max_length=100, null=False, blank=False)
+    city=models.CharField(max_length=100, null=False, blank=False)
+    state=models.CharField(max_length=100, null=False, blank=False)
+    zip=models.CharField(max_length=100, null=False, blank=False)
+    about=models.CharField(max_length=100, null=False, blank=False)
+    home=models.CharField(max_length=100, null=False, blank=False)
+    bedroom=models.CharField(max_length=100, null=False, blank=False)
+    sqrft=models.CharField(max_length=100, null=False, blank=False)
+    floors=models.IntegerField(null= True, blank= True)
+    occupants=models.IntegerField(null= True, blank= True)
+    space=models.CharField(max_length=100, null=False, blank=False)
+    no_pets=models.IntegerField(null= True, blank= True)
+    npets=models.IntegerField(null= True, blank= True)
+    frequency=models.CharField(max_length=100, null=False, blank=False)
+    schedule=models.CharField(max_length=100, null=False, blank=False)
+    subject=models.CharField(max_length=100, null=False, blank=False)
+    payment=models.CharField(max_length=100, null=False, blank=False)
+    card_number=models.IntegerField(null= True, blank= True)
+    card_name=models.CharField(max_length=100, null=False, blank=False)
+    valid=models.IntegerField(null= True, blank= True)
+
+
+
+  
+
+
+
+#  f_name = request.POST.get("fullname")
+#       email = request.POST.get("email")
+#       number = request.POST.get("phone_number")
+#       address = request.POST.get("address")
+#       city = request.POST.get("city")
+#       state = request.POST.get("state")
+#       zip = request.POST.get("zip")
+#       about = request.POST.get("about")
+#       home= request.POST.get("home")
+#       bedroom= request.POST.get("bedroom")
+#       sqrft= request.POST.get("sqrft")
+#       floors= request.POST.get("floors")
+#       occupants= request.POST.get("occupants")
+#       space= request.POST.get("space")
+#       no_pets= request.POST.get("pets")
+#       npets= request.POST.get("npets")
+#       service= request.POST.get("service")
+#       frequency= request.POST.get("frequency")
+#       schedule= request.POST.get("schedule")
+#       subject = request.POST.get("subject")
+#       payment= request.POST.get("payment-type")
+#       card_number= request.POST.get("cardnumber")
+#       card_name= request.POST.get("cardname")
+#       valid= request.POST.get("valid")
+#       ccv= request.POST.get("ccv")
+#       

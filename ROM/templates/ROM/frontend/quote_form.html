@@ -202,11 +202,11 @@ button:hover {
             <div class="row mt-2">
                 <div class="col">
                     <label for="inputEmail4">Email*</label>
-                  <input type="text" class="form-control" placeholder="Email">
+                  <input type="text" class="form-control" name="email" placeholder="Email">
                 </div>
                 <div class="col">
                     <label for="inputEmail4">phone*</label>
-                  <input type="text" class="form-control" placeholder="Phone">
+                  <input type="text" class="form-control" name="phone" placeholder="Phone">
                 </div>
             </div>
           
@@ -221,7 +221,7 @@ button:hover {
               </div>
               <div class="form-group col-md-4">
                 <label for="inputState">State</label>
-                <select id="inputState" class="form-control">
+                <select id="inputState" name="state" class="form-control">
                   <option selected>Choose...</option>
                   <option>...</option>
                 </select>
@@ -241,20 +241,20 @@ button:hover {
         <div class="row mb-3">
           <div class="col ">
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-              <label class="form-check-label" for="exampleRadios2">
+              <input class="form-check-input" type="radio" name="about" id="brochure2" value="option2">
+              <label class="form-check-label" for="bronchure2">
               Brochure or Business card
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-              <label class="form-check-label" for="exampleRadios2">
+              <input class="form-check-input" type="radio"  name="about"  id="outdoor2" value="option2">
+              <label class="form-check-label" for="outdoor2">
               out door sign
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3" >
-              <label class="form-check-label" for="exampleRadios3">
+              <input class="form-check-input" type="radio"  name="about"  id="radio2" value="option3" >
+              <label class="form-check-label" for="radio3">
                 Friend or Family
               </label>
             </div>
@@ -263,20 +263,20 @@ button:hover {
     
           <div class="col">
                   <div class="form-check">
-                      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-                      <label class="form-check-label" for="exampleRadios1">
+                      <input class="form-check-input" type="radio" name="about" id="facebook1" value="option1" checked>
+                      <label class="form-check-label" for="facebook1">
                           Facebook
                       </label>
                   </div>
                   <div class="form-check">
-                      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                      <label class="form-check-label" for="exampleRadios2">
+                      <input class="form-check-input" type="radio" name="about" id="google2" value="option2">
+                      <label class="form-check-label" for="google2">
                       google search
                       </label>
                       </div>
                   <div class="form-check ">
-                      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3" >
-                      <label class="form-check-label" for="exampleRadios3">
+                      <input class="form-check-input" type="radio" name="about" id="other3" value="option3" >
+                      <label class="form-check-label" for="other3">
                     other
                       </label>
                   </div>
@@ -297,7 +297,7 @@ button:hover {
             <div class="row">
                 <div class="col">
                     <label for="hometype">Type of Home</label>
-                    <select class="custom-select">
+                    <select class="custom-select" name="home">
                         <option value="1">Duplex</option>
                         <option value="2">Condo</option>
                         <option value="3">Loft</option>
@@ -311,14 +311,14 @@ button:hover {
                 </div>
                 <div class="col">
                   <label for="building">Building or Complex Name if applicable</label>
-                  <input type="text" class="form-control" >
+                  <input type="text" class="form-control" name=" building" >
                 </div>
             </div>
             
               <div class="row">
                   <div class="col">
                     <label for="bedroom">Number of Bedrooms</label>
-                    <select class="custom-select">
+                    <select class="custom-select" name=" bedrooms">
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -333,14 +333,14 @@ button:hover {
                   </div>
                   <div class="col">
                     <label for="squarefoot">Square Footage</label>
-                    <input type="text" class="form-control" >
+                    <input type="text" class="form-control" name="sqrft" >
                   </div>
               </div>
             
               <div class="row">
                   <div class="col-md-4">
                     <label for="bathroom">Number of Bathrooms</label>
-                    <select class="custom-select" >
+                    <select class="custom-select" name="bathrooms" >
                       <option value="1">1</option>
                       <option value="2">2</option>
                       <option value="3">3</option>
@@ -355,7 +355,7 @@ button:hover {
                   </div>
                   <div class="col-md-4">
                       <label for="levels">Number of floors in home</label>
-                      <select class="custom-select">
+                      <select class="custom-select" name="floors">
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -370,7 +370,7 @@ button:hover {
                   </div>
                   <div class="col-md-4">
                       <label for="people">People living in the Home</label>
-                      <select class="custom-select">
+                      <select class="custom-select" name="occupants">
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -396,21 +396,21 @@ button:hover {
             
             <div class="col">
                 <div class="form-check">
-                    <input class="form-check-input" name="formcheck" type="checkbox" value="" id="defaultCheck1">
-                    <label class="form-check-label" for="defaultCheck1">
+                    <input class="form-check-input" name="space" type="checkbox" value="" id="office1">
+                    <label class="form-check-label" for="office1">
                       office
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input"  name="formcheck" type="checkbox" value="" id="defaultCheck1">
-                    <label class="form-check-label" for="defaultCheck1">
+                    <input class="form-check-input"  name="space" type="checkbox" value="" id="playroom">
+                    <label class="form-check-label" for="playroom1">
                       play room
                     </label>
                 </div>
        
                 <div class="form-check">
-                    <input class="form-check-input" name="formcheck" type="checkbox" value="" id="defaultCheck1">
-                    <label class="form-check-label" for="defaultCheck1">
+                    <input class="form-check-input" name="space" type="checkbox" value="" id="basement1">
+                    <label class="form-check-label" for="basement1">
                       Basement
                     </label>
                 </div>
@@ -420,20 +420,20 @@ button:hover {
             
             <div class="col">
                 <div class="form-check">
-                    <input class="form-check-input" name="formcheck" type="checkbox" value="" id="defaultCheck1">
-                    <label class="form-check-label" for="defaultCheck1">
+                    <input class="form-check-input" name="space" type="checkbox" value="" id="froom1">
+                    <label class="form-check-label" for="froom1">
                       Family room
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" name="formcheck" type="checkbox" value="" id="defaultCheck1">
-                    <label class="form-check-label" for="defaultCheck1">
+                    <input class="form-check-input" name="space" type="checkbox" value="" id="dinning1">
+                    <label class="form-check-label" for="dinning1">
                       Dinning room
                     </label>
                 </div>
                 <div class="form-check disabled">
-                    <input class="form-check-input"  name="formcheck" type="checkbox" value="" id="defaultCheck1">
-                    <label class="form-check-label" for="defaultCheck1">
+                    <input class="form-check-input"  name="space" type="checkbox" value="" id="other1">
+                    <label class="form-check-label" for="other1">
                       other
                     </label>
                 </div>
@@ -447,14 +447,14 @@ button:hover {
                   Do you have any pets?
                 </label>
               <div class="form-check">
-                  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-                  <label class="form-check-label" for="exampleRadios1">
+                  <input class="form-check-input" type="radio" name="pets" id="yes1" value="option1" checked>
+                  <label class="form-check-label" for="yes1">
                     Yes
                   </label>
                 </div>
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                  <label class="form-check-label" for="exampleRadios2">
+                  <input class="form-check-input" type="radio" name="pets" id="no2" value="option2">
+                  <label class="form-check-label" for="no2">
                   NO
                   </label>
                 </div>
@@ -464,7 +464,7 @@ button:hover {
               <label class="form-check-label" for="exampleRadios1">
                   If Yes,what type and how many?
                 </label>
-            <input type="text" class="form-control" >
+            <input type="text" class="form-control" name="npets" >
           </div>
       </div>
 
@@ -491,20 +491,20 @@ button:hover {
               
               <div class="col">
                   <div class="form-check">
-                      <input class="form-check-input" name="formcheck" type="checkbox" value="" id="defaultCheck1">
+                      <input class="form-check-input" name="Service" type="checkbox" value="" id="defaultCheck1">
                       <label class="form-check-label" for="defaultCheck1">
                         Regular Service
                       </label>
                   </div>
                   <div class="form-check">
-                      <input class="form-check-input" name="formcheck" type="checkbox" value="" id="defaultCheck1">
+                      <input class="form-check-input" name="Service"  type="checkbox" value="" id="defaultCheck1">
                       <label class="form-check-label" for="defaultCheck1">
                         Move-In Deep Cleaning (Minimal to No Furniture)
                       </label>
                   </div>
         
                   <div class="form-check disabled">
-                      <input class="form-check-input" name="formcheck" type="checkbox" value="" id="defaultCheck1">
+                      <input class="form-check-input" name="Service"  type="checkbox" value="" id="defaultCheck1">
                       <label class="form-check-label" for="defaultCheck1">
                         ($20 ea) Patio Cleaning
                       </label>
@@ -515,19 +515,19 @@ button:hover {
               
               <div class="col">
                   <div class="form-check">
-                      <input class="form-check-input" name="formcheck" type="checkbox" value="" id="defaultCheck1">
+                      <input class="form-check-input" name="Service"  type="checkbox" value="" id="defaultCheck1">
                       <label class="form-check-label" for="defaultCheck1">
                         ($40) Interior Oven Cleaning
                       </label>
                   </div>
                   <div class="form-check">
-                      <input class="form-check-input"  name="formcheck" type="checkbox" value="" id="defaultCheck1">
+                      <input class="form-check-input"  name="Service" type="checkbox" value="" id="defaultCheck1">
                       <label class="form-check-label" for="defaultCheck1">
                         ($45) Interior Refrigerator Cleaning, excludes Freezer
                       </label>
                   </div>
                   <div class="form-check disabled">
-                      <input class="form-check-input" name="formcheck" type="checkbox" value="" id="defaultCheck1">
+                      <input class="form-check-input" name="Service" type="checkbox" value="" id="defaultCheck1">
                       <label class="form-check-label" for="defaultCheck1">
                         One-time Deep Clean
                       </label>
@@ -544,31 +544,31 @@ button:hover {
                       What Frequency of Service Works for You?
                     </label>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-                      <label class="form-check-label" for="exampleRadios1">
+                      <input class="form-check-input" type="radio" name="frequency" id="frequency1" value="option1" checked>
+                      <label class="form-check-label" for="frequency1">
                         Weekly
                       </label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                      <label class="form-check-label" for="exampleRadios2">
+                      <input class="form-check-input" type="radio" name="frequency"  id="frequency2" value="option2">
+                      <label class="form-check-label" for="frequency2">
                       Bi-Weekly
                       </label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                      <label class="form-check-label" for="exampleRadios2">
+                      <input class="form-check-input" type="radio" name="frequency"  id="frequency3" value="option2">
+                      <label class="form-check-label" for="frequency3">
                       Monthly
                       </label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                      <label class="form-check-label" for="exampleRadios2">
+                      <input class="form-check-input" type="radio" name="frequency"  id="frequency4" value="option2">
+                      <label class="form-check-label" for="frequency4">
                       One- Time
                       </label>
                       <div class="form-check">
-                          <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                          <label class="form-check-label" for="exampleRadios2">
+                          <input class="form-check-input" type="radio" name="frequency"  id="frequency4" value="option2">
+                          <label class="form-check-label" for="frequency4">
                           Other
                           </label>
                         </div>
@@ -586,7 +586,7 @@ button:hover {
           <div class="form-group">
               <label for="exampleFormControlTextarea1">Are there any problem areas you would like us to focus on <br>
                   and/or anything else we should know about your home?</label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="subject"></textarea>
             
           </div>
 
@@ -618,10 +618,10 @@ button:hover {
               <div class="card-info-container">
                 <div class="card-info">
                   <label>Card Number
-                    <input class="full-width" id="card-num" type="text" name="card-number" placeholder="1234 5678 9012 3456">
+                    <input class="full-width" id="card-num" type="text" name="cardnumber" placeholder="1234 5678 9012 3456">
                   </label>
                   <label>Name on Card
-                    <input class="full-width" id="name" type="text"  name="card-name" placeholder="Steve Rogers">
+                    <input class="full-width" id="name" type="text"  name="cardname" placeholder="Steve Rogers">
                   </label>
                   <div class="expire-ccv">
                     <label>Expires
@@ -638,7 +638,7 @@ button:hover {
                 </div>
               </div>
               <label class="save-card-info">
-                <input type="checkbox">
+                <input type="checkbox" name="checkbox">
                 Save card for faster checkout
               </label>
             </form>

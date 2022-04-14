@@ -640,3 +640,106 @@ class OrderDetail(LoginRequiredMixin, DetailView):
     login_required= True
     model = Order
     template_name= "ROM/admin/order_details.html"
+
+
+
+def createOrder(request):
+   success=False
+   message = ""
+   
+   if request.method == "POST":
+     
+      f_name = request.POST.get("fullname")
+      email = request.POST.get("email")
+      number = request.POST.get("phone_number")
+      address = request.POST.get("address")
+      city = request.POST.get("city")
+      state = request.POST.get("state")
+      zip = request.POST.get("zip")
+      about = request.POST.get("about")
+      home= request.POST.get("home")
+      bedroom= request.POST.get("bedroom")
+      sqrft= request.POST.get("sqrft")
+      floors= request.POST.get("floors")
+      occupants= request.POST.get("occupants")
+      space= request.POST.get("space")
+      no_pets= request.POST.get("pets")
+      npets= request.POST.get("npets")
+      service= request.POST.get("service")
+      frequency= request.POST.get("frequency")
+      schedule= request.POST.get("schedule")
+      subject = request.POST.get("subject")
+      payment= request.POST.get("payment-type")
+      card_number= request.POST.get("cardnumber")
+      card_name= request.POST.get("cardname")
+      valid= request.POST.get("valid")
+      ccv= request.POST.get("ccv")
+      checkbox= request.POST.get("checkbox")
+     
+      customer = Customer.objects.filter(email= email).first()
+      if customer is None:
+         customer = Customer.objects.create(
+               name = f_name,
+               email = email,
+               password = email,
+         )
+
+      service = Service.objects.filter(category = "regular").first()
+      order = Order.objects.create(
+         customer_id = customer,
+         service_id = service,
+         status = "pending",
+         total = findPriceByFeet(sqrft)
+      )
+
+      OrderDetails.objects.create(
+         order = order,
+         
+      )
+  
+
+
+      return render(request, 'ROM/admin/order_form.html')
+
+
+
+def findPriceByFeet(feet):
+
+   feet = int(feet)
+   price = 0
+
+   if feet > 1000:
+      price = 150
+   elif feet > 1000 and feet < 1500:
+      price = 180
+   elif feet > 1500 and feet < 2000:
+      price = 210
+   elif feet > 2000 and feet < 2500:
+      price = 240
+   elif feet > 2500 and feet < 3000:
+      price = 270
+   elif feet > 3000 and feet < 3500:
+      price = 300
+   elif feet > 3500 and feet < 4000:
+      price = 330
+   elif feet > 4000 and feet < 4500:
+      price = 370
+   elif feet > 4500 and feet < 5000:
+      price = 400
+   elif feet > 5000 and feet < 5500:
+      price = 430
+   elif feet > 5500 and feet < 6000:
+      price = 470
+   elif feet > 6000 and feet < 6500:
+      price = 500
+   elif feet > 6500 and feet < 7000:
+      price = 530
+   elif feet > 7000 and feet < 7500:
+      price = 556
+   elif feet > 7500 and feet < 8000:
+      price = 573
+   elif feet > 8000 and feet < 8500:
+      price = 589
+      
+
+ 

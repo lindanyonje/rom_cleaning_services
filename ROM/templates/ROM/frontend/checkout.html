@@ -7,6 +7,9 @@
 
 {% block content %}
 
+
+
+
 <div class="container">
 
   <form action="{% url 'create.gift' %}" method="post">
@@ -29,10 +32,10 @@
               <i class="icon icon-plane"></i> Shiping Information
             </div>
             <div class="details__user">
-              <div class="user__name">John Doe
+              <div class="user__name">{{customer.id}}
                 <br> 13/03/1980
               </div>
-              <div class="user__address">Shipping Address: 22 Street, Address
+              <div class="user__address">
                 <br>Country
               </div>
             </div>
@@ -65,13 +68,13 @@
                 <div class="card-info-container">
                   <div class="card-info">
                     <label>Card Number
-                      <input class="full-width" name="card-number" id="card-num" type="text" placeholder="1234 5678 9012 3456">
+                      <input required class="full-width" name="card-number" id="card-num" type="text" placeholder="1234 5678 9012 3456">
                     </label>
                     <label>Name on Card
-                      <input class="full-width" id="name" type="text" name="card-name" placeholder="Steve Rogers">
+                      <input required  class="full-width" id="name" type="text" name="card-name" placeholder="Steve Rogers">
                     </label>
                     <div class="expire-ccv">
-                      <label>Expires
+                      <label required >Expires
                         <span class="expire-date">
                           <input id="month" type="text" size="2" maxlength="2" name="valid" placeholder="MM">
                           <span>/</span>
