@@ -663,15 +663,15 @@ def createOrder(request):
       floors= request.POST.get("floors")
       occupants= request.POST.get("occupants")
       space= request.POST.get("space")
-      no_pets= request.POST.get("pets")
+      pets= request.POST.get("pets")
       npets= request.POST.get("npets")
       service= request.POST.get("service")
       frequency= request.POST.get("frequency")
       schedule= request.POST.get("schedule")
       subject = request.POST.get("subject")
       payment= request.POST.get("payment-type")
-      card_number= request.POST.get("cardnumber")
-      card_name= request.POST.get("cardname")
+      cardnumber= request.POST.get("cardnumber")
+      cardname= request.POST.get("cardname")
       valid= request.POST.get("valid")
       ccv= request.POST.get("ccv")
       checkbox= request.POST.get("checkbox")
@@ -694,6 +694,31 @@ def createOrder(request):
 
       OrderDetails.objects.create(
          order = order,
+         email = email,
+         number = number,
+         address =address,
+         city = city,
+         state = state,
+         zip = zip,
+         about = about,
+         home= home,
+         bedroom=bedroom,
+         sqrft= sqrft,
+         floors= floors,
+         occupants= occupants,
+         space= space,
+         pets= pets,
+         npets= npets,
+         service= service,
+         frequency= frequency,
+         schedule= schedule,
+         subject = subject,
+         payment= payment-type,
+         card_number= cardnumber,
+         card_name= cardname,
+         valid= valid,
+         ccv= ccv,
+         checkbox= checkbox,
          
       )
   
