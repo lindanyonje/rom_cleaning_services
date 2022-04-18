@@ -628,22 +628,22 @@ class CustomerDetail(LoginRequiredMixin, DetailView):
 
 
 
+@login_required
+class OrderList(ListView):
 
-# class OrderList(ListView):
-
-#     login_required= True
-#     model =Order
-#     template_name= "ROM/admin/order_list.html"
+    login_required= True
+    model =Order
+    template_name= "ROM/admin/order_list.html"
 
 class OrderDetail(LoginRequiredMixin, DetailView):
 
     login_required= True
-    model = Order
+    model = OrderDetails
     template_name= "ROM/admin/order_details.html"
 
 
-
-def createOrder(request):
+@login_required
+def orderDetails(request):
    success=False
    message = ""
    

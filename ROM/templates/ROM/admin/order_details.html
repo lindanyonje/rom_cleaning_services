@@ -36,11 +36,47 @@
 
                     <p><strong>Customer Name:</strong> {{object.customer_id}}</p>
 
-                    <p><strong>Shipping Cost:</strong> {{object.shipping_cost}}</p>
+                    <p><strong>Customer Email:</strong> {{object.email}}</p>
 
-                    <p><strong>Total:</strong> {{order.total}}</p>
+                    <p><strong>phone number:</strong> {{object.phone_number}}</p>
 
-                    <p><strong>Status:</strong> {{order.status}}</p>
+                    <p><strong>Address:</strong> {{object.address}}</p>
+
+                    <p><strong>City:</strong> {{order.city}}</p>
+
+                    <p><strong>State:</strong> {{object.state}}</p>
+
+                    <p><strong>zip:</strong> {{object.zip}}</p>
+
+                    <p><strong>about:</strong> {{object.about}}</p>
+
+                    <p><strong>home:</strong> {{object.status}}</p>
+
+                    <p><strong>bedroom:</strong> {{object.bedroom}}</p>
+
+                    <p><strong>sqrft:</strong> {{object.sqrft}}</p>
+
+                    <p><strong>floors:</strong> {{object.floors}}</p>
+
+                    <p><strong>occupants:</strong> {{object.occupants}}</p>
+
+                    <p><strong>space:</strong> {{object.space}}</p>
+
+                    <p><strong>pets:</strong> {{object.pets}}</p>
+
+                    <p><strong>frequency:</strong> {{object.frequency}}</p>
+
+                    <p><strong>Schedule Date:</strong> {{object.schedule}}</p>
+
+                    <p><strong>Subject:</strong> {{object.subject}}</p>
+
+                    <p><strong>Payment:</strong> {{object.Payment}}</p>
+
+                    <p><strong>Card Number:</strong> {{object.cardnumber}}</p>
+
+                    <p><strong>Card Name:</strong> {{object.cardname}}</p>
+
+                    <p><strong>Valid:</strong> {{object.valid}}</p>
 
                     
                     <a href="#"
@@ -82,3 +118,28 @@
 
 
 {% endblock %}
+
+
+
+order=
+email=models.CharField(max_length=100, null=False, blank=False)
+phone_number=models.IntegerField(null= True, blank= True)
+address=models.CharField(max_length=100, null=False, blank=False)
+city=models.CharField(max_length=100, null=False, blank=False)
+state=models.CharField(max_length=100, null=False, blank=False)
+zip=models.CharField(max_length=100, null=False, blank=False)
+about=models.CharField(max_length=100, null=False, blank=False)
+home=models.CharField(max_length=100, null=False, blank=False)
+bedroom=models.CharField(max_length=100, null=False, blank=False)
+sqrft=models.CharField(max_length=100, null=False, blank=False)
+floors=models.IntegerField(null= True, blank= True)
+occupants=models.IntegerField(null= True, blank= True)
+space=models.CharField(max_length=100, null=False, blank=False)
+no_pets=models.IntegerField(null= True, blank= True)
+npets=models.IntegerField(null= True, blank= True)
+frequency=models.CharField(max_length=100, null=False, blank=False)
+schedule=models.CharField(max_length=100, null=False, blank=False)
+subject=models.CharField(max_length=100, null=False, blank=False)
+payment=models.CharField(max_length=100, null=False, blank=False)
+card_number=models.IntegerField(null= True, blank= True)
+card_name=models.CharField(max_length=100, null=False, blank=False)
