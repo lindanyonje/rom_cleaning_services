@@ -638,12 +638,12 @@ class OrderList(ListView):
 class OrderDetail(LoginRequiredMixin, DetailView):
 
     login_required= True
-    model = OrderDetails
+    model = Order
     template_name= "ROM/admin/order_details.html"
 
 
 @login_required
-def orderDetails(request):
+def order(request):
    success=False
    message = ""
    
@@ -692,7 +692,7 @@ def orderDetails(request):
          total = findPriceByFeet(sqrft)
       )
 
-      OrderDetails.objects.create(
+      Order.objects.create(
          order = order,
          email = email,
          number = number,
@@ -724,7 +724,7 @@ def orderDetails(request):
   
 
 
-      return render(request, 'ROM/admin/order_form.html')
+      return render(request, 'ROM/admin/order_details.html')
 
 
 
