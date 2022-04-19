@@ -323,7 +323,7 @@ def createOrder(request, pk):
 
    customer = Customer.objects.get(id=pk)
 
-   OrderFormSet = inlineformset_factory(Customer, Order, fields=('customer_id','service_id','status'), extra=5)
+   OrderFormSet = inlineformset_factory(Customer, Order, fields=('customer_id','service_category','status', 'total'), extra=5)
 
    formset= OrderFormSet(queryset=Order.objects.none(),instance=customer)
    # form= OrderForm(initial={'customer': customer})
@@ -639,11 +639,30 @@ class OrderDetail(LoginRequiredMixin, DetailView):
 
     login_required= True
     model = Order
+    fields = '__all__'
     template_name= "ROM/admin/order_details.html"
 
 
+def orders(request):
+
+   customers = Customer.objects.all()
+   
+   Order = Order.objects.all()
+  
+
+   context = {
+      'order' : Order,
+      'customers':customers
+
+      
+   }
+
+
+   return render(request, 'ROM/admin/order.html.html', context)        
+
+
 @login_required
-def order(request):
+def orderDetail(request):
    success=False
    message = ""
    

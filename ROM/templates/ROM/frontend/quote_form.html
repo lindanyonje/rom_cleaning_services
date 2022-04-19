@@ -188,7 +188,9 @@ button:hover {
       <small>We are happy you are here, just a few details and we'll get you all set up.</small>
 
       <div class="mb-5"></div>
-      <form>
+      <form action="#{% url 'order' 1 %}" method="POST" >
+
+        {% csrf_token %}
 
         <h3 class="font-weight-bold"><span class="badge badge-info badge-rounded py-2 px-3">1</span> Contact Details</h3>
         <!-- Contact details begins -->
@@ -589,6 +591,8 @@ button:hover {
               <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="subject"></textarea>
             
           </div>
+
+          <div class="text-center mt-4"> <button class="btn btn-info send px-5">Submit<i class="fa fa-long-arrow-right ml-1"></i></button> </div>
 
           
         </div>

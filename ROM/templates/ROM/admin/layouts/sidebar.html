@@ -11,6 +11,7 @@
         <li class="{% if 'dashboard' in request.path %} active {% endif %}">
             <a href="{% url 'dashboard' %}"><i class="fa fa-tachometer mr-2"></i>Dashboard</a>
         </li>
+      
         <li class="{% if 'messages' in request.path %} active {% endif %}">
             <a href="{% url 'inquiry' %}"><i class="fa fa-comments-o mr-2"></i>Inbox</a>
         </li>
