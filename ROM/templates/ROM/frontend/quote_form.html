@@ -188,7 +188,7 @@ button:hover {
       <small>We are happy you are here, just a few details and we'll get you all set up.</small>
 
       <div class="mb-5"></div>
-      <form action="#{% url 'order' 1 %}" method="POST" >
+      <form action="{% url 'order'  %}" method="POST" >
 
         {% csrf_token %}
 
@@ -198,7 +198,7 @@ button:hover {
           <div class="card-body">
             <div class=" mt-2">
               <label for="fname">Full Name</label>
-                    <input type="text" id="fname" name="firstname" class="form-control"  placeholder="Your name..">
+                    <input type="text" id="fname" name="fullname" class="form-control"  placeholder="Your name..">
             </div>
           
             <div class="row mt-2">
@@ -208,18 +208,18 @@ button:hover {
                 </div>
                 <div class="col">
                     <label for="inputEmail4">phone*</label>
-                  <input type="text" class="form-control" name="phone" placeholder="Phone">
+                  <input type="text" class="form-control" name="phone_number" placeholder="Phone">
                 </div>
             </div>
           
             <div class="form-group">
                 <label for="inputAddress">Address*</label>
-                <input type="text" class="form-control"  name="Address" id="inputAddress" placeholder="1234 Main St">
+                <input type="text" class="form-control"  name="address" id="inputAddress" placeholder="1234 Main St">
             </div>
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="inputCity">City</label>
-                <input type="text" class="form-control" name="City" id="inputCity">
+                <input type="text" class="form-control" name="city" id="inputCity">
               </div>
               <div class="form-group col-md-4">
                 <label for="inputState">State</label>
@@ -313,14 +313,14 @@ button:hover {
                 </div>
                 <div class="col">
                   <label for="building">Building or Complex Name if applicable</label>
-                  <input type="text" class="form-control" name=" building" >
+                  <input type="text" class="form-control" name="home" >
                 </div>
             </div>
             
               <div class="row">
                   <div class="col">
                     <label for="bedroom">Number of Bedrooms</label>
-                    <select class="custom-select" name=" bedrooms">
+                    <select class="custom-select" name="bedroom">
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -449,13 +449,13 @@ button:hover {
                   Do you have any pets?
                 </label>
               <div class="form-check">
-                  <input class="form-check-input" type="radio" name="pets" id="yes1" value="option1" checked>
+                  <input class="form-check-input" type="radio" name="pets" id="yes1" value="1" checked>
                   <label class="form-check-label" for="yes1">
                     Yes
                   </label>
                 </div>
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="pets" id="no2" value="option2">
+                  <input class="form-check-input" type="radio" name="pets" id="no2" value="2">
                   <label class="form-check-label" for="no2">
                   NO
                   </label>
@@ -466,7 +466,7 @@ button:hover {
               <label class="form-check-label" for="exampleRadios1">
                   If Yes,what type and how many?
                 </label>
-            <input type="text" class="form-control" name="npets" >
+            <input type="number" class="form-control" name="npets" >
           </div>
       </div>
 
@@ -581,7 +581,7 @@ button:hover {
                   <label class="form-check-label" for="exampleRadios1">
                     Preffered Day
                   </label>
-                  <input type="date" id="scheduled" name="scheduled">
+                  <input type="date" id="scheduled" name="schedule">
               </div>
           </div>
         
@@ -618,11 +618,11 @@ button:hover {
                 <i class="fa fa-cc-discover" style="color:orange;"></i>
                   </div>
             </div>
-            <form id="payment-form">
+            
               <div class="card-info-container">
                 <div class="card-info">
                   <label>Card Number
-                    <input class="full-width" id="card-num" type="text" name="cardnumber" placeholder="1234 5678 9012 3456">
+                    <input class="full-width" id="card-num" type="number" name="cardnumber" placeholder="1234 5678 9012 3456">
                   </label>
                   <label>Name on Card
                     <input class="full-width" id="name" type="text"  name="cardname" placeholder="Steve Rogers">
@@ -645,7 +645,7 @@ button:hover {
                 <input type="checkbox" name="checkbox">
                 Save card for faster checkout
               </label>
-            </form>
+  
           
             <button class="btn btn-info btn-lg mb-1 " style="text-align: center;" onclick="document.getElementById('payment-form').reset()">CONFIRM PAYMENT</button>
 

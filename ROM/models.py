@@ -121,7 +121,7 @@ class Order(models.Model):
     valid=models.IntegerField(null=True, blank=True)
     ccv=models.IntegerField(null=True, blank=True)
     status=models.CharField(max_length=100, null=False, blank=False, choices=STATUS)
-    total=models.FloatField(null= False, blank= True)
+    total=models.FloatField(null= True, blank= True)
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at= models.DateTimeField(auto_now=True)
 

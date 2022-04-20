@@ -55,8 +55,16 @@ def adminDashboard(request):
 
    pending = orders.filter(status='pending').count()
 
-   context = {'orders': orders, 'customers': customers, 'total_orders': total_orders, 
-   'completed': completed, 'pending':pending, 'payment':payment, 'service':service, 'offers':offers, 'gifts':gifts }
+   context = {
+      'orders': orders, 
+      'customers': customers, 
+      'total_orders': total_orders, 
+      'completed': completed, 
+      'pending':pending, 
+      'payment':payment, 
+      'service':service, 
+      'offers':offers, 
+      'gifts':gifts }
 
     ##Declaring a dictionary used to package the data we shall
     ##send to the frontend html template for display.
@@ -647,18 +655,18 @@ def orders(request):
 
    customers = Customer.objects.all()
    
-   Order = Order.objects.all()
+   order = Order.objects.all()
   
 
    context = {
-      'order' : Order,
+      'orders' : order,
       'customers':customers
 
       
    }
 
 
-   return render(request, 'ROM/admin/order.html.html', context)        
+   return render(request, 'ROM/admin/order.html', context)        
 
 
 @login_required
@@ -679,17 +687,18 @@ def orderDetail(request):
       home= request.POST.get("home")
       bedroom= request.POST.get("bedroom")
       sqrft= request.POST.get("sqrft")
+      # bathrooms= request.POST.get("bathrooms")
       floors= request.POST.get("floors")
       occupants= request.POST.get("occupants")
       space= request.POST.get("space")
-      pets= request.POST.get("pets")
-      npets= request.POST.get("npets")
-      service= request.POST.get("service")
+      pets=int(request.POST.get("pets"))
+      npets=int(request.POST.get("npets"))
+      service= request.POST.get("Service")
       frequency= request.POST.get("frequency")
       schedule= request.POST.get("schedule")
       subject = request.POST.get("subject")
       payment= request.POST.get("payment-type")
-      cardnumber= request.POST.get("cardnumber")
+      cardnumber=int(request.POST.get("cardnumber")) 
       cardname= request.POST.get("cardname")
       valid= request.POST.get("valid")
       ccv= request.POST.get("ccv")
@@ -704,17 +713,17 @@ def orderDetail(request):
          )
 
       service = Service.objects.filter(category = "regular").first()
-      order = Order.objects.create(
-         customer_id = customer,
-         service_id = service,
-         status = "pending",
-         total = findPriceByFeet(sqrft)
-      )
+      # order = Order.objects.create(
+      #    customer_id = customer,
+      #    service_id = service,
+      #    status = "pending",
+      #    total = findPriceByFeet(sqrft)
+      # )
 
       Order.objects.create(
-         order = order,
-         email = email,
-         number = number,
+         customer_id = customer,
+         service_category = service,
+         phone_number = number,
          address =address,
          city = city,
          state = state,
@@ -726,23 +735,20 @@ def orderDetail(request):
          floors= floors,
          occupants= occupants,
          space= space,
-         pets= pets,
+         no_pets= pets,
          npets= npets,
-         service= service,
          frequency= frequency,
          schedule= schedule,
          subject = subject,
-         payment= payment-type,
+         Payment= payment,
          card_number= cardnumber,
          card_name= cardname,
          valid= valid,
          ccv= ccv,
-         checkbox= checkbox,
+         # checkbox= checkbox,
          
       )
   
-
-
       return render(request, 'ROM/admin/order_details.html')
 
 
