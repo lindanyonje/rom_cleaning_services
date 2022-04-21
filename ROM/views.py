@@ -687,7 +687,7 @@ def orderDetail(request):
       home= request.POST.get("home")
       bedroom= request.POST.get("bedroom")
       sqrft= request.POST.get("sqrft")
-      # bathrooms= request.POST.get("bathrooms")
+      bathroom= request.POST.get("bathrooms")
       floors= request.POST.get("floors")
       occupants= request.POST.get("occupants")
       space= request.POST.get("space")
@@ -709,7 +709,7 @@ def orderDetail(request):
          customer = Customer.objects.create(
                name = f_name,
                email = email,
-               password = email,
+         
          )
 
       service = Service.objects.filter(category = "regular").first()
@@ -724,6 +724,7 @@ def orderDetail(request):
          customer_id = customer,
          service_category = service,
          phone_number = number,
+         email= email,
          address =address,
          city = city,
          state = state,
@@ -731,11 +732,12 @@ def orderDetail(request):
          about = about,
          home= home,
          bedroom=bedroom,
+         bathroom=bathroom,
          sqrft= sqrft,
          floors= floors,
          occupants= occupants,
          space= space,
-         no_pets= pets,
+         pets= pets,
          npets= npets,
          frequency= frequency,
          schedule= schedule,
