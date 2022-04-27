@@ -596,7 +596,13 @@ def getGiftCards(request) :
 
 def getQuoteForm(request) :
 
-   return render(request, 'ROM/frontend/quote_form.html')    
+   services = Service.objects.all()
+
+   context = {
+      "services" : services
+   }
+
+   return render(request, 'ROM/frontend/quote_form.html', context)    
 
 def getService(request) :
 
@@ -678,7 +684,7 @@ def orderDetail(request):
      
       f_name = request.POST.get("fullname")
       email = request.POST.get("email")
-      number = request.POST.get("phone_number")
+      number =request.POST.get("phone_number")
       address = request.POST.get("address")
       city = request.POST.get("city")
       state = request.POST.get("state")
@@ -691,18 +697,26 @@ def orderDetail(request):
       floors= request.POST.get("floors")
       occupants= request.POST.get("occupants")
       space= request.POST.get("space")
-      pets=int(request.POST.get("pets"))
-      npets=int(request.POST.get("npets"))
-      service= request.POST.get("Service")
+      pets=request.POST.get("pets")
+      npets=request.POST.get("npets")
+      service= request.POST.get("service")
       frequency= request.POST.get("frequency")
       schedule= request.POST.get("schedule")
       subject = request.POST.get("subject")
-      payment= request.POST.get("payment-type")
-      cardnumber=int(request.POST.get("cardnumber")) 
-      cardname= request.POST.get("cardname")
-      valid= request.POST.get("valid")
-      ccv= request.POST.get("ccv")
-      checkbox= request.POST.get("checkbox")
+
+      total = findPriceByFeet(sqrft)
+
+      if npets:
+         npets = int(npets)
+      else:
+         npets = 0
+
+      if 'No' in pets:
+         pets = 1
+      else: 
+         pets = 0
+
+      space = getSpaceDetails(request)
      
       customer = Customer.objects.filter(email= email).first()
       if customer is None:
@@ -712,13 +726,8 @@ def orderDetail(request):
          
          )
 
-      service = Service.objects.filter(category = "regular").first()
-      # order = Order.objects.create(
-      #    customer_id = customer,
-      #    service_id = service,
-      #    status = "pending",
-      #    total = findPriceByFeet(sqrft)
-      # )
+      print(service)
+      service = Service.objects.filter(pk = service).first()
 
       Order.objects.create(
          customer_id = customer,
@@ -742,14 +751,34 @@ def orderDetail(request):
          frequency= frequency,
          schedule= schedule,
          subject = subject,
-         Payment= payment,
-         card_number= cardnumber,
-         card_name= cardname,
-         valid= valid,
-         ccv= ccv,
-         # checkbox= checkbox,
-         
+         total = getFinalTotal(total, request)
       )
+
+      # order = Order()
+      # order.customer_id = customer
+      # order.service_category = service,
+      # order.phone_number = number,
+      # order.email= email,
+      # order.address =address,
+      # order.city = city,
+      # order.state = state,
+      # order.zip = zip,
+      # order.about = about,
+      # order.home= home,
+      # order.bedroom=bedroom,
+      # order.bathroom=bathroom,
+      # order.sqrft= sqrft,
+      # order.floors= floors,
+      # order.occupants= occupants,
+      # order.space= space,
+      # order.pets= pets,
+      # order.npets= npets,
+      # order.frequency= frequency,
+      # order.schedule= schedule,
+      # order.subject = subject
+      
+
+      # order.save()
   
       return render(request, 'ROM/admin/order_details.html')
 
@@ -794,4 +823,35 @@ def findPriceByFeet(feet):
       price = 589
       
 
+   return price
+
  
+def getSpaceDetails(request):
+   space = ""
+
+   if request.POST.get("office"):
+      space = space + ", "+request.POST.get("office")
+   if request.POST.get("basement"):
+      space = space + ", "+request.POST.get("basement")
+   if request.POST.get("play"):
+      space = space + ", "+request.POST.get("play")
+   if request.POST.get("family"):
+      space = space + ", "+request.POST.get("family")
+   if request.POST.get("dining"):
+      space = space + ", "+request.POST.get("dining")
+
+   return space
+
+
+def getFinalTotal(total, request):
+
+   if request.POST.get("oven"):
+      total = total + int(request.POST.get("oven"))
+
+   if request.POST.get("refrigerator"):
+      total = total + int(request.POST.get("refrigerator"))
+
+   if request.POST.get("patio"):
+      total = total + int(request.POST.get("patio"))
+
+   return total

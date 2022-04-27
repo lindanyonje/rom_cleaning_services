@@ -19,9 +19,10 @@ class Customer(models.Model):
 class Service(models.Model):
 
     CATEGORY=(
-        ('regular', 'regular'),
-        ('commercial', 'commercial'),
-        ('personalized','personalized'),
+        ('regular', 'Regular'),
+        ('commercial', 'Commercial'),
+        ('personalized','Personalized'),
+        ('move in', 'Move In')
     )
     
     category=models.CharField(max_length=100, null=False, blank=False,choices=CATEGORY, default='regular')
@@ -89,11 +90,6 @@ class Order(models.Model):
         ('personalized','personalized'),
     )
 
-    Payment=(
-        ('paypal', 'paypal'),
-        ('credit or debit card', 'credit or debit card'),
-        
-    )
    
     customer_id=models.ForeignKey('Customer',on_delete=models.CASCADE,blank=True,null=True)
     service_category=models.CharField(max_length=100, null=False, blank=False,choices=CATEGORY, default='regular')
@@ -116,18 +112,20 @@ class Order(models.Model):
     frequency=models.CharField(max_length=100,null=True, blank=True)
     schedule=models.DateTimeField(max_length=100, null=False, blank=False)
     subject=models.CharField(max_length=100, null=False, blank=False)
-    Payment=models.CharField(max_length=100, null=False, blank=False,choices=Payment, default='Paypal')
-    card_number=models.IntegerField(null= False, blank= True, default=1)
-    card_name=models.CharField(max_length=100, null=True, blank=True)
-    valid=models.IntegerField(null=True, blank=True)
-    ccv=models.IntegerField(null=True, blank=True)
     status=models.CharField(max_length=100, null=False, blank=False, choices=STATUS)
     total=models.FloatField(null= True, blank= True)
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at= models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.status
+        return self.service_category
+
+    def hasPets(self):
+
+        if self.pets == 0:
+            return "Yes, " + str(self.npets)
+        else:
+            return "No"
 
 
 
@@ -135,8 +133,8 @@ class GiftCard(models.Model):
    
     giftcard_amount=models.IntegerField(null=False, blank=False) 
     name=models.CharField(max_length=100,  null=True, blank=True)
-    recipient_name=models.CharField(max_length=100, null=True, blank=True)
     email=models.CharField(max_length=100, null=True, blank=True)
+    recipient_name=models.CharField(max_length=100, null=True, blank=True)
     recipient_email=models.CharField(max_length=100, null=True, blank=True)
     phone_number=models.IntegerField(null= True, blank= True)
     message=models.TextField(null=True, blank=True)
@@ -157,16 +155,9 @@ class Offer(models.Model):
 
 class Payment(models.Model):
 
-    # PaymentType=(
-    #     ('paypal', 'paypal'),
-    #     ('credit or debit card', 'credit or debit card'),
-        
-    # )
-    # PaymentType=models.CharField(max_length=100, null=False, blank=False,choices=PaymentType, default='Paypal')
     customer_id= models.ForeignKey('Customer',on_delete=models.CASCADE,blank=True,null=True )
     order_id= models.ForeignKey('Order',on_delete=models.CASCADE,blank=True,null=True, related_name='+')
     amount=models.FloatField(null= True, blank= True)
-    description=models.TextField(null=True, blank=True)
     invoice_number=models.CharField(max_length=50, null=False, blank=True)
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at= models.DateTimeField(auto_now=True)
