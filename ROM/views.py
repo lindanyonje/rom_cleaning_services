@@ -182,12 +182,16 @@ def createGiftCard(request):
    f_name = request.POST.get("firstname")
    number = request.POST.get("phone_number")
    email = request.POST.get("email")
+   recipient_name = request.POST.get("recepient")
+   recipient_email = request.POST.get("remail")
    subject = request.POST.get("subject")
    amount = request.POST.get("amount")
 
    GiftCard.objects.create(
       name = f_name,
       email = email,
+      recipient_name =  recipient_name,
+      recipient_email =  recipient_email,
       phone_number = number,
       message = subject,
       giftcard_amount = amount
@@ -582,7 +586,7 @@ def deleteGift(request, pk):
 
    if request.method == 'POST':
       gift.delete()
-      return redirect('/gift')
+      return redirect('/gifts')
 
    context= {'item': gift}
 

@@ -320,8 +320,8 @@
                         <tr>
                             <th>Id</th>
                             <th>Amount</th>
-                            <th>Code</th>
                             <th>Created At</th>
+                            <th>Action</th>
                             <th>Update</th>
                             <th>Delete</th>
                         </tr>
@@ -331,10 +331,10 @@
                            <tr>
                                <td>{{object.id}}</td>
                                <td>{{object.giftcard_amount}}</td>
-                               <td>{{object.code}}</td>
                                <td>{{object.created_at}}</td>
-                               <td><a class="btn btn-sm btn-outline-info" href="{% url 'update_gift' object.id %}"><i class="fa fa-pencil" aria-hidden="true"></i></a>Update </td>
-                               <td><a class="btn btn-sm btn-outline-danger" href="{% url 'delete_gift' object.id %}"><i class="fa fa-trash " aria-hidden="true"></i></a>Delete</td>
+                               <td><a class="btn btn-sm btn-outline-info" href= "#">View</a></td>
+                               <td><a class="btn btn-sm btn-outline-info" href="{% url 'update_gift' object.id %}"><i class="fa fa-pencil" aria-hidden="true"></i>Update</a></td>
+                               <td><a class="btn btn-sm btn-outline-danger" href="{% url 'delete_gift' object.id %}"><i class="fa fa-trash " aria-hidden="true"></i>Delete</a></td>
                                
                            </tr>
                         {% endfor %}   

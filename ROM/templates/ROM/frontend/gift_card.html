@@ -1022,105 +1022,97 @@
 
 		{% csrf_token %}
 
-	<div class="giftcard">
-		<div class="card">
-		  <div class="back">
-			<section class="detail">
-				<h2>Your order will be shipped to:</h2>
-					
-	
-	
-					<div class="form-group">
-				
-					  <input required type="text" id="fname" name="firstname" class="form-control"  placeholder="your Name..">
-					</div>
+		<div class="giftcard">
+			<div class="card">
+				<div class="back">
+					<section class="detail">
+						<h2>Your order will be shipped to:</h2>
+							
+							<div class="form-group">
+						
+							<input required type="text" id="fname" name="firstname" class="form-control"  placeholder="Senders Name..">
+							</div>
 
-					<div class="form-group">
-				
-						<input required type="text" id="fname" name="firstname" class="form-control"  placeholder="Recipient Name..">
-					  </div>
-	
-					<div class="form-group">
-				
-					  <input type="number" id="lname" name="phone_number" class="form-control"  placeholder="Phone number">
-					</div>
-	
-					<div class="form-group">
-					  
-					  <input required type="email" name="email" class="form-control" id="email" placeholder="Recipients Email">
-					</div>
-	
-					<!-- <div class="form-group">
-	
-					  <label for="subject">Subject</label>
-					  <textarea required id="subject" name="subject" placeholder="Message" class="form-control"  style="height:200px"></textarea>
-	
-					</div>
-				 -->
-					<!-- <button type="submit" class="btn btn-info btn-lg btn-block w-50 mx-auto">Submit</button> -->
-				
-				  
-				<!-- <address>
-					<input type="email" name="" id="" placeholder="Email" />    
-				     
-				</address> -->
-				<div class="subtext">Available to ship: 1 business day</div>  
-			</section>
-			<section class="operation">
-			  <div class="gift">
-				<div class="btn-fr">
-				  <div class="gmask"></div>
-				  <div class="frbelt"><span></span></div>
-				  <div class="bowknot"><span></span></div>
-				  <div class="knot"></div>
-				</div>
-			  </div>
-			  <input class="msg" name="subject" placeholder="Enter a gift message" />
-			  <div class="checkout">
-				<!-- <button  type="submit" id="">Send</button> -->
-				<a href="{% url 'checkout_details' 1 %}" class="btn btn-info btn-lg mx-2">Send</a>
-				
-			  </div>
-			</section>
-		  </div>
-		  <div class="front">
-			<section class="banner">
-			  <div class="logo-bg">
-				<div class="wave">
-				  <div class="wave-bk"><span></span></div>
-				  <div class="wave-fr"><span></span></div>
-				</div>
-				<div class="logo apple"></div>
-			  </div>
-			</section>
-			<section class="info">
-			  <div class="list">
-				<p class="title">Gift Card</p>
-				<input required  class="msg" placeholder="Enter amount" name="amount"/>
-				<!-- <p class="price">$25.00</p> -->
-			  </div>
-			  <div class="buy">
-				<div class="btn-bk">
-				  <div class="paper"></div>
-				  <div class="mask"></div>
-				</div>
-				<button id="buy">Buy</button>
-				<div class="btn-fr">
-				  <div class="paper"><span></span></div>
-				  <div class="mask"></div>
-				  <div class="bkbelt"><span></span></div>
-				  <div class="gmask"></div>
-				  <div class="frbelt"><span></span></div>
-				  <div class="bowknot"><span></span></div>
-				  <div class="knot"></div>
-				</div>
-			  </div>
-			</section>
-	
+							
+							<div class="form-group">
+							
+								<input required type="email" name="email" class="form-control" id="email" placeholder="Senders Email">
+								</div>
+
+							<div class="form-group">
+						
+								<input required type="text" id="recepient" name="recepient" class="form-control"  placeholder="Recipient Name..">
+							</div>
+
+							<div class="form-group">
+							
+								<input required type="email" name="remail" class="form-control" id="email" placeholder="Recipients Email">
+							</div>
+		
+							<div class="form-group">
+
+							  <input type="tel" id="pnumber" name="phone_number" class="form-control"  placeholder="Phone number">
+							</div>
 			
-		  </div>
+							
+							<div class="subtext">Available to ship: 1 business day</div>  
+					</section>
+					<section class="operation">
+						<div class="gift">
+							<div class="btn-fr">
+							<div class="gmask"></div>
+							<div class="frbelt"><span></span></div>
+							<div class="bowknot"><span></span></div>
+							<div class="knot"></div>
+							</div>
+						</div>
+						<input class="msg" name="subject" placeholder="Enter a gift message" />
+						<div class="checkout">
+							<button  type="submit" id="">Send</button>
+							<!-- <a href="{% url 'checkout_details' 1 %}" class="btn btn-info btn-lg mx-2">Send</a> -->
+							
+						</div>
+					</section>
+				</div>
+
+				<div class="front">
+					<section class="banner">
+						<div class="logo-bg">
+							<div class="wave">
+							<div class="wave-bk"><span></span></div>
+							<div class="wave-fr"><span></span></div>
+							</div>
+							<div class="logo apple"></div>
+						</div>
+						</section>
+						<section class="info">
+						<div class="list">
+							<p class="title">Gift Card</p>
+							<input required type="number" class="msg" placeholder="Enter amount" name="amount"/>
+							<!-- <p class="price">$25.00</p> -->
+						</div>
+						<div class="buy">
+							<div class="btn-bk">
+							<div class="paper"></div>
+							<div class="mask"></div>
+							</div>
+							<button id="buy">Buy</button>
+							<div class="btn-fr">
+							<div class="paper"><span></span></div>
+							<div class="mask"></div>
+							<div class="bkbelt"><span></span></div>
+							<div class="gmask"></div>
+							<div class="frbelt"><span></span></div>
+							<div class="bowknot"><span></span></div>
+							<div class="knot"></div>
+							</div>
+						</div>
+					</section>
+			
+					
+				</div>
+			</div>
 		</div>
-	  </div>
 
 	</form>
 </div>
