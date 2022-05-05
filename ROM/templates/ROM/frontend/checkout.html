@@ -7,140 +7,147 @@
 
 {% block content %}
 
-
-
-
 <div class="container">
-
-  <form action="{% url 'create.gift' %}" method="post">
-
-    {% csrf_token %}
 
 
     <div class="row justify-content-center my-5">
 
-      <div class="col-lg-8">
+        <div class="col-lg-8">
 
-        <div class="card mt-3">
-          <div class="card-header">
-            <h4 class="card-title"> SHIPMENT DETAILS</h4>
-        </div>
-        <div class="card-body">
-
-          <div class="payment__shipping">
-            <div class="payment__title">
-              <i class="icon icon-plane"></i> Shiping Information
-            </div>
-            <div class="details__user">
-              <div class="user__name">{{customer.id}}
-                <br> 13/03/1980
-              </div>
-              <div class="user__address">
-                <br>Country
-              </div>
-            </div>
-      
+          <div class="card mt-3">
+            <div class="card-header">
+              <h4 class="card-title"> SHIPMENT DETAILS</h4>
           </div>
-
-        </div>
-
-        <div class="payment-container">
-            
-          <div class="row justify-content-md-center">
-            
-            <div >
-              <div class="payment-method">
-                <h2>Payment Method</h2>
-                <div class="radio-container">
-                  <input id="card" name="payment-type" type="radio" checked>
-                  <label for="card">Card</label>
-                  <input id="paypal" name="payment-type" type="radio">
-                  <label for="paypal">PayPal</label>
-                </div>
-                <div >
-                  <i class="fa fa-cc-visa" style="color:navy;"></i>
-                  <i class="fa fa-cc-amex" style="color:blue;"></i>
-                  <i class="fa fa-cc-mastercard" style="color:red;"></i>
-                  <i class="fa fa-cc-discover" style="color:orange;"></i>
-                    </div>
-              </div>
-              <form id="payment-form">
-                <div class="card-info-container">
-                  <div class="card-info">
-                    <label>Card Number
-                      <input required class="full-width" name="card-number" id="card-num" type="text" placeholder="1234 5678 9012 3456">
-                    </label>
-                    <label>Name on Card
-                      <input required  class="full-width" id="name" type="text" name="card-name" placeholder="Steve Rogers">
-                    </label>
-                    <div class="expire-ccv">
-                      <label required >Expires
-                        <span class="expire-date">
-                          <input id="month" type="text" size="2" maxlength="2" name="valid" placeholder="MM">
-                          <span>/</span>
-                          <input id="year" type="text" size="2" maxlength="2" name="valid" placeholder="YY">
-                        </span>
-                      </label>
-                      <label>CCV
-                        <input id="ccv" type="text" size="3" maxlength="3" name="ccv" placeholder="123">
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                <label class="save-card-info">
-                  <input type="checkbox" name="checkbox" >
-                  Save card for faster checkout
-                </label>
-              </form>
-            
-              <!-- <button class="button btn-block mb-1 " style="text-align: center;"onclick="document.getElementById('payment-form').reset()">confirm payment</button> -->
-              <button class="button btn-block mb-1 "  type="submit" id="" >CONFIRM PAYMENT</button>
-              
-
-              <br>
-            </div>
-          </div>
-        </div>
-
-      </div>
-      
-
-    
-    </div>
-
-
-
-  
-    <div class="col-lg-4">
-      <div class="card mt-3">
-
           <div class="card-body">
 
-              <h5 class="font-weight-bold">Summary</h5>
-              <hr>
 
-              <h6>Total: 0.0</h6>
-              <h6>Discount: 0.0</h6>
-              <h6>Value Added Tax(VAT): 0.0</h6>
+            <div class="payment__shipping">
+              <div class="payment__title">
+                <i class="icon icon-plane"></i> Shiping Information
+              </div>
+              <div class="details__user">
+                <div class="user__name">Customer Name: {{order.customer_id.name}}
+                  <br> {{order.created_at}}
+                </div>
+                <div class="user__address">Address: {{order.address}}
+                  <br>
+                </div>
+                <div class="user__Phone">Phone number: {{order.customer_id.phone_number}}
+                  <br>
+                </div>
+                <div class="user__Phone">Total: $ {{order.total}}
+                  <br>
+                </div>
+               
+              </div>
+        
+            </div>
+            
 
-              <hr>
-              <h4 class="font-weight-bold mb-5" class="grand_total" id="grand_total">Grand Total: 0.0</h4>
-
-             
-                
           </div>
-          
+
+          <div class="payment-container">
+              
+            <div class="row justify-content-md-center">
+              
+              <div >
+                <div class="payment-method">
+                  <h2>Payment Method</h2>
+                  <div id="paypal-button-container"></div>
+
+                  <!-- Include the PayPal JavaScript SDK -->
+                  <script src="https://www.paypal.com/sdk/js?client-id=AdQYqqWWKbrUEKprWCcLBXvpPmbVwfbFmGeX_ul60UytVdUbFHDxq5IbRYhkIzMPezJkbwa6tT8BjOeY&currency=USD"></script>
+              
+                  <script>
+                    var total= '{{order.total}}'
+                      // Render the PayPal button into #paypal-button-container
+                      paypal.Buttons({
+                        style: {
+                          layout:  'vertical',
+                          color:   'blue',
+                          shape:   'rect',
+                          label:   'paypal'
+                        },
+              
+                          // Set up the transaction
+                          createOrder: function(data, actions) {
+                              return actions.order.create({
+                                  purchase_units: [{
+                                      amount: {
+                                          value: total
+                                      }
+                                  }]
+                              });
+                          },
+              
+                          // Finalize the transaction
+                          onApprove: function(data, actions) {
+                              return actions.order.capture().then(function(orderData) {
+                                  // Successful capture! For demo purposes:
+                                  console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+                                  var transaction = orderData.purchase_units[0].payments.captures[0];
+                                  alert('Transaction '+ transaction.status + ': ' + transaction.id + '\n\nSee console for all available details');
+              
+                                  // Replace the above to show a success message within this page, e.g.
+                                  // const element = document.getElementById('paypal-button-container');
+                                  // element.innerHTML = '';
+                                  // element.innerHTML = '<h3>Thank you for your payment!</h3>';
+                                  // Or go to another URL:  actions.redirect('thank_you.html');
+                              });
+                          }
+              
+              
+                      }).render('#paypal-button-container');
+                  </script>
+                    </div>
+                  </div>
+                  <label class="save-card-info">
+                    <input type="checkbox">
+                    Save card for faster checkout
+                  </label>
+                </form>
+              
+                <button class="button btn-block mb-1 " style="text-align: center;"onclick="document.getElementById('payment-form').reset()">send</button>
+
+                <br>
+              </div>
+            </div>
           </div>
+
+        </div>
+        
+
+      
+  </div>
+
+
+
+    
+      <div class="col-lg-4">
+        <div class="card mt-3 my-5">
+
+            <div class="card-body">
+
+                <h5 class="font-weight-bold">Summary</h5>
+                <hr>
+
+                <h6>Total: $ {{order.total}}</h6>
+                <h6>Discount: 0.0</h6>
+                <h6>Value Added Tax(VAT): 0.0</h6>
+
+                <hr>
+                <h4 class="font-weight-bold mb-5" class="grand_total" id="grand_total">Grand Total:$ {{order.total}}</h4>
+
+               
+                  
+            </div>
+            
+            </div>
+        </div>
+
       </div>
 
-    </div>
 
-
-
-  </form>
-
-
-   
 </div>
 
 

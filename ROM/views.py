@@ -733,7 +733,7 @@ def orderDetail(request):
       print(service)
       service = Service.objects.filter(pk = service).first()
 
-      Order.objects.create(
+      order = Order.objects.create(
          customer_id = customer,
          service_category = service,
          phone_number = number,
@@ -755,7 +755,8 @@ def orderDetail(request):
          frequency= frequency,
          schedule= schedule,
          subject = subject,
-         total = getFinalTotal(total, request)
+         total = getFinalTotal(total, request),
+         status = "pending"
       )
 
       # order = Order()
@@ -784,7 +785,22 @@ def orderDetail(request):
 
       # order.save()
   
-      return render(request, 'ROM/admin/order_details.html')
+      return HttpResponseRedirect("/order/checkout/"+str(order.id))
+
+def checkoutOrder(request, id):
+   
+   try:
+      order = Order.objects.select_related("customer_id").get(pk=id)
+      context = {
+         "order" : order
+      }
+      return render(request, 'ROM/frontend/checkout.html', context)
+
+   except Order.DoesNotExist:
+
+      return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+
+
 
 
 
