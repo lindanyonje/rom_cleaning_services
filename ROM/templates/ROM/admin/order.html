@@ -29,7 +29,7 @@
                     <!--This is where we add our table-->
                     <!--Table begins-->
     
-                    <table class="table table-hover table-striped table-responsive-sm">
+                    <table class="table table-hover table-striped table-responsive-sm myTable">
     
                         <thead>
                             <tr>
@@ -49,7 +49,16 @@
                                <tr>
                                    <td>{{order.id}}</td>
                                    <td>{{order.service_category}}  </td>
-                                   <td> (<span class="text-info">{{order.status}}</span>)</td>
+                                   <td id="status_{{order.id}}">{{order.status}}
+                                    {% if order.status == "Pending" %}
+
+                                        <button class="btn btn-outline-dark btn-sm" id="btn_complete_{{order.id}}" onclick="markAsComplete('{{order.id}}')" tooltiptext="Mark as complete"><i class="fa-thin fa-square-check"></i> 
+                                            <span class="tooltiptext">Mark as complete</span>
+                                        </button>
+
+                                      
+                                     {% endif %}
+                                </td>
                                    <td>{{order.customer_id.name }}</td>
                                    <td>{{order.total}}</td>
                                    <td>{{order.created_at}}</td>
@@ -120,6 +129,45 @@
 
 
 {% endblock %}
+
+<script>
+
+    
+function markAsComplete(order_id){
+
+
+
+$.ajax({
+    type: "POST",
+    url: "{% url 'mark_as_complete' %}",
+    dataType: "json",
+    data:{
+        'order_id':order_id,
+        
+    },
+    success:function(data){
+    //     Changes order from pending to complete
+
+    button = "#btn_complete_"+order_id
+    status = "#status_"+order_id
+    // $(button).addClass("d-none");
+    $(status).html("Completed")
+    // Notiflix.Notify.Success('order completed');
+
+    },
+    error: function(data){
+
+        console.log(data);
+        
+        // Notiflix.Notify.Failure('Something went wrong.');
+
+    }
+
+});
+}
+
+
+</script>
 
 {% block scripts %}
 

@@ -707,6 +707,7 @@ def orderDetail(request):
       frequency= request.POST.get("frequency")
       schedule= request.POST.get("schedule")
       subject = request.POST.get("subject")
+      status = request.POST.get("status")
 
       total = findPriceByFeet(sqrft)
 
@@ -801,6 +802,19 @@ def checkoutOrder(request, id):
       return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 
 
+def markAsComplete(request):
+
+    order_id= request.POST.get("order_id")
+
+    order = Order.objects.get(pk=order_id)
+    order.status = "completed"
+    order.save()
+
+    data = {
+        'success' : True
+        }
+
+    return JsonResponse(data)
 
 
 

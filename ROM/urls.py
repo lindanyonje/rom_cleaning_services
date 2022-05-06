@@ -26,6 +26,8 @@ urlpatterns=[
     path('create_order/', views.orderDetail, name="order"),
     path('update_order/<pk>/', views.updateOrder, name="update_order"),
     path('delete_order/<pk>/', views.deleteOrder, name="delete_order"),
+     path('order/mark/completed', views.markAsComplete, name="mark_as_complete"),
+
 
 
     path('payment/',views.getPayment, name= 'payment'),

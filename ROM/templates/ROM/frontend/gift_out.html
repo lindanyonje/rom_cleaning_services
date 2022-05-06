@@ -1,0 +1,198 @@
+{% extends 'ROM/frontend/layouts/master.html' %}
+
+{% load widget_tweaks %}
+
+{% load static %}
+
+
+{% block content %}
+
+<div class="container">
+
+
+    <div class="row justify-content-center my-5">
+
+        <div class="col-lg-8">
+
+          <div class="card mt-3">
+            <div class="card-header">
+              <h4 class="card-title"> SHIPMENT DETAILS</h4>
+          </div>
+          <div class="card-body">
+
+
+            <div class="payment__shipping">
+              <div class="payment__title">
+                <i class="icon icon-plane"></i> Shiping Information
+              </div>
+              <div class="details__user">
+                <div class="user__name">Customer Name: {{GiftCard.giftcard_amount}}
+                  <br> {{order.created_at}}
+                </div>
+                <div class="user__address">Address: {{GiftCard.name}}
+                    <br>
+                  </div>
+                <div class="user__address">Address: {{GiftCard.email}}
+                  <br>
+                </div>
+                <div class="user__Phone">Phone number: {{GiftCard.recipient_name}}
+                  <br>
+                </div>
+                <div class="user__Phone">Phone number: {{GiftCard.recipient_email}}
+                    <br>
+                  </div>
+               
+              </div>
+        
+            </div>
+            
+
+          </div>
+
+          <div class="payment-container">
+              
+            <div class="row justify-content-md-center">
+              
+              <div >
+                <div class="payment-method">
+                  <h2>Payment Method</h2>
+                  <div id="paypal-button-container"></div>
+
+                  <!-- Include the PayPal JavaScript SDK -->
+                  <script src="https://www.paypal.com/sdk/js?client-id=AdQYqqWWKbrUEKprWCcLBXvpPmbVwfbFmGeX_ul60UytVdUbFHDxq5IbRYhkIzMPezJkbwa6tT8BjOeY&currency=USD"></script>
+              
+                  <script>
+                    var amount= '{{GiftCard.Amount}}'
+                      // Render the PayPal button into #paypal-button-container
+                      paypal.Buttons({
+                        style: {
+                          layout:  'vertical',
+                          color:   'blue',
+                          shape:   'rect',
+                          label:   'paypal'
+                        },
+              
+                          // Set up the transaction
+                          createOrder: function(data, actions) {
+                              return actions.order.create({
+                                  purchase_units: [{
+                                      amount: {
+                                          value: amount
+                                      }
+                                  }]
+                              });
+                          },
+              
+                          // Finalize the transaction
+                          onApprove: function(data, actions) {
+                              return actions.order.capture().then(function(orderData) {
+                                  // Successful capture! For demo purposes:
+                                  console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+                                  var transaction = orderData.purchase_units[0].payments.captures[0];
+                                  alert('Transaction '+ transaction.status + ': ' + transaction.id + '\n\nSee console for all available details');
+              
+                                  // Replace the above to show a success message within this page, e.g.
+                                  // const element = document.getElementById('paypal-button-container');
+                                  // element.innerHTML = '';
+                                  // element.innerHTML = '<h3>Thank you for your payment!</h3>';
+                                  // Or go to another URL:  actions.redirect('thank_you.html');
+                              });
+                          }
+              
+              
+                      }).render('#paypal-button-container');
+                  </script>
+                    </div>
+                  </div>
+                  <label class="save-card-info">
+                    <input type="checkbox">
+                    Save card for faster checkout
+                  </label>
+                </form>
+              
+                <button class="button btn-block mb-1 " style="text-align: center;"onclick="document.getElementById('payment-form').reset()">send</button>
+
+                <br>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        
+
+      
+  </div>
+
+
+
+    
+      <div class="col-lg-4">
+        <div class="card mt-3 my-5">
+
+            <div class="card-body">
+
+                <h5 class="font-weight-bold">Summary</h5>
+                <hr>
+
+                <h6>Total: $ {{order.total}}</h6>
+                <h6>Discount: 0.0</h6>
+                <h6>Value Added Tax(VAT): 0.0</h6>
+
+                <hr>
+                <h4 class="font-weight-bold mb-5" class="grand_total" id="grand_total">Grand Total:$ {{order.total}}</h4>
+
+               
+                  
+            </div>
+            
+            </div>
+        </div>
+
+      </div>
+
+
+</div>
+
+
+{% endblock %}
+
+{% block 'scripts' %}
+
+<script>
+
+$(document).ready(function(){
+    
+
+    $.ajaxSetup({
+        headers:{
+            'X-CSRFToken': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+   
+    });
+
+
+  $('#confirm_order').on('click', function(){
+  
+    $.ajax({
+        type: "POST",
+        url: "{% url 'complete.checkout' %}",
+        dataType: "json",
+        data: $("#checkoutForm").serialize(),
+        success: function(data){
+            window.location.href = "/order/receipt/"+data['order']
+        },
+        error: function(data){
+            console.log(data);
+        }
+    });
+}
+);
+
+</script>
+
+{% endblock %}
+
+
+

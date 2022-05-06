@@ -43,38 +43,31 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {% for object in object_list %}
-                               <tr>
-                                   <td>{{object.id}}</td>
-                                   <td>{{object.total}}</td>
-                                   <td id="status_{{object.id}}">{{object.status}}
-                                       {% if object.status == "Pending" %}
+                            {% for order in orders %}
+                            <tr>
+                                <td>{{order.id}}</td>
+                                <td>{{order.service_category}}  </td>
+                                <td id="status_{{order.id}}">{{order.status}}
+                                 {% if order.status == "Pending" %}
 
-                                     <button class="btn btn-outline-dark btn-sm" id="btn_complete_{{object.id}}" onclick="markAsComplete('{{object.id}}')" tooltiptext="Mark as complete"><i class="fa fa-check"></i> 
-                                        <span class="tooltiptext">Mark as complete</span>
+                                     <button class="btn btn-outline-dark btn-sm" id="btn_complete_{{order.id}}" onclick="markAsComplete('{{order.id}}')" tooltiptext="Mark as complete">
+                                        <i class="fa-thin fa-square-check"></i>  <span class="tooltiptext">Mark as complete</span>
                                      </button>
 
-                                         
-                                       
-                                   </td>
-                                
-                                   <td>{{object.order_number}}</td>
-                                   <td>{{object.customer_id}}</td>
-                                   <td>{{object.created_at}}</td>
-                                   <td>
-                                       
-                                       <a href="#"
-                                        class="btn btn-dark btn-sm">
-                                         <i class="fa fa-edit"></i>
-                                       </a>
-                                       <a href="#"
-                                        class="btn btn-danger btn-sm">
-                                         <i class="fa fa-trash"></i>
-                                       </a>
+                                   
+                                  {% endif %}
+                                </td>
+                                <td>{{order.customer_id.name }}</td>
+                                <td>{{order.total}}</td>
+                                <td>{{order.created_at}}</td>
+                                <td><a class="btn btn-sm btn-outline-info" href= "{% url 'Order_detail' order.id %}">View</a></td>
+                                <td><a class="btn btn-sm btn-outline-info" href="{% url 'update_order' order.id %}"><i class="fa fa-pencil" aria-hidden="true"></i>Update </a></td>
+                                <td><a class="btn btn-sm btn-outline-danger" href="{% url 'delete_order' order.id %}"><i class="fa fa-trash" aria-hidden="true"></i>Delete</a></td>
+             
 
-                                   </td>  
-                               </tr>
-                            {% endfor %}   
+                                
+                            </tr>
+                           {% endfor %}   
                         </tbody>
     
                     </table>
@@ -134,4 +127,51 @@
 
 
 {% endblock %}
+
+<script>
+
+    
+    function markAsComplete(order){
+    
+    
+    
+    $.ajax({
+        type: "POST",
+        url: "{% url 'mark_as_complete' %}",
+        dataType: "json",
+        data:{
+            'order':order,
+            
+        },
+        success:function(data){
+        //     Changes order from pending to complete
+    
+        button = "#btn_complete_"+order
+        status = "#status_"+order
+        // $(button).addClass("d-none");
+        $(status).html("Completed")
+        // Notiflix.Notify.Success('order completed');
+    
+        },
+        error: function(data){
+    
+            console.log(data);
+            
+            // Notiflix.Notify.Failure('Something went wrong.');
+    
+        }
+    
+    });
+    }
+    
+    
+    </script>
+
+
+
+{% block scripts %}
+
+
+{% endblock %}
+
 
