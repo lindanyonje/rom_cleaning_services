@@ -187,7 +187,7 @@ def createGiftCard(request):
    subject = request.POST.get("subject")
    amount = request.POST.get("amount")
 
-   GiftCard.objects.create(
+   gift_card = GiftCard.objects.create(
       name = f_name,
       email = email,
       recipient_name =  recipient_name,
@@ -198,10 +198,10 @@ def createGiftCard(request):
    )
 
    context = {
-      
+      "gift": gift_card
    }
 
-   return render(request, 'ROM/frontend/inquiry_success.html', context)         
+   return render(request, 'ROM/frontend/checkout.html', context)         
 
 
 @login_required

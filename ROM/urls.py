@@ -69,12 +69,6 @@ urlpatterns=[
     path('FAQ/',views.getFaq, name= 'FAQ'),
     path('TOS/',views.getTos, name= 'TOS'),
 
-    path('cart/', views.get_cart, name="cart"),
-    path('ajax/delete/cart',views.deleteCart,name="ajax_delete_cart"),
-
-    path('checkout/details/<total>', views.checkoutDetails, name="checkout_details"),
-    path('complete/checkout/', views.finalizeCheckout, name="complete.checkout"),
-
 
 ]
 
