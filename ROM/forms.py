@@ -2,6 +2,7 @@ from django.forms import ModelForm
 
 from .models import GiftCard, Order,Customer,Service,Payment,GiftCard, Offer, Inquiry
 
+
 class OrderForm(ModelForm):
     class Meta:
         model= Order

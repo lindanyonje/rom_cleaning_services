@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'ROM.apps.RomConfig', #Registering your app
     'widget_tweaks',
     'django_filters',
+    'paypal.standard.ipn',
 ]
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
@@ -145,3 +146,17 @@ MEDIA_ROOT=os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+# MY EMAIL SENDING VARIABLES
+EMAIL_HOST ='smtp.gmail.com'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+EMAIL_HOST_USER='burahaven@gmail.com'
+EMAIL_HOST_PASSWORD= 'uwqrdkxdwanixqpa'
+
+# EMAIL_HOST_PASSWORD= 'bura123haven'

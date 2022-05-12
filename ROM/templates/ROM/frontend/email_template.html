@@ -1,0 +1,98 @@
+{% extends 'ROM/frontend/layouts/master.html' %}
+
+
+{% load static %}
+
+{% load widget_tweaks %}
+
+
+
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+<body class="gift-bg">
+ <div class="main-div">
+  <div id="pre-loader" class="loader ">
+    <div class="app-icon"></div>
+  </div>
+  <div class=" gift-notification">
+    <div id="interface">
+      <input type="range" id="1" value="700" max="1000" min="1" step="1">
+      <input type="range" id="2" value="0.2" max="1" min="-1" step="0.1">
+      <input type="range" id="4" value="0" max="1" min="-1" step="0.1">
+      <input type="range" id="3" value="0.99" max="0.99" min="0.1" step="0.01"> </div>
+    <canvas id="canvas"></canvas>
+
+    {% for gift in gifts %}
+    <div class="">
+      <div class="text-center" style="margin-bottom: 50px; padding-top: 20px;"> <img src="./img/piingle%20logo-black.svg" width="100px" height="auto"> </div>
+        <div class="cardWrapper ">
+            <!-- first Row -->
+            <div class="row ">
+            <div class=" cardContainer ">
+                <div class="card ">
+                <div class="front">
+                    <div>
+                    <div class="gift-circle">
+                        <div class="gift-img"> <img src="http://www.iconsplace.com/icons/preview/red/gift-256.png" height="25px" width="25px"> </div>
+                    </div>
+                    </div>
+                    <div class="gift-card-img">
+                    <div class="brand-img-blurred" style="background-image: url(https://static.pexels.com/photos/370984/pexels-photo-370984.jpeg);"> </div>
+                    <div class="brand-img" style="background-image: url(https://static.pexels.com/photos/370984/pexels-photo-370984.jpeg);"> </div>
+                    </div>
+                    <div class="gift-text mt20"> You received a gift from </div>
+
+                    <div class="gift-text-name"> {{gift.name}}</div>
+                    <div class="flip-txt">
+                    <div class=""> <img src="./img/flip.svg"> <span class="tap-to-flip">
+                                        Tap to Flip</span></div>
+                    </div>
+                </div>
+                <div class="back">
+                    <div>
+                    <div class="gift-circle" style="left:37%">
+                        <div class="gift-img"> <img src="http://www.iconsplace.com/icons/preview/red/gift-256.png" height="25px" width="25px"> </div>
+                    </div>
+                    </div>
+                    <div class="gift-text mt0 mb0"> GIFT BRAND </div>
+                    <price>{{gift.giftcard_amount}}</price>
+                    <div class="gift-details">
+                    <br>
+                    <br>{gift.recipient_name},
+                    <br>
+                    <br>{{gift.message}}
+                    <br>
+                    <br>
+                    <br> Enjoy your present.
+
+                    <br>
+                    <person-name> {{gift.name}}</person-name>
+                    </div>
+                
+                </div>
+                </div>
+            </div>
+            <div class="text-center gift-text-preview flip-txt mt20"> This gift card is just a preview.
+
+            </div>
+            <div class="scroll" id="go-to-bottom"></div>
+
+            
+            </div>
+            <!-- first Row End -->
+        </div>
+
+        {% endfor %}
+        <!--cardWrapper Ends-->
+        </div>
+    </div>
+  </div>
+
+
+</body>
+

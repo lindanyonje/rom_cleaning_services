@@ -69,6 +69,12 @@ urlpatterns=[
     path('FAQ/',views.getFaq, name= 'FAQ'),
     path('TOS/',views.getTos, name= 'TOS'),
 
+    path('end_email/', views.sendanemail, name="send_email"),
+
+
+    path('/paypal-return/', views.PaypalReturnView.as_view(), name='paypal-return'),
+    path('/paypal-cancel/', views.PaypalCancelView.as_view(), name='paypal-cancel'),
+
 
 ]
 

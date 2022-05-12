@@ -20,4 +20,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('ROM.urls')),
     path('accounts/', include('django.contrib.auth.urls')), #includes account login details
+    path('paypal/', include('paypal.standard.ipn.urls')),
 ]
