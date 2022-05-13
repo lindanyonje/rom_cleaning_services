@@ -18,12 +18,13 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 from django.core.mail import send_mail
-from django.core.mail import EmailMessage
+from django.core.mail import EmailMultiAlternatives
 from django.conf import settings
 from django.template.loader import render_to_string
 from django.urls import reverse
 from django.views.generic import FormView
 from django.views.generic import TemplateView
+from django.dispatch import receiver
 from paypal.standard.models import ST_PP_COMPLETED
 from paypal.standard.ipn.signals import valid_ipn_received
 from paypal.standard.forms import PayPalPaymentsForm
@@ -906,98 +907,75 @@ def getFinalTotal(total, request):
 
 
 # send email details
+def sendMail(message, subject, email):
 
-def sendanemail(request):
+    context = {
+        'message' : message
+    }
+    text_body = message
+    html_body = render_to_string('ROM/frontend/email_template.html', context)
 
-   if request.method=='POST':
-
-      f_name = request.POST.get("firstname")
-      number = request.POST.get("phone_number")
-      email = request.POST.get("email")
-      recipient_name = request.POST.get("recepient")
-      recipient_email = request.POST.get("remail")
-      subject = request.POST.get("subject")
-      amount = request.POST.get("amount")
-
-      template= render_to_string('ROM/frontend/email_template.html',)
-
-
-      # send_mail(
-      #    subject,
-      #    template,
-      #    'burahaven@gmail.com',
-      #    ['lindaatieno24@gmail.com'],
-      #    fail_silently= True,
-      # )
-
-      email= EmailMessage(
-         'Thank you for trusting ROM cleaning company',
-         'template',
-         settings.EMAIL_HOST_USER,
-         ['lindaatieno24@gmail.com'],
-         )
-      email.fail_silently=False
-      email.send()
-
-      return HttpResponseRedirect(reverse, ('ROM/frontend/home.html', context))
-   else:
-       return HttpResponse('invalid response')
-
-
-
+    mail = EmailMultiAlternatives(
+        subject = subject,
+        from_email =  settings.EMAIL_HOST_USER,
+        to = ['lindaatieno24@gmail.com'],
+        body = text_body
+    )
+    mail.attach_alternative(html_body, 'text/html')
+    mail.send()
     
     
 
-class PaypalFormView(FormView):
-    template_name = 'paypal_form.html'
-    form_class = PayPalPaymentsForm
+# class PaypalFormView(FormView):
+#     template_name = 'paypal_form.html'
+#     form_class = PayPalPaymentsForm
 
-    def get_initial(self):
-        return {
-            "business": 'bizlinda@gmail.com',
-            "amount": 20,
-            "currency_code": "USD",
-            "item_name": 'Example item,
-            "invoice": 1234,
-            "notify_url": self.request.build_absolute_uri(reverse('paypal-ipn')),
-            "return_url": self.request.build_absolute_uri(reverse('paypal-return')),
-            "cancel_return": self.request.build_absolute_uri(reverse('paypal-cancel')),
-            "lc": 'EN',
-            "no_shipping": '1',
-        }
-
-
-class PaypalReturnView(TemplateView):
-    template_name = 'paypal_success.html'
-
-class PaypalCancelView(TemplateView):
-    template_name = 'paypal_cancel.html'   
+#     def get_initial(self):
+#         return {
+#             "business": 'bizlinda@gmail.com',
+#             "amount": 20,
+#             "currency_code": "USD",
+#             "item_name": ' order_id',
+#             "invoice": 1234,
+#             "notify_url": self.request.build_absolute_uri(reverse('paypal-ipn')),
+#             "return_url": self.request.build_absolute_uri(reverse('paypal-return')),
+#             "cancel_return": self.request.build_absolute_uri(reverse('paypal-cancel')),
+#             "lc": 'EN',
+#             "no_shipping": '1',
+#         }
 
 
+# class PaypalReturnView(TemplateView):
+#     template_name = 'paypal_success.html'
 
-@receiver(valid_ipn_received)
-def paypal_payment_received(sender, **kwargs):
-    ipn_obj = sender
-    if ipn_obj.payment_status == ST_PP_COMPLETED:
-        # WARNING !
-        # Check that the receiver email is the same we previously
-        # set on the `business` field. (The user could tamper with
-        # that fields on the payment form before it goes to PayPal)
-        if ipn_obj.receiver_email != 'bizlinda@gmail.com':
-            # Not a valid payment
-            return
+# class PaypalCancelView(TemplateView):
+#     template_name = 'paypal_cancel.html'   
 
-        # ALSO: for the same reason, you need to check the amount
-        # received, `custom` etc. are all what you expect or what
-        # is allowed.
-        try:
-            my_pk = ipn_obj.invoice
-             Payment = Payment.objects.get(pk=my_pk)
-            assert ipn_obj.mc_gross ==  Payment.amount and ipn_obj.mc_currency == 'USD'
-        except Exception:
-            logger.exception('Paypal ipn_obj data not valid!')
-        else:
-             Payment.paid = True
-             Payment.save()
-    else:
-        logger.debug('Paypal payment status not completed: %s' % ipn_obj.payment_status)         
+
+
+# @receiver(valid_ipn_received)
+# def paypal_payment_received(sender, **kwargs):
+#     ipn_obj = sender
+#     if ipn_obj.payment_status == ST_PP_COMPLETED:
+#         # WARNING !
+#         # Check that the receiver email is the same we previously
+#         # set on the `business` field. (The user could tamper with
+#         # that fields on the payment form before it goes to PayPal)
+#         if ipn_obj.receiver_email != 'bizlinda@gmail.com':
+#             # Not a valid payment
+#             return
+
+#         # ALSO: for the same reason, you need to check the amount
+#         # received, `custom` etc. are all what you expect or what
+#         # is allowed.
+#         try:
+#             my_pk = ipn_obj.invoice
+#             Payment = Payment.objects.get(pk=my_pk)
+#             assert ipn_obj.mc_gross ==  Payment.amount and ipn_obj.mc_currency == 'USD'
+#         except Exception:
+#             logger.exception('Paypal ipn_obj data not valid!')
+#         else:
+#              Payment.paid = True
+#              Payment.save()
+#     else:
+#         logger.debug('Paypal payment status not completed: %s' % ipn_obj.payment_status)         
