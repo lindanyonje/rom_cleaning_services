@@ -200,6 +200,7 @@ def createGiftCard(request):
    subject = request.POST.get("subject")
    amount = request.POST.get("amount")
 
+
    gift_card = GiftCard.objects.create(
       name = f_name,
       email = email,
@@ -209,6 +210,23 @@ def createGiftCard(request):
       message = subject,
       giftcard_amount = amount
    )
+
+   email_message = "Hello, you have areceived a giftcard from"+f_name
+
+   gift = {
+        'gift' : gift_card
+    }
+   text_body = email_message
+   html_body = render_to_string('ROM/frontend/email_template.html', gift)
+
+   mail = EmailMultiAlternatives(
+      subject = subject,
+      from_email =  "lindaatieno24@gmail.com",
+      to = [recipient_email],
+      body = text_body
+   )
+   mail.attach_alternative(html_body, 'text/html')
+   mail.send()
 
    context = {
       "gift": gift_card
