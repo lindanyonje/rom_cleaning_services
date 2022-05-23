@@ -1013,10 +1013,43 @@
 	}
 }
  
+
+
+.bg1-image{
+      background-image: url("https://images.unsplash.com/photo-1602566178436-8cf72756f4cb?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=60&raw_url=true&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fGdpZnR8ZW58MHx8MHx8&auto=format&fit=crop&w=500");
+      /* Full height */
+      min-height: 15vh; 
+        
+        /* Center and scale the image nicely */
+        background-position: center;
+        background-repeat: no-repeat;
+     
+    }
+
+.icon-foo {
+  display: inline-block;
+  background-image: url("https://images.unsplash.com/photo-1602566178436-8cf72756f4cb?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=60&raw_url=true&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fGdpZnR8ZW58MHx8MHx8&auto=format&fit=crop&w=500");
+  width: 100px;
+  min-height: 10vh; 
+  background-position: 0 0; 
+}	
  
 </style>
 
+<div class="  row justify-content-md-center p-0 ">
+
+	<h2 class="mt-3" style="letter-spacing:0.05em; text-align: center;">
+
+	
+		<span style="font-size: 4rem;" class="font-weight-bold  text-dark mt-0">BUY <i class="icon-foo"></i> GIFTS</span>
+
+	</h2>
+
+</div>
+
 <div class="wrapper">
+
+	
 
 	<form action="{% url 'create.gift' %}" method="post">
 
