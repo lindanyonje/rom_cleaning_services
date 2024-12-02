@@ -11,11 +11,13 @@
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
    
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
   
   <link rel="stylesheet" type="text/css" href="{% static 'owlcarousel/assets/owl.carousel.min.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'owlcarousel/assets/owl.theme.default.min.css' %}">
 
+
+  <link rel="stylesheet" type="text/css" href="{% static 'css/notiflix.css' %}">
 
   
 
@@ -37,6 +39,8 @@
 </head>
 
 <body>
+
+  
 
 
     <!--Navigation Bar-->
@@ -60,51 +64,115 @@
     <!-- Modal -->
 
       
-      <button id="link" type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal" data-whatever="@ROM">CONTACT US</button>
+      <button id="link" type="button" class="btn btn-info" ><a href="{% url 'quote' %}">BOOK NOW</a></button>
 
-      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">New message</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-
-              <form action="#">
-          
-              
-                <label for="fname">Full Names</label>
-                <input type="text" id="fname" name="firstname" class="form-control"  placeholder="Your name..">
-  
-                <div class="form-row">
-                  <div class="form-group col-md-6">
-                    <label for="inputEmail4">Email</label>
-                    <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
-                  </div>
-                  <div class="form-group col-md-6">
-                    <label for="inputPassword4">Phone</label>
-                    <input type="phone" class="form-control" id="inputPhone" placeholder="Phone">
-                  </div>
-                </div>
-               
-                <label for="subject">Subject</label>
-                <textarea id="subject" name="subject" placeholder="Message" class="form-control"  style="height:200px"></textarea>
-            
-                <input type="button" class="btn btn-info btn-lg btn-block"  value="Send">
-            
-              </form>
-              
-            </div>
-            
-          </div>
-        </div>
-      </div>
-
+     
 
     <!-- end modal -->
+
+    <!-- contact modal -->
+
+    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#example-modal-lg" data-whatever="@ROM">CONTACT</button>
+     -->
+
+    <div class="modal fade example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form action="{% url 'create.inquiry' %}" method="post">
+
+              {% csrf_token %}
+              <h4 class="mb-4 mt-2 text-center">Talk to us. Here to serve you &#x1F60a; </h4>
+
+
+              <div class="form-group">
+                <label for="fname">Full Name</label>
+                <input required type="text" id="fname" name="firstname" class="form-control"  placeholder="Your name..">
+              </div>
+
+              <div class="form-group">
+                <label for="lname">Phone Number</label>
+                <input type="number" id="lname" name="phone_number" class="form-control"  placeholder="Your phone number..">
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email address:</label>
+                <input required type="email" name="email" class="form-control" id="email" placeholder="email">
+              </div>
+
+              <div class="form-group">
+
+                <label for="subject">Subject</label>
+                <textarea required id="subject" name="subject" placeholder="Message" class="form-control"  style="height:200px"></textarea>
+
+              </div>
+          
+              <button type="submit" class="btn btn-info btn-lg btn-block w-50 mx-auto">Submit</button>
+          
+            </form>
+          </div>
+          <!-- <div class="modal-footer">
+            <button type="button" class="btn btn-info">Send message</button>
+          </div> -->
+        </div>
+      </div>
+    </div>
+
+    <!-- end of modal -->
+
+
+    
+<!-- payment modal -->
+
+
+
+
+<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="text-right"> <i class="fa fa-close close" data-dismiss="modal"></i> </div>
+                <div class="tabs mt-3">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation"> <a class="nav-link active" id="visa-tab" data-toggle="tab" href="#visa" role="tab" aria-controls="visa" aria-selected="true"> <img src="https://i.imgur.com/sB4jftM.png" width="80"> </a> </li>
+                        <li class="nav-item" role="presentation"> <a class="nav-link" id="paypal-tab" data-toggle="tab" href="#paypal" role="tab" aria-controls="paypal" aria-selected="false"> <img src="https://i.imgur.com/yK7EDD1.png" width="80"> </a> </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="visa" role="tabpanel" aria-labelledby="visa-tab">
+                            <div class="mt-4 mx-4">
+                                <div class="text-center">
+                                    <h5>Credit card</h5>
+                                </div>
+                                <div class="form mt-3">
+                                    <div class="inputbox"> <input type="text" name="name" class="form-control" required="required"> <span>Cardholder Name</span> </div>
+                                    <div class="inputbox"> <input type="text" name="name" min="1" max="999" class="form-control" required="required"> <span>Card Number</span> <i class="fa fa-eye"></i> </div>
+                                    <div class="d-flex flex-row">
+                                        <div class="inputbox"> <input type="text" name="name" min="1" max="999" class="form-control" required="required"> <span>Expiration Date</span> </div>
+                                        <div class="inputbox"> <input type="text" name="name" min="1" max="999" class="form-control" required="required"> <span>CVV</span> </div>
+                                    </div>
+                                    <div class="px-5 pay"> <button class="btn btn-success btn-block">Add card</button> </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="paypal" role="tabpanel" aria-labelledby="paypal-tab">
+                            <div class="px-5 mt-5">
+                                <div class="inputbox"> <input type="text" name="name" class="form-control" required="required"> <span>Paypal Email Address</span> </div>
+                                <div class="pay px-5"> <button class="btn btn-primary btn-block">Add paypal</button> </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- end payment modal -->
 
     
 
@@ -116,7 +184,10 @@
 
   <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+  
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  
   <script src="{% static 'owlcarousel/owl.carousel.min.js' %}"></script>
 
   <script>

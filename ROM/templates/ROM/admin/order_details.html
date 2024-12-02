@@ -10,18 +10,11 @@
 
         <h3>{{object.name}}</h3>
 
-        <!-- <p>{{object.order_id}}</p> -->
-
     </div>
 
     <div class="row justify-content-center">
 
-        <!-- <div class="col-lg-6 col-md-12 col-sm-12">
-
-            <img class="img-fluid" src="{{ object.image.url }}" alt="Image For {{object.name}}">
-
-        </div> -->
-
+       
         <div class="col-lg-6 col-md-12 h-100 ">
 
             <div class="card h-100 border-0 shadow-sm">
@@ -32,26 +25,66 @@
 
                     <hr>
 
-                    <p><strong>Order Name:</strong> {{object.name}}</p>
+                    <p><strong>Order Name:</strong> {{object.service_category}}</p>
 
                     <p><strong>Customer Name:</strong> {{object.customer_id}}</p>
 
-                    <p><strong>Shipping Cost:</strong> {{object.shipping_cost}}</p>
+                    <p><strong>Customer Email:</strong> {{object.email}}</p>
 
-                    <p><strong>Total:</strong> {{order.total}}</p>
+                    <p><strong>phone number:</strong> {{object.phone_number}}</p>
 
-                    <p><strong>Status:</strong> {{order.status}}</p>
+                    <p><strong>Address:</strong> {{object.address}}</p>
 
-                    
-                    <a href="#"
-                                        class="btn btn-dark btn-sm">
-                                         <i class="fa fa-edit"> Edit Order </i>
-                                       </a>
-                                       <a href="#"
-                                         class="btn btn-danger btn-sm">
-                                         <i class="fa fa-trash"> Delete Order </i>
-                                    </a>
+                    <p><strong>City:</strong> {{order.city}}</p>
 
+                    <p><strong>State:</strong> {{object.state}}</p>
+
+                    <p><strong>zip:</strong> {{object.zip}}</p>
+
+                    <p><strong>about:</strong> {{object.about}}</p>
+
+                    <p><strong>home:</strong> {{object.status}}</p>
+
+                    <p><strong>bedroom:</strong> {{object.bedroom}}</p>
+
+                    <p><strong>sqrft:</strong> {{object.sqrft}}</p>
+
+                    <p><strong>floors:</strong> {{object.floors}}</p>
+
+                    <p><strong>occupants:</strong> {{object.occupants}}</p>
+
+                    <p><strong>space:</strong> {{object.space}}</p>
+
+                    <p><strong>pets:</strong> {{object.hasPets}}</p>
+
+                    <p><strong>frequency:</strong> {{object.frequency}}</p>
+
+                    <p><strong>Schedule Date:</strong> {{object.schedule}}</p>
+
+                    <p><strong>Subject:</strong> {{object.subject}}</p>
+                    <p><strong>Total:</strong> {{object.total}}</p>
+         
+                    <a href="{% url 'update_order' order.id %}"
+                    class="btn btn-dark btn-sm">
+                        <i class="fa fa-edit"></i> Edit Order 
+                    </a>
+                    <a href="{% url 'delete_order' order.id %}"
+                        class="btn btn-danger btn-sm">
+                        <i class="fa fa-trash"></i> Delete Order
+                    </a>
+
+                    {% if "completed" not in  object.status %}
+
+                    <form id="markAsCompleteForm">
+                        {% csrf_token %}
+                        <input type="hidden" value="{{order.id}}" name="order_id">
+                        <button type="submit" class="btn btn-outline-dark btn-sm mt-2" id="btn_complete_{{order.id}}" tooltiptext="Mark as complete">
+                            <i class="fas fa-check-circle"></i>  <span class="tooltiptext">Mark as complete</span>
+                         </button>
+                    </form>
+
+
+                    {% endif %}
         
                 </div>
 
@@ -62,23 +95,63 @@
 
     </div>
 
-    <div class="row my-5">
-
-        <div class="card">
-
-            <div class="card-body">
-
-                <h5>Description</h5>      
-                <hr>           
-                <p>{{object.description}}</p>
-
-            </div>
-
-        </div>
-
-    </div>
-
+   
 </div>
 
 
 {% endblock %}
+
+
+{% block scripts %}
+
+<script>
+
+    $(document).ready(function(){
+
+        $("#markAsCompleteForm").on("submit", function(e){
+
+            e.preventDefault()
+
+            if(confirm("Confirm Order Completion")){
+                markAsComplete();
+
+            }
+
+        });
+    });
+
+    
+    function markAsComplete(){
+    
+    
+    
+    $.ajax({
+        type: "POST",
+        url: "{% url 'mark_as_complete' %}",
+        dataType: "json",
+        data:$("#markAsCompleteForm").serialize(),
+        success:function(data){
+        //     Changes order from pending to complete
+    
+        window.location.reload()
+    
+        },
+        error: function(data){
+    
+            console.log(data);
+            
+            // Notiflix.Notify.Failure('Something went wrong.');
+    
+        }
+    
+    });
+    }
+    
+    
+    </script>
+
+
+
+{% endblock %}
+
+

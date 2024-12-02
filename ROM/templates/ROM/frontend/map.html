@@ -7,99 +7,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title></title>
 
-    <style>
-
-      #map{
-        height: 400px;
-        width: 100%;
-      }
-
-    </style>
+    <style>iframe {width:100%;height:100%;}</style>
 
   </head>
 
   <body>
   
-    <div id="map"></div>
-
-
-    <script>
-
-      // Initialize and add the map
-       function initMap(){
-
-       //  map options
-        var options= {
-
-          zoom: 8,
-          center:{ lat: 1.2921, lng: 36.8219}
-          
-        }
-       // new map
-        var map= new google.maps.Map(document.getElementById('map'), options);
-       
-        // // add marker
-
-        // var marker = new google.maps.Marker({
-        //   position: { lat: 1.1047, lng: -37.0197 },
-        //   map : map,
-        // });
-
-        // var infowindow = new google.maps.Infowindow({
-        //   content : <h1>ROM Cleaners</h1>
-        // });
-
-        // marker.addListener('click', function(){
-        //   infowindow.open(map, marker);
-        // });
-
-        addmarker({
-           coords: { lat: 1.1047, lng: 37.0197},
-          
-          });
-        addmarker({coords :{lat: 1.0912, lng: 37.0117 }});
-
-        // Add marker
-
-        function addmarker(coords){
-          var marker = new google.maps.Marker({
-            position : new google.map.LatLng(
-              props.coords.lat,
-              props.coords.lng,
-
-
-            ),
-            map : map,
-            // icon : props.iconImage
-          });
-
-          // check for customicon
-
-          if (props.iconImage){
-            // set iconImage
-            marker.setIcon(props.iconImage);
-          }
-          // check content
-
-          if (props.content){
-
-            var infowindow = new google.maps.Infowindow({
-            content : props.content
-          });
-
-          marker.addListener('click', function(){
-            infowindow.open(map, marker);
-          });
-
-
-          }
-        }
-      }
-    </script>
-
-    <script async
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAdqqs_QRlyeoC6EBWZjJOJEOc3N0v5jzc&callback=initMap">
-    </script>
+    <div class="mapouter">
+      <div class="gmap_canvas"><iframe width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=2216%20Apache%20Dr,%20Jonesboro,GA&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://fmovies-online.net">fmovies</a><br>
+        <style>.mapouter{position:relative;text-align:right;height:500px;width:600px;}</style><a href="https://www.embedgooglemap.net">how to add a google map to a website</a>
+        <style>.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:600px;}</style>
+      </div>
+    </div>
 
     
   </body>

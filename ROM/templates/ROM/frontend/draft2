@@ -1,252 +1,130 @@
 {% extends 'ROM/frontend/layouts/master.html' %}
 
+{% load widget_tweaks %}
+
 {% load static %}
-
-
-{% block css %}
-
-  <style>
-
-   
-    .bg-image{
-
-      background-image: url("https://images.unsplash.com/photo-1527515673510-8aa78ce21f9b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGhvdXNlJTIwY2xlYW5pbmd8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60");
-      min-height: 70vh;
-      /* background: linear-gradient(0deg, rgba(255, 0, 150, 0.3), rgba(255, 0, 150, 0.3)),; */
-      background-repeat: no-repeat;
-      background-size: cover;
-      color: white;
-      font-family: Roboto;
-      font-size: 16px;
-      border-radius: 15px;
-
-    }
-    .bg1-image{
-      background-image: url("https://cdn.pixabay.com/photo/2018/01/23/06/58/modern-minimalist-lounge-3100785__340.jpg");
-      /* Full height */
-      min-height: 15vh; 
-        
-        /* Center and scale the image nicely */
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
-  </style>
-  {% endblock css %}
 
 
 {% block content %}
 
-<div class="container-fluid">
-    <div class="row justify-content-md-center bg-info">
-        <h3 class="text-center">GET TO KNOW US</h3>
-    </div>
-
-    <div class="row">
-        <div class="col-md-5 pl-0 ">
-            <img class="img-fluid" src="{% static 'images/dinning.jpg' %}" style="width:100%;" alt="Image">
-  
-        </div>
-  
-        <div class="col-md-7">
-  
-            <p>At ROM cleaning Service, 
-                we give a spotless and sound workplace through a blend of profoundly prepared staff and extraordinary client benefit understanding.
-                ROM cleaning Service, Inc. has been providing cleaning and grounds maintenance services to our clients since 1996. 
-                We set ourselves apart by customizing a quality control approach for each customer.<br>
-            </p>
-
-            <p> ROM cleaning Service, is committed to using the most up-to-date and most effective frameworks available to clean 
-                and purify the work environments where you spend a significant amount of your time. 
-                Using the most sophisticated Cleaning System and environmentally friendly cleaning products.<br>
+<div class="container">
 
 
-            </p>
+    <div class="row justify-content-center my-5">
 
-            <p> We not only provide clean homes for our clients, but we also do our share to keep the environment clean.
-                We focus on using environmentally friendly cleaning materials that are durable and easy to maintain.
-                 We are one of only a few cleaning administrations in the United States to do so.<br>
-               
-            </p>
+        <div class="col-lg-8">
 
-            <P>
-                We have fantastic client reviews.
-                 Our customers trust us and prescribe us to their companions and friends and family. 
-                 We make associations with our clients, producing devotion and trust.
-            </P>
-  
-        </div> 
-    </div>
+          <div class="card mt-3">
+            <div class="card-header">
+              <h4 class="card-title"> SHIPMENT DETAILS</h4>
+          </div>
+          <div class="card-body">
 
-    
-
-        <div class= "row py-5 justify-content-md-center align-items-start" style="text-align: center; ">
-
-
-            <h2  style="letter-spacing:0.05em; text-align: center;">
-
-                <span style="font-size: 48px;"></span>
-                <span style="letter-spacing:0.05em;">OUR CORE VALUES</span>
-    
-            </h2>
-
+            <div class="payment__shipping">
+              <div class="payment__title">
+                <i class="icon icon-plane"></i> Shiping Information
+              </div>
+              <div class="details__user">
+                <div class="user__name">John Doe
+                  <br> 13/03/1980
+                </div>
+                <div class="user__address">Shipping Address: 22 Street, Address
+                  <br>Country
+                </div>
+              </div>
         
-              <p class="text-dark" >We are concerned about your family's and your home's safety.
-                This drives us to ensure that our cleaners' honesty and moral conduct are never a source of concern for you.
-                
-                Furthermore, we carefully vet our cleaners to ensure we provide the right person and we have kept our prices very affordable.
-              </p>
-  
-
-            
-            <div class="col-lg-3">
-              <div class="icon-wrap">
-                <img 
-                src="https://cdn-icons.flaticon.com/png/128/2058/premium/2058432.png?token=exp=1643887282~hmac=6c66dd7d66bce0d1e7f7dc443212b35c"/>
-                
-
-              </div>
-              <h3>YOUR TRUST AND SECURITY IS OUR PRIORITY</h3>
-              <p class="text-dark">We are concerned about your family's and your home's safety. 
-                This drives us to ensure that our cleaners' honesty and moral conduct are never a source of concern for you.
-              </p>
-            </div>
-            
-            <div class="col-lg-3">
-              <div class="icon-wrap">
-                <img 
-                src="https://cdn-icons.flaticon.com/png/128/2058/premium/2058432.png?token=exp=1643887282~hmac=6c66dd7d66bce0d1e7f7dc443212b35c"/>
-                
-
-              </div>
-              <h3>YOUR TRUST AND SECURITY IS OUR PRIORITY</h3>
-              <p class="text-dark">We are concerned about your family's and your home's safety. 
-                This drives us to ensure that our cleaners' honesty and moral conduct are never a source of concern for you.
-              </p>
             </div>
 
-            <div class="col-lg-3">
-              <div class="icon-wrap">
-                <img class="img-fluid " style="max-width: 100; vertical-align: middle; border: 0;" 
-                src="https://cdn-icons.flaticon.com/png/128/2058/premium/2058432.png?token=exp=1643887282~hmac=6c66dd7d66bce0d1e7f7dc443212b35c"/>
-                
+          </div>
 
+          <div class="payment-container">
+              
+            <div class="row justify-content-md-center">
+              
+              <div >
+                <div class="payment-method">
+                  <h2>Payment Method</h2>
+                  <div class="radio-container">
+                    <input id="card" name="payment-type" type="radio" checked>
+                    <label for="card">Card</label>
+                    <input id="paypal" name="payment-type" type="radio">
+                    <label for="paypal">PayPal</label>
+                  </div>
+                  <div >
+                    <i class="fa fa-cc-visa" style="color:navy;"></i>
+                    <i class="fa fa-cc-amex" style="color:blue;"></i>
+                    <i class="fa fa-cc-mastercard" style="color:red;"></i>
+                    <i class="fa fa-cc-discover" style="color:orange;"></i>
+                      </div>
+                </div>
+                <form id="payment-form">
+                  <div class="card-info-container">
+                    <div class="card-info">
+                      <label>Card Number
+                        <input class="full-width" id="card-num" type="text" placeholder="1234 5678 9012 3456">
+                      </label>
+                      <label>Name on Card
+                        <input class="full-width" id="name" type="text" placeholder="Steve Rogers">
+                      </label>
+                      <div class="expire-ccv">
+                        <label>Expires
+                          <span class="expire-date">
+                            <input id="month" type="text" size="2" maxlength="2" placeholder="MM">
+                            <span>/</span>
+                            <input id="year" type="text" size="2" maxlength="2" placeholder="YY">
+                          </span>
+                        </label>
+                        <label>CCV
+                          <input id="ccv" type="text" size="3" maxlength="3" placeholder="123">
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <label class="save-card-info">
+                    <input type="checkbox">
+                    Save card for faster checkout
+                  </label>
+                </form>
+              
+                <button class="button btn-block mb-1 " style="text-align: center;"onclick="document.getElementById('payment-form').reset()">send</button>
+
+                <br>
               </div>
-              <h3>YOUR TRUST AND SECURITY IS OUR PRIORITY</h3>
-              <p class="text-dark">We are concerned about your family's and your home's safety. 
-                This drives us to ensure that our cleaners' honesty and moral conduct are never a source of concern for you.
-              </p>
             </div>
+          </div>
 
-            <div class="col-lg-3">
-              <div class="icon-wrap">
-                <img 
-                src="https://img.icons8.com/wired/2x/ffffff/security.png"/>
-                
-
-              </div>
-              <h3>YOUR TRUST AND SECURITY IS OUR PRIORITY</h3>
-              <p class="text-dark">We are concerned about your family's and your home's safety. 
-                This drives us to ensure that our cleaners' honesty and moral conduct are never a source of concern for you.
-              </p>
-            </div>
+        </div>
+        
 
       
-      </div> 
-    <div class="  bg1-image row justify-content-md-center p-0 bg-info">
+  </div>
 
-        <h2 class="mt-5" style="letter-spacing:0.05em; text-align: center;">
 
-            <span style="font-size: 48px;"></span>
-            <span style="letter-spacing:0.05em; text-align: center;">OUR CODE OF ETHICS</span>
-
-        </h2>
-
-    </div>
 
     
-    <div class="row justify-content-center h-100">
+      <div class="col-lg-4">
+        <div class="card mt-3">
 
-        
+            <div class="card-body">
 
-        <div id="ethic1" class="col-md-4 ">
+                <h5 class="font-weight-bold">Summary</h5>
+                <hr>
 
-            <p>
-                Your time is limited, so don't waste it living someone else's life. 
-                Don't be trapped by dogma - which is living with the results of other people's thinking. 
-                Don't let the noise of others' opinions drown out your own inner voice. 
-                And most important, have the courage to follow your heart and intuition.
-            </p>
+                <h6>Total: 0.0</h6>
+                <h6>Discount: 0.0</h6>
+                <h6>Value Added Tax(VAT): 0.0</h6>
 
-            <p>
-                Your time is limited, so don't waste it living someone else's life. 
-                Don't be trapped by dogma - which is living with the results of other people's thinking. 
-                Don't let the noise of others' opinions drown out your own inner voice. 
-                And most important, have the courage to follow your heart and intuition.
-            </p>
+                <hr>
+                <h4 class="font-weight-bold mb-5" class="grand_total" id="grand_total">Grand Total: 0.0</h4>
 
-            <p>
-                Your time is limited, so don't waste it living someone else's life. 
-                Don't be trapped by dogma - which is living with the results of other people's thinking. 
-                Don't let the noise of others' opinions drown out your own inner voice. 
-                And most important, have the courage to follow your heart and intuition.
-            </p>
-  
+               
+                  
+            </div>
+            
+            </div>
         </div>
 
-        <div id="ethic2" class="col-md-4 ">
-
-
-            <p>
-                Your time is limited, so don't waste it living someone else's life. 
-                Don't be trapped by dogma - which is living with the results of other people's thinking. 
-                Don't let the noise of others' opinions drown out your own inner voice. 
-                And most important, have the courage to follow your heart and intuition.
-            </p>
-            <p>
-                Your time is limited, so don't waste it living someone else's life. 
-                Don't be trapped by dogma - which is living with the results of other people's thinking. 
-                Don't let the noise of others' opinions drown out your own inner voice. 
-                And most important, have the courage to follow your heart and intuition.
-            </p>
-            <p>
-                Your time is limited, so don't waste it living someone else's life. 
-                Don't be trapped by dogma - which is living with the results of other people's thinking. 
-                Don't let the noise of others' opinions drown out your own inner voice. 
-                And most important, have the courage to follow your heart and intuition.
-            </p>
-  
-        </div>
-
-        <div id="ethic3" class="col-md-4 ">
-
-       
-
-            <p>
-                Your time is limited, so don't waste it living someone else's life. 
-                Don't be trapped by dogma - which is living with the results of other people's thinking. 
-                Don't let the noise of others' opinions drown out your own inner voice. 
-                And most important, have the courage to follow your heart and intuition.
-            </p>
-
-            <p>
-                Your time is limited, so don't waste it living someone else's life. 
-                Don't be trapped by dogma - which is living with the results of other people's thinking. 
-                Don't let the noise of others' opinions drown out your own inner voice. 
-                And most important, have the courage to follow your heart and intuition.
-            </p>
-
-            <p>
-                Your time is limited, so don't waste it living someone else's life. 
-                Don't be trapped by dogma - which is living with the results of other people's thinking. 
-                Don't let the noise of others' opinions drown out your own inner voice. 
-                And most important, have the courage to follow your heart and intuition.
-            </p>
-  
-        </div>
-
-    </div>
-
+      </div>
 
 
 </div>
@@ -254,155 +132,43 @@
 
 {% endblock %}
 
+{% block 'scripts' %}
 
-<!-- reviews -->
+<script>
 
+$(document).ready(function(){
+    
 
-<div class="row justify-content-center mt-5  h-100">
+    $.ajaxSetup({
+        headers:{
+            'X-CSRFToken': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
 
-  <div class="col-md-3 d-flex flex-column justify-content-center">
-
-    <figure class="bg-light pl-1 p-4" style="border-left: .35rem solid #5cb0de; border-top: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
-      <i class="fa fa-quote-left fa-2x mb-4" style="color: #5cb0de;"></i>
-      <blockquote class="blockquote pb-2">
-        <p>
-          Your time is limited, so don't waste it living someone else's life. 
-          Don't be trapped by dogma - which is living with the results of other people's thinking. 
-          Don't let the noise of others' opinions drown out your own inner voice. 
-          And most important, have the courage to follow your heart and intuition.
-        </p>
-      </blockquote>
-      <figcaption class="blockquote-footer mb-0">
-        {{customer.name}}
-      </figcaption>
-    </figure>
-
-  </div>
+   
+    });
 
 
-  <div class="col-md-3 d-flex flex-column justify-content-center ">
-
-    <figure class="bg-light pl-1 p-4" style="border-left: .35rem solid #5cb0de; border-top: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
-      <i class="fa fa-quote-left fa-2x mb-4" style="color: #5cb0de;"></i>
-      <blockquote class="blockquote pb-2">
-        <p>
-          Your time is limited, so don't waste it living someone else's life. 
-          Don't be trapped by dogma - which is living with the results of other people's thinking. 
-          Don't let the noise of others' opinions drown out your own inner voice. 
-          And most important, have the courage to follow your heart and intuition.
-        </p>
-      </blockquote>
-      <figcaption class="blockquote-footer mb-0">
-        Travis
-      </figcaption>
-    </figure>
-
-  </div>
-
-
-
-  <div class="col-md-3 d-flex flex-column justify-content-center ">
-
-    <figure class="bg-light pl-1 p-4" style="border-left: .35rem solid #5cb0de; border-top: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
-      <i class="fa fa-quote-left fa-2x mb-4" style="color: #5cb0de;"></i>
-      <blockquote class="blockquote pb-2">
-        <p>
-          Your time is limited, so don't waste it living someone else's life. 
-          Don't be trapped by dogma - which is living with the results of other people's thinking. 
-          Don't let the noise of others' opinions drown out your own inner voice. 
-          And most important, have the courage to follow your heart and intuition.
-        </p>
-      </blockquote>
-      <figcaption class="blockquote-footer mb-0">
-        {{customer.name}} 
-      </figcaption>
-    </figure>
-
-  </div>
-</div>
-
-      <div class="row justify-content-center mt-5  h-100">
-
-        <div class="col-md-3 d-flex flex-column justify-content-center">
+  $('#confirm_order').on('click', function(){
   
-          <figure class="bg-light pl-1 p-4" style="border-left: .35rem solid #5cb0de; border-top: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
-            <i class="fa fa-quote-left fa-2x mb-4" style="color: #5cb0de;"></i>
-            <blockquote class="blockquote pb-2">
-              <p>
-                Your time is limited, so don't waste it living someone else's life. 
-                Don't be trapped by dogma - which is living with the results of other people's thinking. 
-                Don't let the noise of others' opinions drown out your own inner voice. 
-                And most important, have the courage to follow your heart and intuition.
-              </p>
-            </blockquote>
-            <figcaption class="blockquote-footer mb-0">
-              {{customer.name}}
-            </figcaption>
-          </figure>
-  
-        </div>
+    $.ajax({
+        type: "POST",
+        url: "{% url 'complete.checkout' %}",
+        dataType: "json",
+        data: $("#checkoutForm").serialize(),
+        success: function(data){
+            window.location.href = "/order/receipt/"+data['order']
+        },
+        error: function(data){
+            console.log(data);
+        }
+    });
+}
+);
 
+</script>
 
-        <div class="col-md-3 d-flex flex-column justify-content-center ">
-  
-          <figure class="bg-light pl-1 p-4" style="border-left: .35rem solid #5cb0de; border-top: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
-            <i class="fa fa-quote-left fa-2x mb-4" style="color: #5cb0de;"></i>
-            <blockquote class="blockquote pb-2">
-              <p>
-                Your time is limited, so don't waste it living someone else's life. 
-                Don't be trapped by dogma - which is living with the results of other people's thinking. 
-                Don't let the noise of others' opinions drown out your own inner voice. 
-                And most important, have the courage to follow your heart and intuition.
-              </p>
-            </blockquote>
-            <figcaption class="blockquote-footer mb-0">
-              Travis
-            </figcaption>
-          </figure>
-  
-        </div>
+{% endblock %}
 
 
 
-        <div class="col-md-3 d-flex flex-column justify-content-center ">
-  
-          <figure class="bg-light pl-1 p-4" style="border-left: .35rem solid #5cb0de; border-top: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
-            <i class="fa fa-quote-left fa-2x mb-4" style="color: #5cb0de;"></i>
-            <blockquote class="blockquote pb-2">
-              <p>
-                Your time is limited, so don't waste it living someone else's life. 
-                Don't be trapped by dogma - which is living with the results of other people's thinking. 
-                Don't let the noise of others' opinions drown out your own inner voice. 
-                And most important, have the courage to follow your heart and intuition.
-              </p>
-            </blockquote>
-            <figcaption class="blockquote-footer mb-0">
-              {{customer.name}} 
-            </figcaption>
-          </figure>
-  
-        </div>
-      </div>
-
-
-
-      <div class="success-box">
-        <div class="clearfix"></div>
-      
-        <div class="text-message"><span>Thanks! You rated this 3 stars.</span></div>
-        <div class="clearfix"></div>
-      </div>
-
-      <div class="success-box">
-        <div class="clearfix"></div>
-      
-        <div class="text-message"><span>Thanks! You rated this 4 stars.</span></div>
-        <div class="clearfix"></div>
-      </div>
-
-      <div class="success-box">
-        <div class="clearfix"></div>
-      
-        <div class="text-message"><span>Thanks! You rated this 5 stars.</span></div>
-        <div class="clearfix"></div>
-      </div>

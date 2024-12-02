@@ -321,6 +321,21 @@ border-radius: 30px;
     z-index: index -2;
   }
 
+  @media only screen and (min-width: 780px){
+
+    .banner-heading{
+      font-size: 5rem;
+    }
+    .gmap_canvas{
+    width: 90vw;
+  }
+  }
+ 
+
+  .gmap_canvas{
+    width: auto;
+  }
+
 </style>
 
 <link rel="stylesheet" href="{% static 'css/testimonial.css' %}">
@@ -330,16 +345,21 @@ border-radius: 30px;
 {% block content %}
 
 
-<div class="container-fluid mt-1 box" >
+<div class="container-fluid mt-1 box">
 
-  <div class= " bg-image row justify-content-md-center" >
+  <div class= "bg-image row justify-content-md-center">
 
 
       <div class="col-lg-8 text-center d-flex flex-column justify-content-center">
 
-        <h6 class="text-info text-center mb-0">ONE CALL CLEANS IT ALL</p>
+        <a class="navbar-brand" href="/"><img src="{% static 'images/ROM.png' %}" style="border-radius: 20px;" height="120px">
 
-        <h1 style="font-size: 5rem;" class="font-weight-bold mt-0">Cleaning spaces. Creating happy faces.</h1>
+        </a>
+<!-- 
+        <h5 class="text-white text-center mb-0"><span class="badge badge-light badge-rounded p-2">ONE CALL CLEANS IT ALL</span></h5> -->
+
+
+        <h1 class="font-weight-bold mt-0 banner-heading">Cleaning spaces. Creating happy faces.</h1>
 
 
         <div class="d-flex flex-row justify-content-center">
@@ -390,42 +410,51 @@ border-radius: 30px;
         <div class="row">
           <div class="section-head col-sm-12">
             <h4><span>Why Choose</span> Us?</h4>
-            <p>When you choose us, you'll feel the benefit of 10 years' experience of Web Development. Because we know the digital world and we know that how to handle it. With working knowledge of online, SEO and social media.</p>
+            <p>
+              We take pride in the job we do and are dedicated to doing it well every single time.
+               Understanding the importance of focus, we work tirelessly to provide a superior service to the people Atlanta Georgia
+            </p>
           </div>
-          <div class="col-lg-4 col-sm-6 d-flex flex-column align-content-stretch">
+          <div class="col-lg-4 d-flex flex-column align-content-stretch">
             <div class="item h-100"> <span class="icon feature_box_col_one"><i class="fa fa-globe"></i></span>
-              <h6>Modern Design</h6>
-              <p>We use latest technology for the latest world because we know the demand of peoples.</p>
+              <h6>Safety First</h6>
+              <p>We rigorously vet all of our Cleaners, who undergo identity checks as well as in-person interviews.</p>
             </div>
           </div>
-          <div class="col-lg-4 col-sm-6 d-flex flex-column align-content-stretch">
+          <div class="col-lg-4 d-flex flex-column align-content-stretch">
             <div class="item h-100"> <span class="icon feature_box_col_two"><i class="fa fa-anchor"></i></span>
-              <h6>Creative Design</h6>
-              <p>We are always creative and and always lisen our costomers and we mix these two things and make beast design.</p>
+              <h6>Affordable</h6>
+              <p>Reasonable prices & always customizable..</p>
+              <P>We build excellent working relationships with our customers by keeping strong communication at the forefront of our work, and a thorough
+                 understanding of what our customers require means that our cleaning arrangements will fit the bill, every time.
+              </P>
             </div>
           </div>
-          <div class="col-lg-4 col-sm-6 d-flex flex-column align-content-stretch">
+          <div class="col-lg-4 d-flex flex-column align-content-stretch">
             <div class="item h-100"> <span class="icon feature_box_col_three"><i class="fa fa-hourglass-half"></i></span>
-              <h6>24 x 7 User Support</h6>
+              <h6>Easy to get help</h6>
               <p>If our customer has any problem and any query we are always happy to help then.</p>
+              <P>Select your ZIP code, number of bedrooms and bathrooms, date and relax while we take care of your home.</P>
             </div>
           </div>
-          <div class="col-lg-4 col-sm-6 d-flex flex-column align-content-stretch">
+          <div class="col-lg-4 d-flex flex-column align-content-stretch">
             <div class="item h-100"> <span class="icon feature_box_col_four"><i class="fa fa-database"></i></span>
-              <h6>Business Growth</h6>
-              <p>Everyone wants to live on top of the mountain, but all the happiness and growth occurs while you're climbing it</p>
+              <h6>100% SATISFACTION GUARANTEE</h6>
+              <p>If you are not satisfied. Contact us so that we make things right for you!</p>
             </div>
           </div>
-          <div class="col-lg-4 col-sm-6 d-flex flex-column align-content-stretch">
+          <div class="col-lg-4 d-flex flex-column align-content-stretch">
             <div class="item h-100"> <span class="icon feature_box_col_five"><i class="fa fa-upload"></i></span>
-              <h6>Market Strategy</h6>
-              <p>Holding back technology to preserve broken business models is like allowing blacksmiths to veto the internal combustion engine in order to protect their horseshoes.</p>
+              <h6>Cash Free Payment</h6>
+              <p>Pay securely online only when the cleaning is complete.</p>
             </div>
           </div>
-          <div class="col-lg-4 col-sm-6 d-flex flex-column align-content-stretch">
-            <div class="item h-100"> <span class="icon feature_box_col_six"><i class="fa fa-camera"></i></span>
-              <h6>Affordable cost</h6>
-              <p>Love is a special word, and I use it only when I mean it. You say the word too much and it becomes cheap.</p>
+          <div class="col-lg-4 d-flex flex-column align-content-stretch">
+            <div class="item h-100"> <span class="icon feature_box_col_six"><i class="fa fa-shield"></i></span>
+              <h6>Free Quotes and Friendly Service</h6>
+              <p>We take pride in our quality, yet affordable, services, so if your business could benefit from excellent value cleaning services we would be
+                 delighted to discuss your requirements and provide you with a quote, free of charge.
+              </p>
             </div>
           </div>
         </div>
@@ -444,7 +473,17 @@ border-radius: 30px;
 
           <div id="content" class="container-fluid">
 
-            {% include 'ROM/frontend/map.html' %}
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="mapouter">
+                  <div class="gmap_canvas"><iframe width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=2216%20Apache%20Dr,%20Jonesboro,GA&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                    <style>.mapouter{position:relative;text-align:right;height:500px;}</style><a href="https://www.embedgooglemap.net">how to add a google map to a website</a>
+                    <style>.gmap_canvas {overflow:hidden;background:none!important;height:500px;}</style>
+                  </div>
+                </div>
+              </div>
+            </div>
+
       
           </div>
     
@@ -453,10 +492,10 @@ border-radius: 30px;
         <div class="col-lg-3  d-flex flex-column justify-content-center">
           <h5 class="mt-5 text-center">Address</h2>
             <p class="text-center">SERVING THE GREATER ATLANTA AREA <br> </p>
-            <p class="text-center">110 laver De ave. Unit G&I,</p>
-            <p class="text-center">Atlanta, GA 30306</p>
+            <p class="text-center">2216 Apache Dr, Jonesboro, GA,</p>
+            <p class="text-center">30236, USA</p>
 
-            <a href="tel:600.765.3459" class="text-center btn btn-outline-info border-0"><i class="fa fa-phone fa-lg mr-2"></i>600.765.3459</a>
+            <a href="tel:770.712.6881" class="text-center btn btn-outline-info border-0"><i class="fa fa-phone fa-lg mr-2"></i>770.712.6881</a>
 
           </div>
         <div class="col-lg-3  d-flex flex-column justify-content-center">
@@ -510,7 +549,7 @@ border-radius: 30px;
       </div>
 
         {% for review in reviews %}
-        <div class="col-lg-4 d-flex flex-column h-100 my-2" >
+        <div class="col-lg-4 d-flex flex-column h-100 my-2" id="review" >
 
           <div class="card border-0 shadow-sm h-100 review" id="review_card_{{review.id}}" onmouseover="cardActive('{{review.id}}')" onmouseout="cardInactive('{{review.id}}')">
             <div class="card-body h-100">
@@ -615,14 +654,14 @@ border-radius: 30px;
 
                 <h4>Rate us</h4>
 
-                <form action="{% url 'create.review' %}" method="POST">
+                <form id="reviewForm" action="{% url 'create.review' %}" method="POST">
 
                   
                     {% csrf_token %}
 
                    
                     <!-- Rating Stars Box -->
-                    <div class='rating-stars text-center'>
+                    <div class='rating-stars text-center' required>
                       <ul id='stars'>
                         <li class='star' title='Poor' data-value='1'>
                           <i class='fa fa-star fa-fw'></i>
@@ -652,25 +691,28 @@ border-radius: 30px;
   
                       <div class='clearfix'></div>
                     </div>
-  
-  
-                    <input id="ratingInput" type="hidden" name="rating">
 
-                    <input type="text" id="fname" name="fullname" class="form-control"  placeholder="Full Nmaes">
+              
+  
+  
+                    <input id="ratingInput" type="hidden" name="rating" required >
+
+                    <input type="text" id="fname" name="fullname" class="form-control"  placeholder="Full Name" required>
       
                     <div class="form-row mt-1">
                       <div class="form-group col-md-6">
-                        <input type="email" name="email" class="form-control" id="inputEmail4" placeholder="Email">
+                        <input type="email" name="email" class="form-control" id="inputEmail4" placeholder="Email" required>
                       </div>
 
                       <div class="form-group col-md-6">
-                        <input type="phone" name="phone_number" class="form-control" id="inputPhone" placeholder="Phone">
+                        <input type="phone" name="phone_number" class="form-control" id="inputPhone" placeholder="Phone" required>
                       </div>
 
                     </div>
-                    <div class="form-group comment-area"> <textarea class="form-control" name="subject" placeholder="what is your view?" rows="4"></textarea> </div>
+                    <div class="form-group comment-area"> <textarea class="form-control" name="subject" placeholder="what is your view?" rows="4" required></textarea> </div>
                     <div class="text-center mt-4"> <button class="btn btn-info send px-5">Submit<i class="fa fa-long-arrow-right ml-1"></i></button> </div>
-                
+                    <p class="text-danger" id="rating-error-message"></p>
+                    <p class="text-success" id="rating-success-message"></p>
 
                 </form>
                   
@@ -704,6 +746,51 @@ border-radius: 30px;
       navigationText: ["", ""],
       slideSpeed: 1000,
       autoPlay: true
+    });
+
+    $('#reviewForm').on('submit', function(e){
+      e.preventDefault();
+
+      var ratingInput = $('#ratingInput').val();
+      var formData = $(this).serialize();
+      var url = $(this).attr('action');
+
+      var ratingErrorMessage = $('#rating-error-message');
+      var ratingSuccessMessage = $('#rating-success-message');
+
+      
+      if(!ratingInput){
+        ratingErrorMessage.html("Kindly leave your rating");
+      }
+      else{
+        ratingErrorMessage.html("");
+
+      }
+      
+
+      $.ajax({
+          data:formData,
+          type:'POST',
+          dataType:'json',
+          url:url,
+          success: function(response){
+            if(response.success){
+              ratingSuccessMessage.html(response.message);
+              setTimeout(function(){
+                window.location.reload();
+              }, 1500);  
+            }
+            else{
+              console.log(response.message);
+            }
+          },
+          error: function(error){
+            console.log(error);
+            alert("Your review could not be recorded, please ensure you entered a rating");
+          }
+      });
+
+      
     });
 
     

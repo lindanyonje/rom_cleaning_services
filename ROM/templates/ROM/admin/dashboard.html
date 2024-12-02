@@ -20,7 +20,7 @@
                         All Customers<i class="fa fa-arrow-circle-right ml-2"></i>
                     </a>
                 </div>
-                <table class="table table-hover table-responsive-sm table-striped">
+                <table class="table table-hover table-responsive-sm table-striped myTable">
                     <thead>
                         <tr>
                             <th>Customer</th>
@@ -32,15 +32,15 @@
     
                     <tbody>
                         {% for customer in customers %}
-    
-                    <tr>
-                        <td>{{customer.name}}</td>
-                        <td>{{customer.phone_number}}</td>
-                        <td><a class="btn btn-sm btn-outline-info" href= "{% url 'Customer_detail' customer.id %}">View</a></td>
+        
+                        <tr>
+                            <td>{{customer.name}}</td>
+                            <td>{{customer.phone_number}}</td>
+                            <td><a class="btn btn-sm btn-outline-info" href= "{% url 'Customer_detail' customer.id %}">View</a></td>
 
-                    </tr>
+                        </tr>
                 
-                  {% endfor %}
+                     {% endfor %}
                     </tbody>
                 </table>
             </div>
@@ -64,7 +64,7 @@
                     </a>
                 </div>
            
-                <table class="table table-hover table-responsive-sm table-striped">
+                <table   class="table table-hover table-responsive-sm table-striped myTable">
 
                     <thead>
 
@@ -73,6 +73,7 @@
                             <th>Service</th>
                             <th>Status</th>
                             <th>Date ordered</th>
+                            <th>Action</th>
                             <th>Update</th>
                             <th>Remove</th>
                         </tr>
@@ -80,23 +81,26 @@
                     </thead>
                    
     
-                    {% for order in orders %}
 
                     <tbody>
+                        {% for order in orders %}
+
 
                         <tr>
-                            <td>{{order.customer_id}}</td>
-                            <td>{{order.service_id}}</td>
+                            <td>{{order.customer_id.name }}</td>
+                            <td>{{order.service_category}}</td>
                             <td>{{order.status}}</td>
                             <td>{{order.created_at}}</td>
+                            <td><a class="btn btn-sm btn-outline-info" href= "{% url 'Order_detail' order.id %}">View</a></td>
                             <td><a class="btn btn-sm btn-outline-info" href="{% url 'update_order' order.id %}"><i class="fa fa-pencil" aria-hidden="true"></i>Update </a></td>
                             <td><a class="btn btn-sm btn-outline-danger" href="{% url 'delete_order' order.id %}"><i class="fa fa-trash " aria-hidden="true"></i>Delete</a></td>
         
                         </tr>
+                        {% endfor %}
+
 
                     </tbody>
 
-                  {% endfor %}
                     
                 </table>
             </div>
@@ -129,7 +133,7 @@
 
                 
     
-                <table  class="table table-hover table-responsive-sm table-striped">
+                <table  class="table table-hover table-responsive-sm table-striped myTable">
 
                     <thead>
 
@@ -149,9 +153,11 @@
     
                   
     
-                    {% for service in service %}
+                  
 
                     <tbody>
+
+                        {% for service in service %}
 
                         <tr>
     
@@ -166,12 +172,14 @@
                         </tr>
 
                         
+                      {% endfor %}
+    
+
+                        
 
                     </tbody>
     
                      
-                    {% endfor %}
-    
                 </table>
     
             </div>
@@ -199,7 +207,7 @@
                     </a>
                 </div>
 
-                <table class="table table-hover table-responsive-sm  table-striped">
+                <table class="table table-hover table-responsive-sm  table-striped myTable">
                     <thead>
                         <tr>
                             <th>Id</th>
@@ -211,9 +219,11 @@
                         </tr>
                     </thead>
 
-                    {% for payment in payment %}
+                  
 
                         <tbody>
+
+                            {% for payment in payment %}
                         
                                 <tr>
                                     <td>{{payment.id}}</td>
@@ -225,10 +235,12 @@
                                    
                                     
                                 </tr>
+
+                            {% endfor %}    
                         
                         </tbody>
 
-                    {% endfor %}
+                   
                 </table>
 
             </div>
@@ -259,7 +271,7 @@
                 <!--This is where we add our table-->
                 <!--Table begins-->
 
-                <table class="table table-hover table-responsive-sm  table-striped">
+                <table class="table table-hover table-responsive-sm  table-striped myTable">
 
                     <thead>
                         <tr>
@@ -312,15 +324,14 @@
                 <!--This is where we add our table-->
                 <!--Table begins-->
 
-                <table class="table table-hover table-responsive-sm  table-striped">
+                <table class="table table-hover table-responsive-sm  table-striped myTable">
 
                     <thead>
                         <tr>
                             <th>Id</th>
-                            <th>Service Id</th>
                             <th>Amount</th>
-                            <th>Code</th>
                             <th>Created At</th>
+                            <th>Action</th>
                             <th>Update</th>
                             <th>Delete</th>
                         </tr>
@@ -329,11 +340,10 @@
                         {% for object in gifts %}
                            <tr>
                                <td>{{object.id}}</td>
-                               <td>{{object.service_id.category}}</td>
                                <td>{{object.giftcard_amount}}</td>
-                               <td>{{object.code}}</td>
                                <td>{{object.created_at}}</td>
-                               <td><a class="btn btn-sm btn-outline-info" href="{% url 'update_gift' object.id %}"><i class="fa fa-pencil" aria-hidden="true"></i>Update </a></td>
+                               <td><a class="btn btn-sm btn-outline-info" href= "{% url 'gifts'  %}">View</a></td>
+                               <td><a class="btn btn-sm btn-outline-info" href="{% url 'update_gift' object.id %}"><i class="fa fa-pencil" aria-hidden="true"></i>Update</a></td>
                                <td><a class="btn btn-sm btn-outline-danger" href="{% url 'delete_gift' object.id %}"><i class="fa fa-trash " aria-hidden="true"></i>Delete</a></td>
                                
                            </tr>

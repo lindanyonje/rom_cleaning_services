@@ -1,57 +1,117 @@
 {% extends 'ROM/admin/layouts/admin_master.html' %}
 
-{% load static %}
-
-{% load widget_tweaks %}
-
-<br>
-
-
 {% block content %}
 
 <div class="container">
+    
 
-    <div class="row justify justify-content-center my-5">
+    <div class="row my-5">
+       
+        <button class="btn btn-dark ml-auto" data-toggle="modal"
+        data-target="#giftModal">
+        <i class ="fa fa-plus" aria-hidden="true"></i>New Gifts 
+    </button>
+            
+    </div>
 
-        <div class="col-lg-6">
+    <div class="row justify-content-center my-5">
+
+        <div class="col-lg-12">
 
             <div class="card">
-                <div class="card-header"> 
-                    <h5 class="card-title">Update Order</h5>
-    
-                </div>
+
                 <div class="card-body">
-    
-                    <form action="{% url 'update_order' 1 %}" method="POST" enctype="multipart/form-data">
-                        <!-- Security token -->
-    
-                        {% csrf_token %}
-    
-                        <!-- Using the formset -->
-    
-                        {% for field in form.visible_fields %}
-    
-                        <div class="form-group">
-                            {{field.label_tag}}
-                            {% render_field field class="form-control" %}
 
-                        </div>
-
-                        {% endfor %}
-
-                        <button type="submit" class="btn btn-dark">Submit</button>
+                    
+                    <div class="d-flex flex-row mb-3">
+                        <h4 class="card-title">All Gifts</h4>
+                    </div>
     
-                        
-                    </form>
+                    <!--This is where we add our table-->
+                    <!--Table begins-->
+    
+                    <table class="table table-hover table-responsive-sm table-striped">
+    
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Service Id</th>
+                                <th>Amount</th>
+                                <th>Code</th>
+                                <th>Created At</th>
+                                <th>Update</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for object in gifts %}
+                               <tr>
+                                   <td>{{object.id}}</td>
+                                   <td>{{object.service_id.category}}</td>
+                                   <td>{{object.giftcard_amount}}</td>
+                                   <td>{{object.code}}</td>
+                                   <td>{{object.created_at}}</td>
+
+                                   <td><a class="btn btn-sm btn-outline-info"  href="{% url 'update_gift' object.id %}"><i class="fa fa-pencil" aria-hidden="true"></i>Update </a></td>
+                                   <td><a class="btn btn-sm btn-outline-danger" href="{% url 'delete_gift' object.id %}"><i class="fa fa-trash" aria-hidden="true"></i>Delete</a></td>
+                                 
+                               </tr>
+                            {% endfor %}   
+                        </tbody>
+    
+                    </table>
+    
+    
+                    <!--Table ends-->
     
                 </div>
             </div>
-            
+    
 
         </div>
 
+        
     </div>
 
+
+</div>
+
+<!-- Modals -->
+<div class="modal fade" id="giftModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title title" id="exampleModalLabel">New Gift</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="post" action="" enctype="multipart/form-data">
+                <!-- @method('POST') -->
+                <!-- @csrf -->
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Customer</label>
+                        <input type="text" class="form-control" placeholder="Name" name="name">
+                    </div>
+                    <div class="form-group">
+                        <label>Enter Amount</label>
+                        <input type="text" class="form-control" placeholder="Amount" name="Amount">
+                    </div>
+                    <div class="form-group">
+                        <label>Code</label>
+                        <select class="form-control input-sm" name="Payment_id">
+                            <option value="">--select--</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+<!--                        <button type="button" class="btn btn-outline-primary" data-dismiss="modal"><i class="fa fa-times mr-2"></i>Close</button>--}} -->
+                    <button type="submit" class="btn btn-dark"><i class="fa fa-plus-circle mr-2"></i>Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 
 

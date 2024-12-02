@@ -1,10 +1,13 @@
 from email import message
 from logging.handlers import RotatingFileHandler
 from multiprocessing import context
+from django.db import IntegrityError
+from django.http.response import JsonResponse
 from unicodedata import category
 from django.shortcuts import render,redirect
-from django .http import HttpResponse
+from django .http import HttpResponse, HttpResponseRedirect
 from django .forms import inlineformset_factory
+from rom_cleaning_services.settings import EMAIL_HOST_PASSWORD, EMAIL_HOST_USER
 from .models import*
 from .forms import OfferForm, OrderForm, CustomerForm,ServiceForm,PaymentForm,GiftForm
 from django.views.generic import ListView
@@ -13,6 +16,20 @@ from django.views.generic.edit import CreateView
 from .filters import OrderFilter
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib import messages
+from django.core.mail import send_mail
+from django.core.mail import EmailMultiAlternatives
+from django.conf import settings
+from django.template.loader import render_to_string
+from django.urls import reverse
+from django.views.generic import FormView
+from django.views.generic import TemplateView
+from django.dispatch import receiver
+from paypal.standard.models import ST_PP_COMPLETED
+from paypal.standard.ipn.signals import valid_ipn_received
+from paypal.standard.forms import PayPalPaymentsForm
+
+
 
 
 # Create your views here.
@@ -20,7 +37,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 def home(request):
 
-   reviews = Review.objects.all()[:6]
+   reviews = Review.objects.filter(status = "approved")[:6]
 
    context = {
       'reviews' : reviews
@@ -51,8 +68,16 @@ def adminDashboard(request):
 
    pending = orders.filter(status='pending').count()
 
-   context = {'orders': orders, 'customers': customers, 'total_orders': total_orders, 
-   'completed': completed, 'pending':pending, 'payment':payment, 'service':service, 'offers':offers, 'gifts':gifts }
+   context = {
+      'orders': orders, 
+      'customers': customers, 
+      'total_orders': total_orders, 
+      'completed': completed, 
+      'pending':pending, 
+      'payment':payment, 
+      'service':service, 
+      'offers':offers, 
+      'gifts':gifts }
 
     ##Declaring a dictionary used to package the data we shall
     ##send to the frontend html template for display.
@@ -66,6 +91,68 @@ class CreateInquiry(LoginRequiredMixin, CreateView):
    template_name = 'ROM/admin/inquiry.html'
    success_url = '/dashboard'
 
+
+def get_cart(request):
+    cart_items = Cart.objects.filter(order_id__isnull = True)
+    
+    return render(request, 'ROM/frontend/cart.html', {'cart': cart_items})    
+
+
+def deleteCart(request):
+
+    cart_id = request.POST.get('cart_id')
+    cart_item= Cart.objects.get(pk = cart_id)
+    cart_item.delete()
+    
+
+    data ={}
+
+    return JsonResponse(data)
+
+def checkoutDetails(request, total):
+
+    context = {
+            'total' : total,
+        }
+    return render(request, 'ROM/frontend/checkout.html', context)
+
+
+def finalizeCheckout(request):
+    if request.method == "GET":
+
+        return render(request, 'shop/frontend/cart.html', context={})
+
+    else:
+        name=request.POST.get('name')
+        email=request.POST.get('email')
+        total=request.POST.get('total')
+        order_number= "BURA_123_56"
+        address=request.POST.get('address')
+        delivery_method = request.POST.get("delivery_method")
+        payment_mode = request.POST.get("paymentMode")
+        
+        customer = Customer.objects.filter(email= email).first()
+        if customer is None:
+            customer = Customer.objects.create(
+                name = name,
+                email = email,
+                password = email,
+            )
+        order = Order.objects.create(
+            total = total,
+            order_number = order_number,
+            status = "Pending",
+            customer_id = customer
+
+        )
+
+        cart_items = Cart.objects.filter(order_id__isnull = True).update(order_id = order.id)
+
+        context = {
+            'order' : order.id,
+        }
+
+        return JsonResponse(context)
 
 @login_required
 def inquiry(request):
@@ -101,6 +188,51 @@ def createInquiry(request):
    }
 
    return render(request, 'ROM/frontend/inquiry_success.html', context)      
+
+
+def createGiftCard(request):
+
+   f_name = request.POST.get("firstname")
+   number = request.POST.get("phone_number")
+   email = request.POST.get("email")
+   recipient_name = request.POST.get("recepient")
+   recipient_email = request.POST.get("remail")
+   subject = request.POST.get("subject")
+   amount = request.POST.get("amount")
+
+
+   gift_card = GiftCard.objects.create(
+      name = f_name,
+      email = email,
+      recipient_name =  recipient_name,
+      recipient_email =  recipient_email,
+      phone_number = number,
+      message = subject,
+      giftcard_amount = amount
+   )
+
+   email_message = "Hello, you have areceived a giftcard from"+f_name
+
+   gift = {
+        'gift' : gift_card
+    }
+   text_body = email_message
+   html_body = render_to_string('ROM/frontend/email_template.html', gift)
+
+   mail = EmailMultiAlternatives(
+      subject = subject,
+      from_email =  "lindaatieno24@gmail.com",
+      to = [recipient_email],
+      body = text_body
+   )
+   mail.attach_alternative(html_body, 'text/html')
+   mail.send()
+
+   context = {
+      "gift": gift_card
+   }
+
+   return render(request, 'ROM/frontend/checkout.html', context)         
 
 
 @login_required
@@ -234,7 +366,7 @@ def createOrder(request, pk):
 
    customer = Customer.objects.get(id=pk)
 
-   OrderFormSet = inlineformset_factory(Customer, Order, fields=('customer_id','service_id','status'), extra=5)
+   OrderFormSet = inlineformset_factory(Customer, Order, fields=('customer_id','service_category','status', 'total'), extra=5)
 
    formset= OrderFormSet(queryset=Order.objects.none(),instance=customer)
    # form= OrderForm(initial={'customer': customer})
@@ -296,31 +428,64 @@ def review(request):
    return render(request, 'ROM/admin/review.html', context)  
 
 
+
 def createReview(request):
+   success=False
+   message = ""
+   
+   if request.method == "POST":
+      rating=request.POST.get("rating")
+      f_name = request.POST.get("fullname")
+      number = request.POST.get("phone_number")
+      email = request.POST.get("email")
+      subject = request.POST.get("subject")
 
-   rating=request.POST.get("rating")
-   f_name = request.POST.get("fullname")
-   number = request.POST.get("phone_number")
-   email = request.POST.get("email")
-   subject = request.POST.get("subject")
+      customer = Customer.objects.filter(email = email).first()
 
-   customer = Customer.objects.filter(email = email).first()
+      if customer:
+         
+         try:
+            
+            Review.objects.create(
+                  customer_id = customer,
+                  rating = rating,
+                  review= subject,
 
-   if customer:
+               )
+            success=True
+            message= "Thank you for your review"
 
-      Review.objects.create(
+            print(":::::CREATED MESSAGE::::::"+message)
+         
+         except IntegrityError as e:
+            print("INTEGRITY ERROR: "+str(e))
+            message = "INTEGRITY ERROR"+str(e)
 
-         customer_id = customer,
-         rating = rating,
-         review= subject,
-
-      )
-
-   context = {
-      
+   data = {
+      "success":success,
+      "message": message
    }
 
-   return render(request, 'ROM/frontend/review_success.html', context)          
+   return JsonResponse(data)    
+
+
+@login_required      
+def updateReviewStatus(request, pk):
+
+   ##Using get can give a 404 error: Use try except
+   review= Review.objects.get(id=pk)
+
+   if "pending" in review.status:
+      review.status = "approved"
+   else:
+      review.status = "pending"
+
+   review.save()
+
+   messages.success(request, 'Review updated successfully.')
+
+   return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+
 
 @login_required
 def deletereview(request, pk):
@@ -452,7 +617,7 @@ def deleteGift(request, pk):
 
    if request.method == 'POST':
       gift.delete()
-      return redirect('/gift')
+      return redirect('/gifts')
 
    context= {'item': gift}
 
@@ -466,7 +631,13 @@ def getGiftCards(request) :
 
 def getQuoteForm(request) :
 
-   return render(request, 'ROM/frontend/quote_form.html')    
+   services = Service.objects.all()
+
+   context = {
+      "services" : services
+   }
+
+   return render(request, 'ROM/frontend/quote_form.html', context)    
 
 def getService(request) :
 
@@ -506,15 +677,323 @@ class CustomerDetail(LoginRequiredMixin, DetailView):
 
 
 
+@login_required
+class OrderList(ListView):
 
-# class OrderList(ListView):
-
-#     login_required= True
-#     model =Order
-#     template_name= "ROM/admin/order_list.html"
+    login_required= True
+    model =Order
+    template_name= "ROM/admin/order_list.html"
 
 class OrderDetail(LoginRequiredMixin, DetailView):
 
     login_required= True
     model = Order
+    fields = '__all__'
     template_name= "ROM/admin/order_details.html"
+
+
+def orders(request):
+
+   customers = Customer.objects.all()
+   
+   order = Order.objects.all()
+  
+
+   context = {
+      'orders' : order,
+      'customers':customers
+
+      
+   }
+
+
+   return render(request, 'ROM/admin/order.html', context)        
+
+
+@login_required
+def orderDetail(request):
+   success=False
+   message = ""
+   
+   if request.method == "POST":
+     
+      f_name = request.POST.get("fullname")
+      email = request.POST.get("email")
+      number =request.POST.get("phone_number")
+      address = request.POST.get("address")
+      city = request.POST.get("city")
+      state = request.POST.get("state")
+      zip = request.POST.get("zip")
+      about = request.POST.get("about")
+      home= request.POST.get("home")
+      bedroom= request.POST.get("bedroom")
+      sqrft= request.POST.get("sqrft")
+      bathroom= request.POST.get("bathrooms")
+      floors= request.POST.get("floors")
+      occupants= request.POST.get("occupants")
+      space= request.POST.get("space")
+      pets=request.POST.get("pets")
+      npets=request.POST.get("npets")
+      service= request.POST.get("service")
+      frequency= request.POST.get("frequency")
+      schedule= request.POST.get("schedule")
+      subject = request.POST.get("subject")
+      status = request.POST.get("status")
+
+      total = findPriceByFeet(sqrft)
+
+      if npets:
+         npets = int(npets)
+      else:
+         npets = 0
+
+      if 'No' in pets:
+         pets = 1
+      else: 
+         pets = 0
+
+      space = getSpaceDetails(request)
+     
+      customer = Customer.objects.filter(email= email).first()
+      if customer is None:
+         customer = Customer.objects.create(
+               name = f_name,
+               email = email,
+         
+         )
+
+      print(service)
+      service = Service.objects.filter(pk = service).first()
+
+      order = Order.objects.create(
+         customer_id = customer,
+         service_category = service,
+         phone_number = number,
+         email= email,
+         address =address,
+         city = city,
+         state = state,
+         zip = zip,
+         about = about,
+         home= home,
+         bedroom=bedroom,
+         bathroom=bathroom,
+         sqrft= sqrft,
+         floors= floors,
+         occupants= occupants,
+         space= space,
+         pets= pets,
+         npets= npets,
+         frequency= frequency,
+         schedule= schedule,
+         subject = subject,
+         total = getFinalTotal(total, request),
+         status = "pending"
+      )
+
+      # order = Order()
+      # order.customer_id = customer
+      # order.service_category = service,
+      # order.phone_number = number,
+      # order.email= email,
+      # order.address =address,
+      # order.city = city,
+      # order.state = state,
+      # order.zip = zip,
+      # order.about = about,
+      # order.home= home,
+      # order.bedroom=bedroom,
+      # order.bathroom=bathroom,
+      # order.sqrft= sqrft,
+      # order.floors= floors,
+      # order.occupants= occupants,
+      # order.space= space,
+      # order.pets= pets,
+      # order.npets= npets,
+      # order.frequency= frequency,
+      # order.schedule= schedule,
+      # order.subject = subject
+      
+
+      # order.save()
+  
+      return HttpResponseRedirect("/order/checkout/"+str(order.id))
+
+def checkoutOrder(request, id):
+   
+   try:
+      order = Order.objects.select_related("customer_id").get(pk=id)
+      context = {
+         "order" : order
+      }
+      return render(request, 'ROM/frontend/checkout.html', context)
+
+   except Order.DoesNotExist:
+
+      return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+
+
+def markAsComplete(request):
+
+    order_id= request.POST.get("order_id")
+
+    order = Order.objects.get(pk=order_id)
+    order.status = "completed"
+    order.save()
+
+    data = {
+        'success' : True
+        }
+
+    return JsonResponse(data)
+
+
+
+def findPriceByFeet(feet):
+
+   feet = int(feet)
+   price = 0
+
+   if feet > 1000:
+      price = 150
+   elif feet > 1000 and feet < 1500:
+      price = 180
+   elif feet > 1500 and feet < 2000:
+      price = 210
+   elif feet > 2000 and feet < 2500:
+      price = 240
+   elif feet > 2500 and feet < 3000:
+      price = 270
+   elif feet > 3000 and feet < 3500:
+      price = 300
+   elif feet > 3500 and feet < 4000:
+      price = 330
+   elif feet > 4000 and feet < 4500:
+      price = 370
+   elif feet > 4500 and feet < 5000:
+      price = 400
+   elif feet > 5000 and feet < 5500:
+      price = 430
+   elif feet > 5500 and feet < 6000:
+      price = 470
+   elif feet > 6000 and feet < 6500:
+      price = 500
+   elif feet > 6500 and feet < 7000:
+      price = 530
+   elif feet > 7000 and feet < 7500:
+      price = 556
+   elif feet > 7500 and feet < 8000:
+      price = 573
+   elif feet > 8000 and feet < 8500:
+      price = 589
+      
+
+   return price
+
+ 
+def getSpaceDetails(request):
+   space = ""
+
+   if request.POST.get("office"):
+      space = space + ", "+request.POST.get("office")
+   if request.POST.get("basement"):
+      space = space + ", "+request.POST.get("basement")
+   if request.POST.get("play"):
+      space = space + ", "+request.POST.get("play")
+   if request.POST.get("family"):
+      space = space + ", "+request.POST.get("family")
+   if request.POST.get("dining"):
+      space = space + ", "+request.POST.get("dining")
+
+   return space
+
+
+def getFinalTotal(total, request):
+
+   if request.POST.get("oven"):
+      total = total + int(request.POST.get("oven"))
+
+   if request.POST.get("refrigerator"):
+      total = total + int(request.POST.get("refrigerator"))
+
+   if request.POST.get("patio"):
+      total = total + int(request.POST.get("patio"))
+
+   return total
+
+
+
+
+# send email details
+def sendMail(message, subject, email):
+
+    context = {
+        'message' : message
+    }
+    text_body = message
+    html_body = render_to_string('ROM/frontend/email_template.html', context)
+
+    mail = EmailMultiAlternatives(
+        subject = subject,
+        from_email =  settings.EMAIL_HOST_USER,
+        to = ['lindaatieno24@gmail.com'],
+        body = text_body
+    )
+    mail.attach_alternative(html_body, 'text/html')
+    mail.send()
+    
+    
+
+# class PaypalFormView(FormView):
+#     template_name = 'paypal_form.html'
+#     form_class = PayPalPaymentsForm
+
+#     def get_initial(self):
+#         return {
+#             "business": 'bizlinda@gmail.com',
+#             "amount": 20,
+#             "currency_code": "USD",
+#             "item_name": ' order_id',
+#             "invoice": 1234,
+#             "notify_url": self.request.build_absolute_uri(reverse('paypal-ipn')),
+#             "return_url": self.request.build_absolute_uri(reverse('paypal-return')),
+#             "cancel_return": self.request.build_absolute_uri(reverse('paypal-cancel')),
+#             "lc": 'EN',
+#             "no_shipping": '1',
+#         }
+
+
+# class PaypalReturnView(TemplateView):
+#     template_name = 'paypal_success.html'
+
+# class PaypalCancelView(TemplateView):
+#     template_name = 'paypal_cancel.html'   
+
+
+
+# @receiver(valid_ipn_received)
+# def paypal_payment_received(sender, **kwargs):
+#     ipn_obj = sender
+#     if ipn_obj.payment_status == ST_PP_COMPLETED:
+#         # WARNING !
+#         # Check that the receiver email is the same we previously
+#         # set on the `business` field. (The user could tamper with
+#         # that fields on the payment form before it goes to PayPal)
+#         if ipn_obj.receiver_email != 'bizlinda@gmail.com':
+#             # Not a valid payment
+#             return
+
+#         # ALSO: for the same reason, you need to check the amount
+#         # received, `custom` etc. are all what you expect or what
+#         # is allowed.
+#         try:
+#             my_pk = ipn_obj.invoice
+#             Payment = Payment.objects.get(pk=my_pk)
+#             assert ipn_obj.mc_gross ==  Payment.amount and ipn_obj.mc_currency == 'USD'
+#         except Exception:
+#             logger.exception('Paypal ipn_obj data not valid!')
+#         else:
+#              Payment.paid = True
+#              Payment.save()
+#     else:
+#         logger.debug('Paypal payment status not completed: %s' % ipn_obj.payment_status)         

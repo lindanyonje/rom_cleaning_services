@@ -2,10 +2,11 @@ from django.forms import ModelForm
 
 from .models import GiftCard, Order,Customer,Service,Payment,GiftCard, Offer, Inquiry
 
+
 class OrderForm(ModelForm):
     class Meta:
         model= Order
-        fields= '__all__'
+        fields= ['customer_id', 'service_category', 'status', 'total']
 
 class CustomerForm(ModelForm):
     class Meta:

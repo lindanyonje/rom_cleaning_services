@@ -30,7 +30,7 @@ SECRET_KEY = 'django-insecure-qjjq=fe%irv$xjfxh!k204v68mlk&n3pbob*+ydu*h4ff+5lw2
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['lindaatieno.pythonanywhere.com/', '127.0.0.1']
+ALLOWED_HOSTS = ['lindaatieno.pythonanywhere.com/', '127.0.0.1', '*']
 
 
 # Application definition
@@ -45,7 +45,11 @@ INSTALLED_APPS = [
     'ROM.apps.RomConfig', #Registering your app
     'widget_tweaks',
     'django_filters',
+    'paypal.standard.ipn',
 ]
+
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -142,3 +146,27 @@ MEDIA_ROOT=os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+# MY EMAIL SENDING VARIABLES
+# EMAIL_HOST ='smtp.gmail.com'
+
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+
+# EMAIL_HOST_USER='burahaven@gmail.com'
+# EMAIL_HOST_PASSWORD= 'uwqrdkxdwanixqpa'
+
+# EMAIL_HOST_PASSWORD= 'bura123haven'
+
+
+
+
+EMAIL_HOST = 'smtp.mailtrap.io'
+EMAIL_HOST_USER = '4a8db5c322fb8f'
+EMAIL_HOST_PASSWORD = 'ad82aaf073a424'
+EMAIL_PORT = '2525'
+
+
